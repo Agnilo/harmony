@@ -12,3 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home'); // Nukreipimas į HomeController index() metodą pagrindiniame puslapyje
+
+Auth::routes();
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
