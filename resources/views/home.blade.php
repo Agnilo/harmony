@@ -76,9 +76,6 @@
         <div class="col-2 card">
             @if($user = Auth::user())
                 <h3>Gamintojai</h3>
-                @foreach ($brands as $brand)
-                    <a href="{{ url('/brand/') }}/{{$brand->id}}" style="color: #262626">{{$brand->name}}</a>
-                @endforeach
             @endif
         </div>
         
