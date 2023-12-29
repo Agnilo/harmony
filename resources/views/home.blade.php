@@ -70,51 +70,15 @@
 </div>
         </header>
 
-
-    @if (Route::has('login'))
-        <div class="top-right links">
-            @auth
-                <li class="nav-item dropdown links">
-                    <a id="navbarDropdown" class="dropdown-toggle" href="#" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }}
-                    </a>
-
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                            {{ __('Atsijungti') }}
-                        </a>
-                        @can('manage-users')
-                            <a class="dropdown-item" href="{{route('admin.users.index')}}">
-                                Naudotojų valdymas
-                            </a>
-                        @endcan
-                        <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </div>
-                </li>
-            @else
-                <a href="{{ url('/login') }}">Prisijungti</a>
-
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}">Registruotis</a>
-                @endif
-            @endauth
-        </div>
-    @endif
-
-    <div class="container">
-    <div class="row pt-5">
-        <div class="col-2 card">
-            @if($user = Auth::user())
-                <h3>Gamintojai</h3>
-            @endif
-        </div>
-        
+<div class="container">
+<div class="row pt-5">
+    <div class="col-2 card">
+        @if($user = Auth::user())
+            <h3>Gamintojai</h3>
+        @endif
     </div>
+    
+</div>
 </div>
 <br>
 
