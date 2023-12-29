@@ -24,7 +24,7 @@
                 <img src="{{ asset('images/brandLogo.png') }}" alt="Brand Logo Image" class="headerLogo">
             </div>
             <div class="top-middle">
-                <div>
+
                     <div>
                         <a href="{{ url('/pagrindinis') }}" style="color: #262626">Pagrindinis</a>
                     </div>
@@ -34,7 +34,7 @@
                     <div>
                         <a href="{{url('/apie')}}" style="color: #262626">Apie mus</a>
                     </div>
-                </div>
+
             </div>
         @if (Route::has('login'))
         <div class="top-right links">
