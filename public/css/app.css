@@ -7,6 +7,18 @@ html, body {
     margin: 0;
 }
 
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.top-left {
+    position: absolute;
+    left: 10px;
+    top: 18px;
+}
+
 .navbar {
     margin-bottom: 20px;
     width: 100%;
@@ -171,12 +183,6 @@ html, body {
 
 .position-ref {
     position: relative;
-}
-
-.top-right {
-    position: absolute;
-    right: 10px;
-    top: 18px;
 }
 
 .content {
