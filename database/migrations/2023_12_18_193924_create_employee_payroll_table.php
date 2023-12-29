@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('employee_payroll', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('employee_id');
+            $table->decimal('salary', 10, 2)->default(0.00);
             $table->timestamps();
         });
     }
