@@ -59,13 +59,13 @@
     <br>
     <div class="row justify-content-md-center">
         <div class="col-md-auto">
-            <h2><a href="{{ url('/home') }}" style="color: #262626">PREKĖS</a></h2>
+            <h2><a href="{{ url('/pagrindinis') }}" style="color: #262626">PREKĖS</a></h2>
         </div>
         <div class="col-md-auto">
             <h2><a href="{{url('/delivery')}}" style="color: #262626">PRISTATYMAS</a></h2>
         </div>
         <div class="col-md-auto">
-            <h2><a href="{{url('/about')}}" style="color: #262626">APIE MUS</a></h2>
+            <h2><a href="{{url('/apie')}}" style="color: #262626">APIE MUS</a></h2>
         </div>
     </div>
     <br>
