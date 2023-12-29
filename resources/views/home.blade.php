@@ -24,16 +24,9 @@
                 <img src="{{ asset('images/brandLogo.png') }}" alt="Brand Logo Image" class="headerLogo">
             </div>
             <div class="top-middle">
-
-                    <div>
                         <a href="{{ url('/pagrindinis') }}" style="color: #262626">Pagrindinis</a>
-                    </div>
-                    <div>
-                        <a href="{{url('/delivery')}}" style="color: #262626">PRISTATYMAS</a>
-                    </div>
-                    <div>
+
                         <a href="{{url('/apie')}}" style="color: #262626">Apie mus</a>
-                    </div>
 
             </div>
         @if (Route::has('login'))
