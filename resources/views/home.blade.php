@@ -55,20 +55,20 @@
         </div>
     @endif
 
-<div class="container">
-<div class="row justify-content-md-center">
-    <div class="col-md-auto">
-        <a href="{{ url('/pagrindinis') }}" style="color: #262626">PREKĖS</a>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <a href="{{ url('/pagrindinis') }}" style="color: #262626">PREKĖS</a>
+            </div>
+            <div class="col-md-auto">
+                <a href="{{url('/delivery')}}" style="color: #262626">PRISTATYMAS</a>
+            </div>
+            <div class="col-md-auto">
+                <a href="{{url('/apie')}}" style="color: #262626">APIE MUS</a>
+            </div>
+        </div>
     </div>
-    <div class="col-md-auto">
-        <a href="{{url('/delivery')}}" style="color: #262626">PRISTATYMAS</a>
-    </div>
-    <div class="col-md-auto">
-        <a href="{{url('/apie')}}" style="color: #262626">APIE MUS</a>
-    </div>
-</div>
-</div>
-        </header>
+    </header>
 
 <div class="container">
 <div class="row pt-5">
@@ -80,6 +80,7 @@
     
 </div>
 </div>
+<img src="{{ asset('storage/images/' . $brandLogo) }}" alt="Header Image">
 <br>
 
 <footer style="background-color: #fff">
