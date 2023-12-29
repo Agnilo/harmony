@@ -80,7 +80,7 @@
     
 </div>
 </div>
-<img src="{{ asset('storage/images/' . $brandLogo) }}" alt="Header Image">
+<img src="{{ asset('storage/images/' . $brandLogo.png) }}" alt="Header Image">
 <br>
 
 <footer style="background-color: #fff">
