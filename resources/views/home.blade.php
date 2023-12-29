@@ -21,7 +21,7 @@
     <body>
         <header>
             <div class="top-left">
-                <img src="{{ asset('images/brandLogo.png') }}" alt="Brand Logo Image">
+                <img src="{{ asset('images/brandLogo.png') }}" alt="Brand Logo Image" class="headerLogo">
             </div>
             <div class="top-middle">
                 <div class="row justify-content-md-center">
