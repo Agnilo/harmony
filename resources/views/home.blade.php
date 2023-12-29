@@ -21,14 +21,20 @@
     <body>
         <header>
             <div class="top-left">
-                <img src="{{ asset('images/brandLogo.png') }}" alt="Brand Logo Image" class="headerLogo">
+                <a href="/">
+                    <img src="{{ asset('images/brandLogo.png') }}" alt="Brand Logo Image" class="headerLogo">
+                </a>
             </div>
-            <div class="top-middle">
+            <nav>
+                <ul>
+                    <li>
                         <a href="{{ url('/pagrindinis') }}">Pagrindinis</a>
-
+                    </li>
+                    <li>
                         <a href="{{url('/apie')}}">Apie mus</a>
-
-            </div>
+                    </li>
+                </ul>
+            </nav>        
         @if (Route::has('login'))
         <div class="top-right links">
             @auth
