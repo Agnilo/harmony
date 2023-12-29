@@ -15,4 +15,4 @@ Route::get('/', [HomeController::class, 'index'])->name('home'); // Nukreipimas 
 
 Auth::routes();
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
