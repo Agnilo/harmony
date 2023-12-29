@@ -24,15 +24,15 @@
                 <img src="{{ asset('images/brandLogo.png') }}" alt="Brand Logo Image" class="headerLogo">
             </div>
             <div class="top-middle">
-                <div class="row justify-content-md-center">
-                    <div class="col-md-auto">
-                        <a href="{{ url('/pagrindinis') }}" style="color: #262626">PREKĖS</a>
+                <div>
+                    <div>
+                        <a href="{{ url('/pagrindinis') }}" style="color: #262626">Pagrindinis</a>
                     </div>
-                    <div class="col-md-auto">
+                    <div>
                         <a href="{{url('/delivery')}}" style="color: #262626">PRISTATYMAS</a>
                     </div>
-                    <div class="col-md-auto">
-                        <a href="{{url('/apie')}}" style="color: #262626">APIE MUS</a>
+                    <div>
+                        <a href="{{url('/apie')}}" style="color: #262626">Apie mus</a>
                     </div>
                 </div>
             </div>
