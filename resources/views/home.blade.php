@@ -20,6 +20,22 @@
 </head>
     <body>
         <header>
+            <div class="top-left">
+                <img src="{{ asset('images/brandLogo.png') }}" alt="Brand Logo Image">
+            </div>
+            <div class="top-middle">
+                <div class="row justify-content-md-center">
+                    <div class="col-md-auto">
+                        <a href="{{ url('/pagrindinis') }}" style="color: #262626">PREKĖS</a>
+                    </div>
+                    <div class="col-md-auto">
+                        <a href="{{url('/delivery')}}" style="color: #262626">PRISTATYMAS</a>
+                    </div>
+                    <div class="col-md-auto">
+                        <a href="{{url('/apie')}}" style="color: #262626">APIE MUS</a>
+                    </div>
+                </div>
+            </div>
         @if (Route::has('login'))
         <div class="top-right links">
             @auth
@@ -54,20 +70,6 @@
             @endauth
         </div>
     @endif
-
-    <div class="container">
-        <div class="row justify-content-md-center">
-            <div class="col-md-auto">
-                <a href="{{ url('/pagrindinis') }}" style="color: #262626">PREKĖS</a>
-            </div>
-            <div class="col-md-auto">
-                <a href="{{url('/delivery')}}" style="color: #262626">PRISTATYMAS</a>
-            </div>
-            <div class="col-md-auto">
-                <a href="{{url('/apie')}}" style="color: #262626">APIE MUS</a>
-            </div>
-        </div>
-    </div>
     </header>
 
 <div class="container">
@@ -80,7 +82,6 @@
     
 </div>
 </div>
-<img src="{{ asset('images/brandLogo.png') }}" alt="Header Image">
 <br>
 
 <footer style="background-color: #fff">
