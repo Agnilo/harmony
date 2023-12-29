@@ -107,22 +107,6 @@
     @endif
 
     <div class="container">
-    <br>
-    <div class="row justify-content-md-center">
-        <div class="col-md-auto">
-            <h2><a href="{{ url('/pagrindinis') }}" style="color: #262626">PREKĖS</a></h2>
-        </div>
-        <div class="col-md-auto">
-            <h2><a href="{{url('/delivery')}}" style="color: #262626">PRISTATYMAS</a></h2>
-        </div>
-        <div class="col-md-auto">
-            <h2><a href="{{url('/apie')}}" style="color: #262626">APIE MUS</a></h2>
-        </div>
-    </div>
-    <br>
-    <div class="row justify-content-md-center" style="background-color: lightgrey">
-        <br>
-    </div>
     <div class="row pt-5">
         <div class="col-2 card">
             @if($user = Auth::user())
