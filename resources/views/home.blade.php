@@ -55,19 +55,19 @@
         </div>
     @endif
 
-    <div class="container">
-    <br>
-    <div class="row justify-content-md-center">
-        <div class="col-md-auto">
-            <h2><a href="{{ url('/pagrindinis') }}" style="color: #262626">PREKĖS</a></h2>
-        </div>
-        <div class="col-md-auto">
-            <h2><a href="{{url('/delivery')}}" style="color: #262626">PRISTATYMAS</a></h2>
-        </div>
-        <div class="col-md-auto">
-            <h2><a href="{{url('/apie')}}" style="color: #262626">APIE MUS</a></h2>
-        </div>
+<div class="container">
+<div class="row justify-content-md-center">
+    <div class="col-md-auto">
+        <a href="{{ url('/pagrindinis') }}" style="color: #262626">PREKĖS</a>
     </div>
+    <div class="col-md-auto">
+        <a href="{{url('/delivery')}}" style="color: #262626">PRISTATYMAS</a>
+    </div>
+    <div class="col-md-auto">
+        <a href="{{url('/apie')}}" style="color: #262626">APIE MUS</a>
+    </div>
+</div>
+</div>
         </header>
 
 
@@ -148,29 +148,6 @@
         <br>
     </div>
 </footer>
-
-    <!-- <header>
-        <h1>Sveiki atvykę į HarmonyWorks!</h1>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="#">Pagrindinis</a></li>
-            <li><a href="#">Apie</a></li>
-            <li><a href="#">Paslaugos</a></li>
-            <li><a href="#">Kontaktai</a></li>
-        </ul>
-    </nav>
-
-    <main>
-        <h2>Turinys</h2>
-        <p>This is the main content area of the page..</p>
-        <p>You can add more sections, content, and customize it as needed.</p>
-    </main>
-
-    <footer>
-        <p>&copy; <?php echo date("Y"); ?> HarmonyWork</p>
-    </footer> -->
 
     </body>
 </html>
