@@ -10,13 +10,13 @@ html, body {
 header{
     display: flex;
     justify-content: space-evenly;
-    height: fit-content;
+    height: 50px;
 }
 
 .top-right {
     position: absolute;
     right: 10px;
-    top: 18px;
+    top: 5px;
 }
 .headerLogo {
     width: 200px;
@@ -25,6 +25,11 @@ header{
 .top-middle {
     position: absolute;
     display: flex;
+    top: 18px;
+}
+.top-middle > a{
+    color: #547f44;
+    padding: 0 10px;
 }
 
 .top-left {
