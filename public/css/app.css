@@ -177,8 +177,6 @@ header{
     object-fit: cover;
 }
 
-
-
 .full-height {
     height: 100vh;
 }
@@ -202,11 +200,10 @@ header{
 }
 
 .links > a {
-    color: blue;
-    padding: 0 25px;
+    color: #547f44;
+    padding: 0 10px;
     font-size: 13px;
     font-weight: 600;
-    letter-spacing: .1rem;
     text-decoration: none;
     text-transform: uppercase;
 }
