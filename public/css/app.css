@@ -10,6 +10,7 @@ html, body {
 header{
     display: flex;
     justify-content: space-evenly;
+    height: fit-content;
 }
 
 .top-right {
@@ -19,6 +20,11 @@ header{
 }
 .headerLogo {
     width: 200px;
+}
+
+.top-middle {
+    position: absolute;
+    display: flex;
 }
 
 .top-left {
