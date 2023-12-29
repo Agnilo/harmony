@@ -46,10 +46,10 @@
                     </div>
                 </li>
             @else
-                <a href="{{ url('/login') }}">Login</a>
+                <a href="{{ url('/login') }}">Prisijungti</a>
 
                 @if (Route::has('register'))
-                    <a href="{{ route('register') }}">Register</a>
+                    <a href="{{ route('register') }}">Registruotis</a>
                 @endif
             @endauth
         </div>
@@ -83,7 +83,7 @@
 </div>
 <br>
 
-<footer style="background-color: lightgrey">
+<footer style="background-color: #fff">
     <div class="container">
         <br>
         <br>
