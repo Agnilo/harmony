@@ -19,6 +19,57 @@
     
 </head>
     <body>
+        <header>
+        @if (Route::has('login'))
+        <div class="top-right links">
+            @auth
+                <li class="nav-item dropdown links">
+                    <a id="navbarDropdown" class="dropdown-toggle" href="#" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }}
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Atsijungti') }}
+                        </a>
+                        @can('manage-users')
+                            <a class="dropdown-item" href="{{route('admin.users.index')}}">
+                                Naudotojų valdymas
+                            </a>
+                        @endcan
+                        <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+            @else
+                <a href="{{ url('/login') }}">Prisijungti</a>
+
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}">Registruotis</a>
+                @endif
+            @endauth
+        </div>
+    @endif
+
+    <div class="container">
+    <br>
+    <div class="row justify-content-md-center">
+        <div class="col-md-auto">
+            <h2><a href="{{ url('/pagrindinis') }}" style="color: #262626">PREKĖS</a></h2>
+        </div>
+        <div class="col-md-auto">
+            <h2><a href="{{url('/delivery')}}" style="color: #262626">PRISTATYMAS</a></h2>
+        </div>
+        <div class="col-md-auto">
+            <h2><a href="{{url('/apie')}}" style="color: #262626">APIE MUS</a></h2>
+        </div>
+    </div>
+        </header>
+
 
     @if (Route::has('login'))
         <div class="top-right links">
@@ -90,7 +141,7 @@
         <h3>Informacija</h3><br>
         <p>Petro g. 3, LT-12345 Vilnius<br>
             Telefonas: (8 5) 123 4567<br>
-            El. paštas: info@catshop.com<br>
+            El. paštas: info@harmonyworks.com<br>
             Kodas: 123456789<br>
             PVM kodas: LT1123456789</p>
         <br>
