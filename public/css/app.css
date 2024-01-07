@@ -85,11 +85,10 @@ main{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    top: 50%;
-    bottom: 50%;
-    background-color: rgb(231,252,216, 0.5);
-    padding: 20px;
-    border-radius: 8px;
+    top: 40%;
+    bottom: 40%;
+    background-color: rgb(231,252,216, 0.2);
+    padding: 5%;
 }
 
 .home-text p{
@@ -97,6 +96,7 @@ main{
     margin: 0;
     line-height: normal;
     font-size: 30px;
+    color: var(--primary-color);
 }
 
 footer{
