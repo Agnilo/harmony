@@ -68,7 +68,7 @@
     <div class="home-background" style="background-image: url('{{ asset('images/background.jpg') }}')">
         <div class="home-text">
             <p>Jūsų komanda. Mūsų harmonija.</p>
-            <p>HarmonyWorks</p>
+            <p style="font-style: italic;">HarmonyWorks</p>
         </div>
     </div>
 </div>
