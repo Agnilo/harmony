@@ -12,6 +12,8 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    background-size: cover;
+    background-position: center; 
 }
 
 header{
@@ -59,7 +61,6 @@ header{
 }
 
 .home-background{
-    background-image: url('{{ asset('images/background.jpg') }}');
     background-size: cover;
     background-position: center; 
 }
