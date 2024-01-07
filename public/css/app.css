@@ -78,6 +78,16 @@ main{
     background-position: center; 
 }
 
+.home-text{
+    position: absolute;
+}
+
+.home-text p{
+    text-align: center;
+    margin: 0;
+    line-height: normal;
+}
+
 footer{
     background-color: var(--secondary-color);
     bottom: 0;

@@ -66,7 +66,10 @@
     </header>
 <div class="home-background-main">
     <div class="home-background" style="background-image: url('{{ asset('images/background.jpg') }}')">
-        Sveiki
+        <div class="home-text">
+            <p>Jūsų komanda. Mūsų harmonija.</p>
+            <p>HarmonyWorks</p>
+        </div>
     </div>
 </div>
 <br>
