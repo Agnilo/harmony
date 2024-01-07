@@ -16,7 +16,7 @@ class RolesTableSeeder extends Seeder
         DB::table('role')->truncate();
         //Role::truncate();
 
-        $role = [
+        $roles = [
             [
                 'name' => 'admin',
                 'description' => 'Kliento administratoriai'
@@ -33,6 +33,8 @@ class RolesTableSeeder extends Seeder
 
         ];
         
-        Role::insert($role);
+        foreach ($roles as $role) {
+            Role::create($role);
+        //Role::insert($role);
     }
 }
