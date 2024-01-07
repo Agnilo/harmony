@@ -26,14 +26,12 @@
                 </a>
             </div>
             <nav>
-                <ul>
-                    <li>
-                        <a href="{{ url('/pagrindinis') }}">Pagrindinis</a>
-                    </li>
-                    <li>
-                        <a href="{{url('/apie')}}">Apie mus</a>
-                    </li>
-                </ul>
+                <div>
+                    <a href="{{ url('/pagrindinis') }}">Pagrindinis</a>
+                </div>
+                <div>
+                    <a href="{{url('/apie')}}">Apie mus</a>
+                </div>
             </nav>        
         @if (Route::has('login'))
         <div class="top-right links">
