@@ -15,10 +15,11 @@ html, body {
 }
 
 header{
-    background-color: #e7fcd8;
+    background-color: var(--secondary-color);
     display: flex;
     justify-content: space-evenly;
     height: 52px;
+    position: absolute;
 }
 
 .top-left {
@@ -66,9 +67,9 @@ header{
 
 footer{
     background-color: var(--secondary-color);
-    position: sticky;
     bottom: 0;
     width: 100%;
+    position: absolute;
 }
 
 .copyright-wrapper{
