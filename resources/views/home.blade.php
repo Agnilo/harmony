@@ -27,10 +27,10 @@
             </div>
             <nav class="top-middle">
                 <div class="top-middle-div">
-                    <a href="{{ url('/Susisiekti') }}">Susisiekite</a>
+                    <a class="top-middle-a" href="{{ url('/Susisiekti') }}">Susisiekite</a>
                 </div>
-                <div>
-                    <a href="{{url('/apie')}}">Apie mus</a>
+                <div class="top-middle-div">
+                    <a class="top-middle-a" href="{{url('/apie')}}">Apie mus</a>
                 </div>
             </nav>        
         @if (Route::has('login'))
