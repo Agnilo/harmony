@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class EmployeePayroll extends Model
+class Payroll extends Model
 {
     public function user()
     {
-        return $this->hasOne(Employee::class);
+        return $this->hasOne(User::class);
     }
 }
