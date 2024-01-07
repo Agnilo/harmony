@@ -81,7 +81,7 @@
 </div>
 <br>
 
-<footer style="background-color: #e7fcd8">
+<footer>
     <div class="container">
         <br>
         <br>
