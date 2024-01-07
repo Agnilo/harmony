@@ -26,12 +26,8 @@
                 </a>
             </div>
             <nav class="top-middle">
-                <div class="top-middle-div">
                     <a class="top-middle-a" href="{{ url('/Susisiekti') }}">Susisiekite</a>
-                </div>
-                <div class="top-middle-div">
                     <a class="top-middle-a" href="{{url('/apie')}}">Apie mus</a>
-                </div>
             </nav>        
         @if (Route::has('login'))
         <div class="top-right links">
