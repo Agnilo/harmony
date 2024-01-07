@@ -43,13 +43,13 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function  roles(){
+    public function  role(){
         return $this->belongsToMany(Role::class);
     }
 
     public function hasAnyRoles($roles){
 
-        if($this->roles()->whereIn('name', $roles)->first()){
+        if($this->role()->whereIn('name', $roles)->first()){
             return true;
         }
 
@@ -58,7 +58,7 @@ class User extends Authenticatable
 
     public function hasRole($role){
 
-        if($this->roles()->where('name', $role)->first()){
+        if($this->role()->where('name', $role)->first()){
             return true;
         }
 
