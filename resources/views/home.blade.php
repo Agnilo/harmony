@@ -25,7 +25,7 @@
                     <img src="{{ asset('images/Logo.png') }}" alt="Brand Logo Image" class="headerLogo">
                 </a>
             </div>
-            <nav>
+            <nav class="top-middle">
                 <div>
                     <a href="{{ url('/pagrindinis') }}">Pagrindinis</a>
                 </div>
