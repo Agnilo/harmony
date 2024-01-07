@@ -35,6 +35,7 @@ class RolesTableSeeder extends Seeder
         
         foreach ($roles as $role) {
             Role::create($role);
+        }
         //Role::insert($role);
     }
 }
