@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
+        Schema::create('benefits', function (Blueprint $table) {
+            $table->id();
+            $table->string('benefit_name');
             $table->text('description')->nullable();
+            $table->string('picture')->nullable();
+            $table->decimal('price', 10,2)->default(0.00);
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('benefits');
     }
 };
