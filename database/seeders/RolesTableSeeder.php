@@ -13,8 +13,7 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('role')->truncate();
-        //Role::truncate();
+        Role::truncate();
 
         $roles = [
             [
@@ -33,9 +32,6 @@ class RolesTableSeeder extends Seeder
 
         ];
         
-        foreach ($roles as $role) {
-            Role::create($role);
-        }
-        //Role::insert($role);
+        Role::insert($role);
     }
 }
