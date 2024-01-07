@@ -19,7 +19,7 @@ return new class extends Migration
             $table->decimal('paid_leave', 3,1)->default(0.0);
             $table->decimal('unpaid_leave', 3,1)->default(0.0);
             $table->decimal('work_hours', 3,1)->default(0.0);
-            $table->integet('work_days', 1)->default(0);
+            $table->integer('work_days', 1)->default(0);
             $table->decimal('leave_hours', 3,1)->default(0.0);
             $table->decimal('overtime', 3,1)->default(0.0);
             $table->decimal('gross', 10, 2)->default(0.00);
