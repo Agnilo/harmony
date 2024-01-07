@@ -41,6 +41,10 @@ header{
     padding: 0 10px;
 }
 
+.top-middle > div{
+    padding: 0 10px;
+}
+
 .top-right {
     position: absolute;
     right: 10px;

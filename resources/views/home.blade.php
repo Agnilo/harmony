@@ -26,8 +26,8 @@
                 </a>
             </div>
             <nav class="top-middle">
-                <div>
-                    <a href="{{ url('/pagrindinis') }}">Pagrindinis</a>
+                <div class="top-middle-div">
+                    <a href="{{ url('/Susisiekti') }}">Susisiekite</a>
                 </div>
                 <div>
                     <a href="{{url('/apie')}}">Apie mus</a>
