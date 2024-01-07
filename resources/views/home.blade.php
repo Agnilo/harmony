@@ -64,9 +64,10 @@
         </div>
     @endif
     </header>
-
-<div class="home-background" style="background-image: url('{{ asset('images/background.jpg') }}')">
-    Sveiki
+<div class="home-background">
+    <div style="background-image: url('{{ asset('images/background.jpg') }}')">
+        Sveiki
+    </div>
 </div>
 <br>
 
