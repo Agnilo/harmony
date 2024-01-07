@@ -82,17 +82,9 @@
 <br>
 
 <footer>
-    <div class="container">
-        <br>
-        <br>
-        <h3>Informacija</h3><br>
-        <p>Petro g. 3, LT-12345 Vilnius<br>
-            Telefonas: (8 5) 123 4567<br>
-            El. paštas: info@harmonyworks.com<br>
-            Kodas: 123456789<br>
-            PVM kodas: LT1123456789</p>
-        <br>
-        <br>
+    <div class="copyright-wrapper">
+        <p>HarmonyWorks</p>
+        <p> © 2024. All rights reserved. </p>
     </div>
 </footer>
 
