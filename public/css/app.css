@@ -22,6 +22,10 @@ header{
 
 footer{
     background-color: var(--secondary-color);
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
 }
 
 .top-left {
