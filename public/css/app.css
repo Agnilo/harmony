@@ -67,6 +67,9 @@ main{
 
 .home-background-main{
     position: absolute;
+    width: 100%;
+    top: 6%;
+    bottom: 10%;
 }
 
 .home-background{
