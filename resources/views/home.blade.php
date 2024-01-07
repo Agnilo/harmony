@@ -26,7 +26,7 @@
                 </a>
             </div>
             <nav class="top-middle">
-                    <a class="top-middle-a" href="{{ url('/Susisiekti') }}">Susisiekite</a>
+                    <a class="top-middle-a" href="{{ url('/susisiekti') }}">Susisiekite</a>
                     <a class="top-middle-a" href="{{url('/apie')}}">Apie mus</a>
             </nav>        
         @if (Route::has('login'))
@@ -65,15 +65,8 @@
     @endif
     </header>
 
-<div class="container">
-<div class="row pt-5">
-    <div class="col-2 card">
-        @if($user = Auth::user())
-            <h3>Gamintojai</h3>
-        @endif
-    </div>
-    
-</div>
+<div class="home-background" style="background-image: url('{{ asset('images/background.jpg') }}')">
+    Sveiki
 </div>
 <br>
 

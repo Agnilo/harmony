@@ -57,6 +57,11 @@ header{
     width: 100%;
 }
 
+.home-background{
+    background-size: cover;
+    background-position: center; 
+}
+
 footer{
     background-color: var(--secondary-color);
     position: sticky;
