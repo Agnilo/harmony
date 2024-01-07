@@ -33,6 +33,7 @@ class UserTableSeeder extends Seeder
             'first_name' => 'Admin',
             'last_name' => 'User',
             'email' => 'admin@admin.com',
+            'gender' => 'female',
             'password' => Hash::make('password')
         ]);
 
@@ -40,6 +41,7 @@ class UserTableSeeder extends Seeder
             'first_name' => 'Super',
             'last_name' => 'User',
             'email' => 'sp@sp.com',
+            'gender' => 'male',
             'password' => Hash::make('password')
         ]);
 
@@ -47,6 +49,7 @@ class UserTableSeeder extends Seeder
             'first_name' => 'Generic',
             'last_name' => 'User',
             'email' => 'user@user.com',
+            'gender' => 'male',
             'password' => Hash::make('password')
         ]);
 

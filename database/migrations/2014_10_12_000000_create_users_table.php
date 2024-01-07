@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('country')->nullable();
             $table->string('password');
             $table->decimal('wage', 8, 2)->default(0.00);
-            $table->string('verify');
+            $table->string('verify')->nullable();
             $table->string('status')->nullable();
             $table->string('role');
             $table->string('position')->nullable();
