@@ -9,8 +9,9 @@ html, body {
     color: #B6BFB0;
     font-family: 'Nunito', sans-serif;
     font-weight: 200;
-    height: 100vh;
+    height: 100%;
     margin: 0;
+    padding: 0;
 }
 
 header{
@@ -58,6 +59,7 @@ header{
 }
 
 .home-background{
+    background-image: url('{{ asset('images/background.jpg') }}');
     background-size: cover;
     background-position: center; 
 }
