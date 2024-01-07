@@ -18,9 +18,14 @@ header{
     background-color: var(--secondary-color);
     display: flex;
     justify-content: space-evenly;
-    height: 52px;
+    height: 6%;
     position: absolute;
     width: 100%;
+}
+
+main{
+    top: 6%;
+    bottom: 10%;
 }
 
 .top-left {
@@ -71,6 +76,7 @@ footer{
     bottom: 0;
     width: 100%;
     position: absolute;
+    height: 10%;
 }
 
 .copyright-wrapper{
