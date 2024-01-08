@@ -4,6 +4,7 @@ namespace Routes;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
 
 /*Route::get('/', function () {
@@ -21,4 +22,4 @@ Route::get('/susisiekti', function () {
 
 Auth::routes();
 
-Route::get('/pagrindinis', [HomeController::class, 'index'])->name('home');
+Route::get('/pagrindinis', [DashboardController::class, 'index'])->name('dashboard');
