@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Slaptažodžio patvirtinimas') }}</div>
 
                 <div class="card-body">
-                    <div>
+                    <div class="card-body-additional-header">
                         {{ __('Prašome patvirtinti slaptažodį prieš tęsiant toliau') }}
                     </div>
                     
@@ -31,13 +31,13 @@
                         </div>
 
                         <div class="row mb-0 card-body-bottom-element">
-                            <div class="col-md-8 offset-md-4">
+                            <div class="col-md-8 offset-md-4 card-body-element-add">
                                 <button type="submit" class="btn btn-primary login-btn">
                                     {{ __('Patvirtinti slaptažodį') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a class="btn btn-link" style="margin-left: -2%;" href="{{ route('password.request') }}">
                                         {{ __('Pamiršote slaptažodį?') }}
                                     </a>
                                 @endif

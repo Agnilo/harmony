@@ -231,10 +231,25 @@ footer{
     font-weight: 600;
 }
 
+.card-body-additional-header{
+    text-align: center;
+    padding-bottom: 15px;
+    margin-top: -10px;
+}
+
 .card-body-element{
     padding-bottom: 10px;
     display: flex;
     justify-content: space-evenly;
+}
+
+.card-body-element-add{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 9%;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .card-body-bottom-element{
