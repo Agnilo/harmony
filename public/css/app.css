@@ -45,7 +45,7 @@ main{
 }
 
 .top-middle-a{
-    color: #547f44;
+    color: var(--primary-color);
     padding: 0 10px;
     font-weight: 600;
     text-transform: uppercase;
@@ -54,7 +54,7 @@ main{
 }
 
 .top-middle-a:hover{
-    color: #547f44;
+    color: var(--primary-color);
     text-decoration: underline;
 }
 
@@ -62,11 +62,6 @@ main{
     position: absolute;
     right: 2%;
     top: 25%;
-}
-
-.navbar {
-    margin-bottom: 20px;
-    width: 100%;
 }
 
 .home-background-main{
@@ -114,6 +109,13 @@ footer{
     display: block;
     padding: 10px 0;
     text-align: center;
+}
+
+.about-wrapper{
+    display: block;
+    text-align: center;
+    background-color: #262626;
+    padding: 10% 0;
 }
 
 .hrr {

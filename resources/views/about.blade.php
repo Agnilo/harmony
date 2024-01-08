@@ -2,6 +2,8 @@
 
 @section('content')
 <div class="home-background-main">
-    Sveiki
+    <div class="about-wrapper">
+        Sveiki
+    </div>
 </div>
 @endsection
