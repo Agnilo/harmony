@@ -239,10 +239,10 @@ footer{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.pass-req-btn a{
+.btn-link{
     color: var(--primary-color);
 }
-.pass-req-btn:hover a{
+.btn-link:hover{
     color: var(--primary-color);
     text-decoration: underline;
 }
