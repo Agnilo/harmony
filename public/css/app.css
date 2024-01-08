@@ -230,7 +230,7 @@ footer{
 }
 
 .card-body-bottom-element{
-    display: flex;
+    padding: 0 2%;
 }
 
 .login-btn{
