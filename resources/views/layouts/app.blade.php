@@ -27,7 +27,7 @@
                 <img src="{{ asset('images/brandLogo.png') }}" alt="Brand Logo Image" class="headerLogo">
             </a>
         </div>
-        <div class="top-right">
+        <div class="top-right links">
             @guest
             @if (Route::has('login'))
             <li class="nav-item">
