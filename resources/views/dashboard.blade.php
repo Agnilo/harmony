@@ -21,12 +21,11 @@
 </head>
 
 <body>
-    @auth
-        sveiki
-    @endauth
-    @auth('admin')
-        admin
-    @endauth
+    @if(auth()->user->is_admin == 2)
+    labai gerai 
+    @else
+    labai blogai
+    @endif
 </body>
 
 </html>
