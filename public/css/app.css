@@ -231,7 +231,6 @@ footer{
     background-color: var(--primary-color);
     border-color: var(--primary-color);
 }
-
 .login-btn:hover{
     color: var(--primary-color);
     background-color: white;
@@ -245,6 +244,11 @@ footer{
 .btn-link:hover{
     color: var(--primary-color);
     text-decoration: underline;
+}
+
+.form-control:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-color);
 }
 
 .hrr {
