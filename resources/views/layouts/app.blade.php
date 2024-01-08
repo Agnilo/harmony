@@ -16,8 +16,8 @@
     <script src="{{ asset('js/app.js') }}"></script>
     
 
-    <!-- Scripts 
-    @vite(['resources/sass/app.scss', 'resources/js/app.js']) -->
+    <!-- Scripts -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js']) 
 </head>
 <body>
     <div id="app">
