@@ -27,7 +27,7 @@ return new class extends Migration
             $table->decimal('wage', 8, 2)->default(0.00);
             $table->string('verify')->nullable();
             $table->string('status')->nullable();
-            $table->string('role');
+            $table->string('role')->default('3');
             $table->string('position')->nullable();
             $table->boolean('is_verified')->default(false);
             $table->rememberToken();
