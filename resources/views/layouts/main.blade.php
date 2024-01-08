@@ -22,7 +22,7 @@
         <header>
             <div class="top-left">
                 <a href="/">
-                    <img src="{{ asset('images/Logo.png') }}" alt="Brand Logo Image" class="headerLogo">
+                    <img src="{{ asset('images/brandLogo.png') }}" alt="Brand Logo Image" class="headerLogo">
                 </a>
             </div>
             <nav class="top-middle">
