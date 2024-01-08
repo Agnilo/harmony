@@ -122,6 +122,12 @@ footer{
     width: 80%;
 }
 
+.about-background{
+    height: 25%;
+    background-position: center;
+    background-size: cover;
+}
+
 .hrr {
     height: 5px;
     border: 0;
