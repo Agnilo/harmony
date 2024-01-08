@@ -229,6 +229,10 @@ footer{
     justify-content: space-evenly;
 }
 
+.card-body-bottom-element{
+    display: flex;
+}
+
 .login-btn{
     background-color: var(--primary-color);
     border-color: var(--primary-color);
