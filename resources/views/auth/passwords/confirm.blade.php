@@ -8,7 +8,10 @@
                 <div class="card-header">{{ __('Slaptažodžio patvirtinimas') }}</div>
 
                 <div class="card-body">
-                    {{ __('Prašome patvirtinti slaptažodį prieš tęsiant toliau') }}
+                    <div>
+                        {{ __('Prašome patvirtinti slaptažodį prieš tęsiant toliau') }}
+                    </div>
+                    
 
                     <form method="POST" action="{{ route('password.confirm') }}">
                         @csrf
