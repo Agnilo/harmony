@@ -200,6 +200,13 @@ footer{
     position: absolute;
 }
 
+.app-background-main{
+    position: absolute;
+    width: 100%;
+    top: 6%;
+    bottom: 10%;
+}
+
 .hrr {
     height: 5px;
     border: 0;
