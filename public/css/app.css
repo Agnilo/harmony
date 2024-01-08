@@ -138,10 +138,13 @@ footer{
 .about-text h3{
     text-transform: uppercase;
     padding: 10px 0;
+    color: black;
+    border-bottom: 3px solid black;
 }
 
 .about-text p{
     text-align: left;
+    color: black;
 }
 
 .hrr {
