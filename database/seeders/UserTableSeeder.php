@@ -25,9 +25,9 @@ class UserTableSeeder extends Seeder
         DB::table('role_user')->truncate();
         Schema::enableForeignKeyConstraints();
 
-        $adminRole = Role::where('name', 'admin')->first();
-        $superuserRole = Role::where('name', 'superuser')->first();
-        $userRole = Role::where('name', 'user')->first();
+        $adminRole = Role::where('role', '2')->first();
+        $superuserRole = Role::where('role', '1')->first();
+        $userRole = Role::where('role', '3')->first();
 
         $admin = User::create([
             'first_name' => 'Lukas',
