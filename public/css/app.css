@@ -172,6 +172,20 @@ footer{
     margin: 0 10%;
 }
 
+.contact-text h3{
+    text-transform: uppercase;
+    padding: 10px 0;
+    color: black;
+    border-bottom: 3px solid black;
+    margin: 20px;
+}
+
+.contact-text p{
+    padding-top: 20px;
+    text-align: justify;
+    color: black;
+}
+
 .hrr {
     height: 5px;
     border: 0;
