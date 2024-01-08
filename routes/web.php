@@ -15,6 +15,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home'); // Nukreipimas 
 Route::get('/apie', function () {
     return view('about');
 });
+Route::get('/susisiekti', function () {
+    return view('contact');
+});
 
 Auth::routes();
 
