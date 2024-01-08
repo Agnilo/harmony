@@ -59,7 +59,7 @@
             @endguest
         </div>
     </header>
-    <main class="app-background-main">
+    <main class="app-background-main" style="background-image: url('{{ asset('images/background2.jpg') }}')">
         @yield('content')
     </main>
 
