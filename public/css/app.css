@@ -131,6 +131,19 @@ footer{
     margin: 2% 0;
 }
 
+.about-text{
+    margin: 0 10%;
+}
+
+.about-text h3{
+    text-transform: uppercase;
+    padding: 10px 0;
+}
+
+.about-text p{
+    text-align: left;
+}
+
 .hrr {
     height: 5px;
     border: 0;
