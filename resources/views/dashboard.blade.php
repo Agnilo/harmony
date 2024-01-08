@@ -22,16 +22,20 @@
 
 <body>
     @auth
-        
-        @if(auth()->user()->hasRole('admin'))
-            <div> <p>verkiu labai</p> </div>
-        @else
-            <div> <p>prašau :(</p> </div>
+        @if(auth()->check() && (auth()->user()->hasRole('admin') || auth()->user()->hasRole('superuser')))
+            
+        @else 
+
         @endif
     @endauth
-    @guest
-        Verkiu
-    @endguest
+
+    <div class="side-menu">
+    <ul>
+        <li><a href="{{ route('profile') }}">Profilis</a></li>
+        <li><a href="{{ route('benefits') }}">Privalumai</a></li>
+        <li><a href="{{ route('leaveRequest') }}">Atostogos</a></li>
+    </ul>
+</div>
 </body>
 
 </html>

@@ -32,19 +32,3 @@ Route::middleware(['auth.redirect'])->group(function () {
     Route::get('/profilis', [ProfileController::class, 'index'])->name('profile');
     Route::get('/atostogos', [LeaveRequestController::class, 'index'])->name('leaveRequest');
 });
-
-// Route::get('/pagrindinis', [DashboardController::class, 'index'])
-//     ->name('dashboard')
-//     ->middleware('auth.redirect');
-
-// Route::get('/privalumai', [BenefitsController::class, 'index'])
-//     ->name('benefits')
-//     ->middleware('auth.redirect');
-
-// Route::get('/profilis', [ProfileController::class, 'index'])
-//     ->name('profile')
-//     ->middleware('auth.redirect');
-
-// Route::get('/atostogos', [LeaveRequestController::class, 'index'])
-//     ->name('leaveRequest')
-//     ->middleware('auth.redirect');
