@@ -210,7 +210,6 @@ footer{
 .login-background{
     display: block;
     position: absolute;
-    text-align: center;
     margin: 0 10%;
     color: var(--secondary-color);
     height: 100%;
