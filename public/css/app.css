@@ -140,10 +140,12 @@ footer{
     padding: 10px 0;
     color: black;
     border-bottom: 3px solid black;
+    margin: 20px;
 }
 
 .about-text p{
-    text-align: left;
+    padding-top: 20px;
+    text-align: justify;
     color: black;
 }
 
