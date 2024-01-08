@@ -150,6 +150,28 @@ footer{
     color: black;
 }
 
+.contact-wrapper{
+    display: block;
+    position: absolute;
+    text-align: center;
+    background-color: var(--primary-color);
+    margin: 0 10%;
+    color: var(--secondary-color);
+    height: 100%;
+    width: 80%;
+}
+
+.contact-background{
+    height: 25%;
+    background-position: center;
+    background-size: cover;
+    margin: 2% 0;
+}
+
+.contact-text{
+    margin: 0 10%;
+}
+
 .hrr {
     height: 5px;
     border: 0;
