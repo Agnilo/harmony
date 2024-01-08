@@ -113,10 +113,13 @@ footer{
 
 .about-wrapper{
     display: block;
+    position: absolute;
     text-align: center;
     background-color: #262626;
     margin: 0 10%;
     color: var(--secondary-color);
+    height: 100%;
+    width: 80%;
 }
 
 .hrr {
