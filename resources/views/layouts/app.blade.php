@@ -30,14 +30,14 @@
         <div class="top-right links">
             @guest
             @if (Route::has('login'))
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-            </li>
+            
+                <a  href="{{ route('login') }}">{{ __('Prisijungti') }}</a>
+            
             @endif
             @if (Route::has('register'))
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-            </li>
+            
+                <a  href="{{ route('register') }}">{{ __('Registruotis') }}</a>
+            
             @endif
             @else
             <li class="nav-item dropdown">
