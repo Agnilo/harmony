@@ -231,7 +231,9 @@ footer{
     background-color: var(--primary-color);
     border-color: var(--primary-color);
 }
-.login-btn:hover{
+.login-btn:hover,
+.login-btn:active,
+.login-btn:focus{
     color: var(--primary-color);
     background-color: white;
     border-color: var(--primary-color);
