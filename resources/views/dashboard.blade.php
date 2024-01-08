@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    @auth('admin')
+    @auth
         <div> <p>prašau :(</p> </div>
     @endauth
     @guest
