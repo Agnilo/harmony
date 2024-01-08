@@ -30,29 +30,37 @@ class UserTableSeeder extends Seeder
         $userRole = Role::where('name', 'user')->first();
 
         $admin = User::create([
-            'first_name' => 'Admin',
-            'last_name' => 'User',
-            'email' => 'admin@admin.com',
+            'first_name' => 'Lukas',
+            'last_name' => 'Žilinskas',
+            'email' => 'lukas.zilinskas@harmony.lt',
             'gender' => 'moteris',
             'role' => '2',
             'password' => Hash::make('password')
         ]);
 
         $superuser = User::create([
-            'first_name' => 'Super',
-            'last_name' => 'User',
-            'email' => 'sp@sp.com',
+            'first_name' => 'Agnė',
+            'last_name' => 'Admin',
+            'email' => 'agne.admin@harmony.lt',
             'gender' => 'moteris',
             'role' => '1',
             'password' => Hash::make('password')
         ]);
 
         $user = User::create([
-            'first_name' => 'Generic',
-            'last_name' => 'User',
-            'email' => 'user@user.com',
+            'first_name' => 'Tomas',
+            'last_name' => 'Kazlauskas',
+            'email' => 'tomas.kazlauskas@harmony.lt',
             'gender' => 'vyras',
             'role' => '3',
+            'password' => Hash::make('password')
+        ]);
+
+        $user = User::create([
+            'first_name' => 'Elžbieta',
+            'last_name' => 'Ralienė',
+            'email' => 'elzbieta.raliene@harmony.lt',
+            'gender' => 'moteris',
             'password' => Hash::make('password')
         ]);
 
