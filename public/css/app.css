@@ -201,19 +201,29 @@ footer{
 }
 
 .app-background-main{
-    position: absolute;
+    /*position: absolute;
     width: 100%;
     top: 6%;
-    bottom: 10%;
+    bottom: 10%; */
+    display: flex;
+    justify-content: center;
+     align-items: center;
+     height: 100vh;
 }
 
 .login-background{
-    display: block;
+   /* display: block;
     position: absolute;
     margin: 0 10%;
     color: var(--secondary-color);
     height: 100%;
-    width: 80%;
+    width: 80%;*/
+
+    width: 300px; /* Adjust width as needed */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .hrr {
