@@ -21,11 +21,9 @@
 </head>
 
 <body>
-    @if(auth()->user()->is_admin == 2)
-    labai gerai 
-    @else
-    labai blogai
-    @endif
+    @auth('admin')
+        prašau
+    @endauth
 </body>
 
 </html>
