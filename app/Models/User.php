@@ -44,7 +44,7 @@ class User extends Authenticatable
     ];
 
     public function  role(){
-        return $this->belongsToMany(Role::class);
+        return $this->belongsToMany('App\Role');
     }
 
     public function hasAnyRole($role){
