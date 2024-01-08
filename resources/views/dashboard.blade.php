@@ -22,7 +22,12 @@
 
 <body>
     @auth
-        <div> <p>prašau :(</p> </div>
+        
+        @if(auth()->user()->hasRole('admin'))
+            <div> <p>verkiu labai</p> </div>
+        @else
+            <div> <p>prašau :(</p> </div>
+        @endif
     @endauth
     @guest
         Verkiu
