@@ -10,7 +10,7 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <div class="row mb-3">
+                        <div class="row mb-3 card-body-element">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('El. Pašto adresas') }}</label>
 
                             <div class="col-md-6">
@@ -24,7 +24,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="row mb-3 card-body-element">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Slaptažodis') }}</label>
 
                             <div class="col-md-6">
