@@ -207,12 +207,10 @@ footer{
     height: 100vh;
 }
 
-.app-background-image::before{
+.app-background-image{
     height: 100%;
     background-size: cover;
     background-position: center; 
-    z-index: -1;
-    filter: blur(100px);
 }
 
 .login-background{
