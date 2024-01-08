@@ -21,6 +21,7 @@ header{
     height: 6%;
     position: absolute;
     width: 100%;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 main{
@@ -103,6 +104,7 @@ footer{
     width: 100%;
     position: absolute;
     height: 10%;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .copyright-wrapper{
