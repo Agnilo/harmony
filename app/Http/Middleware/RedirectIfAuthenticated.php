@@ -25,6 +25,10 @@ class RedirectIfAuthenticated
             }
         }
 
+        if (!Auth::check()) {
+            return redirect('/');
+        }
+
         return $next($request);
     }
 }
