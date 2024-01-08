@@ -27,7 +27,9 @@
             </div>
             <nav class="top-middle">
                     <a class="top-middle-a" href="{{ url('/') }}">Pagrindinis</a>
+                    <div> | </div>
                     <a class="top-middle-a" href="{{url('/apie')}}">Apie mus</a>
+                    <div> | </div>
                     <a class="top-middle-a" href="{{ url('/susisiekti') }}">Susisiekite</a>
             </nav>        
         @if (Route::has('login'))
