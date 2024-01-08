@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
 
             <div class="card">
-                <div class="card-header">{{ __('Sukurti naują slaptažodį') }}</div>
+                <div class="card-header">{{ __('Atkurti slaptažodį') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('password.update') }}">
@@ -51,8 +51,8 @@
 
                         <div class="row mb-0 card-body-bottom-element">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Atnaujinti slaptažodį') }}
+                                <button type="submit" class="btn btn-primary login-btn">
+                                    {{ __('Atkurti slaptažodį') }}
                                 </button>
                             </div>
                         </div>
