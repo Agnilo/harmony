@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    @if(auth()->user->is_admin == 2)
+    @if(auth()->user()->is_admin == 2)
     labai gerai 
     @else
     labai blogai
