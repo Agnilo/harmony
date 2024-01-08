@@ -59,7 +59,7 @@
             @endguest
         </div>
     </header>
-    <main class="py-4">
+    <main class="app-background-main">
         @yield('content')
     </main>
 
