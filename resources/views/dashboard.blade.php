@@ -22,8 +22,11 @@
 
 <body>
     @auth('admin')
-        prašau
+        <div> <p>prašau :(</p> </div>
     @endauth
+    @guest
+        Verkiu
+    @endguest
 </body>
 
 </html>
