@@ -232,10 +232,17 @@ footer{
     border-color: var(--primary-color);
 }
 
-.pass-req-btn{
+.login-btn:hover{
+    color: var(--primary-color);
+    background-color: white;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.pass-req-btn a{
     color: var(--primary-color);
 }
-.pass-req-:hover{
+.pass-req-btn:hover a{
     color: var(--primary-color);
     text-decoration: underline;
 }
