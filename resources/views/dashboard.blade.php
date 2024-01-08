@@ -21,8 +21,9 @@
 </head>
 
 <body>
-sveiki
-
+    @auth
+        sveiki
+    @endauth
 </body>
 
 </html>
