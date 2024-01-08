@@ -74,7 +74,7 @@
 <footer>
     <div class="copyright-wrapper">
         <p>HarmonyWorks</p>
-        <p> © 2024. All rights reserved. </p>
+        <p> © 2024. Visos teisės saugomos. </p>
     </div>
 </footer>
 
