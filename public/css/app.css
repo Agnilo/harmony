@@ -116,6 +116,7 @@ footer{
     text-align: center;
     background-color: #262626;
     padding: 10% 0;
+    color: var(--secondary-color);
 }
 
 .hrr {
