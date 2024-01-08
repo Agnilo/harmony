@@ -190,12 +190,12 @@ footer{
     padding-bottom: 50%;
     position: relative;
     text-align: left;
-    margin: 0 10%;;
+    margin: 0 10%;
 }
 
 .google-map iframe {
-    height: 300px;
-    width: 450px;
+    height: 100%;
+    width: 100%;
     left: 0;
     top: 0;
     position: absolute;
