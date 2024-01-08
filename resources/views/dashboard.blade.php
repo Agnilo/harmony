@@ -24,6 +24,9 @@
     @auth
         sveiki
     @endauth
+    @auth('admin')
+        admin
+    @endauth
 </body>
 
 </html>
