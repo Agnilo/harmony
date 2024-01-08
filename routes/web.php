@@ -22,4 +22,6 @@ Route::get('/susisiekti', function () {
 
 Auth::routes();
 
-Route::get('/pagrindinis', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/pagrindinis', [DashboardController::class, 'index'])
+    ->name('dashboard')
+    ->middleware('auth.redirect');
