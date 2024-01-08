@@ -63,7 +63,7 @@
 
                         <div class="row mb-0 card-body-bottom-element">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary login-btn">
                                     {{ __('Registruotis') }}
                                 </button>
                             </div>
