@@ -227,6 +227,19 @@ footer{
     padding-bottom: 10px;
 }
 
+.login-btn{
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.pass-req-btn{
+    color: var(--primary-color);
+}
+.pass-req-:hover{
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
 .hrr {
     height: 5px;
     border: 0;
