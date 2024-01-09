@@ -30,7 +30,7 @@
 
         @endif
     @endauth
-
+<div class="web-yield-content">
     <div class="side-menu">
         <ul>
             <li><a href="{{ route('dashboard') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}">Pagrindinis</a></li>
@@ -43,7 +43,7 @@
         </ul>
     </div>
 
-    <div class="web-yield-content">
+    
         @yield('content')
     </div>
 </body>
