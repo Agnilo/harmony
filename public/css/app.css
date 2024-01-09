@@ -340,6 +340,10 @@ footer{
     text-decoration: underline;
 }
 
+.side-menu-inside{
+    display: flex;
+}
+
 .web-brand-logo{
     position: absolute;
 }

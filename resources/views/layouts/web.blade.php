@@ -32,20 +32,22 @@
     @endauth
     <div>
         <div class="side-menu">
-            <div class="web-brand-logo">
-                <a href="/pagrindinis">
-                    <img src="{{ asset('images/brandLogo.png') }}" alt="Brand Logo Image" class="headerLogo">
-                </a>
+            <div class="side-menu-inside">
+                <div class="web-brand-logo">
+                    <a href="/pagrindinis">
+                        <img src="{{ asset('images/brandLogo.png') }}" alt="Brand Logo Image" class="headerLogo">
+                    </a>
+                </div>
+                <ul>
+                    <li><a href="{{ route('dashboard') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}">Pagrindinis</a></li>
+                    <li><a href="{{ route('profile') }}" class="{{ Request::is('profile') ? 'active' : '' }}">Profilis</a></li>
+                    <li><a href="{{ route('benefits') }}" class="{{ Request::is('benefits') ? 'active' : '' }}">Privalumai</a></li>
+                    <li><a href="{{ route('leaveRequest') }}" class="{{ Request::is('leaveRequest') ? 'active' : '' }}">Atostogos</a></li>
+                    <li><a href="{{ route('dashboard') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}">Mano kolegos</a></li>
+                    <li><a href="{{ route('dashboard') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}">Naudotojų valdymas</a></li>
+                    <li><a href="{{ route('dashboard') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}">Dar kažkas</a></li>
+                </ul>
             </div>
-            <ul>
-                <li><a href="{{ route('dashboard') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}">Pagrindinis</a></li>
-                <li><a href="{{ route('profile') }}" class="{{ Request::is('profile') ? 'active' : '' }}">Profilis</a></li>
-                <li><a href="{{ route('benefits') }}" class="{{ Request::is('benefits') ? 'active' : '' }}">Privalumai</a></li>
-                <li><a href="{{ route('leaveRequest') }}" class="{{ Request::is('leaveRequest') ? 'active' : '' }}">Atostogos</a></li>
-                <li><a href="{{ route('dashboard') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}">Mano kolegos</a></li>
-                <li><a href="{{ route('dashboard') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}">Naudotojų valdymas</a></li>
-                <li><a href="{{ route('dashboard') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}">Dar kažkas</a></li>
-            </ul>
         </div>
 
         <header class="web-topbar">
