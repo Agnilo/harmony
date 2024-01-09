@@ -413,6 +413,15 @@ footer{
     padding-top: 20px;
 }
 
+.dashboard-card{
+    border: 1px solid black;
+}
+
+.dashboard-card-body{
+    display: flex;
+
+}
+
 .hrr {
     height: 5px;
     border: 0;
