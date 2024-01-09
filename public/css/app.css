@@ -344,7 +344,9 @@ footer{
 
 .web-brand-logo{
     position: relative;
-    padding-bottom: 50px;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--primary-color);
 }
 
 .web-Logo{
