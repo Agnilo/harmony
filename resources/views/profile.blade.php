@@ -16,6 +16,11 @@
                 <div class="profile-eidt-employee-content">
                     <div class="profile-edit-employee-content-padding">
                         content
+                        @can('manage-users')
+                            <a class="dropdown-item" href="{{route('admin.users.index')}}">
+                                User Management
+                            </a>
+                        @endcan
                     </div>
                 </div>
             </div>
