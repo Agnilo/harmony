@@ -1,8 +1,13 @@
 @extends('layouts.web')
 
 @section('content')
-    <div>
-    <h1>Welcome, {{ $user->first_name }}</h1>
-<p>Email: {{ $user->email }}</p>
+    <div class="dashboard-content">
+        <h1>Sveiki, {{ $user->first_name }}!</h1>
+        @auth
+            @if(auth()->check() && (auth()->user()->hasRole('admin') || auth()->user()->hasRole('superuser')))
+            <p>Jūs esate prisijungęs kaip: {{ $user->role }}</p>
+            @endif
+        @endauth
+        
     </div>
 @endsection
