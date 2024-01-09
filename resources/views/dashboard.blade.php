@@ -4,7 +4,7 @@
 <div class="web-child-content">
     <div class="dashboard-greeting">
         <h1>Sveiki, {{ $user->first_name }}!</h1>
-        @auth
+
         @can('edit-users')
             <p>Jūs esate prisijungęs kaip:
                 @foreach($roles as $role)
@@ -12,7 +12,7 @@
                 @endforeach
             </p>
         @endcan
-        @endauth
+
     </div>
 
     <div class="container dashboard-container">
