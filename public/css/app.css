@@ -288,7 +288,8 @@ footer{
     background-color: var(--secondary-color);
     padding: 20px;
     height: 100%;
-    border-radius: 25%;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
 }
 
 .side-menu ul {
