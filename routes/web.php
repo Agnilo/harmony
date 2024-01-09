@@ -34,10 +34,19 @@ Route::middleware(['auth.redirect'])->group(function () {
     Route::get('/atostogos', [LeaveRequestController::class, 'index'])->name('leaveRequest');
 });
 
-Route::namespace('Admin')
-    ->prefix('admin')
-    ->name('admin.')
-    ->middleware('can:edit-users')
-    ->group(function () {
-        Route::resource('/users', 'UserController', ['except' => ['show', 'create', 'store']]);
+// Route::namespace('Admin')
+//     ->prefix('admin')
+//     ->name('admin.')
+//     ->middleware('can:edit-users')
+//     ->group(function () {
+//         Route::resource('/users', 'UserController', ['except' => ['show', 'create', 'store']]);
+//     });
+
+Route::middleware(['can:edit-users'])->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
+        Route::get('/users', [UserController::class, 'edit'])->name('admin.users.edit');
+        Route::put('/users}', [UserController::class, 'update'])->name('admin.users.update');
+        Route::delete('/users', [UserController::class, 'destroy'])->name('admin.users.destroy');
     });
+});
