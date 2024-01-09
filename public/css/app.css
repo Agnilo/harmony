@@ -288,6 +288,10 @@ footer{
     background-color: var(--primary-backgroung-color);
 }
 
+.web-yield-body{
+    margin-right: 16rem;
+}
+
 .side-menu {
     width: 200px;
     background-color: var(--secondary-color);

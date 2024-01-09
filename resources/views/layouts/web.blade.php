@@ -43,7 +43,7 @@
         </ul>
     </div>
 
-    <div>
+    <div class="web-yield-content">
         @yield('content')
     </div>
 </body>
