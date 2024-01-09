@@ -1,7 +1,7 @@
 @extends('layouts.web')
 
 @section('content')
-<div class="dashboard-content">
+<div class="web-child-content">
     <div class="dashboard-greeting">
         <h1>Sveiki, {{ $user->first_name }}!</h1>
         @auth

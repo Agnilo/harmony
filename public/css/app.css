@@ -396,7 +396,7 @@ footer{
     border-bottom: 1px solid var(--primary-backgroung-color);
 }
 
-.dashboard-content{
+.web-child-content{
     display: flex;
     flex-direction: column;
     padding-top: 25px;
@@ -425,7 +425,34 @@ footer{
 
 .dashboard-card-body{
     display: flex;
+}
 
+.profile-container{
+    padding: 1.5rem;
+}
+
+.profile-card{
+    padding: unset;
+    background-color: white;
+    border-radius: 25px;
+}
+
+.profile-edit-employee{
+    flex-direction: row;
+}
+
+.profile-edit-employee-navbar{
+    width: 220px;
+    padding: 1rem;
+}
+
+.profile-eidt-employee-content{
+    border-left: 1px solid var(--primary-backgroung-color);
+    flex: 1;
+}
+
+.profile-edit-employee-content-padding{
+    padding: 25px;
 }
 
 .hrr {
