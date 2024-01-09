@@ -447,6 +447,22 @@ footer{
     padding: 1rem;
 }
 
+.profile-edit-employee-imagesection{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-edit-employee-tab{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    overflow: visible;
+    padding-bottom: unset;
+
+}
+
 .profile-eidt-employee-content{
     border-left: 1px solid var(--primary-backgroung-color);
     flex: 1;
