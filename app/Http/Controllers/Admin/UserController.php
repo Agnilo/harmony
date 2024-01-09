@@ -49,7 +49,7 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        if (!$user->hasRole('admin') && !$user->hasRole('superuser')) {
+        if (!$user->hasRole('Admin') && !$user->hasRole('SuperUser')) {
             return redirect()->route('admin.users.index');
         }
 
