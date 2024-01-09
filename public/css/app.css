@@ -415,6 +415,10 @@ footer{
 
 .dashboard-card{
     border: 1px solid black;
+    height: 250px;
+    margin: 20px 0;
+    border-radius: 25px;
+    padding: 10px;
 }
 
 .dashboard-card-body{
