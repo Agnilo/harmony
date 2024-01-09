@@ -1,11 +1,9 @@
 <?php
 namespace Database\Seeders;
-  
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use App\Models\Role;
-use App\Models\Permission;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class RolesAndPermissionSeeder extends Seeder
 {
