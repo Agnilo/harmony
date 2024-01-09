@@ -36,10 +36,20 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
+    // public function edit(User $user)
+    // {
+
+    //     if (!$user->can('edit-users')) {
+    //         return redirect()->route('admin.users.index');
+    //     }
+
+    //     $roles = Role::all();
+    //     return view('admin.users.edit', compact('user', 'roles'));
+    // }
+
     public function edit(User $user)
     {
-
-        if (!$user->can('edit-users')) {
+        if (!$user->hasRole('admin') && !$user->hasRole('superuser')) {
             return redirect()->route('admin.users.index');
         }
 
