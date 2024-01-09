@@ -289,7 +289,9 @@ footer{
 }
 
 .web-yield-content{
-    margin-right: 16rem;
+    margin-left: 16rem;
+    overflow: unset;
+    width: calc(100% - 16rem);
 }
 
 .side-menu {
