@@ -93,7 +93,7 @@
                 @foreach($users as $user)
                     <tr>
                         <th scope="row">{{$user->id}}</th>
-                        <td>{{$user->name}}</td>
+                        <td>{{$user->first_name}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{implode(', ', $user->roles()->get()->pluck('name')->toArray())}}</td>
                         <td>
