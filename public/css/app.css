@@ -410,6 +410,7 @@ footer{
     flex-direction: column;
     justify-content: space-around;
     align-items: stretch;
+    padding-top: 20px;
 }
 
 .hrr {
