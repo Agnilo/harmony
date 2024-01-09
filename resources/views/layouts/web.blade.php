@@ -55,6 +55,7 @@
                 <div class="web-topbar-header-title">
                     <!--{{ trans('lt.routes.' . Route::currentRouteName()) }} -->
                     {{ Route::currentRouteName() }} 
+                    {{ trans('routes.' . Route::currentRouteName()) }}
                     
                 </div>
                 <div class="web-topbar-header-userarea">
