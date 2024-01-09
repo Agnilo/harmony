@@ -15,7 +15,12 @@ html, body {
     padding: 0;
 }
 
-header{
+main{
+    top: 6%;
+    bottom: 10%;
+}
+
+.main-header{
     background-color: var(--secondary-color);
     display: flex;
     justify-content: space-evenly;
@@ -23,11 +28,6 @@ header{
     position: absolute;
     width: 100%;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-main{
-    top: 6%;
-    bottom: 10%;
 }
 
 .top-left {

@@ -21,7 +21,7 @@
     
 </head>
     <body>
-        <header>
+        <header class="main-header">
             <div class="top-left">
                 <a href="/">
                     <img src="{{ asset('images/brandLogo.png') }}" alt="Brand Logo Image" class="headerLogo">
