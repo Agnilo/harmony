@@ -62,7 +62,7 @@ class UserTableSeeder extends Seeder
 
         
         $admin->assignRole('admin');  
-        $superuser->assignRole('superUserRole');
+        $superuser->assignRole('superUser');
         $user->assignRole('user');
 
     }
