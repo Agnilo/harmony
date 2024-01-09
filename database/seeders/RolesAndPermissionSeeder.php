@@ -21,9 +21,14 @@ class RolesAndPermissionSeeder extends Seeder
             Permission::firstOrCreate(['name' => $permissionName]);
         }
 
-        $superUserRole = Role::create(['name' => 'Super User']);
-        $adminRole = Role::create(['name' => 'Admin']);
-        $user = Role::create(['name' => 'User']);
+        $superUserRole = 'Super User';
+        $adminRole = 'Admin';
+        $userRole = 'User';
+
+        $role = Role::where('name', $roleName)->first();
+
+        if (!$role) {
+            Role::create(['name' => $roleName]);
 
         $adminRole->givePermissionTo([
             'create-users',
