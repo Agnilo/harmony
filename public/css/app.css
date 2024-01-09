@@ -300,7 +300,7 @@ footer{
 
 .side-menu {
     padding: 20px;
-    width: 200px;
+    width: 16rem;
     background-color: var(--secondary-color);
     height: 100%;
     border-top-right-radius: 25px;
@@ -400,6 +400,8 @@ footer{
     display: flex;
     flex-direction: column;
     padding-top: 25px;
+    padding-left: 48px;
+    padding-right: 48px;
 }
 
 .hrr {
