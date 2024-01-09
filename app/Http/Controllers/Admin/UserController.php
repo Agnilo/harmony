@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
-use Gate;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Traits\HasRoles;
 
 class UserController extends Controller
 {
@@ -38,15 +39,12 @@ class UserController extends Controller
     public function edit(User $user)
     {
 
-        if(Gate::denies('edit-users')){
-            return redirect(route('admin.users.index'));
+        if (!$user->can('edit-users')) {
+            return redirect()->route('admin.users.index');
         }
-        $roles = Role::all();
 
-        return view('admin.users.edit')->with([
-            'user' => $user,
-            'roles' => $roles
-        ]);
+        $roles = Role::all();
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -58,14 +56,14 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $user->roles()->sync($request->roles);
+        $user->syncRoles($request->roles);
 
-        $user->name = $request->name;
+        $user->first_name = $request->first_name;
         $user->email = $request->email;
 
-        if($user->save()){
-            $request->session()->flash('success', 'Vartotojas '.$user->name.' buvo atnaujintas');
-        }else{
+        if ($user->save()) {
+            $request->session()->flash('success', 'Vartotojas ' . $user->first_name . ' buvo atnaujintas');
+        } else {
             $request->session()->flash('warning', 'Iškilo problema atnaujinant vartotoją');
         }
 
@@ -80,8 +78,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        if(Gate::denies('delete-users')){
-            return redirect(route('admin.users.index'));
+        if (!$user->can('delete-users')) {
+            return redirect()->route('admin.users.index');
         }
 
         $user->roles()->detach();
