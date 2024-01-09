@@ -299,6 +299,7 @@ footer{
 }
 
 .side-menu {
+    padding-top: 100px;
     width: 200px;
     background-color: var(--secondary-color);
     padding: 20px;
@@ -335,6 +336,10 @@ footer{
     color: #547f44;
     font-size: 17px;
     text-decoration: underline;
+}
+
+.web-brand-logo{
+    position: absolute;
 }
 
 .web-topbar{

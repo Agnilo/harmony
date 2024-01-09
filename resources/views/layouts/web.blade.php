@@ -32,6 +32,11 @@
     @endauth
     <div>
         <div class="side-menu">
+            <div class="web-brand-logo">
+                <a href="/pagrindinis">
+                    <img src="{{ asset('images/brandLogo.png') }}" alt="Brand Logo Image" class="headerLogo">
+                </a>
+            </div>
             <ul>
                 <li><a href="{{ route('dashboard') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}">Pagrindinis</a></li>
                 <li><a href="{{ route('profile') }}" class="{{ Request::is('profile') ? 'active' : '' }}">Profilis</a></li>
