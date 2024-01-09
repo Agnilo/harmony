@@ -7,7 +7,7 @@
     @if(auth()->check() && (auth()->user()->hasRole('admin') || auth()->user()->hasRole('superuser')))
     <p>Jūs esate prisijungęs kaip: 
         @foreach($roles as $role)
-            <li>{{ $role->name }}</li>
+            {{ $role->name }}
         @endforeach
     </p>
     @endif
