@@ -31,9 +31,10 @@
 
     <div class="side-menu">
         <ul>
+            <li><a href="{{ route('dashboard') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}">Pagrindinis</a></li>
             <li><a href="{{ route('profile') }}" class="{{ Request::is('profile') ? 'active' : '' }}">Profilis</a></li>
-            <li><a href="{{ route('benefits') }}" class="{{ Request::is('profile') ? 'active' : '' }}">Privalumai</a></li>
-            <li><a href="{{ route('leaveRequest') }}" class="{{ Request::is('profile') ? 'active' : '' }}">Atostogos</a></li>
+            <li><a href="{{ route('benefits') }}" class="{{ Request::is('benefits') ? 'active' : '' }}">Privalumai</a></li>
+            <li><a href="{{ route('leaveRequest') }}" class="{{ Request::is('leaveRequest') ? 'active' : '' }}">Atostogos</a></li>
         </ul>
     </div>
 
