@@ -53,9 +53,9 @@
         <header class="web-topbar">
             <div class="web-topbar-header">
                 <div class="web-topbar-header-title">
-                    <!--{{ trans('lt.routes.' . Route::currentRouteName()) }}
-                    {{ Route::currentRouteName() }} -->
-                    {{ trans('routes.' . Route::currentRouteName()) }}
+                    <!--{{ trans('lt.routes.' . Route::currentRouteName()) }} -->
+                    {{ Route::currentRouteName() }} 
+                    
                 </div>
                 <div class="web-topbar-header-userarea">
                     logo ar kažkas
