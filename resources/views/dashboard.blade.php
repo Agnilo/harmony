@@ -2,16 +2,50 @@
 
 @section('content')
 <div class="dashboard-content">
-    <h1>Sveiki, {{ $user->first_name }}!</h1>
-    @auth
-    @if(auth()->check() && (auth()->user()->hasRole('admin') || auth()->user()->hasRole('superuser')))
-    <p>Jūs esate prisijungęs kaip: 
-        @foreach($roles as $role)
-            {{ $role->name }}
-        @endforeach
-    </p>
-    @endif
-    @endauth
+    <div class="dashboard-greeting">
+        <h1>Sveiki, {{ $user->first_name }}!</h1>
+        @auth
+        @if(auth()->check() && (auth()->user()->hasRole('admin') || auth()->user()->hasRole('superuser')))
+            <p>Jūs esate prisijungęs kaip:
+                @foreach($roles as $role)
+                {{ $role->name }}
+                @endforeach
+            </p>
+        @endif
+        @endauth
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+            <!-- Column 1 content -->
+                Content 1
+            </div>
+            <div class="col-md-4">
+            <!-- Column 2 content -->
+                Content 2
+            </div>
+            <div class="col-md-4">
+            <!-- Column 3 content -->
+                Content 3
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+            <!-- Column 1 content (second row) -->
+                Content 4
+            </div>
+            <div class="col-md-4">
+            <!-- Column 2 content (second row) -->
+                Content 5
+            </div>
+            <div class="col-md-4">
+            <!-- Column 3 content (second row) -->
+                Content 6
+            </div>
+        </div>
+    </div>
+
 
 </div>
 @endsection
