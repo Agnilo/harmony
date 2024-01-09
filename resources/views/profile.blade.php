@@ -15,12 +15,18 @@
                 </div>
                 <div class="profile-eidt-employee-content">
                     <div class="profile-edit-employee-content-padding">
-                        content
-                        @can('manage-users')
-                            <a class="dropdown-item" href="{{route('admin.users.index')}}">
+                        content before 
+                        @auth
+    @if(auth()->check() && (auth()->user()->hasRole('admin') || auth()->user()->hasRole('superuser')))
+<a class="dropdown-item" href="{{route('admin.users.index')}}">
                                 User Management
                             </a>
-                        @endcan
+    @else
+        content else
+    @endif
+    @endauth
+                            
+                        
                     </div>
                 </div>
             </div>
