@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>HarmonyWorks</title>
-    
+
     <link rel="icon" type="image/x-icon" href="{{ asset('images/Icon.png') }}" />
 
     <!-- Fonts -->
@@ -24,37 +24,38 @@
 
 <body class="web-body">
     @auth
-        @if(auth()->check() && (auth()->user()->hasRole('admin') || auth()->user()->hasRole('superuser')))
-            
-        @else 
+    @if(auth()->check() && (auth()->user()->hasRole('admin') || auth()->user()->hasRole('superuser')))
 
-        @endif
+    @else
+
+    @endif
     @endauth
+    <div>
+        <div class="side-menu">
+            <ul>
+                <li><a href="{{ route('dashboard') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}">Pagrindinis</a></li>
+                <li><a href="{{ route('profile') }}" class="{{ Request::is('profile') ? 'active' : '' }}">Profilis</a></li>
+                <li><a href="{{ route('benefits') }}" class="{{ Request::is('benefits') ? 'active' : '' }}">Privalumai</a></li>
+                <li><a href="{{ route('leaveRequest') }}" class="{{ Request::is('leaveRequest') ? 'active' : '' }}">Atostogos</a></li>
+                <li><a href="{{ route('dashboard') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}">Mano kolegos</a></li>
+                <li><a href="{{ route('dashboard') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}">Naudotojų valdymas</a></li>
+                <li><a href="{{ route('dashboard') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}">Dar kažkas</a></li>
+            </ul>
+        </div>
 
-    <div class="side-menu">
-        <ul>
-            <li><a href="{{ route('dashboard') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}">Pagrindinis</a></li>
-            <li><a href="{{ route('profile') }}" class="{{ Request::is('profile') ? 'active' : '' }}">Profilis</a></li>
-            <li><a href="{{ route('benefits') }}" class="{{ Request::is('benefits') ? 'active' : '' }}">Privalumai</a></li>
-            <li><a href="{{ route('leaveRequest') }}" class="{{ Request::is('leaveRequest') ? 'active' : '' }}">Atostogos</a></li>
-            <li><a href="{{ route('dashboard') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}">Mano kolegos</a></li>
-            <li><a href="{{ route('dashboard') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}">Naudotojų valdymas</a></li>
-            <li><a href="{{ route('dashboard') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}">Dar kažkas</a></li>
-        </ul>
+        <header class="web-topbar">
+            <div class="web-topbar-header">
+                <div class="web-topbar-header-title">
+                    Sveiki
+                </div>
+                <div class="web-topbar-header-userarea">
+                    logo ar kažkas
+                </div>
+            </div>
+            <div class="web-topbar-body">
+            </div>
+        </header>
     </div>
-
-    <header class="web-topbar">
-        <div class="web-topbar-header">
-            <div class="web-topbar-header-title">
-                Sveiki
-            </div>   
-            <div class="web-topbar-header-userarea">
-                logo ar kažkas
-            </div> 
-        </div>
-        <div class="web-topbar-body">
-        </div>
-    </header>
 
     <div class="web-yield-content">
         @yield('content')
