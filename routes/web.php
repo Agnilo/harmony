@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BenefitsController;
 use App\Http\Controllers\LeaveRequestController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -36,7 +37,7 @@ Route::middleware(['auth.redirect'])->group(function () {
 Route::namespace('Admin')
     ->prefix('admin')
     ->name('admin.')
-    ->middleware('can:manage-users') // Apply the middleware here
+    ->middleware('can:edit-users')
     ->group(function () {
         Route::resource('/users', 'UserController', ['except' => ['show', 'create', 'store']]);
     });
