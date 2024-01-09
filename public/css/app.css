@@ -285,8 +285,10 @@ footer{
 /* Basic styling for the side menu */
 .side-menu {
     width: 200px;
-    background-color: #f0f0f0;
+    background-color: var(--secondary-color);
     padding: 20px;
+    height: 100%;
+    border-radius: 25%;
 }
 
 .side-menu ul {
@@ -300,7 +302,9 @@ footer{
 
 .side-menu ul li a {
     text-decoration: none;
-    color: #333;
+    color: var(--primary-color);
+    font-weight: 600;
+    letter-spacing: 1px;
     display: block;
 }
 
