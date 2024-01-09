@@ -352,7 +352,8 @@ footer{
     height: 50px;
     display: flex;
     flex-flow: row;
-    padding: 8px 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     background-color: var(--primary-color);
 }
 
