@@ -44,9 +44,9 @@ Route::middleware(['auth.redirect'])->group(function () {
 
 Route::middleware(['can:edit-users'])->group(function () {
     Route::prefix('admin')->group(function () {
-        Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
-        Route::get('/users', [UserController::class, 'edit'])->name('admin.users.edit');
-        Route::put('/users}', [UserController::class, 'update'])->name('admin.users.update');
-        Route::delete('/users', [UserController::class, 'destroy'])->name('admin.users.destroy');
+        Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users.index');
+        Route::get('/admin/users', [UserController::class, 'edit'])->name('admin.users.edit');
+        Route::put('/admin/users}', [UserController::class, 'update'])->name('admin.users.update');
+        Route::delete('/admin/users', [UserController::class, 'destroy'])->name('admin.users.destroy');
     });
 });
