@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\Role;
+use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
@@ -56,10 +56,14 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $user->syncRoles($request->roles);
-
         $user->first_name = $request->first_name;
         $user->email = $request->email;
+
+        //$user->syncRoles($request->roles);
+
+        $validateRoleIds = $request->roles;
+        $roles = Role::whereIn('id', $validateRoleIds)->get();
+        $user->syncRoles($roles);
 
         if ($user->save()) {
             $request->session()->flash('success', 'Vartotojas ' . $user->first_name . ' buvo atnaujintas');
