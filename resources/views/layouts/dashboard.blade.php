@@ -7,7 +7,7 @@
 
     <title>HarmonyWorks</title>
     
-    <link rel="icon" type="image/x-icon" href="{{ asset('icon.png') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('Icon.png') }}" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
