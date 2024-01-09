@@ -380,6 +380,12 @@ footer{
     border-bottom: 1px solid var(--primary-backgroung-color);
 }
 
+.dashboard-content{
+    display: flex;
+    flex-direction: column;
+    padding-top: 25px;
+}
+
 .hrr {
     height: 5px;
     border: 0;
