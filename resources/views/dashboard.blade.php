@@ -15,7 +15,7 @@
         @endauth
     </div>
 
-    <div class="container">
+    <div class="container dashboard-container">
         <div class="row">
             <div class="col-md-4">
             <!-- Column 1 content -->

@@ -404,6 +404,14 @@ footer{
     padding-right: 48px;
 }
 
+.dashboard-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: stretch;
+}
+
 .hrr {
     height: 5px;
     border: 0;
