@@ -5,13 +5,13 @@
     <div class="dashboard-greeting">
         <h1>Sveiki, {{ $user->first_name }}!</h1>
         @auth
-        @if(auth()->check() && (auth()->user()->hasRole('admin') || auth()->user()->hasRole('superuser')))
+        @can('edit-users')
             <p>Jūs esate prisijungęs kaip:
                 @foreach($roles as $role)
                 {{ $role->name }}
                 @endforeach
             </p>
-        @endif
+        @endcan
         @endauth
     </div>
 
