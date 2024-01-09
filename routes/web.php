@@ -32,3 +32,11 @@ Route::middleware(['auth.redirect'])->group(function () {
     Route::get('/profilis', [ProfileController::class, 'index'])->name('profile');
     Route::get('/atostogos', [LeaveRequestController::class, 'index'])->name('leaveRequest');
 });
+
+Route::namespace('Admin')
+    ->prefix('admin')
+    ->name('admin.')
+    ->middleware('can:manage-users') // Apply the middleware here
+    ->group(function () {
+        Route::resource('/users', 'UserController', ['except' => ['show', 'create', 'store']]);
+    });
