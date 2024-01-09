@@ -309,10 +309,9 @@ footer{
     display: block;
 }
 
-/* Styling for active link */
-.side-menu ul li a.active {
+.side-menu ul li a:active {
     font-weight: bold;
-    color: #ff0000; /* Change to desired active link color */
+    color: #ff0000;
 }
 
 .hrr {
