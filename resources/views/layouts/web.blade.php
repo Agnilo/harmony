@@ -35,7 +35,7 @@
             <div class="side-menu-inside">
                 <div class="web-brand-logo">
                     <a href="/pagrindinis">
-                        <img src="{{ asset('images/brandLogo.png') }}" alt="Brand Logo Image" class="headerLogo">
+                        <img src="{{ asset('images/brandLogo.png') }}" alt="Brand Logo Image" class="web-Logo">
                     </a>
                 </div>
                 <ul>

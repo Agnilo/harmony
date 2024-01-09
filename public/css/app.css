@@ -342,10 +342,16 @@ footer{
 
 .side-menu-inside{
     display: flex;
+    flex-direction: column;
 }
 
 .web-brand-logo{
-    position: absolute;
+    position: relative;
+    padding-bottom: 50px;
+}
+
+.web-Logo{
+    width: 100%;
 }
 
 .web-topbar{
