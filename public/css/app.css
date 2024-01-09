@@ -438,6 +438,7 @@ footer{
 }
 
 .profile-edit-employee{
+    display: flex;
     flex-direction: row;
 }
 
