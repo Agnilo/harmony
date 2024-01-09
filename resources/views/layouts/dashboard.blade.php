@@ -30,12 +30,16 @@
     @endauth
 
     <div class="side-menu">
-    <ul>
-        <li><a href="{{ route('profile') }}">Profilis</a></li>
-        <li><a href="{{ route('benefits') }}">Privalumai</a></li>
-        <li><a href="{{ route('leaveRequest') }}">Atostogos</a></li>
-    </ul>
-</div>
+        <ul>
+            <li><a href="{{ route('profile') }}" class="{{ Request::is('profile') ? 'active' : '' }}">Profilis</a></li>
+            <li><a href="{{ route('benefits') }}" class="{{ Request::is('profile') ? 'active' : '' }}">Privalumai</a></li>
+            <li><a href="{{ route('leaveRequest') }}" class="{{ Request::is('profile') ? 'active' : '' }}">Atostogos</a></li>
+        </ul>
+    </div>
+
+    <div>
+        @yield('content')
+    </div>
 </body>
 
 </html>
