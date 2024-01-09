@@ -311,7 +311,9 @@ footer{
 
 .side-menu ul li a:active {
     font-weight: bold;
-    color: #ff0000;
+    color: #547f44;
+    font-size: 17px;
+    text-decoration: underline;
 }
 
 .hrr {
