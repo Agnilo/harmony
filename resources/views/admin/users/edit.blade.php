@@ -64,7 +64,7 @@
     <br>
     <div class="row justify-content-md-center">
         <div class="col-md-auto">
-            <h2><a style="color: #262626">Redaguoti vartotoją {{$user->name}}</a></h2>
+            <h2><a style="color: #262626">Redaguoti vartotoją {{$user->first_name}}</a></h2>
         </div>
     </div>
     <br>
@@ -90,11 +90,11 @@
             </div>
 
             <div class="form-group row">
-                <label for="name" class="col-md-2 col-form-label text-md-right">Vardas</label>
+                <label for="first_name" class="col-md-2 col-form-label text-md-right">Vardas</label>
 
                 <div class="col-md-6">
-                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
-                           value="{{ $user->name }}" required autofocus>
+                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="first_name"
+                           value="{{ $user->first_name }}" required autofocus>
 
                     @error('name')
                     <span class="invalid-feedback" role="alert">
