@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Models\Role;
 
-class RoleAndPermissionSeeder extends Seeder
+class RolesAndPermissionSeeder extends Seeder
 {
     public function run()
     {
