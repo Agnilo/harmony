@@ -78,7 +78,6 @@
     </main>
     <div class="card-body">
         <a href="{{ route('home') }}"><button type="button" class="btn btn-dark">Pagrindinis</button></a>
-        <a href="{{ route('products') }}"><button type="button" class="btn btn-dark">Prekės</button></a>
             <table class="table">
                 <thead>
                 <tr>
