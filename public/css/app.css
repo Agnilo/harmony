@@ -286,12 +286,15 @@ footer{
 
 .web-body{
     background-color: var(--primary-backgroung-color);
+    position: relative;
 }
 
 .web-yield-content{
     margin-left: 16rem;
     overflow: unset;
     width: calc(100% - 16rem);
+    margin-top: 100px;
+    position: relative;
 }
 
 .side-menu {
@@ -303,6 +306,10 @@ footer{
     border-bottom-right-radius: 25px;
     display: flex;
     align-items: flex-start;
+    position: fixed;
+    top: 0;
+    box-shadow: 0 25px 35px #0000002e;
+    z-index: 230;
 }
 
 .side-menu ul {
