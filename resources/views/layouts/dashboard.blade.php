@@ -22,7 +22,7 @@
 
 </head>
 
-<body class="dashboard-body;">
+<body class="dashboard-body">
     @auth
         @if(auth()->check() && (auth()->user()->hasRole('admin') || auth()->user()->hasRole('superuser')))
             
