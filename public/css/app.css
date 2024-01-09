@@ -1,6 +1,7 @@
 :root {
     --primary-color:#547f44;
     --secondary-color: #e7fcd8;
+    --primary-backgroung-color: #f6fbf5;
 }
 
 
@@ -282,7 +283,11 @@ footer{
     border-color: var(--primary-color);
 }
 
-/* Basic styling for the side menu */
+
+.dashboard-body{
+    background-color: var(--primary-backgroung-color);
+}
+
 .side-menu {
     width: 200px;
     background-color: var(--secondary-color);
