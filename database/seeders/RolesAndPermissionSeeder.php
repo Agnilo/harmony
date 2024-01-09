@@ -1,4 +1,5 @@
 <?php
+
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
@@ -14,21 +15,27 @@ class RolesAndPermissionSeeder extends Seeder
             'create-users', 'edit-users', 'delete-users',
             'create-admin', 'edit-admin', 'delete-admin',
             'create-benefit', 'edit-benefit', 'delete-benefit',
-            
+
         ];
 
         foreach ($permissions as $permissionName) {
             Permission::firstOrCreate(['name' => $permissionName]);
         }
 
-        $superUserRole = 'Super User';
-        $adminRole = 'Admin';
-        $userRole = 'User';
+        function findOrCreateRole($roleName)
+        {
+            $role = Role::where('name', $roleName)->first();
 
-        $role = Role::where('name', $roleName)->first();
+            if (!$role) {
+                $role = Role::create(['name' => $roleName]);
+            }
 
-        if (!$role) {
-            Role::create(['name' => $roleName]);
+            return $role;
+        }
+
+        $superUserRole = findOrCreateRole('Super User');
+        $adminRole = findOrCreateRole('Admin');
+        $userRole = findOrCreateRole('User');
 
         $adminRole->givePermissionTo([
             'create-users',
