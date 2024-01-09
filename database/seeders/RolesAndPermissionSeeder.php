@@ -33,7 +33,7 @@ class RolesAndPermissionSeeder extends Seeder
             return $role;
         }
 
-        $superUserRole = findOrCreateRole('Super User');
+        $superUserRole = findOrCreateRole('SuperUser');
         $adminRole = findOrCreateRole('Admin');
         $userRole = findOrCreateRole('User');
 
