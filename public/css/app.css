@@ -295,6 +295,7 @@ footer{
     width: calc(100% - 16rem);
     margin-top: 100px;
     position: relative;
+    height: 100%;
 }
 
 .side-menu {
