@@ -414,11 +414,13 @@ footer{
 }
 
 .dashboard-card{
-    border: 1px solid black;
+    border: 1px solid white;
     height: 250px;
     margin: 20px 0;
     border-radius: 25px;
     padding: 10px 20px;
+    background-color: white;
+    color: black;
 }
 
 .dashboard-card-body{
