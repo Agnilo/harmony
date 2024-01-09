@@ -5,6 +5,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Models\Role;
+use App\Models\Permission;
 
 class RolesAndPermissionSeeder extends Seeder
 {
