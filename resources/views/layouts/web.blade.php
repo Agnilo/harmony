@@ -43,6 +43,19 @@
         </ul>
     </div>
 
+    <header class="web-topbar">
+        <div class="web-topbar-header">
+            <div class="web-topbar-header-title">
+                Sveiki
+            </div>   
+            <div class="web-topbar-header-userarea">
+                logo ar kažkas
+            </div> 
+        </div>
+        <div class="web-topbar-body">
+        </div>
+    </header>
+
     <div class="web-yield-content">
         @yield('content')
     </div>

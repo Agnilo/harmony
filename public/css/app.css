@@ -336,6 +336,48 @@ footer{
     text-decoration: underline;
 }
 
+.web-topbar{
+    top: 0;
+    width: 100%;
+    bottom: auto;
+    position: fixed;
+    max-height: 100px;
+    font-weight: 300;
+    z-index: 210;
+}
+
+.web-topbar-header{
+    padding-left: calc(16rem + 48px);
+    padding-right: 48px;
+    height: 50px;
+    display: flex;
+    flex-flow: row;
+    padding: 8px 20px;
+    background-color: var(--primary-color);
+}
+
+.web-topbar-header-title{
+    display: flex;
+    min-width: 0;
+    flex-basis: 70%;
+    align-items: center;
+}
+
+.web-topbar-header-userarea{
+    align-self: center;
+    margin-left: auto;
+}
+
+.web-topbar-body{
+    padding: 8px 48px;
+    width: calc(100% - 16rem);
+    margin-left: 16rem;
+    box-sizing: border-box;
+    min-height: 52px;
+    background-color: white;
+    border-bottom: 1px solid var(--primary-backgroung-color);
+}
+
 .hrr {
     height: 5px;
     border: 0;
