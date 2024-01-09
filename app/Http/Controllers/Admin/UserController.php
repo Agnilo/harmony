@@ -49,12 +49,13 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        if (!$user->hasRole('Admin') && !$user->hasRole('SuperUser')) {
-            return redirect()->route('admin.users.index');
+        if ($user->hasRole('Admin') || $user->hasRole('SuperUser')) {
+            $roles = Role::all();
+            return view('admin.users.edit', compact('user', 'roles'));   
         }
-
-        $roles = Role::all();
-        return view('admin.users.edit', compact('user', 'roles'));
+        
+        return redirect()->route('admin.users.index');
+        
     }
 
     /**
