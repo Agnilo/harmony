@@ -25,7 +25,7 @@ class RedirectIfAuthenticated
                 if ($user->is_verified) {
                     return redirect(RouteServiceProvider::HOME);
                 } else {
-                    return redirect('/autorizacija');
+                    return redirect(RouteServiceProvider::UNVERIFIED);
                 }
             }
         }
