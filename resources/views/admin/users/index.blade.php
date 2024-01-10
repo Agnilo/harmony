@@ -6,20 +6,17 @@
         <br>
         <div class="row justify-content-md-center">
             <div class="col-md-auto">
-                <h2><a style="color: #262626">Vartotojai</a></h2>
+                <h2><a style="color: #262626">Naudotojai</a></h2>
             </div>
         </div>
         <br>
-        <div class="row justify-content-md-center" style="background-color: lightgrey">
-            <br>
-        </div>
+
         <main class="py-4">
 
             @include('partials.alerts')
 
         </main>
         <div class="card-body">
-            <a href="{{ route('home') }}"><button type="button" class="btn btn-dark">Pagrindinis</button></a>
             <table class="table">
                 <thead>
                     <tr>
@@ -39,19 +36,21 @@
                         <td>{{$user->first_name}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{implode(', ', $user->roles()->get()->pluck('name')->toArray())}}</td>
-                        <td>
-                            <a href="{{route('admin.users.edit', $user->id)}}"><button type="button" class="btn btn-secondary float-left">Redaguoti</button></a>
+                        <td class="user-buttons">
+                            <a href="{{route('admin.users.edit', $user->id)}}">
+                                <button type="button" class="btn btn-secondary float-left user-button-inside">Redaguoti</button>
+                            </a>
                             <form action="{{ route('admin.users.destroy', $user) }}" method="POST" class="float-left">
                                 @csrf
                                 {{ method_field('DELETE') }}
-                                <button type="submit" class="btn btn-danger">Ištrinti</button>
+                                <button type="submit" class="btn btn-danger user-button-inside">Ištrinti</button>
                             </form>
                         </td>
                     </tr>
                     @endif
                     @endforeach
                     @endrole
-                    
+
                     @can('edit-admin')
                     @foreach($users as $user)
 

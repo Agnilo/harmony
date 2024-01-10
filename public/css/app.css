@@ -515,6 +515,17 @@ footer{
     padding: 25px;
 }
 
+.user-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.user-button-inside{
+    margin: 0 5px;
+
+}
+
 .btn-primary{
     color: white;
     background-color: var(--primary-color);
