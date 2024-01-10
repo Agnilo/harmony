@@ -40,16 +40,18 @@
                     </div>
                 </div>
 
-                <div>
-                    <label>Lytis</label><br>
-                    <input type="radio" id="male" name="gender" value="Vyras">
-                    <label for="male">Vyras</label><br>
+                <div class="form-group row create-row">
+                    <label class="col-md-2 col-form-label text-md-right">Lytis</label><br>
+                    <div class="col-md-6">
+                        <input type="radio" id="male" name="gender" value="Vyras">
+                        <label for="male">Vyras</label><br>
 
-                    <input type="radio" id="female" name="gender" value="Moteris">
-                    <label for="female">Moteris</label><br>
+                        <input type="radio" id="female" name="gender" value="Moteris">
+                        <label for="female">Moteris</label><br>
 
-                    <input type="radio" id="other" name="gender" value="Kita">
-                    <label for="other">Kita</label><br>
+                        <input type="radio" id="other" name="gender" value="Kita">
+                        <label for="other">Kita</label><br>
+                    </div>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Sukurti</button>
