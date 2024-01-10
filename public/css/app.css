@@ -557,6 +557,12 @@ footer{
     width: 100%;
 }
 
+.user-create-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
 .btn-primary{
     color: white;
     background-color: var(--primary-color);
