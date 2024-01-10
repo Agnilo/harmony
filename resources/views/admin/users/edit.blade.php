@@ -67,10 +67,10 @@
                         @endforeach
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary user-create-button-margin-right">
                     Atnaujinti
                 </button>
-                <a href="{{ route('admin.users.index') }}" class="btn btn-primary">
+                <a href="{{ route('admin.users.index') }}" class="btn btn-primary user-create-button-margin-left">
                     Grįžti atgal
                 </a>
             </form>
