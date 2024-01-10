@@ -67,6 +67,15 @@
                         @endforeach
                     </div>
                 </div>
+                <div class="form-group row">
+                    <label for="is_verified" class="col-md-2 col-form-label text-md-right">Patvirtintas</label>
+                    <div class="col-md-6">
+                        <select id="is_verified" name="is_verified" class="form-control">
+                            <option value="0" {{ $user->is_verified == 0 ? 'selected' : '' }}>Ne</option>
+                            <option value="1" {{ $user->is_verified == 1 ? 'selected' : '' }}>Taip</option>
+                        </select>
+                    </div>
+                </div>
                 <button type="submit" class="btn btn-primary user-create-button-margin-right">
                     Atnaujinti
                 </button>
