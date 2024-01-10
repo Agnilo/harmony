@@ -8,7 +8,10 @@
         @csrf
         <input type="text" name="benefit_name" placeholder="Benefit Name" required>
         <textarea name="description" placeholder="Description"></textarea>
-        <input type="file" name="picture" required>
+        <div class="form-group">
+            <label for="picture">Select Picture:</label>
+            <input type="file" name="picture" class="form-control-file" id="picture">
+        </div>
         <input type="number" name="price" placeholder="Price" step="0.01" required>
         <button type="submit">Create Benefit</button>
     </form>
