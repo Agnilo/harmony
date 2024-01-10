@@ -32,6 +32,10 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/susisiekti', function () { return view('contact'); });
 });
 
+Route::get('/autorizacija', function (){
+    return view('unverified');
+});
+
 Auth::routes();
 
 Route::middleware(['auth.redirect', 'verified'])->group(function () {

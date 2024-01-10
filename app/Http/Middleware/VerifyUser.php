@@ -9,10 +9,10 @@ class VerifyUser
 {
     public function handle($request, Closure $next)
     {
-        if (!Auth::user()->is_verified) {
+        if(auth()->user()->is_verified){
+            return $next($request);
+        } else {
             return redirect()->route('verification');
         }
-
-        return $next($request);
     }
 }
