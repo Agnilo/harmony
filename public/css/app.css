@@ -220,7 +220,7 @@ footer{
 
 .login-background{
 
-    width: 450px; /* Adjust width as needed */
+    width: 450px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -655,14 +655,14 @@ footer{
     font-size: 84px;
 }
 
-.links > a {
+/* .links > a {
     color: #547f44;
     padding: 0 10px;
     font-size: 13px;
     font-weight: 600;
     text-decoration: none;
     text-transform: uppercase;
-}
+} */
 
 .m-b-md {
     margin-bottom: 30px;
