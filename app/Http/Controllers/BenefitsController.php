@@ -18,7 +18,7 @@ class BenefitsController extends Controller
     {
         $benefits = Benefits::all();
 
-        return view('benefits.show', compact('benefit'));
+        return view('benefits.show', compact('benefits'));
     }
 
     public function superuserindex()
