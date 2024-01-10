@@ -32,7 +32,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($benefits as $benefit)
+                    @foreach($benefits as $benefit)
                     <tr>
                         <th scope="row">{{$benefit->id}}</th>
                         <td>{{$benefit->name}}</td>
@@ -48,7 +48,7 @@
                             </form>
                         </td>
                     </tr>
-
+                    @endforeach
 
                 </tbody>
             </table>
