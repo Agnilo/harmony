@@ -16,6 +16,8 @@ class BenefitsController extends Controller
 
     public function select()
     {
+        $benefits = Benefits::all();
+        
         return view('benefits.select', compact('benefits'));
     }
 
