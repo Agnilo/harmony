@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="row mb-0 card-body-bottom-element">
-                            <div class="col-md-8 offset-md-4">
+                            <div class="col-md-8 offset-md-4 card-body-bottom-element">
                                 <button type="submit" class="btn btn-primary login-btn">
                                     {{ __('Prisijungti') }}
                                 </button>
