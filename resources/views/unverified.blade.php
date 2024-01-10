@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                     <div class="card-body-additional-header">
-                        {{ __('Jūs esate nepatvirtintas naudotojas. Prašome palaukti, kol Administratoriai patvirtins jūsų paskyrą.') }}
+                        {{ __('Jūs esate nepatvirtintas naudotojas. Prašome palaukti, kol administratoriai patvirtins jūsų paskyrą.') }}
                     </div>
                 </div>
             </div>
