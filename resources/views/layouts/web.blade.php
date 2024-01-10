@@ -58,7 +58,7 @@
                 </div>
                 <div class="web-topbar-header-userarea">
                     @auth
-                    <li class="dropdown links">
+                    <li class="links">
                         <a id="navbarDropdown" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->first_name }}
                         </a>
