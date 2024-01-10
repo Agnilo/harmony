@@ -649,6 +649,42 @@ footer{
     justify-content: space-evenly;
 }
 
+.benefit-card{
+    min-width: fit-content;
+}
+
+.benefit-card-bottom-margin{
+    margin-bottom: 15px;
+}
+
+.benefit-card-body{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 15px;
+    height: 200px;
+    padding: 15px;
+    margin: 5px;
+    color: var(--primary-text-color);
+    box-shadow: 0 5px 15px #0000002e;
+}
+
+.benefit-card-title{
+    font-weight: 600;
+    border-bottom: 1px solid var(--primary-text-color);
+    width: 100%;
+}
+
+.benefit-card-text{
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
 .hrr {
     height: 5px;
     border: 0;
