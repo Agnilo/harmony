@@ -540,10 +540,21 @@ footer{
 
 .card-body-layout-flex{
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: nowrap;
 }
 
 .create-new-user-button{
     padding: 1.5rem 0;
+}
+
+.create-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    width: 100%;
 }
 
 .btn-primary{

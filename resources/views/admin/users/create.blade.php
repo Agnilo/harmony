@@ -12,28 +12,28 @@
 
             <form method="POST" action="{{ route('admin.users.store') }}" class="card-body-layout-flex">
                 @csrf
-                <div class="form-group row">
+                <div class="form-group row create-row">
                     <label for="first_name" class="col-md-2 col-form-label text-md-right">Vardas:</label>
                     <div class="col-md-6">
                         <input type="text" id="first_name" name="first_name" required>
                     </div>
                 </div>
 
-                <div class="form-group row">
+                <div class="form-group row create-row">
                     <label for="last_name" class="col-md-2 col-form-label text-md-right">Pavardė:</label>
                     <div class="col-md-6">
                         <input type="text" id="last_name" name="last_name" required>
                     </div>
                 </div>
 
-                <div class="form-group row">
+                <div class="form-group row create-row">
                     <label for="email" class="col-md-2 col-form-label text-md-right">El. Paštas:</label>
                     <div class="col-md-6">
                         <input type="email" id="email" name="email" required>
                     </div>
                 </div>
 
-                <div class="form-group row">
+                <div class="form-group row create-row">
                     <label for="password" class="col-md-2 col-form-label text-md-right">Slaptažodis:</label>
                     <div class="col-md-6">
                         <input type="password" id="password" name="password" required>
