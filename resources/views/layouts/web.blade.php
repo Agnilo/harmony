@@ -44,7 +44,7 @@
                     <li><a href="{{ route('benefits') }}" class="{{ Request::is('benefits') ? 'active' : '' }}">Privalumai</a></li>
                     <li><a href="{{ route('leaveRequest') }}" class="{{ Request::is('leaveRequest') ? 'active' : '' }}">Atostogos</a></li>
                     <li><a href="{{ route('colleagues') }}" class="{{ Request::is('colleagues') ? 'active' : '' }}">Mano kolegos</a></li>
-                    <li><a href="{{ route('dashboard') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}">Naudotojų valdymas</a></li>
+                    <li><a href="{{ route('admin.users.index') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}">Naudotojų valdymas</a></li>
                     <li><a href="{{ route('dashboard') }}" class="{{ Request::is('dashboard') ? 'active' : '' }}">Dar kažkas</a></li>
                 </ul>
             </div>
