@@ -31,7 +31,9 @@
                 <div class="benefit-card-body">
                     <h5 class="benefit-card-title">{{ $benefit->benefit_name }}</h5>
                     <p class="benefit-card-text">{{ $benefit->description }}</p>
-                    <p class="benefit-card-text"><span style="font-weight: bold">Kaina:</span> {{ $benefit->price }}</p>
+                </div>
+                <div class="benefit-card-footer">
+                    <p><span style="font-weight: bold">Kaina:</span> ${{ $benefit->price }}</p>
                 </div>
             </div>
         </div>
