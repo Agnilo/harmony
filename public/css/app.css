@@ -734,6 +734,7 @@ footer{
     height: 100%;
     object-fit: cover;
     max-height: 300px;
+    border-radius: 5px;
 }
 
 .benefit-show-body{
