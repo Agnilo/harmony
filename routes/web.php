@@ -64,7 +64,12 @@ Route::middleware(['can:create-benefit'])->group(function () {
     Route::prefix('superuser')->group(function () {
         Route::get('/privalumai', [BenefitsController::class, 'superuserindex'])->name('benefits.index');
 
+        Route::get('/privalumai/{benefit}/redaguoti', [BenefitsController::class, 'edit'])->name('benefits.edit');
+        Route::put('/privalumai/{benefit}', [BenefitsController::class, 'update'])->name('benefits.update');
+
         Route::get('/privalumai/sukurti', [BenefitsController::class, 'create'])->name('benefits.create');
         Route::post('/privalumai', [BenefitsController::class, 'store'])->name('benefits.store');
+
+        Route::delete('/privalumai/{benefit}', [BenefitsController::class, 'destroy'])->name('benefits.destroy');
     });
 });
