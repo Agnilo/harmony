@@ -21,15 +21,22 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                $user = Auth::guard($guard)->user();
-                if ($user->is_verified) {
-                    return redirect(RouteServiceProvider::HOME);
-                } else {
-                    return redirect(RouteServiceProvider::UNVERIFIED);
-                }
+                return redirect(RouteServiceProvider::HOME);
             }
         }
 
         return $next($request);
     }
+
+    // foreach ($guards as $guard) {
+    //     if (Auth::guard($guard)->check()) {
+    //         $user = Auth::guard($guard)->user();
+    //         if ($user->is_verified) {
+    //             return redirect(RouteServiceProvider::HOME);
+    //         } else {
+    //             return redirect(RouteServiceProvider::UNVERIFIED);
+    //         }
+    //         return redirect(RouteServiceProvider::HOME);
+    //     }
+    // }
 }
