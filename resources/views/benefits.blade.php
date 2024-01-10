@@ -16,7 +16,7 @@
     <div>
         <h2>{{ $benefit->benefit_name }}</h2>
         <p>{{ $benefit->description }}</p>
-        <img src="{{ $benefit->picture }}" alt="{{ $benefit->benefit_name }}">
+        <img src="{{ asset('storage/' . $benefit->picture) }}" alt="{{ $benefit->benefit_name }}" width="200">
         <p>Price: {{ $benefit->price }}</p>
     </div>
     @endforeach
