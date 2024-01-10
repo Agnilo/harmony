@@ -3,7 +3,6 @@
 @section('content')
 <div class="web-child-content">
     <div class="container">
-        <br>
         <div class="row justify-content-md-center">
             <div class="col-md-auto h2-padding">
                 <h2>Redaguoti vartotoją {{$user->first_name}}</h2>
@@ -62,7 +61,7 @@
                     <div class="col-md-6">
                         @foreach($roles as $role)
                         <div class="form-check">
-                            <input type="checkbox" name="roles[]" value="{{ $role->id }}" @if($user->roles->pluck('id')->contains($role->id)) checked @endif>
+                            <input type="radio" name="roles[]" value="{{ $role->id }}" @if($user->roles->pluck('id')->contains($role->id)) checked @endif>
                             <label>{{ $role->name }}</label>
                         </div>
                         @endforeach
