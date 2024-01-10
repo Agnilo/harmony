@@ -16,7 +16,7 @@
                         <p>{{ $benefit->content }}</p>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
+                <div class="col-md-4 mb-4 benefit-show-card-box">
                     <div class="benefit-show-card-body">
                         <div class="benefit-show-card-title">
                             <h5>{{ $benefit->benefit_name }}</h5>

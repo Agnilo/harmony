@@ -749,9 +749,10 @@ footer{
     border: 1px solid white;
     background-color: white;
     padding: 10px;
-    height: 250px;
+    height: 230px;
     border-radius: 15px;
     box-shadow: 0 5px 15px #0000002e;
+    width: 250px;
 }
 
 .benefit-show-card-text{
@@ -768,13 +769,31 @@ footer{
     color: var(--primary-text-color);
 }
 
+.benefit-show-card-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .benefit-show-card-title{
     text-align: center;
+    height: 130px;
 }
 
 .benefit-show-card-title h5 {
     font-weight: 600;
     font-size: 20px;
+}
+
+.benefit-show-card-price{
+    padding: 0px 10px;
+    text-align: center;
+    height: 30px;
+}
+
+.benefit-show-button{
+    text-align: center;
+    height: 40px;
 }
 
 
