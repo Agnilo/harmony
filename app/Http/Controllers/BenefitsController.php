@@ -23,7 +23,7 @@ class BenefitsController extends Controller
 
     public function create()
     {
-        return view('beneftis.create');
+        return view('benefits.create');
     }
 
     public function store(Request $request)
