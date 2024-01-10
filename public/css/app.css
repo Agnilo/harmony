@@ -538,6 +538,10 @@ footer{
 
 }
 
+.card-body-layout-flex{
+    display: flex;
+}
+
 .create-new-user-button{
     padding: 1.5rem 0;
 }
