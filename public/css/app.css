@@ -66,10 +66,6 @@ main{
     top: 25%;
 }
 
-.dropdown-item a{
-    color: black;
-}
-
 .home-background-main{
     position: absolute;
     width: 100%;
@@ -399,6 +395,10 @@ footer{
 .web-topbar-header-userarea{
     align-self: center;
     margin-left: auto;
+}
+
+.web-topbar-header-userarea li a{
+    color: black;
 }
 
 .web-topbar-body{
