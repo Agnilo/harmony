@@ -11,14 +11,14 @@
             <label for="last_name">Pavardė:</label>
             <input type="text" id="last_name" name="last_name" required>
 
-            <label for="email">el. Paštas:</label>
+            <label for="email">El. Paštas:</label>
             <input type="email" id="email" name="email" required>
 
             <label for="password">Slaptažodis:</label>
             <input type="password" id="password" name="password" required>
 
             <div>
-                <label>Gender</label><br>
+                <label>Lytis</label><br>
                 <input type="radio" id="male" name="gender" value="Vyras">
                 <label for="male">Vyras</label><br>
 
