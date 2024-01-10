@@ -402,6 +402,12 @@ footer{
     color: black;
 }
 
+.dropdown-main{
+    border: solid 1px black;
+    border-radius: 15px;
+    padding: 5px 10px;
+}
+
 .dropdown-item{
     padding: 5px 10px;
 }
