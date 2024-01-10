@@ -23,13 +23,19 @@
                         </div>
                         <div class="benefit-show-card-price">
                             @if($benefit->price > 0)
-                            
+
                             @endif
 
                             <p><span style="font-weight: bold">Kaina:</span> {{ $benefit->price }} €</p>
 
                         </div>
                         <div class="benefit-show-button">
+                            @auth
+                            <form method="POST" action="{{ route('benefit.select', $benefit->id) }}">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">Select Benefit</button>
+                            </form>
+                            @endauth
 
                         </div>
                     </div>
