@@ -23,7 +23,7 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">Id</th>
                         <th scope="col">Vardas</th>
                         <th scope="col">Email</th>
                         <th scope="col">Vaidmuo</th>
@@ -31,6 +31,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @role('Admin')
                     @foreach($users as $user)
                     @if(!$user->hasRole('Admin') && !$user->hasRole('SuperUser'))
                     <tr>
@@ -49,9 +50,11 @@
                     </tr>
                     @endif
                     @endforeach
-                @can('edit-admin')
-                    @foreach($users as $user)
+                    @endrole
                     
+                    @can('edit-admin')
+                    @foreach($users as $user)
+
                     <tr>
                         <th scope="row">{{$user->id}}</th>
                         <td>{{$user->first_name}}</td>
@@ -66,7 +69,7 @@
                             </form>
                         </td>
                     </tr>
-                   
+
                     @endforeach
                     @endcan
                 </tbody>
