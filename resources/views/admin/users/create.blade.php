@@ -36,7 +36,7 @@
                 <div class="form-group row create-row">
                     <label for="password" class="col-md-2 col-form-label text-md-right">Slaptažodis:</label>
                     <div class="col-md-6">
-                        <input class="form-control type=" password" id="password" name="password" required>
+                        <input class="form-control" type="password" id="password" name="password" required>
                     </div>
                 </div>
 
