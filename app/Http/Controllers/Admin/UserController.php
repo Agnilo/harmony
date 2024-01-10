@@ -41,11 +41,10 @@ class UserController extends Controller
         if (auth()->user()->can('edit-users')) {
             $roles = Role::all();
             return view('admin.users.edit', compact('user', 'roles'));
-        } else{
+        } else {
 
-        return redirect()->route('admin.users.index');
+            return redirect()->route('admin.users.index');
         }
-        
     }
 
     /**
@@ -84,14 +83,24 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        if (!$user->can('delete-users')) {
+        // if (!$user->can('delete-users')) {
+        //     return redirect()->route('admin.users.index');
+        // }
+
+
+        // $user->roles()->detach();
+        // $user->delete();
+
+        // return redirect()->route('admin.users.index');
+
+        if (auth()->user()->can('delete-users')) {
+            $user->roles()->detach();
+            $user->delete();
+
+            return redirect()->route('admin.users.index');
+        } else {
+            
             return redirect()->route('admin.users.index');
         }
-
-        $user->roles()->detach();
-        $user->delete();
-
-        return redirect()->route('admin.users.index');
     }
-    
 }
