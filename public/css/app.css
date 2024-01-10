@@ -24,6 +24,10 @@ h2{
     color: var(--primary-color);
 }
 
+.h2-padding{
+    padding-bottom: 20px;
+}
+
 .main-header{
     background-color: var(--secondary-color);
     display: flex;

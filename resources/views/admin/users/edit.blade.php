@@ -5,8 +5,8 @@
     <div class="container">
         <br>
         <div class="row justify-content-md-center">
-            <div class="col-md-auto">
-                <h2><a style="color: #262626">Redaguoti vartotoją {{$user->first_name}}</a></h2>
+            <div class="col-md-auto h2-padding">
+                <h2>Redaguoti vartotoją {{$user->first_name}}</h2>
             </div>
         </div>
         <div class="card-body card-body-index">
