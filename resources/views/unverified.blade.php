@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <div class="login-background">
     <div class="row justify-content-center">
         
@@ -46,3 +49,4 @@
         
     </div>
 </div>
+@endsection
