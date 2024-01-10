@@ -33,7 +33,7 @@
                     <p class="benefit-card-text">{{ $benefit->description }}</p>
                 </div>
                 <div class="benefit-card-footer">
-                    <p><span style="font-weight: bold">Kaina:</span> ${{ $benefit->price }}</p>
+                    <p><span style="font-weight: bold">Kaina:</span> {{ $benefit->price }}€</p>
                 </div>
             </div>
         </div>
