@@ -22,6 +22,7 @@
                     <tr>
                         <th scope="col">Id</th>
                         <th scope="col">Vardas</th>
+                        <th scope="col">Pavardė</th>
                         <th scope="col">Email</th>
                         <th scope="col">Vaidmuo</th>
                         <th scope="col">Veiksmas</th>
@@ -34,6 +35,7 @@
                     <tr>
                         <th scope="row">{{$user->id}}</th>
                         <td>{{$user->first_name}}</td>
+                        <td>{{$user->last_name}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{implode(', ', $user->roles()->get()->pluck('name')->toArray())}}</td>
                         <td class="user-buttons">
@@ -57,14 +59,17 @@
                     <tr>
                         <th scope="row">{{$user->id}}</th>
                         <td>{{$user->first_name}}</td>
+                        <td>{{$user->last_name}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{implode(', ', $user->roles()->get()->pluck('name')->toArray())}}</td>
-                        <td>
-                            <a href="{{route('admin.users.edit', $user->id)}}"><button type="button" class="btn btn-secondary float-left">Redaguoti</button></a>
+                        <td class="user-buttons">
+                            <a href="{{route('admin.users.edit', $user->id)}}">
+                                <button type="button" class="btn btn-secondary float-left user-button-inside">Redaguoti</button>
+                            </a>
                             <form action="{{ route('admin.users.destroy', $user) }}" method="POST" class="float-left">
                                 @csrf
                                 {{ method_field('DELETE') }}
-                                <button type="submit" class="btn btn-danger">Ištrinti</button>
+                                <button type="submit" class="btn btn-danger user-button-inside">Ištrinti</button>
                             </form>
                         </td>
                     </tr>
