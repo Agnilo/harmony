@@ -59,7 +59,10 @@
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">
-                    Update
+                    Atnaujinti
+                </button>
+                <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">
+                    Grįžti atgal
                 </button>
             </form>
         </div>
