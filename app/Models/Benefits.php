@@ -13,6 +13,8 @@ class Benefits extends Model
         'description',
         'picture',
         'price',
+        'introduction',
+        'content',
     ];
 
     public function users()

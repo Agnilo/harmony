@@ -41,9 +41,11 @@ class BenefitsController extends Controller
 
         $validatedData = $request->validate([
             'benefit_name' => 'required|string|max:255',
-            'description' => 'nullable|string',
+            'description' => 'nullable|string|max:60',
             'picture' => 'nullable|image|max:2048', // Update to nullable, as picture is not required in update
             'price' => 'required|numeric',
+            'introduction' => 'nullable|string',
+            'content' => 'nullable|string',
         ]);
 
         // Update benefit properties
@@ -78,6 +80,8 @@ class BenefitsController extends Controller
             'description' => 'nullable|string',
             'picture' => 'required|image|max:2048',
             'price' => 'required|numeric',
+            'introduction' => 'nullable|string',
+            'content' => 'nullable|string',
         ]);
 
         $picturePath = $request->file('picture')->store('benefit_pictures', 'public');
@@ -87,6 +91,8 @@ class BenefitsController extends Controller
             'description' => $validatedData['description'],
             'picture' => $picturePath,
             'price' => $validatedData['price'],
+            'introduction' => $validatedData['introduction'],
+            'content' => $validatedData['content'],
         ]);
 
         return redirect()->route('benefits.index')->with('success', 'Privalumas sukurtas sėkmingai');
