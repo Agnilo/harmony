@@ -111,4 +111,11 @@ class BenefitsController extends Controller
             return redirect()->route('benefits.index')->with('error', 'Neturi tam teisių');
         }
     }
+
+    public function selectBenefit(Benefit $benefit)
+    {
+        auth()->user()->benefits()->syncWithoutDetaching([$benefit->id]);
+    
+        return redirect()->route('benefits')->with('success', 'Privalumas pasirinktas sėkmingai.');
+    }
 }

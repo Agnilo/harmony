@@ -128,18 +128,11 @@ class UserController extends Controller
         }
     }
 
-    public function saveSelections(Request $request)
-{
-    // Assuming the selected benefits are sent in an array named 'selected_benefits[]'
-    $selectedBenefits = $request->input('selected_benefits');
-
-    // Assuming the authenticated user is making the selections
-    $user = auth()->user();
-
-    // Sync the selected benefits to the user
-    $user->benefits()->sync($selectedBenefits);
-
-    return redirect()->back()->with('success', 'Selections saved successfully');
-}
+    public function selectBenefit(Benefit $benefit)
+    {
+        auth()->user()->benefits()->syncWithoutDetaching([$benefit->id]);
+    
+        return redirect()->route('benefits')->with('success', 'Privalumas pasirinktas sėkmingai.');
+    }
 
 }
