@@ -24,7 +24,6 @@ class BenefitsController extends Controller
     public function edit(Benefits $benefit)
     {
         if (auth()->user()->can('edit-benefit')) {
-            $roles = Role::all();
             return view('benefits.edit', compact('benefit'));
         } else {
 
@@ -34,20 +33,6 @@ class BenefitsController extends Controller
 
     public function update(Request $request, Benefits $benefit)
     {
-        // $benefit->benefit_name = $request->benefit_name;
-        // $benefit->description = $request->description;
-        // $benefit->picture = $request->picture;
-        // $benefit->price = $request->price;
-
-        // //$user->syncRoles($request->roles);
-
-        // if ($benefit->save()) {
-        //     $request->session()->flash('success', 'Privalumas ' . $benefit->benefit_name . ' buvo atnaujintas');
-        // } else {
-        //     $request->session()->flash('warning', 'Iškilo problema atnaujinant vartotoją');
-        // }
-
-        // return redirect()->route('benefits.index');
 
         $validatedData = $request->validate([
             'benefit_name' => 'required|string|max:255',
