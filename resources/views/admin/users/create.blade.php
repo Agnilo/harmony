@@ -3,8 +3,13 @@
 @section('content')
 <div class="web-child-content">
     <div class="container">
-    <div class="card-body card-body-index">
-        <div class="card-body-layout-flex">
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto h2-padding">
+                <h2>Sukurti naują naudotoją</h2>
+            </div>
+        </div>
+        <div class="card-body card-body-index">
+
             <form method="POST" action="{{ route('admin.users.store') }}" class="card-body-layout-flex">
                 @csrf
                 <label for="first_name">Vardas:</label>
@@ -33,8 +38,8 @@
 
                 <button type="submit" class="btn btn-primary">Sukurti</button>
             </form>
+
         </div>
-    </div>
     </div>
 </div>
 @endsection
