@@ -611,6 +611,10 @@ footer{
     background-color: #5e5e5e;
 }
 
+.colleagues-card-bottom-margin{
+    margin-bottom: 15px;
+}
+
 .colleagues-card-body{
     display: flex;
     flex-direction: column;
