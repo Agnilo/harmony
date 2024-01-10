@@ -97,6 +97,7 @@ class UserController extends Controller
             'email' => $validatedData['email'],
             'password' => bcrypt($validatedData['password']),
             'gender' => $validatedData['gender'],
+            'is_verified' => true,
             
         ]);
 
