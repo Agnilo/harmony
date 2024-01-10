@@ -13,4 +13,23 @@ class BenefitsController extends Controller
 
         return view('benefits', compact('benefits')); // Pass benefits data to the view
     }
+
+    public function create()
+    {
+        return view('beneftis.create');
+    }
+
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'benefit_name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'picture' => 'nullable|string',
+            'price' => 'required|numeric',
+        ]);
+
+        Benefits::create($validatedData);
+
+        return redirect()->route('benefits.index')->with('success', 'Privalumas sukurtas sėkmingai');
+    }
 }
