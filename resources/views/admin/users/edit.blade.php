@@ -63,7 +63,7 @@
                 </button>
                 <a href="{{ route('admin.users.index') }}" class="btn btn-primary">
                     Grįžti atgal
-                </button>
+                </a>
             </form>
         </div>
     </div>
