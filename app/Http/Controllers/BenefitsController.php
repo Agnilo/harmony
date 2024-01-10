@@ -11,6 +11,13 @@ class BenefitsController extends Controller
     {
         $benefits = Benefits::all(); // Fetch all benefits from the database
 
+        return view('benefits', compact('benefits')); // Pass benefits data to the view
+    }
+
+    public function superuserindex()
+    {
+        $benefits = Benefits::all(); // Fetch all benefits from the database
+
         return view('benefits.index', compact('benefits')); // Pass benefits data to the view
     }
 
