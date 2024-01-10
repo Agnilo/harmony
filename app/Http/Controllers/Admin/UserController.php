@@ -28,13 +28,6 @@ class UserController extends Controller
         return view('admin.users.index')->with('users', $users);
     }
 
-    public function colleagues()
-    {
-        $users = User::all();
-        return view('colleagues')->with('users', $users);
-    }
-
-
 
     /**
      * Show the form for editing the specified resource.

@@ -8,6 +8,6 @@ class BenefitsController extends Controller
 {
     public function index()
     {
-        return view('benefits'); // Grąžinama "home" pavadinimo peržiūros failas (view)
+        return view('benefits');
     }
 }

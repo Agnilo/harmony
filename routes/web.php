@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BenefitsController;
 use App\Http\Controllers\LeaveRequestController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\ColleaguesController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -32,7 +33,7 @@ Route::middleware(['auth.redirect'])->group(function () {
     Route::get('/privalumai', [BenefitsController::class, 'index'])->name('benefits');
     Route::get('/profilis', [ProfileController::class, 'index'])->name('profile');
     Route::get('/atostogos', [LeaveRequestController::class, 'index'])->name('leaveRequest');
-    Route::get('/kolegos', [UserController::class, 'colleagues'])->name('colleagues');
+    Route::get('/kolegos', [ColleaguesController::class, 'index'])->name('colleagues');
 });
 
 Route::middleware(['can:edit-users'])->group(function () {
