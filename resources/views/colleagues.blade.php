@@ -8,8 +8,8 @@
                 <div class="colleagues-card">
                     <div class="colleagues-card-body">
                         <h5 class="colleagues-card-title">{{ $user->first_name }}</h5>
-                        <p class="colleagues-card-text">El. Paštas: {{ $user->email }}</p>
-                        <p class="colleagues-card-text">Pareigos: {{ $user->position }}</p>
+                        <p class="colleagues-card-text"><span style="font-weight: bold">El. Paštas:</span> {{ $user->email }}</p>
+                        <p class="colleagues-card-text"><span style="font-weight: bold">Pareigos:</span> {{ $user->position }}</p>
                     </div>
                 </div>
             </div>
