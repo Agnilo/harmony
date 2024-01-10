@@ -402,15 +402,6 @@ footer{
     color: black;
 }
 
-.dropdown-menu-right{
-    display: flex;
-    flex-direction: column;
-    align-content: space-around;
-    justify-content: space-around;
-    align-items: flex-start;
-    padding: 5px;
-}
-
 .dropdown-item{
     padding: 5px 10px;
 }
