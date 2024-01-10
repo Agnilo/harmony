@@ -563,12 +563,12 @@ footer{
     justify-content: flex-start;
 }
 
-.user-create-button-padding-left{
-    padding-left: 10px;
+.user-create-button-margin-left{
+    margin-left: 5px;
 }
 
-.user-create-button-padding-right{
-    padding-right: 10px;
+.user-create-button-margin-right{
+    margin-right: 5px;
 }
 
 .btn-primary{
