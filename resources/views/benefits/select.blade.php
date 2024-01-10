@@ -5,7 +5,6 @@
 
 
     <div class="row">
-        @foreach($benefits as $benefit)
         <div class="col-md-4 mb-4 benefit-card-bottom-margin">
             <div class="benefit-card">
                 <div class="benefit-card-header">
@@ -22,7 +21,6 @@
                 </div>
             </div>
         </div>
-        @endforeach
     </div>
 
 
