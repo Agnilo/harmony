@@ -34,7 +34,7 @@ Route::middleware(['guest'])->group(function () {
 
 Auth::routes();
 
-Route::middleware(['auth.redirect'])->group(function () {
+Route::middleware(['auth.redirect', 'verified'])->group(function () {
     Route::get('/pagrindinis', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/privalumai', [BenefitsController::class, 'index'])->name('benefits');
     Route::get('/profilis', [ProfileController::class, 'index'])->name('profile');
