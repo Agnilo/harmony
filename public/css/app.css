@@ -635,10 +635,16 @@ footer{
 
 .colleagues-card-title{
     font-weight: 600;
+    border-bottom: 1px solid var(--primary-color);
+    width: 100%;
 }
 
 .colleagues-card-text{
     font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
 }
 
 .hrr {
