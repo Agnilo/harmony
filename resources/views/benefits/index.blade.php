@@ -38,10 +38,12 @@
                         <td>{{$benefit->name}}</td>
                         <td>{{$benefit->description}}</td>
                         <td class="user-buttons">
-                            <a href="{{route('benefits.edit', $benefit->id)}}">
+                            <!-- <a href="{{route('benefits.edit', $benefit->id)}}"> -->
+                            <a href="{{route('benefits.index', $benefit->id)}}">
                                 <button type="button" class="btn btn-secondary float-left user-button-inside">Redaguoti</button>
                             </a>
-                            <form action="{{ route('benefits.destroy', $benefit) }}" method="POST" class="float-left">
+                            <!-- <form action="{{ route('benefits.destroy', $benefit) }}" method="POST" class="float-left"> -->
+                            <form action="{{ route('benefits.index', $benefit) }}" method="POST" class="float-left">
                                 @csrf
                                 {{ method_field('DELETE') }}
                                 <button type="submit" class="btn btn-danger user-button-inside">Ištrinti</button>
