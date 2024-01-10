@@ -6,7 +6,7 @@
         <br>
         <div class="row justify-content-md-center">
             <div class="col-md-auto">
-                <h2><a style="color: #262626">Naudotojai</a></h2>
+                <h2>Naudotojai</h2>
             </div>
         </div>
         <br>
