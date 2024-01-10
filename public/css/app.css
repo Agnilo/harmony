@@ -563,6 +563,14 @@ footer{
     justify-content: flex-start;
 }
 
+.user-create-button-padding-left{
+    padding-left: 10px;
+}
+
+.user-create-button-padding-right{
+    padding-right: 10px;
+}
+
 .btn-primary{
     color: white;
     background-color: var(--primary-color);

@@ -54,10 +54,10 @@
                     </div>
                 </div>
                 <div class="user-create-button">
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary user-create-button-padding-right">
                         Sukurti
                     </button>
-                    <a href="{{ route('admin.users.index') }}" class="btn btn-primary">
+                    <a href="{{ route('admin.users.index') }}" class="btn btn-primary user-create-button-padding-left">
                         Atšaukti
                     </a>
                 </div>
