@@ -43,20 +43,6 @@
                     <label for="introduction" class="col-md-2 col-form-label text-md-right">Santrauka</label>
 
                     <div class="col-md-6">
-                        <input id="introduction" type="textarea" rows="4" cols="50" class="form-control @error('introduction') is-invalid @enderror" name="introduction" value="{{ $benefit->introduction }}" required autofocus>
-
-                        @error('introduction')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="introduction" class="col-md-2 col-form-label text-md-right">Santrauka</label>
-
-                    <div class="col-md-6">
                         <input id="introduction" type="textarea" rows="4" cols="50" class="form-control @error('introduction') is-invalid @enderror" name="introduction" value="{{ $benefit->introduction }}" autofocus>
 
                         @error('introduction')
