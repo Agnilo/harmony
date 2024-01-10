@@ -25,7 +25,7 @@
         @foreach($benefits as $benefit)
         <div class="col-md-4 mb-4 benefit-card-bottom-margin">
             <div class="benefit-card">
-                <div class="card-header">
+                <div class="benefit-card-header">
                     <img src="{{ asset('storage/' . $benefit->picture) }}" alt="{{ $benefit->benefit_name }}" class="img-fluid">
                 </div>
                 <div class="benefit-card-body">

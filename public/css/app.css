@@ -649,15 +649,12 @@ footer{
     justify-content: space-evenly;
 }
 
+.benefit-card-header{
+    width: 100%;
+}
+
 .benefit-card{
     min-width: fit-content;
-}
-
-.benefit-card-bottom-margin{
-    margin-bottom: 15px;
-}
-
-.benefit-card-body{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -669,6 +666,20 @@ footer{
     margin: 5px;
     color: var(--primary-text-color);
     box-shadow: 0 5px 15px #0000002e;
+}
+
+.benefit-img{
+    width: 100%;
+    height: 40%;
+    object-fit: cover;
+}
+
+.benefit-card-bottom-margin{
+    margin-bottom: 15px;
+}
+
+.benefit-card-body{
+    
 }
 
 .benefit-card-title{
