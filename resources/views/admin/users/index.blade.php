@@ -32,6 +32,7 @@
                 </thead>
                 <tbody>
                     @foreach($users as $user)
+                    @if(!$user->hasRole('Admin') && !$user->hasRole('SuperUser'))
                     <tr>
                         <th scope="row">{{$user->id}}</th>
                         <td>{{$user->first_name}}</td>
@@ -46,6 +47,7 @@
                             </form>
                         </td>
                     </tr>
+                    @endif
                     @endforeach
                 </tbody>
             </table>

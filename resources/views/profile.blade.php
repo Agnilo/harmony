@@ -15,15 +15,7 @@
                 </div>
                 <div class="profile-eidt-employee-content">
                     <div class="profile-edit-employee-content-padding">
-                        content before 
-                        
-    @can('edit-users')
-<a class="dropdown-item" href="{{route('admin.users.index')}}">
-                                User Management
-                            </a>
-    @endcan
-                            
-                        
+                        content before        
                     </div>
                 </div>
             </div>
