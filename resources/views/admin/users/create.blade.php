@@ -2,9 +2,10 @@
 
 @section('content')
 <div class="web-child-content">
+    <div class="container">
     <div class="card-body card-body-index">
         <div class="card-body-layout-flex">
-            <form method="POST" action="{{ route('admin.users.store') }}">
+            <form method="POST" action="{{ route('admin.users.store') }}" class="card-body-layout-flex">
                 @csrf
                 <label for="first_name">Vardas:</label>
                 <input type="text" id="first_name" name="first_name" required>
@@ -33,6 +34,7 @@
                 <button type="submit" class="btn btn-primary">Sukurti</button>
             </form>
         </div>
+    </div>
     </div>
 </div>
 @endsection
