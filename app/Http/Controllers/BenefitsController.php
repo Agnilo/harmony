@@ -14,6 +14,11 @@ class BenefitsController extends Controller
         return view('benefits', compact('benefits')); // Pass benefits data to the view
     }
 
+    public function select()
+    {
+        return view('benefits.select', compact('benefits'));
+    }
+
     public function superuserindex()
     {
         $benefits = Benefits::all(); // Fetch all benefits from the database

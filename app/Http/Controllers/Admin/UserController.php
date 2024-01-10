@@ -115,15 +115,6 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        // if (!$user->can('delete-users')) {
-        //     return redirect()->route('admin.users.index');
-        // }
-
-
-        // $user->roles()->detach();
-        // $user->delete();
-
-        // return redirect()->route('admin.users.index');
 
         if (auth()->user()->can('delete-users')) {
 
@@ -136,4 +127,19 @@ class UserController extends Controller
             return redirect()->route('admin.users.index');
         }
     }
+
+    public function saveSelections(Request $request)
+{
+    // Assuming the selected benefits are sent in an array named 'selected_benefits[]'
+    $selectedBenefits = $request->input('selected_benefits');
+
+    // Assuming the authenticated user is making the selections
+    $user = auth()->user();
+
+    // Sync the selected benefits to the user
+    $user->benefits()->sync($selectedBenefits);
+
+    return redirect()->back()->with('success', 'Selections saved successfully');
+}
+
 }

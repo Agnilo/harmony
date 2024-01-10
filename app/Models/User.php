@@ -60,6 +60,11 @@ class User extends Authenticatable
         return false;
     }
 
+    public function benefits()
+{
+    return $this->belongsToMany(Benefits::class, 'user_benefits');
+}
+
     // public function hasRole($role){
 
     //     if($this->roles()->where('name', $role)->first()){

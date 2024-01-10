@@ -7,10 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Benefits extends Model
 {
-    public function benefits()
-    {
-        return $this->hasMany(User::class);
-    }
 
     protected $fillable = [
         'benefit_name',
@@ -19,4 +15,8 @@ class Benefits extends Model
         'price',
     ];
 
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_benefits');
+    }
 }
