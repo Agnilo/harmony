@@ -30,6 +30,7 @@
                         <th scope="col">Pavardė</th>
                         <th scope="col">El. Paštas</th>
                         <th scope="col">Vaidmuo</th>
+                        <th scope="col">Patvirtintas</th>
                         <th scope="col">Veiksmas</th>
                     </tr>
                 </thead>
@@ -43,6 +44,7 @@
                         <td>{{$user->last_name}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{implode(', ', $user->roles()->get()->pluck('name')->toArray())}}</td>
+                        <td>{{$user->is_verified}}</td>
                         <td class="user-buttons">
                             <a href="{{route('admin.users.edit', $user->id)}}">
                                 <button type="button" class="btn btn-secondary float-left user-button-inside">Redaguoti</button>
@@ -67,6 +69,7 @@
                         <td>{{$user->last_name}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{implode(', ', $user->roles()->get()->pluck('name')->toArray())}}</td>
+                        <td>{{$user->is_verified}}</td>
                         <td class="user-buttons">
                             <a href="{{route('admin.users.edit', $user->id)}}">
                                 <button type="button" class="btn btn-secondary float-left user-button-inside">Redaguoti</button>
