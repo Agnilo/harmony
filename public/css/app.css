@@ -714,6 +714,15 @@ footer{
     color: white;
 }
 
+.benefit-show-img{
+    width: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    max-height: 210px;
+}
+
 .hrr {
     height: 5px;
     border: 0;
