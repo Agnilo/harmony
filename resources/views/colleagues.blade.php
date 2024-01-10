@@ -28,7 +28,7 @@
             <div class="col-md-3 mb-3">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">{{ $user->firs_name }}</h5>
+                        <h5 class="card-title">{{ $user->first_name }}</h5>
                         <p class="card-text">Email: {{ $user->email }}</p>
                     </div>
                 </div>
