@@ -18,12 +18,18 @@ use Illuminate\Support\Facades\Auth;
 });*/
 
 
-Route::get('/', [HomeController::class, 'index'])->name('home'); // Nukreipimas į HomeController index() metodą pagrindiniame puslapyje
-Route::get('/apie', function () {
-    return view('about');
-});
-Route::get('/susisiekti', function () {
-    return view('contact');
+// Route::get('/', [HomeController::class, 'index'])->name('home'); // Nukreipimas į HomeController index() metodą pagrindiniame puslapyje
+// Route::get('/apie', function () {
+//     return view('about');
+// });
+// Route::get('/susisiekti', function () {
+//     return view('contact');
+// });
+
+Route::middleware(['guest'])->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/apie', function () { return view('about'); });
+    Route::get('/susisiekti', function () { return view('contact'); });
 });
 
 Auth::routes();
