@@ -23,7 +23,7 @@
 
     <div class="row">
         @foreach($benefits as $benefit)
-        <div class="col-md-3 mb-3 colleagues-card-bottom-margin">
+        <div class="col-md-4 mb-4 colleagues-card-bottom-margin">
             <div class="colleagues-card">
                 <div class="colleagues-card-body">
                     <h5 class="colleagues-card-title">{{ $benefit->benefit_name }}</h5>
