@@ -8,6 +8,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home'); // Grąžinama "home" pavadinimo peržiūros failas (view)
+        return view('guest.home'); // Grąžinama "home" pavadinimo peržiūros failas (view)
     }
 }
