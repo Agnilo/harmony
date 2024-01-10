@@ -754,6 +754,16 @@ footer{
     box-shadow: 0 5px 15px #0000002e;
 }
 
+.benefit-show-card-intro{
+    font-style: italic;
+    color: var(--primary-text-color);
+    font-weight: bold;
+}
+
+.benefit-show-card-content p{
+    color: var(--primary-text-color);
+}
+
 .benefit-show-card-title{
     text-align: center;
 }
