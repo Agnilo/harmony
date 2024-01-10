@@ -49,6 +49,26 @@
                     </tr>
                     @endif
                     @endforeach
+                @can('edit-admins')
+                    @foreach($users as $user)
+                    @if(!$user->hasRole('Admin') && !$user->hasRole('SuperUser'))
+                    <tr>
+                        <th scope="row">{{$user->id}}</th>
+                        <td>{{$user->first_name}}</td>
+                        <td>{{$user->email}}</td>
+                        <td>{{implode(', ', $user->roles()->get()->pluck('name')->toArray())}}</td>
+                        <td>
+                            <a href="{{route('admin.users.edit', $user->id)}}"><button type="button" class="btn btn-secondary float-left">Redaguoti</button></a>
+                            <form action="{{ route('admin.users.destroy', $user) }}" method="POST" class="float-left">
+                                @csrf
+                                {{ method_field('DELETE') }}
+                                <button type="submit" class="btn btn-danger">Ištrinti</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endif
+                    @endforeach
+                    @endcan
                 </tbody>
             </table>
         </div>
