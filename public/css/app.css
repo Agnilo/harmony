@@ -674,6 +674,7 @@ footer{
     object-fit: cover;
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
+    max-height: 210px;
 }
 
 .benefit-card-bottom-margin{
