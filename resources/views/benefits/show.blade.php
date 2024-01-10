@@ -6,8 +6,8 @@
         <div class="benefit-show-picture">
             <img src="{{ asset('storage/' . $benefit->picture) }}" alt="{{ $benefit->benefit_name }}" class="img-fluid benefit-show-img">
         </div>
-        <div class="benefit-show-body">
-            <div class="row">
+        <div>
+            <div class="row benefit-show-body">
                 <div class="col-md-8 mb-8">
 
                 </div>

@@ -661,8 +661,9 @@ footer{
     align-items: flex-start;
     background-color: white;
     border-radius: 15px;
-    height: 380px;
-    max-height: 380px;
+    height: 375px;
+    max-height: 375px;
+    min-height: 375px;
     margin: 5px;
     color: var(--primary-text-color);
     box-shadow: 0 5px 15px #0000002e;
@@ -675,6 +676,7 @@ footer{
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
     max-height: 210px;
+    min-height: 210px;
 }
 
 .benefit-card-bottom-margin{
@@ -684,6 +686,7 @@ footer{
 .benefit-card-body{
     padding: 10px;
     max-height: 110px;
+    min-height: 110px;
 }
 
 .benefit-card-title{
@@ -707,6 +710,7 @@ footer{
     height: 100%;
     width: 100%;
     min-height: 55px;
+    max-height: 55px;
     border: 1px solid var(--third-color);
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
@@ -714,14 +718,50 @@ footer{
     color: white;
 }
 
+.benefit-show-container{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.benefit-show-picture{
+    width: 100%;
+}
+
 .benefit-show-img{
     width: 100%;
-    width: 100%;
+    height: 100%;
     object-fit: cover;
-    border-top-right-radius: 15px;
-    border-top-left-radius: 15px;
-    max-height: 210px;
+    max-height: 300px;
 }
+
+.benefit-show-body{
+    display: flex;
+    flex-direction: row;
+    padding-top: 40px;
+}
+
+.benefit-show-card-body{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+    background-color: white;
+    padding: 10px;
+    height: 250px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px #0000002e;
+}
+
+.benefit-show-card-title{
+    text-align: center;
+}
+
+.benefit-show-card-title h5 {
+    font-weight: 600;
+    font-size: 20px;
+}
+
 
 .hrr {
     height: 5px;
