@@ -75,6 +75,35 @@ class UserController extends Controller
         return redirect()->route('admin.users.index');
     }
 
+    public function create()
+    {
+        return view('admin.users.create');
+    }
+
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8',
+            'gender' => 'nullable',
+        ]);
+    
+        $user = User::create([
+            'first_name' => $validatedData['first_name'],
+            'last_name' => $validatedData['last_name'],
+            'email' => $validatedData['email'],
+            'password' => bcrypt($validatedData['password']),
+            'gender' => $validatedData['gender'],
+        ]);
+
+        $defaultRole = Role::where('name', 'User')->first();
+        $user->assignRole($defaultRole);
+    
+        return redirect()->route('admin.users.index')->with('success', 'Naudotojas sukurtas sėkmingai');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -94,12 +123,13 @@ class UserController extends Controller
         // return redirect()->route('admin.users.index');
 
         if (auth()->user()->can('delete-users')) {
+
             $user->roles()->detach();
             $user->delete();
 
             return redirect()->route('admin.users.index');
         } else {
-            
+
             return redirect()->route('admin.users.index');
         }
     }

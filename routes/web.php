@@ -45,8 +45,13 @@ Route::middleware(['auth.redirect'])->group(function () {
 Route::middleware(['can:edit-users'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('/naudotojai', [UserController::class, 'index'])->name('admin.users.index');
+
         Route::get('/naudotojai/{user}/redaguoti', [UserController::class, 'edit'])->name('admin.users.edit');
         Route::put('/naudotojai/{user}', [UserController::class, 'update'])->name('admin.users.update');
+
+        Route::get('/naudotojai/sukurti', [UserController::class, 'create'])->name('admin.users.create');
+        Route::post('/naudotojai', [UserController::class, 'store'])->name('admin.users.store');
+
         Route::delete('/naudotojai/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
     });
 });
