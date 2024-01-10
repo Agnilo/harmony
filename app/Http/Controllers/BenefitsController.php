@@ -112,7 +112,7 @@ class BenefitsController extends Controller
         }
     }
 
-    public function selectBenefit(Benefit $benefit)
+    public function selectBenefit(Benefits $benefit)
     {
         auth()->user()->benefits()->syncWithoutDetaching([$benefit->id]);
     
