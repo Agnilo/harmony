@@ -16,14 +16,14 @@
             @include('partials.alerts')
 
         </main>
-        <div class="card-body">
+        <div class="card-body card-body-index">
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">Id</th>
                         <th scope="col">Vardas</th>
                         <th scope="col">Pavardė</th>
-                        <th scope="col">Email</th>
+                        <th scope="col">El. Paštas</th>
                         <th scope="col">Vaidmuo</th>
                         <th scope="col">Veiksmas</th>
                     </tr>
