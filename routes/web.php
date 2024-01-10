@@ -32,15 +32,8 @@ Route::middleware(['auth.redirect'])->group(function () {
     Route::get('/privalumai', [BenefitsController::class, 'index'])->name('benefits');
     Route::get('/profilis', [ProfileController::class, 'index'])->name('profile');
     Route::get('/atostogos', [LeaveRequestController::class, 'index'])->name('leaveRequest');
+    Route::get('/kolegos', [UserController::class, 'index'])->name('colleagues');
 });
-
-// Route::namespace('Admin')
-//     ->prefix('admin')
-//     ->name('admin.')
-//     ->middleware('can:edit-users')
-//     ->group(function () {
-//         Route::resource('/users', 'UserController', ['except' => ['show', 'create', 'store']]);
-//     });
 
 Route::middleware(['can:edit-users'])->group(function () {
     Route::prefix('admin')->group(function () {
