@@ -661,8 +661,8 @@ footer{
     border: 1px solid white;
     background-color: white;
     border-radius: 15px;
-    height: 200px;
-    padding: 15px;
+    height: 380px;
+    max-height: 380px;
     margin: 5px;
     color: var(--primary-text-color);
     box-shadow: 0 5px 15px #0000002e;
@@ -670,8 +670,10 @@ footer{
 
 .benefit-img{
     width: 100%;
-    height: 40%;
+    width: 100%;
     object-fit: cover;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
 }
 
 .benefit-card-bottom-margin{
@@ -679,12 +681,11 @@ footer{
 }
 
 .benefit-card-body{
-    
+    padding: 10px;
 }
 
 .benefit-card-title{
     font-weight: 600;
-    border-bottom: 1px solid var(--primary-text-color);
     width: 100%;
 }
 
