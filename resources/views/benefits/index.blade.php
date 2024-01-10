@@ -23,19 +23,16 @@
                 <thead>
                     <tr>
                         <th scope="col">Id</th>
-                        <th scope="col">Vardas</th>
-                        <th scope="col">Pavardė</th>
-                        <th scope="col">El. Paštas</th>
-                        <th scope="col">Vaidmuo</th>
-                        <th scope="col">Patvirtintas</th>
-                        <th scope="col">Veiksmas</th>
+                        <th scope="col">Pavadinimas</th>
+                        <th scope="col">Aprašymas</th>
+                        <th scope="col">Veiksmai</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($benefits as $benefit)
                     <tr>
                         <th scope="row">{{$benefit->id}}</th>
-                        <td>{{$benefit->name}}</td>
+                        <td>{{$benefit->benefit_name}}</td>
                         <td>{{$benefit->description}}</td>
                         <td class="user-buttons">
                             
