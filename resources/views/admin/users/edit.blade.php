@@ -61,7 +61,7 @@
                 <button type="submit" class="btn btn-primary">
                     Atnaujinti
                 </button>
-                <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">
+                <a href="{{ route('admin.users.index') }}" class="btn btn-primary">
                     Grįžti atgal
                 </button>
             </form>
