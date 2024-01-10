@@ -249,6 +249,10 @@ footer{
     margin: auto;
 }
 
+.card-body-element-input{
+    width: 100%;
+}
+
 .card-body-element-add{
     width: 100%;
     display: flex;
