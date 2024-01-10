@@ -54,7 +54,12 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Sukurti</button>
+                <button type="submit" class="btn btn-primary">
+                    Sukurti
+                </button>
+                <a href="{{ route('admin.users.index') }}" class="btn btn-primary">
+                    Atšaukti
+                </a>
             </form>
 
         </div>
