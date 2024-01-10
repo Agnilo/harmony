@@ -9,7 +9,12 @@
         <div>
             <div class="row benefit-show-body">
                 <div class="col-md-8 mb-8">
-
+                    <div class="benefit-show-card-intro">
+                        <p>{{ $benefit->introduction }}</p>
+                    </div>
+                    <div class="benefit-show-card-content">
+                        <p>{{ $benefit->content }}</p>
+                    </div>
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="benefit-show-card-body">
@@ -18,8 +23,11 @@
                         </div>
                         <div class="benefit-show-card-price">
                             @if($benefit->price > 0)
-                            <p><span style="font-weight: bold">Kaina:</span> {{ $benefit->price }} €</p>
+                            
                             @endif
+
+                            <p><span style="font-weight: bold">Kaina:</span> {{ $benefit->price }} €</p>
+                            
                         </div>
                         <div class="benefit-show-button">
 
