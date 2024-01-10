@@ -62,6 +62,8 @@ Route::middleware(['can:edit-users'])->group(function () {
 
 Route::middleware(['can:create-benefit'])->group(function () {
     Route::prefix('superuser')->group(function () {
+        Route::get('/privalumai', [BenefitsController::class, 'index'])->name('benefits.index');
+
         Route::get('/privalumai/sukurti', [BenefitsController::class, 'create'])->name('benefits.create');
         Route::post('/privalumai', [BenefitsController::class, 'store'])->name('benefits.store');
     });
