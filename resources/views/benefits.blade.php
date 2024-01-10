@@ -11,16 +11,6 @@
     </div>
     @endcan
 
-    @foreach($benefits as $benefit)
-    <div>
-        <h2>{{ $benefit->benefit_name }}</h2>
-        <p>{{ $benefit->description }}</p>
-        <img src="{{ asset('storage/' . $benefit->picture) }}" alt="{{ $benefit->benefit_name }}" width="200">
-        <p>Price: {{ $benefit->price }}</p>
-    </div>
-    @endforeach
-
-
     <div class="row">
         @foreach($benefits as $benefit)
         <div class="col-md-4 mb-4 benefit-card-bottom-margin">
@@ -33,7 +23,9 @@
                     <p class="benefit-card-text">{{ $benefit->description }}</p>
                 </div>
                 <div class="benefit-card-footer">
-                    <p><span style="font-weight: bold">Kaina:</span> {{ $benefit->price }}€</p>
+                @if($benefit->price > 0)
+                    <p><span style="font-weight: bold">Kaina:</span> {{ $benefit->price }} €</p>
+                @endif
                 </div>
             </div>
         </div>
