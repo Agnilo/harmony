@@ -10,7 +10,7 @@
             </div>
         </div>
         
-        <div>
+        <div class="create-new-user-button">
             <a href="{{ route('admin.users.create') }}" class="btn btn-primary">
                     Sukurti naudotoją
             </a>

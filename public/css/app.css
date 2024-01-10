@@ -538,6 +538,10 @@ footer{
 
 }
 
+.create-new-user-button{
+    padding: 1.5rem 0;
+}
+
 .btn-primary{
     color: white;
     background-color: var(--primary-color);
