@@ -22,7 +22,7 @@
 
 
     <div class="row">
-        @foreach($users as $user)
+        @foreach($benefits as $benefit)
         <div class="col-md-3 mb-3 colleagues-card-bottom-margin">
             <div class="colleagues-card">
                 <div class="colleagues-card-body">
