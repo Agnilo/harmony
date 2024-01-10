@@ -44,7 +44,7 @@
                         <td>{{$user->last_name}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{implode(', ', $user->roles()->get()->pluck('name')->toArray())}}</td>
-                        <td>{{$user->is_verified}}</td>
+                        <td>{{ $user->is_verified == 0 ? 'Ne' : 'Taip' }}</td>
                         <td class="user-buttons">
                             <a href="{{route('admin.users.edit', $user->id)}}">
                                 <button type="button" class="btn btn-secondary float-left user-button-inside">Redaguoti</button>
@@ -69,7 +69,7 @@
                         <td>{{$user->last_name}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{implode(', ', $user->roles()->get()->pluck('name')->toArray())}}</td>
-                        <td>{{$user->is_verified}}</td>
+                        <td>{{ $user->is_verified == 0 ? 'Ne' : 'Taip' }}</td>
                         <td class="user-buttons">
                             <a href="{{route('admin.users.edit', $user->id)}}">
                                 <button type="button" class="btn btn-secondary float-left user-button-inside">Redaguoti</button>
