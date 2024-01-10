@@ -16,6 +16,8 @@ class BenefitsController extends Controller
 
     public function show()
     {
+        $benefits = Benefits::all();
+        
         return view('benefits.show', compact('benefits'));
     }
 
