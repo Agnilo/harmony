@@ -12,10 +12,4 @@ class Benefits extends Model
         return $this->hasMany(User::class);
     }
 
-    public function index()
-    {
-        $benefits = Benefits::all(); // Fetch all benefits from the database
-
-        return view('benefits', compact('benefits')); // Pass benefits data to the view
-    }
 }

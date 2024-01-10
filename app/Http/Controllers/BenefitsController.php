@@ -8,6 +8,8 @@ class BenefitsController extends Controller
 {
     public function index()
     {
-        return view('benefits');
+        $benefits = Benefits::all(); // Fetch all benefits from the database
+
+        return view('benefits', compact('benefits')); // Pass benefits data to the view
     }
 }
