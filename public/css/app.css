@@ -66,6 +66,10 @@ main{
     top: 25%;
 }
 
+.dropdown-item a{
+    color: black;
+}
+
 .home-background-main{
     position: absolute;
     width: 100%;
