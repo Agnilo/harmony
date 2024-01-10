@@ -240,6 +240,7 @@ footer{
 
 .card-body-element{
     padding-bottom: 10px;
+    padding-left: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
