@@ -59,6 +59,7 @@ class UserController extends Controller
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->email = $request->email;
+        $user->is_verified = $request->is_verified;
 
         //$user->syncRoles($request->roles);
 
@@ -96,6 +97,7 @@ class UserController extends Controller
             'email' => $validatedData['email'],
             'password' => bcrypt($validatedData['password']),
             'gender' => $validatedData['gender'],
+            
         ]);
 
         $defaultRole = Role::where('name', 'User')->first();
