@@ -395,14 +395,11 @@ footer{
 .web-topbar-header-userarea{
     align-self: center;
     margin-left: auto;
+    list-style-type: none;
 }
 
 .web-topbar-header-userarea li a{
     color: black;
-}
-
-.web-topbar-header-userarea ul::marker{
-    display: none;
 }
 
 .web-topbar-body{
