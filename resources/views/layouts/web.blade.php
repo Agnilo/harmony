@@ -53,11 +53,27 @@
         <header class="web-topbar">
             <div class="web-topbar-header">
                 <div class="web-topbar-header-title">
-                    {{ Route::currentRouteName() }} 
-                    
+                    {{ Route::currentRouteName() }}
+
                 </div>
                 <div class="web-topbar-header-userarea">
-                    logo ar kažkas
+                    @auth
+                    <li class="nav-item dropdown links">
+                        <a id="navbarDropdown" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('Atsijungti') }}
+                            </a>
+                            <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    @endauth
                 </div>
             </div>
             <div class="web-topbar-body">
