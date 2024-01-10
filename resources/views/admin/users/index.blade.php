@@ -3,13 +3,18 @@
 @section('content')
 <div class="web-child-content">
     <div class="container">
-        <br>
+        
         <div class="row justify-content-md-center">
             <div class="col-md-auto">
                 <h2>Naudotojai</h2>
             </div>
         </div>
-        <br>
+        
+        <div>
+            <a href="{{ route('admin.users.create') }}" class="btn btn-primary">
+                    Sukurti naudotoją
+            </a>
+        </div>
 
         <main class="py-4">
 
