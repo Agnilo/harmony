@@ -301,6 +301,7 @@ footer{
 .login-btn{
     background-color: var(--primary-text-color);
     border-color: var(--primary-text-color);
+    color: white;
 }
 .login-btn:hover,
 .login-btn:active,
