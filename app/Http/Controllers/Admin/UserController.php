@@ -35,16 +35,6 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    // public function edit(User $user)
-    // {
-
-    //     if (!$user->can('edit-users')) {
-    //         return redirect()->route('admin.users.index');
-    //     }
-
-    //     $roles = Role::all();
-    //     return view('admin.users.edit', compact('user', 'roles'));
-    // }
 
     public function edit(User $user)
     {
@@ -52,10 +42,6 @@ class UserController extends Controller
             $roles = Role::all();
             return view('admin.users.edit', compact('user', 'roles'));
         } else{
-        // if ($user->hasRole('Admin') || $user->hasRole('SuperUser')) {
-        //     $roles = Role::all();
-        //     return view('admin.users.edit', compact('user', 'roles'));   
-        // }
 
         return redirect()->route('admin.users.index');
         }
@@ -72,6 +58,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
         $user->email = $request->email;
 
         //$user->syncRoles($request->roles);

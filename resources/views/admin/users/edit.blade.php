@@ -9,15 +9,11 @@
                 <h2><a style="color: #262626">Redaguoti vartotoją {{$user->first_name}}</a></h2>
             </div>
         </div>
-        <br>
-        <div class="row justify-content-md-center" style="background-color: lightgrey">
-            <br>
-        </div>
-        <div class="card-body">
+        <div class="card-body card-body-index">
             <form action="{{route('admin.users.update', $user) }}" method="POST">
 
                 <div class="form-group row">
-                    <label for="email" class="col-md-2 col-form-label text-md-right">Email</label>
+                    <label for="email" class="col-md-2 col-form-label text-md-right">El. Paštas</label>
 
                     <div class="col-md-6">
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" required autocomplete="email" autofocus>
@@ -35,6 +31,20 @@
 
                     <div class="col-md-6">
                         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="first_name" value="{{ $user->first_name }}" required autofocus>
+
+                        @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="last_name" class="col-md-2 col-form-label text-md-right">Pavardė</label>
+
+                    <div class="col-md-6">
+                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="last_name" value="{{ $user->last_name }}" required autofocus>
 
                         @error('name')
                         <span class="invalid-feedback" role="alert">
