@@ -13,7 +13,7 @@ class VerifyUser
         if(auth()->user()->is_verified){
             return $next($request);
         } else {
-            return redirect('verification');
+            return redirect('unverified');
         }
     }
 }
