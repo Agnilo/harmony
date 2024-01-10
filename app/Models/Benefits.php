@@ -12,4 +12,11 @@ class Benefits extends Model
         return $this->hasMany(User::class);
     }
 
+    protected $fillable = [
+        'benefit_name',
+        'description',
+        'picture',
+        'price',
+    ];
+
 }

@@ -31,11 +31,18 @@ class BenefitsController extends Controller
         $validatedData = $request->validate([
             'benefit_name' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'picture' => 'nullable|string',
+            'picture' => 'required|image|max:2048',
             'price' => 'required|numeric',
         ]);
 
-        Benefits::create($validatedData);
+        $picturePath = $request->file('picture')->store('benefit_pictures', 'public');
+
+        Benefits::create([
+            'benefit_name' => $validatedData['benefit_name'],
+            'description' => $validatedData['description'],
+            'picture' => $picturePath,
+            'price' => $validatedData['price'],
+        ]);
 
         return redirect()->route('benefits.index')->with('success', 'Privalumas sukurtas sėkmingai');
     }
