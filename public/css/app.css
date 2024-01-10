@@ -2,6 +2,7 @@
     --primary-color:#547f44;
     --secondary-color: #e7fcd8;
     --primary-backgroung-color: #f6fbf5;
+    --primary-text-color: #51614b;
 }
 
 
@@ -629,13 +630,13 @@ footer{
     height: 200px;
     padding: 15px;
     margin: 5px;
-    color: var(--primary-color);
+    color: var(--primary-text-color);
     box-shadow: 0 5px 15px #0000002e;
 }
 
 .colleagues-card-title{
     font-weight: 600;
-    border-bottom: 1px solid var(--primary-color);
+    border-bottom: 1px solid var(--primary-text-color);
     width: 100%;
 }
 
