@@ -547,14 +547,13 @@ footer{
 }
 
 .profile-information-table{
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-    border: none;
+    display: flex;
+    padding: 20px;
 }
 
 .profile-information-row{
     display: table-row;
+    color: black;
 }
 
 .profile-information-cell {
@@ -588,10 +587,13 @@ footer{
 .profile-eidt-employee-content{
     border-left: 1px solid var(--primary-backgroung-color);
     flex: 1;
+    padding: 0 50px;
+    width: 100%;
 }
 
 .profile-edit-employee-content-padding{
-    padding: 25px;
+    display: flex;
+    flex-direction: column;
 }
 
 .user-buttons{
