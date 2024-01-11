@@ -4,7 +4,7 @@
 <div class="web-child-content">
     <div class="benefit-show-container">
         <div class="benefit-show-picture">
-            <img src="{{ asset('storage/' . $benefits->picture) }}" alt="{{ $benefits->benefit_name }}" class="img-fluid benefit-show-img">
+            <img src="{{ asset('storage/' . $benefit->picture) }}" alt="{{ $benefits->benefit_name }}" class="img-fluid benefit-show-img">
         </div>
         <div>
             <div class="row benefit-show-body">
