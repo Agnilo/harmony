@@ -4,6 +4,7 @@
 <div class="web-child-content">
     @foreach ($leaveRequests as $leaveRequest)
     <p>{{ $leaveRequest->reason }}</p>
+    <p>{{ $leaveRequest->user->first_name }}</p>
     <!-- Add more details as needed -->
 
     <!-- Buttons for each leave request -->
