@@ -83,13 +83,6 @@
                             </tr>
                             @endforeach
                         </table>
-                        <h2>Selected Benefits:</h2>
-                        <ul>
-                            @foreach ($selectedBenefits as $benefit)
-                            <li>{{ $benefit->benefit_name }}</li>
-                            @endforeach
-                        </ul>
-
                     </div>
                 </div>
             </div>
