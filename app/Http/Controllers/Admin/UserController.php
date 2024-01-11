@@ -68,16 +68,29 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
-        $user->email = $request->email;
-        $user->is_verified = $request->is_verified;
+        $validatedData = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'is_verified' => 'nullable|boolean',
+    
+            'work_hours' => 'required|numeric',
+            'work_days' => 'required|integer',
+            'overtime' => 'required|numeric',
+            'gross' => 'required|numeric',
+            'info' => 'nullable|string|max:255',
+        ]);
 
-        //$user->syncRoles($request->roles);
+        $user->fill([
+            'first_name' => $validatedData['first_name'],
+            'last_name' => $validatedData['last_name'],
+            'email' => $validatedData['email'],
+            'is_verified' => $validatedData['is_verified'],
+        ]);
 
         $validateRoleIds = $request->roles;
         $roles = Role::whereIn('id', $validateRoleIds)->get();
-        $user->syncRoles($roles);
+        $user->syncRoles($roles);        
 
         if ($user->save()) {
             $request->session()->flash('success', 'Vartotojas ' . $user->first_name . ' buvo atnaujintas');
@@ -85,13 +98,14 @@ class UserController extends Controller
             $request->session()->flash('warning', 'Iškilo problema atnaujinant vartotoją');
         }
 
+
         $payrollData = [
-            'work_hours' => $request->work_hours,
-            'work_days' => $request->work_days,
-            'overtime' => $request->overtime,
-            'gross' => $request->gross,
-            'net' => $this->calculateNetSalary($request->gross, $request),
-            'info' => $request->info,
+            'work_hours' => $validatedData['work_hours'],
+            'work_days' => $validatedData['work_days'],
+            'overtime' => $validatedData['overtime'],
+            'gross' => $validatedData['gross'],
+            'net' => $this->calculateNetSalary($validatedData['gross'], $request),
+            'info' => $validatedData['info'],
         ];
 
         if ($user->payroll) {
@@ -114,8 +128,8 @@ class UserController extends Controller
         $taxRate = 0.25;
         $healthInsuranceRate = 0.15;
 
-        $userWorkHours = $request->work_hours;
-        $userWorkDays = $request->work_days;
+        $userWorkHours = $request->work_hours ?? 0;
+        $userWorkDays = $request->work_days ?? 0;
 
         //hour per week
         if ($userWorkDays != 0) {
@@ -184,6 +198,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        
         $validatedData = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
