@@ -36,9 +36,9 @@
                                             <div>
                                                 <h5>Work Hours: {{ $workHours }}</h5>
                                                 <h5>Work Days: {{ $workDays }}</h5>
-                                                <h5>Gross Salary: ${{ $grossSalary }}</h5>
-                                                <h5>Net Salary: ${{ $netSalary }}</h5>
-                                                <h5>Info: ${{ $info }}</h5>
+                                                <h5>Gross Salary: {{ $grossSalary }}€</h5>
+                                                <h5>Net Salary: {{ $netSalary }}€</h5>
+                                                <h5>Info: {{ $info }}</h5>
                                             </div>
                                         </div>
                                     </div>
