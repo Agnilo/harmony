@@ -97,9 +97,11 @@ class UserController extends Controller
             'is_verified' => $validatedData['is_verified'],
         ]);
 
-        dd($validateRoleIds);
+        
 
         $validateRoleIds = $request->roles;
+
+        dd($validateRoleIds);
         $roles = Role::whereIn('id', $validateRoleIds)->get();
         $user->syncRoles($roles);        
 
