@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
 use App\Models\LeaveRequest;
+use App\Models\Payroll;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -92,18 +93,6 @@ class UserController extends Controller
             'is_verified' => $validatedData['is_verified'],
         ]);
 
-        $leaveRequest = null;
-        $leaveType = null;
-
-        if ($request->leave_request_id) {
-            $leaveRequest = LeaveRequest::findOrFail($request->leave_request_id);
-            $leaveType = $leaveRequest ? $leaveRequest->leave_type : null;
-        }
-
-        dd($leaveType);
-
-
-
         $validateRoleIds = $request->roles;
 
         if (!is_array($validateRoleIds)) {
@@ -130,14 +119,16 @@ class UserController extends Controller
             'info' => $payrollValidation['info'],
         ];
 
-        if ($user->payroll) {
-            \Log::info('Before update, work_hours: ' . $payrollData['work_hours']);
+        if ($user->payroll) {     
             $user->payroll->update($payrollData);
-            \Log::info('After update, work_hours: ' . $user->payroll->work_hours);
         } else {
-            Log::info('Creating new payroll');
             $user->payroll()->create($payrollData);
         }
+
+        $payroll = Payroll::all();
+
+        $leaveRequestIds = $request->input('leave_request_ids', []);
+        $payroll->leaveRequests()->sync($leaveRequestIds);
 
         return redirect()->route('admin.users.index');
     }
