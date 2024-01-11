@@ -47,23 +47,25 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function  roles(){
+    public function  roles()
+    {
         return $this->belongsToMany(Role::class);
     }
 
-    public function hasAnyRole($role){
+    public function hasAnyRole($role)
+    {
 
-        if($this->roles()->whereIn('name', $role)->first()){
+        if ($this->roles()->whereIn('name', $role)->first()) {
             return true;
         }
 
         return false;
     }
 
-    public function benefits()
-{
-    return $this->belongsToMany(Benefits::class, 'user_benefits')->withTimestamps();
-}
+    public function selectedBenefits()
+    {
+        return $this->belongsToMany(Benefits::class, 'user_benefits')->withTimestamps();
+    }
 
     // public function hasRole($role){
 
@@ -72,6 +74,6 @@ class User extends Authenticatable
     //     }
 
     //     return false;
-        
+
     // }
 }

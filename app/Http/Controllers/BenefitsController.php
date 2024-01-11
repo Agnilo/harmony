@@ -16,7 +16,11 @@ class BenefitsController extends Controller
 
     public function show(Benefits $benefit)
     {
-        return view('benefits.show', compact('benefit'));
+        $user = Auth::user()->load('selectedBenefits');
+        $benefits = Benefits::all();
+
+        return view('benefits.show', compact('benefits', 'user'));
+
     }
 
     public function superuserindex()
