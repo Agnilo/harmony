@@ -68,6 +68,9 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+
+        dd($request->all());
+
         $validatedData = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
