@@ -16,9 +16,10 @@ class BenefitsController extends Controller
 
     public function index()
     {
-        $benefits = Benefits::all(); // Fetch all benefits from the database
+        $user = Auth::user()->load('selectedBenefits');
+        $benefits = Benefits::all();
 
-        return view('benefits', compact('benefits')); // Pass benefits data to the view
+        return view('benefits', compact('benefits', 'user'));
     }
 
     public function show(Benefits $benefit)
@@ -31,9 +32,10 @@ class BenefitsController extends Controller
 
     public function superuserindex()
     {
+        $user = Auth::user()->load('selectedBenefits');
         $benefits = Benefits::all(); // Fetch all benefits from the database
 
-        return view('benefits.index', compact('benefits')); // Pass benefits data to the view
+        return view('benefits.index', compact('benefits', 'user')); // Pass benefits data to the view
     }
 
     public function edit(Benefits $benefit)
