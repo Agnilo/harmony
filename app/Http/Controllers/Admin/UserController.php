@@ -8,6 +8,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
+use App\Models\LeaveRequest;
 
 class UserController extends Controller
 {
@@ -39,8 +40,11 @@ class UserController extends Controller
     public function edit(User $user)
     {
         if (auth()->user()->can('edit-users')) {
+
             $roles = Role::all();
-            return view('admin.users.edit', compact('user', 'roles'));
+            $payroll = $user->payroll;
+
+            return view('admin.users.edit', compact('user', 'roles', 'payroll'));
         } else {
 
             return redirect()->route('admin.users.index');
@@ -73,7 +77,88 @@ class UserController extends Controller
             $request->session()->flash('warning', 'Iškilo problema atnaujinant vartotoją');
         }
 
+        $payrollData = [
+            'year' => $request->year,
+            'month' => $request->month,
+            'work_hours' => $request->work_hours,
+            'work_days' => $request->work_days,
+            'leave_hours' => $request->leave_hours,
+            'overtime' => $request->overtime,
+            'gross' => $request->gross,
+            'net' => $this->calculateNetSalary($request->gross, $request),
+            'info' => $request->info,
+        ];
+
+        if ($user->payroll) {
+
+            $user->payroll->update($payrollData);
+        } else {
+
+            $user->payroll()->create($payrollData);
+        }
+
         return redirect()->route('admin.users.index');
+    }
+
+    private function calculateNetSalary($gross, $request)
+    {
+
+        $userBenefits = Auth::user()->selectedBenefits;
+
+        $taxRate = 0.25;
+        $healthInsuranceRate = 0.15;
+
+        $userWorkHours = $request->work_hours;
+        $userWorkDays = $request->work_days;
+
+        $userWorkHoursPerDay = $userWorkHours / $userWorkDays; //hour per week
+
+        $baseHours = $userWorkHours * 4; //Base amount of hours
+
+        $baseHourlyRate = $gross / $baseHours;  //general hourly rate
+
+        $totalDeductionRate = $taxRate + $healthInsuranceRate; //general tax deduction
+
+        $overtimeSum = 0;
+        $unpaidLeaveDeduction = 0;
+        $paidLeaveSum = 0;
+
+
+        if ($request->leave_request_id) {
+            
+            $leaveRequest = LeaveRequest::findOrFail($request->leave_request_id); // Fetch the leave request details
+
+            $leaveMonth = date('m', strtotime($leaveRequest->start_date));
+            $leaveYear = date('Y', strtotime($leaveRequest->start_date));
+
+            if ($leaveMonth == $request->month && $leaveYear == $request->year) {
+                
+                if ($leaveRequest->leave_type === 'unpaid_leave') { // Determine if it's a paid or unpaid leave
+
+                    $unpaidleaveHours = $leaveRequest->days * $userWorkHoursPerDay; //unpaid leave total work hours
+
+                    $unpaidLeaveDeduction = $unpaidleaveHours * $baseHourlyRate; //unpain leave deduction 
+
+                } elseif ($leaveRequest->leave_type === 'paid_leave') {
+
+                    $paidLeaveHours = $leaveRequest->days * $userWorkHoursPerDay; //paid leave total work hours
+
+                    $paidLeaveSum = $paidLeaveHours * ($baseHourlyRate * 1.1); //paid leave sum
+                }
+            }
+
+            $overtimeSum = ($request->overtime !== null && $request->overtime !== 0) ? ($request->overtime * $baseHourlyRate) * 1.5 : 0;
+
+            $totalBenefitPrice = $userBenefits->sum('price');
+
+            $grossWithoutPaidLeave = ($baseHours - $paidLeaveHours) * $baseHourlyRate;
+
+            $gross = $grossWithoutPaidLeave + $paidLeaveSum - $unpaidLeaveDeduction - $totalBenefitPrice + $overtimeSum;
+
+            $net = $gross * (1 - $totalDeductionRate);
+        }
+
+        return $net;
     }
 
     public function create()
@@ -89,8 +174,17 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
             'gender' => 'nullable',
+            'year' => 'required|integer',
+            'month' => 'required|integer',
+            'work_hours' => 'required|numeric',
+            'work_days' => 'required|integer',
+            'leave_hours' => 'required|numeric',
+            'overtime' => 'required|numeric',
+            'gross' => 'required|numeric',
+            'net' => 'required|numeric',
+            'info' => 'nullable|string|max:255',
         ]);
-    
+
         $user = User::create([
             'first_name' => $validatedData['first_name'],
             'last_name' => $validatedData['last_name'],
@@ -98,12 +192,24 @@ class UserController extends Controller
             'password' => bcrypt($validatedData['password']),
             'gender' => $validatedData['gender'],
             'is_verified' => true,
-            
+
         ]);
 
         $defaultRole = Role::where('name', 'User')->first();
         $user->assignRole($defaultRole);
-    
+
+        $user->payroll()->create([
+            'year' => $validatedData['year'],
+            'month' => $validatedData['month'],
+            'work_hours' => $validatedData['work_hours'],
+            'work_days' => $validatedData['work_days'],
+            'leave_hours' => $validatedData['leave_hours'],
+            'overtime' => $validatedData['overtime'],
+            'gross' => $validatedData['gross'],
+            'net' => $validatedData['net'],
+            'info' => $validatedData['info'],
+        ]);
+
         return redirect()->route('admin.users.index')->with('success', 'Naudotojas sukurtas sėkmingai');
     }
 
@@ -118,6 +224,8 @@ class UserController extends Controller
 
         if (auth()->user()->can('delete-users')) {
 
+            $user->payroll()->delete();
+
             $user->roles()->detach();
             $user->delete();
 
@@ -127,12 +235,4 @@ class UserController extends Controller
             return redirect()->route('admin.users.index');
         }
     }
-
-    public function selectBenefit(Benefit $benefit)
-    {
-        auth()->user()->benefits()->syncWithoutDetaching([$benefit->id]);
-    
-        return redirect()->route('benefits')->with('success', 'Privalumas pasirinktas sėkmingai.');
-    }
-
 }

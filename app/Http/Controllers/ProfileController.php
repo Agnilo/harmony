@@ -12,7 +12,8 @@ class ProfileController extends Controller
 
         $user = auth()->user();
         $selectedBenefits = $user->selectedBenefits;
+        $payroll = $user->payroll;
 
-        return view('profile', compact('user', 'selectedBenefits'));
+        return view('profile', compact('user', 'selectedBenefits', 'payroll'));
     }
 }

@@ -23,6 +23,27 @@
                             <li>{{ $benefit->benefit_name }}</li>
                             @endforeach
                         </ul>
+
+                        @extends('layouts.app')
+
+
+                            <div class="row justify-content-center">
+                                <div class="col-md-8">
+                                    <div class="card">
+                                        <div class="card-header">Payroll Information</div>
+
+                                        <div class="card-body">
+                                            <div>
+                                                <h5>Work Hours: {{ $payroll->work_hours }}</h5>
+                                                <h5>Work Days: {{ $payroll->work_days }}</h5>
+                                                <h5>Gross Salary: ${{ $payroll->gross }}</h5>
+                                                <h5>Net Salary: ${{ $payroll->net }}</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                     </div>
                 </div>
             </div>
