@@ -120,7 +120,7 @@ class UserController extends Controller
             $user->payroll()->create($payrollData);
         }
 
-       // return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index');
     }
 
     private function calculateNetSalary($gross, $request)
@@ -135,62 +135,53 @@ class UserController extends Controller
         $userWorkHours = $request->work_hours ?? 0;
         $userWorkDays = $request->work_days ?? 0;
 
-        //hour per week
-        if ($userWorkDays != 0) {
-            $userWorkHoursPerDay = $userWorkHours / $userWorkDays;
-        } else {
-            $userWorkHoursPerDay = 0;
-        }
+        // Calculate work hours per day
+        $userWorkHoursPerDay = ($userWorkDays != 0) ? ($userWorkHours / $userWorkDays) : 0;
 
-        $baseHours = $userWorkHours * 4; //Base amount of hours
+        // Calculate base hours
+        $baseHours = $userWorkHours * 4; // Base amount of hours
 
-        //general hourly rate
-        if ($baseHours != 0) {
-            $baseHourlyRate = $gross / $baseHours;
-        } else {
-            $baseHourlyRate = 0;
-        }
+        // Calculate base hourly rate
+        $baseHourlyRate = ($baseHours != 0) ? ($gross / $baseHours) : 0;
 
-        $totalDeductionRate = $taxRate + $healthInsuranceRate; //general tax deduction
+        // Calculate total deduction rate
+        $totalDeductionRate = $taxRate + $healthInsuranceRate;
 
         $overtimeSum = 0;
         $unpaidLeaveDeduction = 0;
         $paidLeaveSum = 0;
 
-
         if ($request->leave_request_id) {
-
-            $leaveRequest = LeaveRequest::findOrFail($request->leave_request_id); // Fetch the leave request details
+            $leaveRequest = LeaveRequest::findOrFail($request->leave_request_id);
 
             $leaveMonth = date('m', strtotime($leaveRequest->start_date));
             $leaveYear = date('Y', strtotime($leaveRequest->start_date));
 
             if ($leaveMonth == $request->month && $leaveYear == $request->year) {
-
-                if ($leaveRequest->leave_type === 'unpaid_leave') { // Determine if it's a paid or unpaid leave
-
-                    $unpaidleaveHours = $leaveRequest->days * $userWorkHoursPerDay; //unpaid leave total work hours
-
-                    $unpaidLeaveDeduction = $unpaidleaveHours * $baseHourlyRate; //unpain leave deduction 
-
+                if ($leaveRequest->leave_type === 'unpaid_leave') {
+                    $unpaidleaveHours = $leaveRequest->days * $userWorkHoursPerDay;
+                    $unpaidLeaveDeduction = $unpaidleaveHours * $baseHourlyRate;
                 } elseif ($leaveRequest->leave_type === 'paid_leave') {
-
-                    $paidLeaveHours = $leaveRequest->days * $userWorkHoursPerDay; //paid leave total work hours
-
-                    $paidLeaveSum = $paidLeaveHours * ($baseHourlyRate * 1.1); //paid leave sum
+                    $paidLeaveHours = $leaveRequest->days * $userWorkHoursPerDay;
+                    $paidLeaveSum = $paidLeaveHours * ($baseHourlyRate * 1.1);
                 }
             }
-
-            $overtimeSum = ($request->overtime !== null && $request->overtime !== 0) ? ($request->overtime * $baseHourlyRate) * 1.5 : 0;
-
-            $totalBenefitPrice = $userBenefits->sum('price');
-
-            $grossWithoutPaidLeave = ($baseHours - $paidLeaveHours) * $baseHourlyRate;
-
-            $gross = $grossWithoutPaidLeave + $paidLeaveSum - $unpaidLeaveDeduction - $totalBenefitPrice + $overtimeSum;
-
-            $net = $gross * (1 - $totalDeductionRate);
         }
+
+        // Calculate overtime sum
+        $overtimeSum = ($request->overtime !== null && $request->overtime !== 0) ? ($request->overtime * $baseHourlyRate) * 1.5 : 0;
+
+        // Calculate total benefit price
+        $totalBenefitPrice = $userBenefits->sum('price');
+
+        // Calculate gross without paid leave
+        $grossWithoutPaidLeave = ($baseHours - ($paidLeaveHours ?? 0)) * $baseHourlyRate;
+
+        // Calculate gross with all adjustments
+        $gross = $grossWithoutPaidLeave + $paidLeaveSum - $unpaidLeaveDeduction - $totalBenefitPrice + $overtimeSum;
+
+        // Calculate net salary
+        $net = $gross * (1 - $totalDeductionRate);
 
         return $net;
     }
