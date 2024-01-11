@@ -4,29 +4,29 @@
 <div class="web-child-content">
     <div class="benefit-show-container">
         <div class="benefit-show-picture">
-            <img src="{{ asset('storage/' . $benefit->picture) }}" alt="{{ $benefit->benefit_name }}" class="img-fluid benefit-show-img">
+            <img src="{{ asset('storage/' . $benefits->picture) }}" alt="{{ $benefits->benefit_name }}" class="img-fluid benefit-show-img">
         </div>
         <div>
             <div class="row benefit-show-body">
                 <div class="col-md-8 mb-8 benefit-show-card-text">
                     <div class="benefit-show-card-intro">
-                        <p>{{ $benefit->introduction }}</p>
+                        <p>{{ $benefits->introduction }}</p>
                     </div>
                     <div class="benefit-show-card-content">
-                        <p>{{ $benefit->content }}</p>
+                        <p>{{ $benefits->content }}</p>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4 benefit-show-card-box">
                     <div class="benefit-show-card-body">
                         <div class="benefit-show-card-title">
-                            <h5>{{ $benefit->benefit_name }}</h5>
+                            <h5>{{ $benefits->benefit_name }}</h5>
                         </div>
                         <div class="benefit-show-card-price">
-                            @if($benefit->price > 0)
+                            @if($benefits->price > 0)
 
                             @endif
 
-                            <p><span style="font-weight: bold">Kaina:</span> {{ $benefit->price }} €</p>
+                            <p><span style="font-weight: bold">Kaina:</span> {{ $benefits->price }} €</p>
 
                         </div>
                         <div class="benefit-show-button">
