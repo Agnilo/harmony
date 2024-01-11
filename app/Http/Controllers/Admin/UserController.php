@@ -93,9 +93,9 @@ class UserController extends Controller
             \Log::info('Payroll validated successfully');
         } catch (\Illuminate\Validation\ValidationException $e) {
             \Log::info('Validation failed: ' . json_encode($e->errors()));
+            // Define an empty array for $payrollValidation in case of validation failure
+            $payrollValidation = [];
         }
-
-        $validatedData = array_merge($userValidation, $payrollValidation);
 
         \Log::info('Before user fill');
 
