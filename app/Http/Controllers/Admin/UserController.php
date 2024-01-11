@@ -119,11 +119,21 @@ class UserController extends Controller
         $userWorkHours = $request->work_hours;
         $userWorkDays = $request->work_days;
 
-        $userWorkHoursPerDay = $userWorkHours / $userWorkDays; //hour per week
+        //hour per week
+        if ($userWorkDays != 0) {
+            $userWorkHoursPerDay = $userWorkHours / $userWorkDays;
+        } else {
+            $userWorkHoursPerDay = 0;
+        }
 
         $baseHours = $userWorkHours * 4; //Base amount of hours
 
-        $baseHourlyRate = $gross / $baseHours;  //general hourly rate
+        //general hourly rate
+        if ($baseHours != 0) {
+            $baseHourlyRate = $gross / $baseHours;
+        } else {
+            $baseHourlyRate = 0;
+        }
 
         $totalDeductionRate = $taxRate + $healthInsuranceRate; //general tax deduction
 
