@@ -6,6 +6,12 @@
         <form method="POST" action="{{ route('leaveRequest.store') }}" enctype="multipart/form-data">
             @csrf
 
+            <!-- Leave Name -->
+            <div class="form-group">
+                <label for="leave_type">Leave Name</label>
+                <text id="leave_type" name="leave_type" class="form-control" rows="3"></text>
+            </div>
+
             <!-- Leave Type -->
             <div class="form-group">
                 <label for="leave_type">Leave Type</label>

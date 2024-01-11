@@ -49,6 +49,7 @@ class LeaveRequestController extends Controller
 
 
         $validatedData = $request->validate([
+            'leaveRequest_name' => 'required|string|max:255',
             'leave_type' => 'required|in:paid_leave,unpaid_leave',
             'reason' => 'required|string|max:255',
             'start_date' => 'required|date|after_or_equal:today',
@@ -61,6 +62,7 @@ class LeaveRequestController extends Controller
         $filePath = $request->file('file_upload') ? $request->file('file_upload')->store('leaveRequests', 'public') : null;
 
         $leaveRequest = new LeaveRequest([
+            'leaveRequest_name' => $validatedData['leaveRequest_name'],
             'leave_type' => $validatedData['leave_type'],
             'reason' => $validatedData['reason'],
             'start_date' => $validatedData['start_date'],
@@ -86,6 +88,7 @@ class LeaveRequestController extends Controller
 
         
         $validatedData = $request->validate([
+            'leaveRequest_name' => 'required|string|max:255',
             'leave_type' => 'required|in:paid_leave,unpaid_leave',
             'reason' => 'required|string|max:255',
             'start_date' => 'required|date|after_or_equal:today',
