@@ -27,7 +27,6 @@ class BenefitsController extends Controller
         $benefits = Benefits::all();
 
         return view('benefits.show', compact('benefit', 'user'));
-
     }
 
     public function superuserindex()
@@ -126,8 +125,8 @@ class BenefitsController extends Controller
     {
         $user = auth()->user();
 
-        if (!$user->benefits->contains($benefits->id)) {
-            $user->benefits()->attach($benefits->id);
+        if (!$user->benefits->contains($benefit->id)) {
+            $user->benefits()->attach($benefit->id);
             return redirect()->route('benefits')->with('success', 'Privalumas pasirinktas sėkmingai.');
         }
 
