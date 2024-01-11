@@ -73,7 +73,7 @@ class UserController extends Controller
             'last_name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
             'is_verified' => 'nullable|boolean',
-    
+
             'work_hours' => 'required|numeric',
             'work_days' => 'required|integer',
             'overtime' => 'required|numeric',
@@ -88,9 +88,13 @@ class UserController extends Controller
             'is_verified' => $validatedData['is_verified'],
         ]);
 
-        $validateRoleIds = $request->roles;
+        $validateRoleIds = $request->roles ?? [];
         $roles = Role::whereIn('id', $validateRoleIds)->get();
-        $user->syncRoles($roles);        
+        $user->syncRoles($roles);
+
+        // $validateRoleIds = $request->roles;
+        // $roles = Role::whereIn('id', $validateRoleIds)->get();
+        // $user->syncRoles($roles);        
 
         if ($user->save()) {
             $request->session()->flash('success', 'Vartotojas ' . $user->first_name . ' buvo atnaujintas');
@@ -116,7 +120,7 @@ class UserController extends Controller
             $user->payroll()->create($payrollData);
         }
 
-        return redirect()->route('admin.users.index');
+       // return redirect()->route('admin.users.index');
     }
 
     private function calculateNetSalary($gross, $request)
@@ -155,14 +159,14 @@ class UserController extends Controller
 
 
         if ($request->leave_request_id) {
-            
+
             $leaveRequest = LeaveRequest::findOrFail($request->leave_request_id); // Fetch the leave request details
 
             $leaveMonth = date('m', strtotime($leaveRequest->start_date));
             $leaveYear = date('Y', strtotime($leaveRequest->start_date));
 
             if ($leaveMonth == $request->month && $leaveYear == $request->year) {
-                
+
                 if ($leaveRequest->leave_type === 'unpaid_leave') { // Determine if it's a paid or unpaid leave
 
                     $unpaidleaveHours = $leaveRequest->days * $userWorkHoursPerDay; //unpaid leave total work hours
@@ -198,7 +202,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        
+
         $validatedData = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
