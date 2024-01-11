@@ -5,9 +5,6 @@
     <h2>Leave Requests Approval</h2>
 
     <table class="table">
-    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#details{{ $leaveRequest->id }}" aria-expanded="false" aria-controls="details{{ $leaveRequest->id }}">
-                        Details
-    </button>
         <thead>
             <tr>
                 <th>Vardas</th>
@@ -16,6 +13,7 @@
                 <th>Atostogų pradžia</th>
                 <th>Atostogų pabaiga</th>
                 <th>Prašymo statusas</th>
+                <th></th>
                 <th></th>
             </tr>
         </thead>
@@ -49,7 +47,13 @@
                         </select>
                         <button type="submit" class="btn btn-primary">Atnaujinti</button>
                     </form>
+                </td>
+                <td>
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#details{{ $leaveRequest->id }}" aria-expanded="false" aria-controls="details{{ $leaveRequest->id }}">
 
+                        Plačiau
+
+                    </button>
                     <div class="collapse" id="details{{ $leaveRequest->id }}">
                         <div class="card card-body">
                             <strong>Naudotojas:</strong> {{ $leaveRequest->user->first_name }} {{ $leaveRequest->user->last_name }}<br>
