@@ -5,6 +5,7 @@
     @foreach ($leaveRequests as $leaveRequest)
     <p>{{ $leaveRequest->reason }}</p>
     <p>{{ $leaveRequest->user->first_name }}</p>
+    <p>{{ $leaveRequest->user->approval_status }}</p>
     <!-- Add more details as needed -->
 
     <!-- Buttons for each leave request -->
