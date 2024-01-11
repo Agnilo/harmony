@@ -547,10 +547,9 @@ footer{
 }
 
 .profile-information-table{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
 }
 
 .profile-information-row{
