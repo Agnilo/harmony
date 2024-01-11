@@ -8,6 +8,12 @@ use App\Http\Controllers\Auth;
 
 class BenefitsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $benefits = Benefits::all(); // Fetch all benefits from the database
