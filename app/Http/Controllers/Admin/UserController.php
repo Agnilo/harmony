@@ -83,6 +83,12 @@ class UserController extends Controller
             'overtime' => 'required|numeric',
             'gross' => 'required|numeric',
             'info' => 'nullable|string|max:255',
+        ], [
+            'work_hours.required' => 'The work hours field is required.',
+            'work_days.required' => 'The work days field is required.',
+            'overtime.required' => 'The overtime field is required.',
+            'gross.required' => 'The gross field is required.',
+            'info' => 'The info field is optional'
         ]);
 
         if ($validator->fails()) {
