@@ -14,7 +14,7 @@
     <div class="row">
         @foreach($benefits as $benefit)
         <a href="{{route('benefits.show', $benefit)}}">
-            <div class="col-md-4 mb-4 benefit-card-bottom-margin">
+            <div class="col-md-3 mb-3 benefit-card-bottom-margin">
                 <div class="benefit-card">
                     <div class="benefit-card-header">
                         <img src="{{ asset('storage/' . $benefit->picture) }}" alt="{{ $benefit->benefit_name }}" class="img-fluid benefit-img">
