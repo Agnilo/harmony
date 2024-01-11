@@ -13,7 +13,6 @@ return new class extends Migration
     public function up()
     {
         Schema::table('leave_requests', function (Blueprint $table) {
-            $table->string('leaveRequest_name')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
 
@@ -28,7 +27,6 @@ return new class extends Migration
     public function down()
     {
         Schema::table('leave_requests', function (Blueprint $table) {
-            $table->dropColumn('leaveRequest_name');
             $table->dropForeign(['user_id']);
         });
 
