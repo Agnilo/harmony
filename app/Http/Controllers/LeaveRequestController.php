@@ -131,6 +131,8 @@ class LeaveRequestController extends Controller
 
     public function updateApproval(Request $request, LeaveRequest $leaveRequest)
     {
+        dd($request->all(), $leaveRequest->toArray());
+        
         $request->validate([
             'approval_status' => 'required|in:pending,approved,rejected',
         ]);
