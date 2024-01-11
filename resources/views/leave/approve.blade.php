@@ -27,6 +27,16 @@
                         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#details{{ $leaveRequest->id }}" aria-expanded="false" aria-controls="details{{ $leaveRequest->id }}">
                             Details
                         </button>
+                        <form method="post" action="{{ route('leaveRequests.updateApproval', $leaveRequest) }}" style="display: inline-block;">
+                            @csrf
+                            @method('put')
+                            <select name="approval_status">
+                                <option value="pending" {{ $leaveRequest->approval_status === 'pending' ? 'selected' : '' }}>Pending</option>
+                                <option value="approved" {{ $leaveRequest->approval_status === 'approved' ? 'selected' : '' }}>Approved</option>
+                                <option value="rejected" {{ $leaveRequest->approval_status === 'rejected' ? 'selected' : '' }}>Rejected</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </form>
                         <div class="collapse" id="details{{ $leaveRequest->id }}">
                             <div class="card card-body">
                                 <strong>User:</strong> {{ $leaveRequest->user->first_name }} {{ $leaveRequest->user->last_name }}<br>
