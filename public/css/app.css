@@ -548,19 +548,22 @@ footer{
 
 .profile-information-content{
     display: flex;
-    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     padding-top: 20px;
 }
 
 .profile-information-text{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     color: black;
-    justify-content: flex-start;
+    width: 48%;
+    margin-bottom: 10px;
 }
 
 .profile-element-padding{
-    padding: 0 10px;
+    padding: 5px;
 }
 
 .profile-eidt-employee-content{
