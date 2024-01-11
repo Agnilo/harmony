@@ -17,8 +17,8 @@
         <div class="form-group">
             <label for="leave_type">Leave Type</label>
             <select id="leave_type" name="leave_type" class="form-control">
-                <option value="paid_leave" {{ $leaveRequest->leave_type === 'paid_leave' ? 'selected' : '' }}>Paid Leave</option>
-                <option value="unpaid_leave" {{ $leaveRequest->leave_type === 'unpaid_leave' ? 'selected' : '' }}>Unpaid Leave</option>
+                <option value="paid_leave" {{ $leaveRequest->leave_type === 'paid_leave' ? 'selected' : '' }}>Apmokamos atostogos</option>
+                <option value="unpaid_leave" {{ $leaveRequest->leave_type === 'unpaid_leave' ? 'selected' : '' }}>Neapmokamos atostogos</option>
             </select>
         </div>
 
