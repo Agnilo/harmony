@@ -15,17 +15,38 @@
                 </div>
                 <div class="profile-eidt-employee-content">
                     <div class="profile-edit-employee-content-padding">
-                       
+                        <table class="profile-information-table">
+                            <tr class="profile-information-row">
+                                <td class="profile-information-cell profile-label">El. Paštas:</td>
+                                <td class="profile-information-cell">{{ $user->email }}</td>
+                            </tr>
+                            <tr class="profile-information-row">
+                                <td class="profile-information-cell profile-label">Lytis:</td>
+                                <td class="profile-information-cell">{{ $user->gender }}</td>
+                            </tr>
+                            <tr class="profile-information-row">
+                                <td class="profile-information-cell profile-label">Adresas:</td>
+                                <td class="profile-information-cell">{{ $user->street_address }}</td>
+                            </tr>
+                            <tr class="profile-information-row">
+                                <td class="profile-information-cell profile-label">Pašto kodas:</td>
+                                <td class="profile-information-cell">{{ $user->zip_code }}</td>
+                            </tr>
+                            <tr class="profile-information-row">
+                                <td class="profile-information-cell profile-label">Miestas:</td>
+                                <td class="profile-information-cell">{{ $user->city }}</td>
+                            </tr>
+                            <tr class="profile-information-row">
+                                <td class="profile-information-cell profile-label">Šalis:</td>
+                                <td class="profile-information-cell">{{ $user->country }}</td>
+                            </tr>
+                        </table>
                         <h2>Selected Benefits:</h2>
                         <ul>
                             @foreach ($selectedBenefits as $benefit)
                             <li>{{ $benefit->benefit_name }}</li>
                             @endforeach
                         </ul>
-
-                        @extends('layouts.app')
-
-
                         <div class="row justify-content-center">
                             <div class="col-md-8">
                                 <div class="card">
