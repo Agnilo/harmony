@@ -88,13 +88,9 @@ class UserController extends Controller
             'is_verified' => $validatedData['is_verified'],
         ]);
 
-        $validateRoleIds = $request->roles ?? [];
+        $validateRoleIds = $request->roles;
         $roles = Role::whereIn('id', $validateRoleIds)->get();
-        $user->syncRoles($roles);
-
-        // $validateRoleIds = $request->roles;
-        // $roles = Role::whereIn('id', $validateRoleIds)->get();
-        // $user->syncRoles($roles);        
+        $user->syncRoles($roles);        
 
         if ($user->save()) {
             $request->session()->flash('success', 'Vartotojas ' . $user->first_name . ' buvo atnaujintas');
@@ -104,12 +100,12 @@ class UserController extends Controller
 
 
         $payrollData = [
-            'work_hours' => $validatedData['work_hours'],
-            'work_days' => $validatedData['work_days'],
-            'overtime' => $validatedData['overtime'],
-            'gross' => $validatedData['gross'],
+            'work_hours' => $validatedData['work_hours'] ?? 0,
+            'work_days' => $validatedData['work_days'] ?? 0,
+            'overtime' => $validatedData['overtime'] ?? 0,
+            'gross' => $validatedData['gross'] ?? 0,
             'net' => $this->calculateNetSalary($validatedData['gross'], $request),
-            'info' => $validatedData['info'],
+            'info' => $validatedData['info'] ?? 0,
         ];
 
         if ($user->payroll) {
@@ -215,7 +211,7 @@ class UserController extends Controller
             'first_name' => $validatedData['first_name'],
             'last_name' => $validatedData['last_name'],
             'email' => $validatedData['email'],
-            'password' => bcrypt($validatedData['password']),
+            'password' => $validatedData['password'],
             'gender' => $validatedData['gender'],
             'is_verified' => true,
 
