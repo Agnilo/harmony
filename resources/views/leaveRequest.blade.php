@@ -1,7 +1,8 @@
 @extends('layouts.web')
 
 @section('content')
-@foreach ($leaveRequests as $leaveRequest)
+<div class="web-child-content">
+    @foreach ($leaveRequests as $leaveRequest)
     <p>{{ $leaveRequest->reason }}</p>
     <!-- Add more details as needed -->
 
@@ -14,8 +15,9 @@
             <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this leave request?')">Delete</button>
         </form>
     </div>
-@endforeach
+    @endforeach
 
-<!-- Button to create a new leave request -->
-<a href="{{ route('leaveRequest.create') }}" class="btn btn-success">Create New Leave Request</a>
+    <!-- Button to create a new leave request -->
+    <a href="{{ route('leaveRequest.create') }}" class="btn btn-success">Create New Leave Request</a>
+</div>
 @endsection
