@@ -14,12 +14,9 @@ return new class extends Migration
     {
         Schema::table('leave_requests', function (Blueprint $table) {
             $table->string('leaveRequest_name')->nullable();
-        });
-
-        Schema::table('leave_requests', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
+
 
     }
 
@@ -32,11 +29,7 @@ return new class extends Migration
     {
         Schema::table('leave_requests', function (Blueprint $table) {
             $table->dropColumn('leaveRequest_name');
-        });
-
-        Schema::table('leave_requests', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
-            $table->dropColumn('user_id');
         });
 
     }
