@@ -131,6 +131,7 @@ class LeaveRequestController extends Controller
 
     public function updateApproval(Request $request, LeaveRequest $leaveRequest)
     {
+        $user = Auth::user();
 
         $validatedData = $request->validate([
             'approval_status' => 'required|in:pending,approved,rejected',
