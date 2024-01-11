@@ -78,12 +78,12 @@
                 </div>
                 <h2>Payroll Information</h2>
                 <ul>
-                    <li>Work Hours: {{ $payroll->work_hours }}</li>
-                    <li>Work Days: {{ $payroll->work_days }}</li>
-                    <li>Gross Salary: {{ $payroll->gross }}</li>
-                    <li>Net Salary: {{ $payroll->net }}</li>
-                    <li>Overtime: {{ $payroll->overtime }}</li>
-                    <li>Info: {{ $payroll->info }}</li>
+                    <li>Work Hours: {{ $workHours }}</li>
+                    <li>Work Days: {{ $workDays }} </li>
+                    <li>Gross Salary: {{ $grossSalary }}</li>
+                    <li>Net Salary: {{ $netSalary }}</li>
+                    <li>Overtime: {{ $overtime }}</li>
+                    <li>Info: {{ $info }}</li>
                 </ul>
                 <button type="submit" class="btn btn-primary user-create-button-margin-right">
                     Atnaujinti
