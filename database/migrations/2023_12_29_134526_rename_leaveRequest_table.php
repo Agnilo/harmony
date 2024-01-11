@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::rename('leave_requests', 'leaveRequest');
+        Schema::rename('leave_request', 'leave_requests');
 
         Schema::table('users', function (Blueprint $table) {
             $table->integer('vacation_days')->default(25); // Adjust the default value as needed
@@ -26,7 +26,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::rename('leaveRequest', 'leave_requests');
+        Schema::rename('leave_requests', 'leave_request');
 
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('vacation_days');
