@@ -7,6 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Payroll extends Model
 {
+    protected $fillable = [
+        'user_id',
+        'year',
+        'month',
+        'paid_leave',
+        'unpaid_leave',
+        'work_hours',
+        'work_days',
+        'leave_hours',
+        'overtime',
+        'gross',
+        'net',
+        'info',
+    ];
 
     protected $table = 'payroll';
 
