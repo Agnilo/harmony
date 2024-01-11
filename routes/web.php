@@ -75,3 +75,17 @@ Route::middleware(['can:create-benefit'])->group(function () {
         Route::delete('/privalumai/{benefit}', [BenefitsController::class, 'destroy'])->name('benefits.destroy');
     });
 });
+
+Route::middleware(['can:create-leaveRequest'])->group(function () {
+    Route::get('/atostogos/sukurti', [LeaveRequestController::class, 'create'])->name('leaveRequest.create');
+    Route::post('/atostogos', [LeaveRequestController::class, 'store'])->name('leaveRequest.store');
+});
+
+Route::middleware(['can:edit-leaveRequest'])->group(function () {
+    Route::get('/atostogos/{leaveRequest}/redaguoti', [LeaveRequestController::class, 'edit'])->name('leaveRequest.edit');
+    Route::put('/atostogos/{leaveRequest}', [LeaveRequestController::class, 'update'])->name('leaveRequest.update');    
+});
+
+Route::middleware(['can:delete-leaveRequest'])->group(function () {
+    Route::delete('/atostogos/{leaveRequest}', [LeaveRequestController::class, 'destroy'])->name('leaveRequest.destroy');    
+});
