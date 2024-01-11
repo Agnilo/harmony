@@ -94,6 +94,10 @@ class UserController extends Controller
 
         $leaveRequest = null;
 
+        $leaveType = $leaveRequest->leave_type;
+
+        dd($leaveType);
+
         $validateRoleIds = $request->roles;
 
         if (!is_array($validateRoleIds)) {
@@ -108,8 +112,6 @@ class UserController extends Controller
         } else {
             $request->session()->flash('warning', 'Iškilo problema atnaujinant vartotoją');
         }
-
-        dd($leaveRequest);
 
         $payrollData = [
             'work_hours' => $payrollValidation['work_hours'],
