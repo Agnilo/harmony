@@ -1,6 +1,7 @@
 @extends('layouts.web')
 
 @section('content')
+<div class="web-child-content">
     <div class="card-body card-body-index">
         <div>
         <a href="{{ route('leaveRequest.create') }}" class="btn btn-success">Sukurti naują atostogų prašymą</a>
