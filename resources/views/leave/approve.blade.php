@@ -4,7 +4,7 @@
 <div class="web-child-content">
     <h2>Leave Requests Approval</h2>
 
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>User</th>
@@ -17,25 +17,28 @@
         </thead>
         <tbody>
             @foreach ($leaveRequests as $leaveRequest)
-            <tr>
-                <td>{{ $leaveRequest->user->first_name }}</td>
-                <td>{{ $leaveRequest->leaveRequest_name }}</td>
-                <td>{{ $leaveRequest->start_date }}</td>
-                <td>{{ $leaveRequest->end_date }}</td>
-                <td>{{ $leaveRequest->approval_status }}</td>
-                <td>
-                    <form method="post" action="{{ route('leaveRequests.updateApproval', $leaveRequest) }}">
-                        @csrf
-                        @method('put')
-                        <select name="approval_status">
-                            <option value="pending" {{ $leaveRequest->approval_status === 'pending' ? 'selected' : '' }}>Pending</option>
-                            <option value="approved" {{ $leaveRequest->approval_status === 'approved' ? 'selected' : '' }}>Approved</option>
-                            <option value="rejected" {{ $leaveRequest->approval_status === 'rejected' ? 'selected' : '' }}>Rejected</option>
-                        </select>
-                        <button type="submit">Update</button>
-                    </form>
-                </td>
-            </tr>
+                <tr>
+                    <td>{{ $leaveRequest->user->first_name }}</td>
+                    <td>{{ $leaveRequest->leaveRequest_name }}</td>
+                    <td>{{ $leaveRequest->start_date }}</td>
+                    <td>{{ $leaveRequest->end_date }}</td>
+                    <td>{{ $leaveRequest->approval_status }}</td>
+                    <td>
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#details{{ $leaveRequest->id }}" aria-expanded="false" aria-controls="details{{ $leaveRequest->id }}">
+                            Details
+                        </button>
+                        <div class="collapse" id="details{{ $leaveRequest->id }}">
+                            <div class="card card-body">
+                                <strong>User:</strong> {{ $leaveRequest->user->first_name }} {{ $leaveRequest->user->last_name }}<br>
+                                <strong>Leave Request Name:</strong> {{ $leaveRequest->leaveRequest_name }}<br>
+                                <strong>Start Date:</strong> {{ $leaveRequest->start_date }}<br>
+                                <strong>End Date:</strong> {{ $leaveRequest->end_date }}<br>
+                                <strong>Approval Status:</strong> {{ $leaveRequest->approval_status }}<br>
+                                <!-- Add other leave request details as needed -->
+                            </div>
+                        </div>
+                    </td>
+                </tr>
             @endforeach
         </tbody>
     </table>
