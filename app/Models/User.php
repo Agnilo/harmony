@@ -62,7 +62,7 @@ class User extends Authenticatable
         return false;
     }
 
-    public function benefits()
+    public function selectedBenefits()
     {
         return $this->belongsToMany(Benefits::class, 'user_benefits')->withTimestamps();
     }
