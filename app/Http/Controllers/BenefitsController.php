@@ -122,12 +122,12 @@ class BenefitsController extends Controller
         }
     }
 
-    public function selectBenefit(Benefits $benefit)
+    public function selectedBenefits(Benefits $benefit)
     {
         $user = auth()->user();
 
-        if (!$user->benefit->contains($benefit->id)) {
-            $user->benefit()->attach($benefit->id);
+        if (!$user->benefits->contains($benefits->id)) {
+            $user->benefits()->attach($benefits->id);
             return redirect()->route('benefits')->with('success', 'Privalumas pasirinktas sėkmingai.');
         }
 
