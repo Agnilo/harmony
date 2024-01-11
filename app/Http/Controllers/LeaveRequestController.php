@@ -12,6 +12,7 @@ class LeaveRequestController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('can:approve-leaveRequest');
     }
 
     public function index()
