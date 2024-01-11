@@ -45,7 +45,7 @@ Route::middleware(['auth.redirect'])->group(function () {
     Route::get('/atostogos', [LeaveRequestController::class, 'index'])->name('leaveRequest');
     Route::get('/kolegos', [ColleaguesController::class, 'index'])->name('colleagues');
     Route::get('/privalumai/{benefit}', [BenefitsController::class, 'show'])->name('benefits.show');
-    Route::post('/privalumai/{benefit}/pasirinkti', [BenefitsController::class, 'selectedBenefits'])->name('benefit.select');
+    Route::post('/privalumai/{benefit}', [BenefitsController::class, 'selectedBenefits'])->name('benefits.select');
 });
 
 Route::middleware(['can:edit-users'])->group(function () {

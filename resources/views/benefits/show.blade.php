@@ -30,17 +30,16 @@
 
                         </div>
                         <div class="benefit-show-button">
-                        @if(auth()->user()->selectedBenefits->contains($benefit->id))
                             @auth
-                            <form method="POST" action="{{ route('benefit.select', $benefit->id) }}">
-                                @csrf                                
+                            <form method="POST" action="{{ route('benefits.select', $benefit) }}">
+                            @csrf
+                            @if(auth()->user()->selectedBenefits->contains($benefit->id))      
                                     <button class="btn btn-secondary" disabled>Pasirinktas</button>
                                 @else
                                 <button type="submit" class="btn btn-primary">Pasirinkti</button>
                                 @endif
                             </form>
                             @endauth
-
                         </div>
                     </div>
 
