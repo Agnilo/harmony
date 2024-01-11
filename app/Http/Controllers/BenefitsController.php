@@ -119,7 +119,7 @@ class BenefitsController extends Controller
         }
     }
 
-    public function selectBenefit(Request $request, Benefits $benefit)
+    public function selectBenefit(Benefits $benefit)
     {
         $user = auth()->user();
 
