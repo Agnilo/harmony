@@ -43,17 +43,14 @@
                     <td>{{ $leaveRequest->end_date }}</td>
                     <td>{{ $leaveRequest->approval_status }}</td>
                     <td class="user-buttons">
-                        <button type="button" class="btn btn-primary float-left user-button-inside">
-                            <a href="{{ route('leaveRequest.edit', $leaveRequest) }}" >
-                            Redaguoti
-                            </a>
-                        </button>
-
-                        <form action="{{ route('leaveRequest.destroy', $leaveRequest) }}" method="POST" class="float-left">
-                            @csrf
-                            {{ method_field('DELETE') }}
-                            <button type="submit" class="btn btn-danger user-button-inside" onclick="return confirm('Ar tikrai norite ištrinti?')">Ištrinti</button>
-                        </form>
+                        <div class="buttons">
+                            <a href="{{ route('leaveRequest.edit', $leaveRequest) }}" class="btn btn-primary">Edit</a>
+                            <form action="{{ route('leaveRequest.destroy', $leaveRequest) }}" method="POST" style="display: inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this leave request?')">Delete</button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
                 @endforeach
