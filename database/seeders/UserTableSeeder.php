@@ -30,7 +30,8 @@ class UserTableSeeder extends Seeder
             'last_name' => 'Žilinskas',
             'email' => 'lukas.zilinskas@harmony.lt',
             'gender' => 'moteris',
-            'password' => Hash::make('password')
+            'password' => Hash::make('password'),
+            'is_verified' => true,
         ]);
 
         $superuser = User::create([
@@ -38,7 +39,8 @@ class UserTableSeeder extends Seeder
             'last_name' => 'Admin',
             'email' => 'agne.admin@harmony.lt',
             'gender' => 'moteris',
-            'password' => Hash::make('password')
+            'password' => Hash::make('password'),
+            'is_verified' => true,
         ]);
 
         $user = User::create([
@@ -46,7 +48,8 @@ class UserTableSeeder extends Seeder
             'last_name' => 'Kazlauskas',
             'email' => 'tomas.kazlauskas@harmony.lt',
             'gender' => 'vyras',
-            'password' => Hash::make('password')
+            'password' => Hash::make('password'),
+            'is_verified' => true,
         ]);
 
         $user = User::create([
@@ -54,7 +57,8 @@ class UserTableSeeder extends Seeder
             'last_name' => 'Ralienė',
             'email' => 'elzbieta.raliene@harmony.lt',
             'gender' => 'moteris',
-            'password' => Hash::make('password')
+            'password' => Hash::make('password'),
+            'is_verified' => true,
         ]);
 
         
