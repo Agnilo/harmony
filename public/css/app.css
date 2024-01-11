@@ -504,6 +504,7 @@ footer{
 .profile-edit-employee{
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .profile-edit-employee-navbar{
