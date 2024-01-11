@@ -540,6 +540,9 @@ footer{
 
 .profile-information-header{
     text-align: center;
+}
+
+.profile-information-header h5{
     font-size: 20px;
     color: var(--primary-color);
     font-weight: 600;
