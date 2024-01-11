@@ -16,26 +16,22 @@ class BenefitsController extends Controller
 
     public function index()
     {
-        $user = Auth::user()->load('selectedBenefits');
+
         $benefits = Benefits::all();
 
-        return view('benefits', compact('benefits', 'user'));
-    }
-
-    public function show(Benefits $benefit)
-    {
-        $user = Auth::user()->load('selectedBenefits');
-        $benefits = Benefits::all();
-
-        return view('benefits.show', compact('benefit', 'user'));
+        return view('benefits', compact('benefits'));
     }
 
     public function superuserindex()
     {
-        $user = Auth::user()->load('selectedBenefits');
-        $benefits = Benefits::all(); // Fetch all benefits from the database
+        $benefits = Benefits::all();
 
-        return view('benefits.index', compact('benefits', 'user')); // Pass benefits data to the view
+        return view('benefits.index', compact('benefits'));
+    }
+
+    public function show(Benefits $benefit)
+    {
+        return view('benefits.show', compact('benefit'));
     }
 
     public function edit(Benefits $benefit)
@@ -127,12 +123,13 @@ class BenefitsController extends Controller
     {
         $user = auth()->user();
 
-        if (!$user->benefits->contains($benefit->id)) {
+        if ($user && !$user->benefits->contains($benefit->id)) {
             Log::info("User {$user->id} is selecting benefit {$benefit->id}");
+
             $user->benefits()->attach($benefit->id);
             return redirect()->route('benefits')->with('success', 'Privalumas pasirinktas sėkmingai.');
         }
 
-        return redirect()->route('benefits.show')->with('warning', 'Jau esate pasirinkę šį privalumą');
+        return redirect()->route('benefits.show', $benefit)->with('warning', 'Jau esate pasirinkę šį privalumą');
     }
 }
