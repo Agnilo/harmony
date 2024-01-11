@@ -89,7 +89,10 @@ class UserController extends Controller
             'info' => 'nullable|string|max:255',
         ]);
 
-        \Log::info(' payroll validate');
+        \Log::info('Payroll validated successfully');
+    } catch (\Illuminate\Validation\ValidationException $e) {
+        \Log::info('Validation failed: ' . json_encode($e->errors()));
+    }
 
         $validatedData = array_merge($userValidation, $payrollValidation);
 
