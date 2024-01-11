@@ -128,7 +128,6 @@ class UserController extends Controller
         if ($user->payroll) {
 
             $user->payroll->update($payrollData);
-            Log::info('Updating existing payroll');
         } else {
             Log::info('Creating new payroll');
             $user->payroll()->create($payrollData);
