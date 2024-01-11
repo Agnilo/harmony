@@ -15,7 +15,6 @@ class Payroll extends Model
         'month',
         'work_hours',
         'work_days',
-        'leave_hours',
         'overtime',
         'gross',
         'net',
