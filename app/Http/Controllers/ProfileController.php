@@ -12,8 +12,14 @@ class ProfileController extends Controller
 
         $user = auth()->user();
         $selectedBenefits = $user->selectedBenefits;
-        $payroll = $user->payroll;
+        
+        $payroll = optional($user->payroll)->toArray();
 
-        return view('profile', compact('user', 'selectedBenefits', 'payroll'));
+        $workHours = $payroll ? $payroll['work_hours'] : 0;
+        $workDays = $payroll ? $payroll['work_days'] : 0;
+        $grossSalary = $payroll ? $payroll['gross'] : 0;
+        $netSalary = $payroll ? $payroll['net'] : 0;
+
+        return view('profile', compact('user', 'selectedBenefits', 'workHours', 'workDays', 'grossSalary', 'netSalary'));
     }
 }
