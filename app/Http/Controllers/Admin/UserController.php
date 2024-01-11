@@ -69,10 +69,6 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
 
-
-        \Log::info('Starting update process for user: ' . $user->id);
-
-        try {
             $userValidation = $request->validate([
                 'first_name' => 'required|string|max:255',
                 'last_name' => 'required|string|max:255',
@@ -90,16 +86,9 @@ class UserController extends Controller
                 'info' => 'nullable|string|max:255',
             ]);
         
-            \Log::info('Payroll validated successfully');
-        } catch (\Illuminate\Validation\ValidationException $e) {
-            \Log::info('Validation failed: ' . json_encode($e->errors()));
-            // Define an empty array for $payrollValidation in case of validation failure
-            $payrollValidation = [];
-        }
 
         $validatedData = array_merge($userValidation, $payrollValidation);
 
-        \Log::info('Before user fill');
 
         $user->fill([
             'first_name' => $validatedData['first_name'],
@@ -108,26 +97,25 @@ class UserController extends Controller
             'is_verified' => $validatedData['is_verified'],
         ]);
 
+        dd($validateRoleIds);
+
         $validateRoleIds = $request->roles;
         $roles = Role::whereIn('id', $validateRoleIds)->get();
         $user->syncRoles($roles);        
 
-        \Log::info('Before user save');
         if ($user->save()) {
             $request->session()->flash('success', 'Vartotojas ' . $user->first_name . ' buvo atnaujintas');
         } else {
             $request->session()->flash('warning', 'Iškilo problema atnaujinant vartotoją');
         }
 
-        \Log::info('Before payroll data');
-
         $payrollData = [
             'work_hours' => $validatedData['work_hours'] ?? 0,
             'work_days' => $validatedData['work_days'] ?? 0,
             'overtime' => $validatedData['overtime'] ?? 0,
             'gross' => $validatedData['gross'] ?? 0,
-            //'net' => $this->calculateNetSalary($validatedData['gross'], $request),
-            'net' => $validatedData['net'] ?? 0,
+            'net' => $this->calculateNetSalary($validatedData['gross'], $request),
+            //'net' => $validatedData['net'] ?? 0,
             'info' => $validatedData['info'] ?? 0,
         ];
 
