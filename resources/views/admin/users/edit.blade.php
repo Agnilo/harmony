@@ -78,6 +78,21 @@
                 </div>
                 <h2>Payroll Information</h2>
                 <ul>
+
+                    <div class="form-group row">
+                        <label for="workHours" class="col-md-2 col-form-label text-md-right">Darbo valandos per savaitę</label>
+
+                        <div class="col-md-6">
+                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="workHours" value="{{ $workHours }}" required autofocus>
+
+                            @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+
                     <li>Work Hours: {{ $workHours }}</li>
                     <li>Work Days: {{ $workDays }} </li>
                     <li>Gross Salary: {{ $grossSalary }}</li>
