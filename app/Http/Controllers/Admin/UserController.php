@@ -69,21 +69,21 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
 
-            $validatedData = $request->validate([
-                'first_name' => 'required|string|max:255',
-                'last_name' => 'required|string|max:255',
-                'email' => 'required|email|unique:users,email,' . $user->id,
-                'is_verified' => 'nullable|boolean',
-            ]);
-        
-        
-            $payrollValidation = $request->validate([
-                'work_hours' => 'nullable|numeric|between:0,99.9',
-                'work_days' => 'nullable|integer|min:0',
-                'overtime' => 'nullable|numeric',
-                'gross' => 'nullable|numeric|between:0,999999.99',
-                'info' => 'nullable|string|max:255',
-            ]);
+        $validatedData = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'is_verified' => 'nullable|boolean',
+        ]);
+
+
+        $payrollValidation = $request->validate([
+            'work_hours' => 'nullable|numeric|between:0,99.9',
+            'work_days' => 'nullable|integer|min:0',
+            'overtime' => 'nullable|numeric',
+            'gross' => 'nullable|numeric|between:0,999999.99',
+            'info' => 'nullable|string|max:255',
+        ]);
 
         $user->fill([
             'first_name' => $validatedData['first_name'],
@@ -93,6 +93,7 @@ class UserController extends Controller
         ]);
 
         $leaveRequest = null;
+        $leaveType = null;
 
         if ($request->leave_request_id) {
             $leaveRequest = LeaveRequest::findOrFail($request->leave_request_id);
@@ -101,6 +102,8 @@ class UserController extends Controller
 
         dd($leaveType);
 
+
+
         $validateRoleIds = $request->roles;
 
         if (!is_array($validateRoleIds)) {
@@ -108,7 +111,7 @@ class UserController extends Controller
         }
 
         $roles = Role::whereIn('id', $validateRoleIds)->get();
-        $user->syncRoles($roles);        
+        $user->syncRoles($roles);
 
         if ($user->save()) {
             $request->session()->flash('success', 'Vartotojas ' . $user->first_name . ' buvo atnaujintas');
@@ -172,7 +175,7 @@ class UserController extends Controller
         if ($leaveRequest) {
             $leaveRequest = LeaveRequest::findOrFail($request->leave_request_id);
 
-            
+
 
             $leaveMonth = date('m', strtotime($leaveRequest->start_date));
             $leaveYear = date('Y', strtotime($leaveRequest->start_date));
@@ -196,10 +199,10 @@ class UserController extends Controller
 
         // Calculate gross without paid leave
         $grossWithoutPaidLeave = ($baseHours - ($paidLeaveHours ?? 0)) * $baseHourlyRate;
-        
+
         // Calculate gross with all adjustments
         $gross = $grossWithoutPaidLeave + $paidLeaveSum - $unpaidLeaveDeduction - $totalBenefitPrice + $overtimeSum;
-        
+
         dd($grossWithoutPaidLeave, $overtimeSum, $totalBenefitPrice, $paidLeaveSum);
         // Calculate net salary
         $net = $gross * (1 - $totalDeductionRate);
