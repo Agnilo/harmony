@@ -11,8 +11,6 @@ class Payroll extends Model
 
     protected $fillable = [
         'user_id',
-        'year',
-        'month',
         'work_hours',
         'work_days',
         'overtime',
@@ -36,7 +34,7 @@ class Payroll extends Model
 
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function leaveRequests()
