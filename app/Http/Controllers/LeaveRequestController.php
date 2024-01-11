@@ -139,6 +139,6 @@ class LeaveRequestController extends Controller
             'approval_status' => $request->approval_status,
         ]);
 
-        return redirect()->route('leave.approve')->with('success', 'Prašymas buvo sėkmingai atnaujintas.');
+        return redirect()->route('leaveRequests.approve')->with('success', 'Prašymas buvo sėkmingai atnaujintas.');
     }
 }
