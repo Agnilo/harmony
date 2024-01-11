@@ -43,9 +43,11 @@
                     <td>{{ $leaveRequest->end_date }}</td>
                     <td>{{ $leaveRequest->approval_status }}</td>
                     <td class="user-buttons">
-                        <a href="{{ route('leaveRequest.edit', $leaveRequest) }}" class="btn btn-primary">
-                            <button type="button" class="btn btn-secondary float-left user-button-inside">Redaguoti</button>
-                        </a>
+                        <button type="button" class="btn btn-secondary float-left user-button-inside">
+                            <a href="{{ route('leaveRequest.edit', $leaveRequest) }}" class="btn btn-primary">
+                            Redaguoti
+                            </a>
+                        </button>
 
                         <form action="{{ route('leaveRequest.destroy', $leaveRequest) }}" method="POST" class="float-left">
                             @csrf
