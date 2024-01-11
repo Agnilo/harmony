@@ -97,7 +97,7 @@ class UserController extends Controller
             $payrollValidation = [];
         }
 
-        $validatedData = [$userValidation, $payrollValidation];
+        $validatedData = array_merge($userValidation, $payrollValidation);
 
         \Log::info('Before user fill');
 
