@@ -45,14 +45,14 @@ class UserController extends Controller
             $roles = Role::all();
             $payroll = $user->payroll;
 
-            $workHours = $payroll ? $payroll['work_hours'] : 0;
-            $workDays = $payroll ? $payroll['work_days'] : 0;
+            $work_hours = $payroll ? $payroll['work_hours'] : 0;
+            $work_days = $payroll ? $payroll['work_days'] : 0;
             $overtime = $payroll ? $payroll['overtime'] : 0;
-            $grossSalary = $payroll ? $payroll['gross'] : 0;
-            $netSalary = $payroll ? $payroll['net'] : 0;
+            $gross = $payroll ? $payroll['gross'] : 0;
+            $net = $payroll ? $payroll['net'] : 0;
             $info = $payroll ? $payroll['info'] : '';
 
-            return view('admin.users.edit', compact('user', 'roles', 'workHours', 'workDays', 'overtime', 'grossSalary', 'netSalary', 'info'));
+            return view('admin.users.edit', compact('user', 'roles', 'work_hours', 'work_days', 'overtime', 'gross', 'net', 'info'));
         } else {
 
             return redirect()->route('admin.users.index');
