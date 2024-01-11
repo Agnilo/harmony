@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class LeaveRequest extends Model
 {
+    protected $table = 'leave_requests';
+
     protected $fillable = [
         'leaveRequest_name',
         'leave_type',
