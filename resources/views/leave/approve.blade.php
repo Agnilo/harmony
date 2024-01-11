@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="web-child-content">
-    <h2>Leave Requests Approval</h2>
+    <h2>Atostogų prašymų valdymas</h2>
 
     <table class="table">
         <thead>
@@ -60,7 +60,16 @@
                             <strong>Prašymas:</strong> {{ $leaveRequest->leaveRequest_name }}<br>
                             <strong>Atostogų pradžia:</strong> {{ $leaveRequest->start_date }}<br>
                             <strong>Atostogų pabaiga:</strong> {{ $leaveRequest->end_date }}<br>
-                            <strong>Prašymo statusas:</strong> {{ $leaveRequest->approval_status }}<br>
+                            <strong>Prašymo statusas:</strong>
+                            @if($leaveRequest->approval_status === 'pending')
+                            Prašymas neperžiūrėtas
+                            @elseif($leaveRequest->approval_status === 'approved')
+                            Patvirtintas
+                            @elseif($leaveRequest->approval_status === 'rejected')
+                            Atmestas
+                            @else
+                            Prašymas neperžiūrėtas
+                            @endif<br>
                             <!-- Add other leave request details as needed -->
                         </div>
                     </div>
