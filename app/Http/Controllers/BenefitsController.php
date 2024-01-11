@@ -21,7 +21,7 @@ class BenefitsController extends Controller
         return view('benefits', compact('benefits')); // Pass benefits data to the view
     }
 
-    public function show()
+    public function show(Benefits $benefit)
     {
         $user = Auth::user()->load('selectedBenefits');
         $benefits = Benefits::all();
