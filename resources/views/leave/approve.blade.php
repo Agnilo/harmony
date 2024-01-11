@@ -27,7 +27,7 @@
                         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#details{{ $leaveRequest->id }}" aria-expanded="false" aria-controls="details{{ $leaveRequest->id }}">
                             Details
                         </button>
-                        <form method="post" action="{{ route('leaveRequests.updateApproval', $leaveRequest) }}" style="display: inline-block;">
+                        <form method="POST" action="{{ route('leaveRequests.updateApproval', $leaveRequest) }}" style="display: inline-block;">
                             @csrf
                             @method('put')
                             <select name="approval_status">
