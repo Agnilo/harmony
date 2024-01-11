@@ -560,7 +560,7 @@ footer{
 .profile-information-cell {
     display: table-cell;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: none;
 }
 
 .profile-label {
