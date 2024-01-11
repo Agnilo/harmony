@@ -7,15 +7,15 @@
             <div class="profile-edit-employee">
                 <div class="profile-edit-employee-navbar">
                     <div class="profile-edit-employee-imagesection">
-                    <img src="{{ asset('images/user.jpg') }}" alt="Example Image">
+                    <img src="{{ asset('images/user.jpg') }}" alt="Example Image" class="profile-img">
                     </div>
                     <div class="profile-edit-employee-tab">
-                        tabai
+                    <h1>{{ $user->first_name }}</h1>
                     </div>
                 </div>
                 <div class="profile-eidt-employee-content">
                     <div class="profile-edit-employee-content-padding">
-                        <h1>{{ $user->first_name }}'s Profile</h1>
+                        
 
                         <h2>Selected Benefits:</h2>
                         <ul>
