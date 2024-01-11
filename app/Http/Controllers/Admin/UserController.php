@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Traits\HasRoles;
 use App\Models\LeaveRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
