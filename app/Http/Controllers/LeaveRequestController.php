@@ -18,7 +18,6 @@ class LeaveRequestController extends Controller
     public function index()
     {
         $leaveRequests = Auth::user()->leaveRequests;
-        $leaveRequests = LeaveRequest::all();
         $leaveRequests->load('payrolls');
 
         return view('leaveRequest', compact('leaveRequests'));
