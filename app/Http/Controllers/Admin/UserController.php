@@ -128,6 +128,7 @@ class UserController extends Controller
         $payroll = Payroll::all();
 
         $leaveRequestIds = $request->input('leave_request_ids', []);
+        dd($leaveRequestIds);
         $payroll->leaveRequests()->sync($leaveRequestIds);
 
         return redirect()->route('admin.users.index');
