@@ -22,6 +22,17 @@ class Payroll extends Model
         'info',
     ];
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($payroll) {
+            
+            $payroll->year = now()->year;
+            $payroll->month = now()->month;
+        });
+    }
+
     protected $table = 'payroll';
 
     public function user()
