@@ -29,7 +29,7 @@
                         </button>
                         <form method="POST" action="{{ route('leaveRequests.updateApproval', $leaveRequest) }}" style="display: inline-block;">
                             @csrf
-                            @method('PUT')
+                            <input type="hidden" name="_method" value="put">
                             <select name="approval_status">
                                 <option value="pending" {{ $leaveRequest->approval_status === 'pending' ? 'selected' : '' }}>Pending</option>
                                 <option value="approved" {{ $leaveRequest->approval_status === 'approved' ? 'selected' : '' }}>Approved</option>
