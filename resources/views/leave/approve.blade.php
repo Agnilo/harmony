@@ -18,7 +18,7 @@
         <tbody>
             @foreach ($leaveRequests as $leaveRequest)
             <tr>
-                <td>{{ $leaveRequest->user->name }}</td>
+                <td>{{ $leaveRequest->user->first_name }}</td>
                 <td>{{ $leaveRequest->leaveRequest_name }}</td>
                 <td>{{ $leaveRequest->start_date }}</td>
                 <td>{{ $leaveRequest->end_date }}</td>
