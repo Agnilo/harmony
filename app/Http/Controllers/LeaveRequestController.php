@@ -132,20 +132,17 @@ class LeaveRequestController extends Controller
     }
 
     public function updateApproval(Request $request, LeaveRequest $leaveRequest)
-{
-    Log::info('Attempting to update approval status. ' . json_encode($request->all()));
-    
-    $user = Auth::user();
-    Log::info('User ID: ' . $user->id);
+    {
 
-    $validatedData = $request->validate([
-        'approval_status' => 'required|in:pending,approved,rejected',
-    ]);
 
-    $leaveRequest->update($validatedData);
+        $validatedData = $request->validate([
+            'approval_status' => 'required|in:pending,approved,rejected',
+        ]);
 
-    Log::info('Approval status updated successfully.');
+        $leaveRequest->update($validatedData);
 
-    return redirect()->route('leaveRequests.approve')->with('success', 'Prašymas buvo sėkmingai atnaujintas.');
-}
+
+
+        return redirect()->route('leaveRequests.approve')->with('success', 'Prašymas buvo sėkmingai atnaujintas.');
+    }
 }

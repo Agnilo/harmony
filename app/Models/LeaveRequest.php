@@ -15,6 +15,7 @@ class LeaveRequest extends Model
         'end_date',
         'days',
         'remarks',
+        'approval_status',
     ];
 
     public function user()
