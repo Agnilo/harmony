@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Benefits;
+use Illuminate\Support\Facades\Auth;
 
 class BenefitsController extends Controller
 {
@@ -20,7 +21,7 @@ class BenefitsController extends Controller
         return view('benefits', compact('benefits')); // Pass benefits data to the view
     }
 
-    public function show(Benefits $benefit)
+    public function show()
     {
         $user = Auth::user()->load('selectedBenefits');
         $benefits = Benefits::all();
