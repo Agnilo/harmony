@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\LeaveRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Log;
 
 class LeaveRequestController extends Controller
 {
@@ -136,6 +137,8 @@ class LeaveRequestController extends Controller
         $validatedData = $request->validate([
             'approval_status' => 'required|in:pending,approved,rejected',
         ]);
+
+        Log::info('Attempting to update approval status.', $validatedData);
         
         $leaveRequest->fill($validatedData)->save();
 
