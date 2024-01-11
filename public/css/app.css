@@ -531,6 +531,14 @@ footer{
 
 }
 
+.profile-information-content{
+
+}
+
+.profile-information-text{
+    
+}
+
 .profile-eidt-employee-content{
     border-left: 1px solid var(--primary-backgroung-color);
     flex: 1;
