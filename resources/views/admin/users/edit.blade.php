@@ -29,7 +29,7 @@
                     <label for="first_name" class="col-md-2 col-form-label text-md-right">Vardas</label>
 
                     <div class="col-md-6">
-                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="first_name" value="{{ $user->first_name }}" required autofocus>
+                        <input id="first_name" type="text" class="form-control @error('name') is-invalid @enderror" name="first_name" value="{{ $user->first_name }}" required autofocus>
 
                         @error('name')
                         <span class="invalid-feedback" role="alert">
@@ -43,7 +43,7 @@
                     <label for="last_name" class="col-md-2 col-form-label text-md-right">Pavardė</label>
 
                     <div class="col-md-6">
-                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="last_name" value="{{ $user->last_name }}" required autofocus>
+                        <input id="last_name" type="text" class="form-control @error('name') is-invalid @enderror" name="last_name" value="{{ $user->last_name }}" required autofocus>
 
                         @error('name')
                         <span class="invalid-feedback" role="alert">
@@ -83,7 +83,7 @@
                         <label for="workHours" class="col-md-2 col-form-label text-md-right">Darbo valandos per savaitę</label>
 
                         <div class="col-md-6">
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="workHours" value="{{ $workHours }}" required autofocus>
+                            <input id="workHours" type="text" class="form-control @error('name') is-invalid @enderror" name="workHours" value="{{ $workHours }}" required autofocus>
 
                             @error('name')
                             <span class="invalid-feedback" role="alert">
