@@ -131,15 +131,12 @@ class LeaveRequestController extends Controller
 
     public function updateApproval(Request $request, LeaveRequest $leaveRequest)
     {
-        dd($request->all(), $leaveRequest->toArray());
-        
-        $request->validate([
+
+        $validatedData = $request->validate([
             'approval_status' => 'required|in:pending,approved,rejected',
         ]);
-
-        $leaveRequest->update([
-            'approval_status' => $request->approval_status,
-        ]);
+        
+        $leaveRequest->update($validatedData);
 
         return redirect()->route('leaveRequests.approve')->with('success', 'Prašymas buvo sėkmingai atnaujintas.');
     }
