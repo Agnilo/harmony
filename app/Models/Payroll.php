@@ -28,8 +28,8 @@ class Payroll extends Model
 
         static::creating(function ($payroll) {
             
-            $payroll->year = now()->year;
-            $payroll->month = now()->month;
+            $payroll->year = $payroll->year ?: now()->year;
+            $payroll->month = $payroll->month ?: now()->month;
         });
     }
 
