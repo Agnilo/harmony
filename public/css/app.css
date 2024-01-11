@@ -479,6 +479,7 @@ footer{
     padding: 10px 20px;
     background-color: white;
     color: black;
+    box-shadow: 0 15px 15px #0000002e;
 }
 
 .dashboard-card-body{

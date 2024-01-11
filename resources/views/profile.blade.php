@@ -7,7 +7,7 @@
             <div class="profile-edit-employee">
                 <div class="profile-edit-employee-navbar">
                     <div class="profile-edit-employee-imagesection">
-                        nuotraukėlė
+                    <img src="{{ asset('images/user.jpg') }}" alt="Example Image">
                     </div>
                     <div class="profile-edit-employee-tab">
                         tabai
