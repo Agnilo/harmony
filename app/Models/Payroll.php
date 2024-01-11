@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Payroll extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'user_id',
         'year',
         'month',
-        'paid_leave',
-        'unpaid_leave',
         'work_hours',
         'work_days',
         'leave_hours',
@@ -22,12 +22,12 @@ class Payroll extends Model
         'info',
     ];
 
-    public static function boot()
+    protected static function boot()
     {
         parent::boot();
 
         static::creating(function ($payroll) {
-            
+
             $payroll->year = $payroll->year ?: now()->year;
             $payroll->month = $payroll->month ?: now()->month;
         });
