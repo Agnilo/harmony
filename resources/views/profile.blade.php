@@ -15,6 +15,9 @@
                 </div>
                 <div class="profile-eidt-employee-content">
                     <div class="profile-edit-employee-content-padding">
+                        <div class="profile-information-header">
+                            <h5>Asmeninė informacija</h5>
+                        </div>
                         <table class="profile-information-table">
                             <tr class="profile-information-row">
                                 <td class="profile-information-cell profile-label">El. Paštas:</td>
