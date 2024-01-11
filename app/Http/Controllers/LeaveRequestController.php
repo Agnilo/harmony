@@ -17,7 +17,7 @@ class LeaveRequestController extends Controller
     public function index()
     {
 
-        
+
         $leaveRequests = Auth::user()->leaveRequests;
 
         return view('leaveRequest', compact('leaveRequests'));
@@ -86,7 +86,7 @@ class LeaveRequestController extends Controller
     {
         $user = Auth::user();
 
-        
+
         $validatedData = $request->validate([
             'leaveRequest_name' => 'required|string|max:255',
             'leave_type' => 'required|in:paid_leave,unpaid_leave',
@@ -98,7 +98,7 @@ class LeaveRequestController extends Controller
             'remarks' => 'nullable|string|max:255',
         ]);
 
-        
+
         if ($request->hasFile('file_upload')) {
             $filePath = $request->file('file_upload')->store('leaveRequests', 'public');
             $validatedData['file_upload'] = $filePath;
@@ -120,5 +120,25 @@ class LeaveRequestController extends Controller
 
             return redirect()->route('leaveRequest')->with('error', 'Neturite tam teisių');
         }
+    }
+
+    public function indexForApproval()
+    {
+        $leaveRequests = LeaveRequest::all();
+
+        return view('leave.approve', compact('leaveRequests'));
+    }
+
+    public function updateApproval(Request $request, LeaveRequest $leaveRequest)
+    {
+        $request->validate([
+            'approval_status' => 'required|in:pending,approved,rejected',
+        ]);
+
+        $leaveRequest->update([
+            'approval_status' => $request->approval_status,
+        ]);
+
+        return redirect()->route('leaveRequests.approve')->with('success', 'Prašymas buvo sėkmingai atnaujintas.');
     }
 }

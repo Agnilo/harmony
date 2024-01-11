@@ -28,11 +28,15 @@ use Illuminate\Support\Facades\Auth;
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/apie', function () { return view('guest.about'); });
-    Route::get('/susisiekti', function () { return view('guest.contact'); });
+    Route::get('/apie', function () {
+        return view('guest.about');
+    });
+    Route::get('/susisiekti', function () {
+        return view('guest.contact');
+    });
 });
 
-Route::get('/autorizacija', function (){
+Route::get('/autorizacija', function () {
     return view('unverified');
 });
 
@@ -83,9 +87,14 @@ Route::middleware(['can:create-leaveRequest'])->group(function () {
 
 Route::middleware(['can:edit-leaveRequest'])->group(function () {
     Route::get('/atostogos/{leaveRequest}/redaguoti', [LeaveRequestController::class, 'edit'])->name('leaveRequest.edit');
-    Route::put('/atostogos/{leaveRequest}', [LeaveRequestController::class, 'update'])->name('leaveRequest.update');    
+    Route::put('/atostogos/{leaveRequest}', [LeaveRequestController::class, 'update'])->name('leaveRequest.update');
 });
 
 Route::middleware(['can:delete-leaveRequest'])->group(function () {
-    Route::delete('/atostogos/{leaveRequest}', [LeaveRequestController::class, 'destroy'])->name('leaveRequest.destroy');    
+    Route::delete('/atostogos/{leaveRequest}', [LeaveRequestController::class, 'destroy'])->name('leaveRequest.destroy');
+});
+
+Route::middleware(['can:approve-leaveRequest'])->group(function () {
+        Route::get('/tvirtinti', [LeaveRequestController::class, 'indexForApproval'])->name('leaveRequests.approve');
+        Route::put('/tvirtinti/{leaveRequest}', [LeaveRequestController::class, 'updateApproval'])->name('leaveRequests.updateApproval');
 });
