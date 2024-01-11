@@ -31,7 +31,7 @@
                         </div>
                         <div class="benefit-show-button">
                             @auth
-                            <form method="POST" action="{{ route('benefit.select', $benefits->id) }}">
+                            <form method="POST" action="{{ route('benefit.select', $benefit->id) }}">
                                 @csrf
 
                                 @if(auth()->user()->selectedBenefits->contains($benefit->id))
