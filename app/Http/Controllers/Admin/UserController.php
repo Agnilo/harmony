@@ -69,7 +69,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
 
-            $userValidation = $request->validate([
+            $validatedData = $request->validate([
                 'first_name' => 'required|string|max:255',
                 'last_name' => 'required|string|max:255',
                 'email' => 'required|email|unique:users,email,' . $user->id,
@@ -85,9 +85,6 @@ class UserController extends Controller
                 'gross' => 'nullable|numeric|between:0,999999.99',
                 'info' => 'nullable|string|max:255',
             ]);
-        
-
-        $validatedData = array_merge($userValidation, $payrollValidation);
 
 
         $user->fill([
@@ -115,14 +112,14 @@ class UserController extends Controller
         }
 
         $payrollData = [
-            'work_hours' => $validatedData['work_hours'],
-            'work_days' => $validatedData['work_days'],
-            'overtime' => $validatedData['overtime'],
-            'gross' => $validatedData['gross'],
-            'net' => isset($validatedData['gross']) ? $this->calculateNetSalary($validatedData['gross'], $request) : 0,
-            //'net' => $this->calculateNetSalary($validatedData['gross'], $request),
-            //'net' => $validatedData['net'] ?? 0,
-            'info' => $validatedData['info'],
+            'work_hours' => $payrollValidation['work_hours'],
+            'work_days' => $payrollValidation['work_days'],
+            'overtime' => $payrollValidation['overtime'],
+            'gross' => $payrollValidation['gross'],
+            'net' => isset($payrollValidation['gross']) ? $this->calculateNetSalary($payrollValidation['gross'], $request) : 0,
+            //'net' => $this->calculateNetSalary($payrollValidation['gross'], $request),
+            //'net' => $payrollValidation['net'] ?? 0,
+            'info' => $payrollValidation['info'],
         ];
 
         if ($user->payroll) {
