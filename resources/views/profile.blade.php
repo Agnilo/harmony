@@ -15,42 +15,36 @@
                 </div>
                 <div class="profile-eidt-employee-content">
                     <div class="profile-edit-employee-content-padding">
-                        <div class="row">
-                            <div class="profile-information">
-                                <div class="profile-information-header">
-                                    Asmeninė informacija
-                                </div>
-                                <div class="profile-information-content">
-                                    <div class="profile-information-text">
-                                        <div class="profile-label"> El. Paštas</div>
-                                        <div class="profile-element-padding"> {{ $user->email }}</div>
-                                    </div>
-                                    <div class="profile-information-text">
-                                        <div class="profile-label"> Lytis</div>
-                                        <div class="profile-element-padding"> {{ $user->gender }}</div>
-                                    </div>
-                                    <div class="profile-information-text">
-                                        <div class="profile-label"> Adresas </div>
-                                        <div class="profile-element-padding"> {{ $user->street_address }}</div>
-                                    </div>
-                                    <div class="profile-information-text">
-                                        <div class="profile-label"> Pašto kodas </div>
-                                        <div class="profile-element-padding"> {{ $user->zip_code }}</div>
-                                    </div>
-                                    <div class="profile-information-text">
-                                        <div class="profile-label"> Miestas </div>
-                                        <div class="profile-element-padding"> {{ $user->city }}</div>
-                                    </div>
-                                    <div class="profile-information-text">
-                                        <div class="profile-label"> Šalis </div>
-                                        <div class="profile-element-padding"> {{ $user->country }}</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-
+                        <table class="profile-information-table">
+                            <tr class="profile-information-row">
+                                <td class="profile-information-cell profile-label">Vardas:</td>
+                                <td class="profile-information-cell">{{ $user->name }}</td>
+                            </tr>
+                            <tr class="profile-information-row">
+                                <td class="profile-information-cell profile-label">El. Paštas:</td>
+                                <td class="profile-information-cell">{{ $user->email }}</td>
+                            </tr>
+                            <tr class="profile-information-row">
+                                <td class="profile-information-cell profile-label">Lytis:</td>
+                                <td class="profile-information-cell">{{ $user->gender }}</td>
+                            </tr>
+                            <tr class="profile-information-row">
+                                <td class="profile-information-cell profile-label">Adresas:</td>
+                                <td class="profile-information-cell">{{ $user->street_address }}</td>
+                            </tr>
+                            <tr class="profile-information-row">
+                                <td class="profile-information-cell profile-label">Pašto kodas:</td>
+                                <td class="profile-information-cell">{{ $user->zip_code }}</td>
+                            </tr>
+                            <tr class="profile-information-row">
+                                <td class="profile-information-cell profile-label">Miestas:</td>
+                                <td class="profile-information-cell">{{ $user->city }}</td>
+                            </tr>
+                            <tr class="profile-information-row">
+                                <td class="profile-information-cell profile-label">Šalis:</td>
+                                <td class="profile-information-cell">{{ $user->country }}</td>
+                            </tr>
+                        </table>
                         <h2>Selected Benefits:</h2>
                         <ul>
                             @foreach ($selectedBenefits as $benefit)

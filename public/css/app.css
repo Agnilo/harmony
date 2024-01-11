@@ -546,11 +546,25 @@ footer{
     letter-spacing: 1px;
 }
 
-.profile-information-content{
+.profile-information-table{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     padding-top: 20px;
+}
+
+.profile-information-row{
+    display: table-row;
+}
+
+.profile-information-cell {
+    display: table-cell;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.profile-label {
+    font-weight: bold;
 }
 
 .profile-information-text{
