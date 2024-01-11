@@ -11,4 +11,9 @@ class Payroll extends Model
     {
         return $this->hasOne(User::class);
     }
+
+    public function leaveRequests()
+    {
+        return $this->belongsToMany(LeaveRequest::class, 'leave_request_payroll');
+    }
 }

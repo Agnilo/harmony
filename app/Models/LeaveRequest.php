@@ -22,4 +22,9 @@ class LeaveRequest extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function payrolls()
+    {
+        return $this->belongsToMany(Payroll::class, 'leave_request_payroll');
+    }
 }
