@@ -86,6 +86,10 @@ class UserController extends Controller
                 'info' => 'nullable|string|max:255',
             ]);
 
+            \Log::info('Payroll validated successfully');
+\Log::info('Payroll validation data: ' . json_encode($payrollValidation));
+
+
 
         $user->fill([
             'first_name' => $validatedData['first_name'],
