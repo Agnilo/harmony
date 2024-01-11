@@ -101,6 +101,10 @@ class UserController extends Controller
 
         $validateRoleIds = $request->roles;
 
+        if (!is_array($validateRoleIds)) {
+            $validateRoleIds = [$validateRoleIds];
+        }
+
         dd($validateRoleIds);
         $roles = Role::whereIn('id', $validateRoleIds)->get();
         $user->syncRoles($roles);        
