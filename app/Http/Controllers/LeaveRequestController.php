@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\LeaveRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Log;
+use Illuminate\Support\Facades\Log;
 
 class LeaveRequestController extends Controller
 {
