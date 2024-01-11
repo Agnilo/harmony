@@ -13,13 +13,10 @@ class LeaveRequestController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        
     }
 
     public function index()
     {
-
-
         $leaveRequests = Auth::user()->leaveRequests;
 
         return view('leaveRequest', compact('leaveRequests'));
@@ -49,7 +46,6 @@ class LeaveRequestController extends Controller
     {
         $user = Auth::user();
 
-
         $validatedData = $request->validate([
             'leaveRequest_name' => 'required|string|max:255',
             'leave_type' => 'required|in:paid_leave,unpaid_leave',
@@ -75,12 +71,16 @@ class LeaveRequestController extends Controller
             'approval_status' => 'prašymas neperžiūrėtas',
         ]);
 
+        $payrollId = $request->input('payroll_id');
+        if ($payrollId) {
+            $leaveRequest->payrolls()->attach($payrollId);
+        }
+
         $user->update(['vacation_days' => $user->vacation_days - $validatedData['days']]);
 
         //$salary = ($request->leave_type === 'paid_leave') ? calculatePaidLeaveSalary($user, $request->days) : 0;
 
         $user->leaveRequests()->save($leaveRequest);
-        $leaveRequest->payrolls()->sync($request->input('payroll_ids', []));
 
         return redirect()->route('leaveRequest')->with('success', 'Atostogų prašymas sukurtas sėkmingai.');
     }
@@ -108,6 +108,11 @@ class LeaveRequestController extends Controller
         }
 
         $leaveRequest->update($validatedData);
+
+        $payrollId = $request->input('payroll_id');
+        if ($payrollId) {
+            $leaveRequest->payrolls()->sync([$payrollId]);
+        }
 
         return redirect()->route('leaveRequest')->with('success', 'Atostogų prašymas buvo atnaujintas sėkmingai.');
     }
