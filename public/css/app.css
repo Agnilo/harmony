@@ -550,6 +550,7 @@ footer{
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
+    border: none;
 }
 
 .profile-information-row{
