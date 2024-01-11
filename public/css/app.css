@@ -499,6 +499,7 @@ footer{
     padding: unset;
     background-color: white;
     border-radius: 25px;
+    box-shadow: 0 15px 15px #0000002e;
 }
 
 .profile-img{
