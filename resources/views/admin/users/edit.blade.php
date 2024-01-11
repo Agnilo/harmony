@@ -78,10 +78,10 @@
                     <h2>Payroll Information</h2>
 
                     <div class="form-group row">
-                        <label for="work_hours" class="col-md-2 col-form-label text-md-right">Darbo valandos per savaitę</label>
+                        <label for="workHours" class="col-md-2 col-form-label text-md-right">Darbo valandos per savaitę</label>
                         <div class="col-md-6">
-                            <input id="work_hours" type="text" class="form-control @error('work_hours') is-invalid @enderror" name="work_hours" value="{{ $work_hours }}" required autofocus>
-                            @error('work_hours')
+                            <input id="workHours" type="text" class="form-control @error('workHours') is-invalid @enderror" name="workHours" value="{{ $workHours }}" required autofocus>
+                            @error('workHours')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -90,10 +90,10 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="work_days" class="col-md-2 col-form-label text-md-right">Darbo dienos per savaitę</label>
+                        <label for="workDays" class="col-md-2 col-form-label text-md-right">Darbo dienos per savaitę</label>
                         <div class="col-md-6">
-                            <input id="work_days" type="text" class="form-control @error('work_days') is-invalid @enderror" name="work_days" value="{{ $work_days }}" required autofocus>
-                            @error('work_days')
+                            <input id="workDays" type="text" class="form-control @error('workDays') is-invalid @enderror" name="workDays" value="{{ $workDays }}" required autofocus>
+                            @error('workDays')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -114,10 +114,10 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="gross" class="col-md-2 col-form-label text-md-right">Bruto atlyginimas</label>
+                        <label for="grossSalary" class="col-md-2 col-form-label text-md-right">Bruto atlyginimas</label>
                         <div class="col-md-6">
-                            <input id="gross" type="text" class="form-control @error('gross') is-invalid @enderror" name="gross" value="{{ $gross }}" required autofocus>
-                            @error('gross')
+                            <input id="grossSalary" type="text" class="form-control @error('grossSalary') is-invalid @enderror" name="grossSalary" value="{{ $grossSalary }}" required autofocus>
+                            @error('grossSalary')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -126,10 +126,10 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="net" class="col-md-2 col-form-label text-md-right">Neto atlyginimas</label>
+                        <label for="netSalary" class="col-md-2 col-form-label text-md-right">Neto atlyginimas</label>
                         <div class="col-md-6">
-                            <input id="net" type="text" class="form-control @error('net') is-invalid @enderror" name="net" value="{{ $net }}" required autofocus>
-                            @error('net')
+                            <input id="netSalary" type="text" class="form-control @error('netSalary') is-invalid @enderror" name="netSalary" value="{{ $netSalary }}" required autofocus>
+                            @error('netSalary')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
