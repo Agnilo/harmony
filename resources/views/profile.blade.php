@@ -30,14 +30,15 @@
                             <div class="row justify-content-center">
                                 <div class="col-md-8">
                                     <div class="card">
-                                        <div class="card-header">Payroll Information</div>
+                                        <div class="card-header">Darbo užmokesčio informacija</div>
 
                                         <div class="card-body">
                                             <div>
-                                                <h5>Work Hours: {{ $payroll->work_hours }}</h5>
-                                                <h5>Work Days: {{ $payroll->work_days }}</h5>
-                                                <h5>Gross Salary: ${{ $payroll->gross }}</h5>
-                                                <h5>Net Salary: ${{ $payroll->net }}</h5>
+                                                <h5>Work Hours: {{ $work_hours }}</h5>
+                                                <h5>Work Days: {{ $pwork_days }}</h5>
+                                                <h5>Gross Salary: ${{gross }}</h5>
+                                                <h5>Net Salary: ${{ $net }}</h5>
+                                                <h5>Info: ${{ $info }}</h5>
                                             </div>
                                         </div>
                                     </div>
