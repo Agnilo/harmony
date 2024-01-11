@@ -105,7 +105,6 @@ class UserController extends Controller
             $validateRoleIds = [$validateRoleIds];
         }
 
-        dd($validateRoleIds);
         $roles = Role::whereIn('id', $validateRoleIds)->get();
         $user->syncRoles($roles);        
 
