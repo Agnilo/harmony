@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Benefits;
+use App\Http\Controllers\Auth;
 
 class BenefitsController extends Controller
 {
