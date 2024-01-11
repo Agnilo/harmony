@@ -543,7 +543,7 @@ footer{
 }
 
 .profile-information-header h5{
-    font-size: 20px;
+    font-size: 25px;
     color: var(--primary-color);
     font-weight: 600;
     letter-spacing: 1px;
@@ -590,7 +590,7 @@ footer{
 .profile-eidt-employee-content{
     border-left: 1px solid var(--primary-backgroung-color);
     flex: 1;
-    padding: 0 50px;
+    padding: 30px 50px;
     width: 100%;
 }
 
