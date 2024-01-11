@@ -126,8 +126,9 @@ class UserController extends Controller
         ];
 
         if ($user->payroll) {
-
+            \Log::info('Before update, work_hours: ' . $payrollData['work_hours']);
             $user->payroll->update($payrollData);
+            \Log::info('After update, work_hours: ' . $user->payroll->work_hours);
         } else {
             Log::info('Creating new payroll');
             $user->payroll()->create($payrollData);
