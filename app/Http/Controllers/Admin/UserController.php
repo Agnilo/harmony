@@ -115,14 +115,14 @@ class UserController extends Controller
         }
 
         $payrollData = [
-            'work_hours' => $validatedData['work_hours'] ?? 0,
-            'work_days' => $validatedData['work_days'] ?? 0,
-            'overtime' => $validatedData['overtime'] ?? 0,
-            'gross' => $validatedData['gross'] ?? 0,
+            'work_hours' => $validatedData['work_hours'],
+            'work_days' => $validatedData['work_days'],
+            'overtime' => $validatedData['overtime'],
+            'gross' => $validatedData['gross'],
             'net' => isset($validatedData['gross']) ? $this->calculateNetSalary($validatedData['gross'], $request) : 0,
             //'net' => $this->calculateNetSalary($validatedData['gross'], $request),
             //'net' => $validatedData['net'] ?? 0,
-            'info' => $validatedData['info'] ?? 0,
+            'info' => $validatedData['info'],
         ];
 
         if ($user->payroll) {
