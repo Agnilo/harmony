@@ -13,7 +13,7 @@ class LeaveRequestController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-
+        
     }
 
     public function index()
@@ -72,7 +72,7 @@ class LeaveRequestController extends Controller
             'days' => $validatedData['days'],
             'file_upload' => $filePath,
             'remarks' => $validatedData['remarks'],
-            'approval_status' => 'Prašymas neperžiūrėtas',
+            'approval_status' => 'prašymas neperžiūrėtas',
         ]);
 
         $user->update(['vacation_days' => $user->vacation_days - $validatedData['days']]);
