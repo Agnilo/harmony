@@ -13,7 +13,7 @@
 
     <div class="row">
         @foreach($benefits as $benefit)
-        <a href="{{route('benefits.show', $benefit)}}">
+        <a href="{{route('benefits.show', $benefit)}}" class="benefit-link">
             <div class="col-md-3 mb-3 benefit-card-bottom-margin">
                 <div class="benefit-card">
                     <div class="benefit-card-header">

@@ -754,6 +754,12 @@ footer{
     min-height: 210px;
 }
 
+.benefit-link{
+    color: inherit;
+    text-decoration: none;
+    
+}
+
 .benefit-card-bottom-margin{
     margin-bottom: 15px;
     max-width: 100%;
