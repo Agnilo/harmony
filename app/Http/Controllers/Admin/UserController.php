@@ -166,10 +166,12 @@ class UserController extends Controller
         $unpaidLeaveDeduction = 0;
         $paidLeaveSum = 0;
 
+        dd($leaveRequest);
+        
         if ($leaveRequest) {
             $leaveRequest = LeaveRequest::findOrFail($request->leave_request_id);
 
-            dd($leaveRequest);
+            
 
             $leaveMonth = date('m', strtotime($leaveRequest->start_date));
             $leaveYear = date('Y', strtotime($leaveRequest->start_date));
