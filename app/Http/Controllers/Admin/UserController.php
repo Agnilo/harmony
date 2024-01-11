@@ -72,27 +72,28 @@ class UserController extends Controller
 
         \Log::info('Starting update process for user: ' . $user->id);
 
-        $userValidation = $request->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $user->id,
-            'is_verified' => 'nullable|boolean',
-        ]);
-
-        \Log::info(' user validate');
-
-        $payrollValidation = $request->validate([
-            'work_hours' => 'required|numeric',
-            'work_days' => 'required|integer',
-            'overtime' => 'required|numeric',
-            'gross' => 'required|numeric',
-            'info' => 'nullable|string|max:255',
-        ]);
-
-        \Log::info('Payroll validated successfully');
-    } catch (\Illuminate\Validation\ValidationException $e) {
-        \Log::info('Validation failed: ' . json_encode($e->errors()));
-    }
+        try {
+            $userValidation = $request->validate([
+                'first_name' => 'required|string|max:255',
+                'last_name' => 'required|string|max:255',
+                'email' => 'required|email|unique:users,email,' . $user->id,
+                'is_verified' => 'nullable|boolean',
+            ]);
+        
+            \Log::info('User validated successfully');
+        
+            $request->validate([
+                'work_hours' => 'required|numeric',
+                'work_days' => 'required|integer',
+                'overtime' => 'required|numeric',
+                'gross' => 'required|numeric',
+                'info' => 'nullable|string|max:255',
+            ]);
+        
+            \Log::info('Payroll validated successfully');
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            \Log::info('Validation failed: ' . json_encode($e->errors()));
+        }
 
         $validatedData = array_merge($userValidation, $payrollValidation);
 
