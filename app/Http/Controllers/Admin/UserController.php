@@ -86,11 +86,8 @@ class UserController extends Controller
         }
 
         $payrollData = [
-            'year' => $request->year,
-            'month' => $request->month,
             'work_hours' => $request->work_hours,
             'work_days' => $request->work_days,
-            'leave_hours' => $request->leave_hours,
             'overtime' => $request->overtime,
             'gross' => $request->gross,
             'net' => $this->calculateNetSalary($request->gross, $request),
