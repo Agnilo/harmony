@@ -806,6 +806,10 @@ footer{
     color: white;
 }
 
+.benefit-card-footer p{
+    margin: auto;
+}
+
 .benefit-show-container{
     width: 80%;
     display: flex;
