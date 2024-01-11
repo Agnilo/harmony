@@ -16,7 +16,8 @@ class RolesAndPermissionSeeder extends Seeder
             'create-admin', 'edit-admin', 'delete-admin',
             'create-benefit', 'edit-benefit', 'delete-benefit',
             'create-leaveRequest', 'edit-leaveRequest', 'delete-leaveRequest',
-            'approve-leaveRequest',
+            'approve-leaveRequest','edit-payroll','create-payroll',
+            'delete payroll',
 
         ];
 
@@ -44,6 +45,9 @@ class RolesAndPermissionSeeder extends Seeder
             'edit-users',
             'delete-users',
             'approve-leaveRequest',
+            'edit-payroll',
+            'create-payroll',
+            'delete payroll',
         ]);
 
         $superUserRole->givePermissionTo([
@@ -60,6 +64,9 @@ class RolesAndPermissionSeeder extends Seeder
             'create-leaveRequest',
             'edit-leaveRequest',
             'delete-leaveRequest',
+            'edit-payroll',
+            'create-payroll',
+            'delete payroll',
         ]);
 
         $userRole->givePermissionTo([
