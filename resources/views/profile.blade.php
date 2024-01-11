@@ -22,28 +22,28 @@
                                 </div>
                                 <div class="profile-information-content">
                                     <div class="profile-information-text">
-                                        <div> El. Paštas</div>
-                                        <div> {{ $user->email }}</div>
+                                        <div class="profile-element-padding"> El. Paštas</div>
+                                        <div class="profile-element-padding"> {{ $user->email }}</div>
                                     </div>
                                     <div class="profile-information-text">
-                                        <div> Lytis</div>
-                                        <div> {{ $user->gender }}</div>
+                                        <div class="profile-element-padding"> Lytis</div>
+                                        <div class="profile-element-padding"> {{ $user->gender }}</div>
                                     </div>
                                     <div class="profile-information-text">
-                                        <div> Adresas </div>
-                                        <div> {{ $user->street_address }}</div>
+                                        <div class="profile-element-padding"> Adresas </div>
+                                        <div class="profile-element-padding"> {{ $user->street_address }}</div>
                                     </div>
                                     <div class="profile-information-text">
-                                        <div> Pašto kodas </div>
-                                        <div> {{ $user->zip_code }}</div>
+                                        <div class="profile-element-padding"> Pašto kodas </div>
+                                        <div class="profile-element-padding"> {{ $user->zip_code }}</div>
                                     </div>
                                     <div class="profile-information-text">
-                                        <div> Miestas </div>
-                                        <div> {{ $user->city }}</div>
+                                        <div class="profile-element-padding"> Miestas </div>
+                                        <div class="profile-element-padding"> {{ $user->city }}</div>
                                     </div>
                                     <div class="profile-information-text">
-                                        <div> Šalis </div>
-                                        <div> {{ $user->country }}</div>
+                                        <div class="profile-element-padding"> Šalis </div>
+                                        <div class="profile-element-padding"> {{ $user->country }}</div>
                                     </div>
                                 </div>
                             </div>
