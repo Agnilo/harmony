@@ -32,7 +32,7 @@
                     @elseif($leaveRequest->approval_status === 'rejected')
                     Atmestas
                     @else
-                    {{ $leaveRequest->approval_status }}
+                    Prašymas neperžiūrėtas
                     @endif
                 </td>
                 <td>
