@@ -21,5 +21,6 @@
 
     <!-- Button to create a new leave request -->
     <a href="{{ route('leaveRequest.create') }}" class="btn btn-success">Create New Leave Request</a>
+    <p><a href="{{ route('leaveRequests.approve') }}">Approve Leave Requests</a></p>
 </div>
 @endsection
