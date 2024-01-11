@@ -7,8 +7,16 @@ use Illuminate\Http\Request;
 
 class LeaveRequestController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
+
+        
         $leaveRequests = Auth::user()->leaveRequests;
 
         return view('leaveRequest', compact('leaveRequests'));
