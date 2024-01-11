@@ -191,10 +191,11 @@ class UserController extends Controller
 
         // Calculate gross without paid leave
         $grossWithoutPaidLeave = ($baseHours - ($paidLeaveHours ?? 0)) * $baseHourlyRate;
-        dd($grossWithoutPaidLeave);
+        
         // Calculate gross with all adjustments
         $gross = $grossWithoutPaidLeave + $paidLeaveSum - $unpaidLeaveDeduction - $totalBenefitPrice + $overtimeSum;
-
+        
+        dd($grossWithoutPaidLeave, $overtimeSum, $totalBenefitPrice, $paidLeaveSum);
         // Calculate net salary
         $net = $gross * (1 - $totalDeductionRate);
 
