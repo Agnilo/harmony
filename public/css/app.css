@@ -760,6 +760,12 @@ footer{
     
 }
 
+.benefit-link:hover{
+    color: inherit;
+    text-decoration: none;
+    
+}
+
 .benefit-card-bottom-margin{
     margin-bottom: 15px;
     max-width: 100%;
