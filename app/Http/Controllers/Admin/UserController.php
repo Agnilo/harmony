@@ -94,7 +94,10 @@ class UserController extends Controller
 
         $leaveRequest = null;
 
-        $leaveType = $leaveRequest->leave_type;
+        if ($request->leave_request_id) {
+            $leaveRequest = LeaveRequest::findOrFail($request->leave_request_id);
+            $leaveType = $leaveRequest ? $leaveRequest->leave_type : null;
+        }
 
         dd($leaveType);
 
