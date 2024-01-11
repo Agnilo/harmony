@@ -75,8 +75,7 @@
                         <table class="profile-information-table">
                             @foreach ($selectedBenefits as $benefit)
                             <tr class="profile-information-row">
-                                <td class="profile-information-cell profile-label">Pasirinktas privalumas</td>
-                                <td class="profile-information-cell">{{ $benefit->benefit_name }}</td>
+                                <td class="profile-information-cell profile-label">{{ $benefit->benefit_name }}</td>
                             </tr>
                             <tr class="profile-information-row">
                                 <td class="profile-information-cell profile-label">Kaina</td>
