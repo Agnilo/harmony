@@ -8,8 +8,8 @@
 
             <!-- Leave Name -->
             <div class="form-group">
-                <label for="leave_type">Leave Name</label>
-                <text id="leave_type" name="leave_type" class="form-control" rows="3"></text>
+                <label for="leaveRequest_name">Leave Name</label>
+                <input type="text" id="leaveRequest_name" name="leaveRequest_name" class="form-control" rows="3">
             </div>
 
             <!-- Leave Type -->

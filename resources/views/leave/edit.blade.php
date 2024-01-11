@@ -9,8 +9,8 @@
 
         <!-- Leave Name -->
         <div class="form-group">
-            <label for="leave_type">Leave Name</label>
-            <input type="text" id="leave_type" name="leave_type" class="form-control" value="{{ $leaveRequest->leaveRequest_name }}"> 
+            <label for="leaveRequest_name">Pavadinimas</label>
+            <input type="text" id="leaveRequest_name" name="leaveRequest_name" class="form-control" value="{{ $leaveRequest->leaveRequest_name }}"> 
         </div>
 
         <!-- Leave Type -->
