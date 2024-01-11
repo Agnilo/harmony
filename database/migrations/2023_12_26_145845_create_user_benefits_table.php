@@ -15,7 +15,7 @@ return new class extends Migration
 
             // Foreign keys
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('benefit_id')->references('id')->on('benefit')->onDelete('cascade');
+            $table->foreign('benefit_id')->references('id')->on('benefits')->onDelete('cascade');
 
             // Primary key
             $table->primary(['user_id', 'benefit_id']);
