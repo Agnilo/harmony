@@ -7,6 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class LeaveRequest extends Model
 {
+    protected $fillable = [
+        'leave_type',
+        'reason',
+        'start_date',
+        'end_date',
+        'days',
+        'remarks',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
