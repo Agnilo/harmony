@@ -7,22 +7,34 @@
     <table class="table">
         <thead>
             <tr>
-                <th>User</th>
-                <th>Leave Request Name</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th>Approval Status</th>
-                <th>Action</th>
+                <th>Vardas</th>
+                <th>Pavardė</th>
+                <th>Prašymas</th>
+                <th>Atostogų pradžia</th>
+                <th>Atostogų pabaiga</th>
+                <th>Prašymo statusas</th>
+                <th>Veiksmai</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($leaveRequests as $leaveRequest)
             <tr>
                 <td>{{ $leaveRequest->user->first_name }}</td>
+                <td>{{ $leaveRequest->user->last_name }}</td>
                 <td>{{ $leaveRequest->leaveRequest_name }}</td>
                 <td>{{ $leaveRequest->start_date }}</td>
                 <td>{{ $leaveRequest->end_date }}</td>
-                <td>{{ $leaveRequest->approval_status }}</td>
+                <td>
+                    @if($leaveRequest->approval_status === 'pending')
+                    Prašymas neperžiūrėtas
+                    @elseif($leaveRequest->approval_status === 'approved')
+                    Patvirtintas
+                    @elseif($leaveRequest->approval_status === 'rejected')
+                    Atmestas
+                    @else
+                    -
+                    @endif
+                </td>
                 <td>
                     <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#details{{ $leaveRequest->id }}" aria-expanded="false" aria-controls="details{{ $leaveRequest->id }}">
                         Details
@@ -31,20 +43,20 @@
                         @csrf
                         <input type="hidden" name="_method" value="put">
                         <select name="approval_status">
-                            <option value="pending" {{ $leaveRequest->approval_status === 'pending' ? 'selected' : '' }}>Pending</option>
-                            <option value="approved" {{ $leaveRequest->approval_status === 'approved' ? 'selected' : '' }}>Approved</option>
-                            <option value="rejected" {{ $leaveRequest->approval_status === 'rejected' ? 'selected' : '' }}>Rejected</option>
+                            <option value="pending" {{ $leaveRequest->approval_status === 'pending' ? 'selected' : '' }}>Prašymas neperžiūrėtas</option>
+                            <option value="approved" {{ $leaveRequest->approval_status === 'approved' ? 'selected' : '' }}>Patvirtintas</option>
+                            <option value="rejected" {{ $leaveRequest->approval_status === 'rejected' ? 'selected' : '' }}>Atmestas</option>
                         </select>
                         <button type="submit" class="btn btn-primary">Update</button>
                     </form>
 
                     <div class="collapse" id="details{{ $leaveRequest->id }}">
                         <div class="card card-body">
-                            <strong>User:</strong> {{ $leaveRequest->user->first_name }} {{ $leaveRequest->user->last_name }}<br>
-                            <strong>Leave Request Name:</strong> {{ $leaveRequest->leaveRequest_name }}<br>
-                            <strong>Start Date:</strong> {{ $leaveRequest->start_date }}<br>
-                            <strong>End Date:</strong> {{ $leaveRequest->end_date }}<br>
-                            <strong>Approval Status:</strong> {{ $leaveRequest->approval_status }}<br>
+                            <strong>Naudotojas:</strong> {{ $leaveRequest->user->first_name }} {{ $leaveRequest->user->last_name }}<br>
+                            <strong>Prašymas:</strong> {{ $leaveRequest->leaveRequest_name }}<br>
+                            <strong>Atostogų pradžia:</strong> {{ $leaveRequest->start_date }}<br>
+                            <strong>Atostogų pabaiga:</strong> {{ $leaveRequest->end_date }}<br>
+                            <strong>Prašymo statusas:</strong> {{ $leaveRequest->approval_status }}<br>
                             <!-- Add other leave request details as needed -->
                         </div>
                     </div>
