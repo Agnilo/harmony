@@ -123,6 +123,8 @@ class BenefitsController extends Controller
     {
         $user = auth()->user();
 
+        $user->load('benefits');
+
         if ($user && !$user->benefits->contains($benefit->id)) {
             Log::info("User {$user->id} is selecting benefit {$benefit->id}");
 
