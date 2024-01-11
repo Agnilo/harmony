@@ -68,7 +68,21 @@
                                 <td class="profile-information-cell profile-label">Informacija</td>
                                 <td class="profile-information-cell">{{ $info }}</td>
                             </tr>
-
+                        </table>
+                        <div class="profile-information-header">
+                            <h5>Pasirinkti privalumai</h5>
+                        </div>
+                        <table class="profile-information-table">
+                            @foreach ($selectedBenefits as $benefit)
+                            <tr class="profile-information-row">
+                                <td class="profile-information-cell profile-label">Pasirinktas privalumas</td>
+                                <td class="profile-information-cell">{{ $benefit->benefit_name }}</td>
+                            </tr>
+                            <tr class="profile-information-row">
+                                <td class="profile-information-cell profile-label">Kaina</td>
+                                <td class="profile-information-cell">{{ $benefit->price }}</td>
+                            </tr>
+                            @endforeach
                         </table>
                         <h2>Selected Benefits:</h2>
                         <ul>
