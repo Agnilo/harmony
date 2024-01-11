@@ -85,6 +85,10 @@ class UserController extends Controller
             'info' => 'nullable|string|max:255',
         ]);
 
+        if ($validator->fails()) {
+            \Log::error($validator->errors()->first());
+        }
+
         \Log::info('Before user fill');
 
         $user->fill([
