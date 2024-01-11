@@ -83,10 +83,10 @@ class UserController extends Controller
             \Log::info('User validated successfully');
         
             $payrollValidation = $request->validate([
-                'work_hours' => 'required|numeric',
-                'work_days' => 'required|integer',
-                'overtime' => 'required|numeric',
-                'gross' => 'required|numeric',
+                'work_hours' => 'nullable|numeric|between:0,99.9',
+                'work_days' => 'nullable|integer|min:0',
+                'overtime' => 'nullable|numeric',
+                'gross' => 'nullable|numeric|between:0,999999.99',
                 'info' => 'nullable|string|max:255',
             ]);
         
@@ -96,6 +96,8 @@ class UserController extends Controller
             // Define an empty array for $payrollValidation in case of validation failure
             $payrollValidation = [];
         }
+
+        $validatedData = [$userValidation, $payrollValidation];
 
         \Log::info('Before user fill');
 
