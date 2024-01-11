@@ -10,7 +10,7 @@
                     <img src="{{ asset('images/user.jpg') }}" alt="Example Image" class="profile-img">
                     </div>
                     <div class="profile-edit-employee-tab">
-                    <h1>{{ $user->first_name }}</h1>
+                    <h5>{{ $user->first_name }} {{ $user->last_name }}</h5>
                     </div>
                 </div>
                 <div class="profile-eidt-employee-content">
