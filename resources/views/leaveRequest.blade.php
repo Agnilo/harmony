@@ -43,8 +43,8 @@
                     <td>{{ $leaveRequest->end_date }}</td>
                     <td>{{ $leaveRequest->approval_status }}</td>
                     <td class="user-buttons">
-                        <button type="button" class="btn btn-secondary float-left user-button-inside">
-                            <a href="{{ route('leaveRequest.edit', $leaveRequest) }}" class="btn btn-primary">
+                        <button type="button" class="btn btn-primary float-left user-button-inside">
+                            <a href="{{ route('leaveRequest.edit', $leaveRequest) }}" >
                             Redaguoti
                             </a>
                         </button>
