@@ -23,11 +23,8 @@
                         </div>
                         <div class="benefit-show-card-price">
                             @if($benefit->price > 0)
-
+                                <p><span style="font-weight: bold">Kaina:</span> {{ $benefit->price }} €</p>
                             @endif
-
-                            <p><span style="font-weight: bold">Kaina:</span> {{ $benefit->price }} €</p>
-
                         </div>
                         <div class="benefit-show-button">
                             @auth
