@@ -76,7 +76,7 @@ class UserController extends Controller
             'last_name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
             'is_verified' => 'nullable|boolean',
-
+        
             'work_hours' => 'required|numeric',
             'work_days' => 'required|integer',
             'overtime' => 'required|numeric',
