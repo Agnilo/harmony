@@ -11,7 +11,6 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('gender')->nullable()->default('Kita')->change();
 
-            $table->dropColumn('role');
         });
     }
 
