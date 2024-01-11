@@ -75,7 +75,7 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $user->id,
+            'email' => 'required|email|unique:users,email,',
             'is_verified' => 'nullable|boolean',
         
             'work_hours' => 'required|numeric',
@@ -83,17 +83,8 @@ class UserController extends Controller
             'overtime' => 'required|numeric',
             'gross' => 'required|numeric',
             'info' => 'nullable|string|max:255',
-        ], [
-            'work_hours.required' => 'The work hours field is required.',
-            'work_days.required' => 'The work days field is required.',
-            'overtime.required' => 'The overtime field is required.',
-            'gross.required' => 'The gross field is required.',
-            'info' => 'The info field is optional'
+        
         ]);
-
-        if ($validator->fails()) {
-            \Log::error($validator->errors()->first());
-        }
 
         \Log::info('Before user fill');
 
