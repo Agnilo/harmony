@@ -10,7 +10,7 @@
         <!-- Leave Name -->
         <div class="form-group">
             <label for="leave_type">Leave Name</label>
-            <text id="leave_type" name="leave_type" class="form-control" rows="3"> {{ $leaveRequest->leaveRequest_name }} </text>
+            <input type="text" id="leave_type" name="leave_type" class="form-control" value="{{ $leaveRequest->leaveRequest_name }}"> 
         </div>
 
         <!-- Leave Type -->
