@@ -30,7 +30,6 @@ class UserTableSeeder extends Seeder
             'last_name' => 'Žilinskas',
             'email' => 'lukas.zilinskas@harmony.lt',
             'gender' => 'moteris',
-            'role' => '2',
             'password' => Hash::make('password')
         ]);
 
@@ -39,7 +38,6 @@ class UserTableSeeder extends Seeder
             'last_name' => 'Admin',
             'email' => 'agne.admin@harmony.lt',
             'gender' => 'moteris',
-            'role' => '1',
             'password' => Hash::make('password')
         ]);
 
@@ -48,7 +46,6 @@ class UserTableSeeder extends Seeder
             'last_name' => 'Kazlauskas',
             'email' => 'tomas.kazlauskas@harmony.lt',
             'gender' => 'vyras',
-            'role' => '3',
             'password' => Hash::make('password')
         ]);
 
