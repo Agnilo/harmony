@@ -82,7 +82,7 @@ class UserController extends Controller
         
             \Log::info('User validated successfully');
         
-            $request->validate([
+            $payrollValidation = $request->validate([
                 'work_hours' => 'required|numeric',
                 'work_days' => 'required|integer',
                 'overtime' => 'required|numeric',
