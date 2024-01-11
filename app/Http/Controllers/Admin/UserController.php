@@ -70,6 +70,8 @@ class UserController extends Controller
     {
 
 
+        \Log::info('Starting update process for user: ' . $user->id);
+
         $validatedData = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
@@ -83,6 +85,8 @@ class UserController extends Controller
             'info' => 'nullable|string|max:255',
         ]);
 
+        \Log::info('Before user fill');
+
         $user->fill([
             'first_name' => $validatedData['first_name'],
             'last_name' => $validatedData['last_name'],
@@ -94,12 +98,14 @@ class UserController extends Controller
         $roles = Role::whereIn('id', $validateRoleIds)->get();
         $user->syncRoles($roles);        
 
+        \Log::info('Before user save');
         if ($user->save()) {
             $request->session()->flash('success', 'Vartotojas ' . $user->first_name . ' buvo atnaujintas');
         } else {
             $request->session()->flash('warning', 'Iškilo problema atnaujinant vartotoją');
         }
 
+        \Log::info('Before payroll data');
 
         $payrollData = [
             'work_hours' => $validatedData['work_hours'] ?? 0,
