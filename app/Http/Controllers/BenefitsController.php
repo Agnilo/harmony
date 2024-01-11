@@ -116,8 +116,8 @@ class BenefitsController extends Controller
     {
         $user = auth()->user();
 
-    if (!$user->benefits->contains($benefit->id)) {
-        $user->benefits()->attach($benefit->id);
+    if (!$user->benefit->contains($benefit->id)) {
+        $user->benefit()->attach($benefit->id);
         return redirect()->route('benefits')->with('success', 'Privalumas pasirinktas sėkmingai.');
     }
 
