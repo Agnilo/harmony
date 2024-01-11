@@ -15,7 +15,14 @@
                 </div>
                 <div class="profile-eidt-employee-content">
                     <div class="profile-edit-employee-content-padding">
-                        content before        
+                        <h1>{{ $user->name }}'s Profile</h1>
+
+                        <h2>Selected Benefits:</h2>
+                        <ul>
+                            @foreach ($selectedBenefits as $benefit)
+                            <li>{{ $benefit->name }}</li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
             </div>
