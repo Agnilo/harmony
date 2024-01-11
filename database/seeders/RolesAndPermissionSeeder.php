@@ -57,6 +57,9 @@ class RolesAndPermissionSeeder extends Seeder
             'edit-benefit',
             'delete-benefit',
             'approve-leaveRequest',
+            'create-leaveRequest',
+            'edit-leaveRequest',
+            'delete-leaveRequest',
         ]);
 
         $userRole->givePermissionTo([

@@ -46,15 +46,6 @@ Route::middleware(['auth.redirect'])->group(function () {
     Route::get('/kolegos', [ColleaguesController::class, 'index'])->name('colleagues');
     Route::get('/privalumai/{benefit}', [BenefitsController::class, 'show'])->name('benefits.show');
     Route::post('/privalumai/pasirinktas/{benefit}', [BenefitsController::class, 'selectBenefit'])->name('benefits.select');
-
-
-
-
-    Route::get('/atostogos/sukurti', [LeaveRequestController::class, 'create'])->name('leaveRequest.create');
-    Route::post('/atostogos', [LeaveRequestController::class, 'store'])->name('leaveRequest.store');
-    Route::get('/atostogos/{leaveRequest}/redaguoti', [LeaveRequestController::class, 'edit'])->name('leaveRequest.edit');
-    Route::put('/atostogos/{leaveRequest}', [LeaveRequestController::class, 'update'])->name('leaveRequest.update');
-    Route::delete('/atostogos/{leaveRequest}', [LeaveRequestController::class, 'destroy'])->name('leaveRequest.destroy'); 
 });
 
 Route::middleware(['can:edit-users'])->group(function () {
@@ -85,19 +76,16 @@ Route::middleware(['can:create-benefit'])->group(function () {
     });
 });
 
+Route::middleware(['can:create-leaveRequest'])->group(function () {
+    Route::get('/atostogos/sukurti', [LeaveRequestController::class, 'create'])->name('leaveRequest.create');
+    Route::post('/atostogos', [LeaveRequestController::class, 'store'])->name('leaveRequest.store');
+});
 
-//MAKE IT LATER LIKE THIS!!!!!!!!!!!!
+Route::middleware(['can:edit-leaveRequest'])->group(function () {
+    Route::get('/atostogos/{leaveRequest}/redaguoti', [LeaveRequestController::class, 'edit'])->name('leaveRequest.edit');
+    Route::put('/atostogos/{leaveRequest}', [LeaveRequestController::class, 'update'])->name('leaveRequest.update');    
+});
 
-// Route::middleware(['can:create-leaveRequest'])->group(function () {
-//     Route::get('/atostogos/sukurti', [LeaveRequestController::class, 'create'])->name('leaveRequest.create');
-//     Route::post('/atostogos', [LeaveRequestController::class, 'store'])->name('leaveRequest.store');
-// });
-
-// Route::middleware(['can:edit-leaveRequest'])->group(function () {
-//     Route::get('/atostogos/{leaveRequest}/redaguoti', [LeaveRequestController::class, 'edit'])->name('leaveRequest.edit');
-//     Route::put('/atostogos/{leaveRequest}', [LeaveRequestController::class, 'update'])->name('leaveRequest.update');    
-// });
-
-// Route::middleware(['can:delete-leaveRequest'])->group(function () {
-//     Route::delete('/atostogos/{leaveRequest}', [LeaveRequestController::class, 'destroy'])->name('leaveRequest.destroy');    
-// });
+Route::middleware(['can:delete-leaveRequest'])->group(function () {
+    Route::delete('/atostogos/{leaveRequest}', [LeaveRequestController::class, 'destroy'])->name('leaveRequest.destroy');    
+});
