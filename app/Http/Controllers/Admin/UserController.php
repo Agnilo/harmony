@@ -110,6 +110,7 @@ class UserController extends Controller
 
     private function calculateNetSalary($gross, $request)
     {
+        $net = 0;
 
         $userBenefits = Auth::user()->selectedBenefits;
 
