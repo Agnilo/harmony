@@ -76,7 +76,6 @@ class UserController extends Controller
                 'is_verified' => 'nullable|boolean',
             ]);
         
-            \Log::info('User validated successfully');
         
             $payrollValidation = $request->validate([
                 'work_hours' => 'nullable|numeric|between:0,99.9',
@@ -86,11 +85,6 @@ class UserController extends Controller
                 'info' => 'nullable|string|max:255',
             ]);
 
-            \Log::info('Payroll validated successfully');
-\Log::info('Payroll validation data: ' . json_encode($payrollValidation));
-
-
-
         $user->fill([
             'first_name' => $validatedData['first_name'],
             'last_name' => $validatedData['last_name'],
@@ -98,7 +92,7 @@ class UserController extends Controller
             'is_verified' => $validatedData['is_verified'],
         ]);
 
-        
+        $leaveRequest = null;
 
         $validateRoleIds = $request->roles;
 
@@ -114,6 +108,8 @@ class UserController extends Controller
         } else {
             $request->session()->flash('warning', 'Iškilo problema atnaujinant vartotoją');
         }
+
+        dd($leaveRequest);
 
         $payrollData = [
             'work_hours' => $payrollValidation['work_hours'],
@@ -167,7 +163,7 @@ class UserController extends Controller
         $paidLeaveSum = 0;
 
         dd($leaveRequest);
-        
+
         if ($leaveRequest) {
             $leaveRequest = LeaveRequest::findOrFail($request->leave_request_id);
 
