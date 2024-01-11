@@ -504,12 +504,15 @@ footer{
 .profile-edit-employee{
     display: flex;
     flex-direction: row;
-    align-items: center;
 }
 
 .profile-edit-employee-navbar{
     width: 220px;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .profile-edit-employee-imagesection{
