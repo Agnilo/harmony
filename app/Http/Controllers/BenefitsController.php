@@ -59,13 +59,12 @@ class BenefitsController extends Controller
         }
 
         if ($benefit->save()) {
-                $request->session()->flash('success', 'Privalumas ' . $benefit->benefit_name . ' buvo atnaujintas');
-            } else {
-                $request->session()->flash('warning', 'Iškilo problema atnaujinant vartotoją');
-            }
-    
-            return redirect()->route('benefits.index');
-        
+            $request->session()->flash('success', 'Privalumas ' . $benefit->benefit_name . ' buvo atnaujintas');
+        } else {
+            $request->session()->flash('warning', 'Iškilo problema atnaujinant vartotoją');
+        }
+
+        return redirect()->route('benefits.index');
     }
 
     public function create()
@@ -116,11 +115,11 @@ class BenefitsController extends Controller
     {
         $user = auth()->user();
 
-    if (!$user->benefit->contains($benefit->id)) {
-        $user->benefit()->attach($benefit->id);
-        return redirect()->route('benefits')->with('success', 'Privalumas pasirinktas sėkmingai.');
-    }
+        if (!$user->benefit->contains($benefit->id)) {
+            $user->benefit()->attach($benefit->id);
+            return redirect()->route('benefits')->with('success', 'Privalumas pasirinktas sėkmingai.');
+        }
 
-    return redirect()->route('benefits.show')->with('warning', 'Jau esate pasirinkę šį privalumą');
+        return redirect()->route('benefits.show')->with('warning', 'Jau esate pasirinkę šį privalumą');
     }
 }

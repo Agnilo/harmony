@@ -33,7 +33,12 @@
                             @auth
                             <form method="POST" action="{{ route('benefit.select', $benefit->id) }}">
                                 @csrf
-                                <button type="submit" class="btn btn-primary">Select Benefit</button>
+
+                                @if(auth()->user()->selectedBenefits->contains($benefit->id))
+                                    <button class="btn btn-secondary" disabled>Pasirinktas</button>
+                                @else
+                                <button type="submit" class="btn btn-primary">Pasirinkti</button>
+                                @endif
                             </form>
                             @endauth
 
