@@ -72,19 +72,26 @@ class UserController extends Controller
 
         \Log::info('Starting update process for user: ' . $user->id);
 
-        $validatedData = $request->validate([
+        $userValidation = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,',
+            'email' => 'required|email|unique:users,email,' . $user->id,
             'is_verified' => 'nullable|boolean',
-        
+        ]);
+
+        \Log::info(' user validate');
+
+        $payrollValidation = $request->validate([
             'work_hours' => 'required|numeric',
             'work_days' => 'required|integer',
             'overtime' => 'required|numeric',
             'gross' => 'required|numeric',
             'info' => 'nullable|string|max:255',
-        
         ]);
+
+        \Log::info(' payroll validate');
+
+        $validatedData = array_merge($userValidation, $payrollValidation);
 
         \Log::info('Before user fill');
 
