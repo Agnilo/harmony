@@ -120,7 +120,7 @@ class UserController extends Controller
             'work_days' => $payrollValidation['work_days'],
             'overtime' => $payrollValidation['overtime'],
             'gross' => $payrollValidation['gross'],
-            'net' => isset($payrollValidation['gross']) ? $this->calculateNetSalary($payrollValidation['gross'], $request) : 0,
+            'net' => isset($payrollValidation['gross']) ? $this->calculateNetSalary($payrollValidation['gross'], $request, $leaveRequest) : 0,
             //'net' => $this->calculateNetSalary($payrollValidation['gross'], $request),
             //'net' => $payrollValidation['net'] ?? 0,
             'info' => $payrollValidation['info'],
@@ -138,7 +138,7 @@ class UserController extends Controller
         return redirect()->route('admin.users.index');
     }
 
-    private function calculateNetSalary($gross, $request)
+    private function calculateNetSalary($gross, $request, $leaveRequest = null)
     {
         $net = 0;
 
@@ -166,7 +166,7 @@ class UserController extends Controller
         $unpaidLeaveDeduction = 0;
         $paidLeaveSum = 0;
 
-        if ($request->leave_request_id) {
+        if ($leaveRequest) {
             $leaveRequest = LeaveRequest::findOrFail($request->leave_request_id);
 
             dd($leaveRequest);
