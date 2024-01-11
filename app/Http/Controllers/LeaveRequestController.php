@@ -80,7 +80,6 @@ class LeaveRequestController extends Controller
         //$salary = ($request->leave_type === 'paid_leave') ? calculatePaidLeaveSalary($user, $request->days) : 0;
 
         $user->leaveRequests()->save($leaveRequest);
-        dd($leaveRequest);
         $leaveRequest->payrolls()->sync($request->input('payroll_ids', []));
 
         return redirect()->route('leaveRequest')->with('success', 'Atostogų prašymas sukurtas sėkmingai.');
