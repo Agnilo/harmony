@@ -5,11 +5,11 @@
     <div class="container">
         <div class="row justify-content-md-center">
             <div class="col-md-auto h2-padding">
-                <h2>Redaguoti vartotoją {{$user->first_name}}</h2>
+                <h2>Redaguoti vartotoją {{ $user->first_name }}</h2>
             </div>
         </div>
         <div class="card-body card-body-index">
-            <form action="{{route('admin.users.update', $user) }}" method="POST">
+            <form action="{{ route('admin.users.update', $user) }}" method="POST">
 
                 <div class="form-group row">
                     <label for="email" class="col-md-2 col-form-label text-md-right">El. Paštas</label>
@@ -25,81 +25,58 @@
                     </div>
                 </div>
 
-                <div class="form-group row">
-                    <label for="first_name" class="col-md-2 col-form-label text-md-right">Vardas</label>
-
-                    <div class="col-md-6">
-                        <input id="first_name" type="text" class="form-control @error('name') is-invalid @enderror" name="first_name" value="{{ $user->first_name }}" required autofocus>
-
-                        @error('name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="last_name" class="col-md-2 col-form-label text-md-right">Pavardė</label>
-
-                    <div class="col-md-6">
-                        <input id="last_name" type="text" class="form-control @error('name') is-invalid @enderror" name="last_name" value="{{ $user->last_name }}" required autofocus>
-
-                        @error('name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                </div>
+                <!-- Other user details -->
 
                 @csrf
-                {{method_field('PUT') }}
+                {{ method_field('PUT') }}
+
+                <!-- Role selection -->
                 <div class="form-group row">
                     <label for="roles" class="col-md-2 col-form-label text-md-right">Vaidmuo</label>
-
                     <div class="col-md-6">
-                        @foreach($roles as $role)
-                        <div class="form-check">
-                            <input type="radio" name="roles[]" value="{{ $role->id }}" @if($user->roles->pluck('id')->contains($role->id)) checked @endif>
-                            <label>{{ $role->name }}</label>
+                        <div>
+                            @foreach($roles as $role)
+                                <div class="form-check">
+                                    <input type="checkbox" name="roles[]" value="{{ $role->id }}" @if($user->roles->pluck('id')->contains($role->id)) checked @endif>
+                                    <label>{{ $role->name }}</label>
+                                </div>
+                            @endforeach
                         </div>
-                        @endforeach
                     </div>
                 </div>
+
+                <!-- Verified status selection -->
                 <div class="form-group row">
                     <label for="is_verified" class="col-md-2 col-form-label text-md-right">Patvirtintas</label>
                     <div class="col-md-6">
-                        <select id="is_verified" name="is_verified" class="form-control">
-                            <option value="0" {{ $user->is_verified == 0 ? 'selected' : '' }}>Ne</option>
-                            <option value="1" {{ $user->is_verified == 1 ? 'selected' : '' }}>Taip</option>
-                        </select>
-                    </div>
-                </div>
-                <h2>Payroll Information</h2>
-                <ul>
-
-                    <div class="form-group row">
-                        <label for="workHours" class="col-md-2 col-form-label text-md-right">Darbo valandos per savaitę</label>
-
-                        <div class="col-md-6">
-                            <input id="workHours" type="text" class="form-control @error('name') is-invalid @enderror" name="workHours" value="{{ $workHours }}" required autofocus>
-
-                            @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                        <div>
+                            <select id="is_verified" name="is_verified" class="form-control">
+                                <option value="0" {{ $user->is_verified == 0 ? 'selected' : '' }}>Ne</option>
+                                <option value="1" {{ $user->is_verified == 1 ? 'selected' : '' }}>Taip</option>
+                            </select>
                         </div>
                     </div>
+                </div>
 
-                    <li>Work Hours: {{ $workHours }}</li>
-                    <li>Work Days: {{ $workDays }} </li>
-                    <li>Gross Salary: {{ $grossSalary }}</li>
-                    <li>Net Salary: {{ $netSalary }}</li>
-                    <li>Overtime: {{ $overtime }}</li>
-                    <li>Info: {{ $info }}</li>
-                </ul>
+                <!-- Payroll information -->
+                <h2>Payroll Information</h2>
+
+                <div class="form-group row">
+                    <label for="workHours" class="col-md-2 col-form-label text-md-right">Darbo valandos per savaitę</label>
+                    <div class="col-md-6">
+                        <input id="workHours" type="text" class="form-control @error('workHours') is-invalid @enderror" name="workHours" value="{{ $workHours }}" required autofocus>
+
+                        @error('workHours')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <!-- Other payroll details -->
+                
+                <!-- Buttons -->
                 <button type="submit" class="btn btn-primary user-create-button-margin-right">
                     Atnaujinti
                 </button>
