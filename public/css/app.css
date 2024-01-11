@@ -488,6 +488,11 @@ footer{
 
 .profile-container{
     padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 100%;
+    max-width: 900px;
 }
 
 .profile-card{
