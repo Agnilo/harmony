@@ -689,6 +689,26 @@ footer{
     background-color: #5e5e5e;
 }
 
+.leaveRequest-new-btn{
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.leaveRequest-new-btn:hover{
+    background-color: white;
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.leaveRequest-header{
+    margin: 20px 0;
+}
+
+.leaveRequest-header h5{
+    font-size: 25px;
+    font-weight: 600;
+}
+
 .colleagues-card{
     min-width: fit-content;
 }
