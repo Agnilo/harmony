@@ -52,10 +52,9 @@
                     </td>
                     <td>
                         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#details{{ $leaveRequest->id }}" aria-expanded="false" aria-controls="details{{ $leaveRequest->id }}">
-
                             Plačiau
-
                         </button>
+
                         <div class="collapse" id="details{{ $leaveRequest->id }}">
                             <div class="card card-body">
                                 <strong>Naudotojas:</strong> {{ $leaveRequest->user->first_name }} {{ $leaveRequest->user->last_name }}<br>
@@ -75,6 +74,28 @@
                                 <!-- Add other leave request details as needed -->
                             </div>
                         </div>
+                        <!-- <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#details{{ $leaveRequest->id }}" aria-expanded="false" aria-controls="details{{ $leaveRequest->id }}">
+                            Plačiau
+                        </button>
+                        <div class="collapse" id="details{{ $leaveRequest->id }}">
+                            <div class="card card-body">
+                                <strong>Naudotojas:</strong> {{ $leaveRequest->user->first_name }} {{ $leaveRequest->user->last_name }}<br>
+                                <strong>Prašymas:</strong> {{ $leaveRequest->leaveRequest_name }}<br>
+                                <strong>Atostogų pradžia:</strong> {{ $leaveRequest->start_date }}<br>
+                                <strong>Atostogų pabaiga:</strong> {{ $leaveRequest->end_date }}<br>
+                                <strong>Prašymo statusas:</strong>
+                                @if($leaveRequest->approval_status === 'pending')
+                                Prašymas neperžiūrėtas
+                                @elseif($leaveRequest->approval_status === 'approved')
+                                Patvirtintas
+                                @elseif($leaveRequest->approval_status === 'rejected')
+                                Atmestas
+                                @else
+                                Prašymas neperžiūrėtas
+                                @endif<br>
+                                
+                            </div>
+                        </div> -->
                     </td>
                 </tr>
                 @endforeach
