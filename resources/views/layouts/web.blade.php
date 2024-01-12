@@ -60,8 +60,9 @@
         <header class="web-topbar">
             <div class="web-topbar-header">
                 <div class="web-topbar-header-title">
+                @hasrole('SuperUser')
                     {{ Route::currentRouteName() }}
-
+                @endhasrole
                 </div>
                 <div class="web-topbar-header-userarea">
                     @auth
