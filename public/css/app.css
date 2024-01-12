@@ -799,6 +799,12 @@ footer{
     padding-bottom: 20px;
 }
 
+.resizable-textarea {
+    resize: both; 
+    overflow: auto;
+    min-height: 100px;
+}
+
 .benefit-card{
     min-width: fit-content;
     display: flex;

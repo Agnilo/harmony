@@ -3,10 +3,10 @@
 @section('content')
 <div class="web-child-content">
     <div class="container">
-        <div class="row justify-content-md-center">
-            <div class="col-md-auto h2-padding">
-                <h2>Redaguoti privalumą {{$benefit->benefit_name}}</h2>
-            </div>
+        <div class="create-benefit-header">
+
+            <h2>Redaguoti privalumą</h2>
+
         </div>
         <div class="card-body card-body-index">
             <form action="{{route('benefits.update', $benefit) }}" method="POST" enctype="multipart/form-data">
@@ -43,7 +43,7 @@
                     <label for="introduction" class="col-md-2 col-form-label text-md-right">Santrauka</label>
 
                     <div class="col-md-6">
-                        <input id="introduction" type="textarea" rows="4" cols="50" class="form-control @error('introduction') is-invalid @enderror" name="introduction" value="{{ $benefit->introduction }}" autofocus>
+                        <input id="introduction" type="textarea" class="form-control @error('introduction') is-invalid @enderror resizable-textarea" name="introduction" value="{{ $benefit->introduction }}" autofocus>
 
                         @error('introduction')
                         <span class="invalid-feedback" role="alert">
@@ -57,7 +57,7 @@
                     <label for="content" class="col-md-2 col-form-label text-md-right">Turinys</label>
 
                     <div class="col-md-6">
-                        <input id="content" type="textarea" rows="4" cols="50" class="form-control @error('content') is-invalid @enderror" name="content" value="{{ $benefit->content }}" autofocus>
+                        <input id="content" type="textarea" class="form-control @error('content') is-invalid @enderror resizable-textarea" name="content" value="{{ $benefit->content }}" autofocus>
 
                         @error('content')
                         <span class="invalid-feedback" role="alert">
@@ -70,24 +70,57 @@
                 @csrf
                 {{method_field('PUT') }}
 
-                <img src="{{ asset('storage/' . $benefit->picture) }}" alt="{{ $benefit->benefit_name }}" width="200">
+                <!-- <img src="{{ asset('storage/' . $benefit->picture) }}" alt="{{ $benefit->benefit_name }}" width="200">
 
                 <div>
                     <label for="picture">Įkelti paveikslėlį:</label>
                     <input type="file" id="picture" name="picture">
+                </div> -->
+
+                <div class="form-group row">
+                    <label for="picture" class="col-md-2 col-form-label text-md-right">Paveikslėlis</label>
+
+                    <div class="col-md-6">
+                        <img src="{{ asset('storage/' . $benefit->picture) }}" alt="{{ $benefit->benefit_name }}" class="benefit-image" width="200">
+
+                        <div class="mt-2">
+                            <label for="picture" class="d-block">Įkelti naują paveikslėlį:</label>
+                            <input type="file" id="picture" name="picture" class="form-control-file @error('picture') is-invalid @enderror">
+
+                            @error('picture')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
                 </div>
 
-                <div>
-                    <label for="price">Kaina:</label>
-                    <input type="number" id="price" name="price" value="{{ $benefit->price }}">
+                <div class="form-group row">
+                    <label for="price" class="col-md-2 col-form-label text-md-right">Kaina</label>
+
+                    <div class="col-md-6">
+                        <input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $benefit->price }}" autofocus>
+
+                        @error('price')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary user-create-button-margin-right">
-                    Atnaujinti
-                </button>
-                <a href="{{ route('benefits.index') }}" class="btn btn-primary user-create-button-margin-left">
-                    Grįžti atgal
-                </a>
+                <div class="form-group row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-primary user-create-button-margin-right">
+                            Atnaujinti
+                        </button>
+                        <a href="{{ route('benefits.index') }}" class="btn btn-primary user-create-button-margin-left">
+                            Grįžti atgal
+                        </a>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
