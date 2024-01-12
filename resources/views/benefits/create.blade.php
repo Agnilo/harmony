@@ -64,6 +64,7 @@
                 <div class="col-md-2"></div>
                 <div class="col-md-6">
                     <button type="submit" class="btn btn-primary">Sukurti privalumą</button>
+                    <a href="{{ route('benefits.index') }}" class="btn btn-secondary">Grįžti</a>
                 </div>
             </div>
 
