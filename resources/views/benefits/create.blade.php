@@ -3,11 +3,9 @@
 @section('content')
 <div class="web-child-content">
     <div class="container">
-        <div class="row justify-content-md-center">
-            <div class="col-md-auto">
+        
                 <h2>Privalumas</h2>
-            </div>
-        </div>
+            
 
         <form action="{{ route('benefits.store') }}" method="POST" enctype="multipart/form-data" class="benefit-create-form">
             @csrf
