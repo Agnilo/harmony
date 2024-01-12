@@ -3,14 +3,6 @@
 @section('content')
 <div class="web-child-content">
 
-    @can('edit-benefit')
-    <div class="create-new-user-button">
-        <a href="{{ route('benefits.index') }}" class="btn btn-primary">
-            Valdyti privalumus
-        </a>
-    </div>
-    @endcan
-
     <div class="row">
         @foreach($benefits as $benefit)
         <div class="col-md-4 mb-4 benefit-card-bottom-margin">
