@@ -707,6 +707,7 @@ footer{
 .leaveRequest-header h5{
     font-size: 25px;
     font-weight: 600;
+    color: var(--primary-color);
 }
 
 .colleagues-card{
