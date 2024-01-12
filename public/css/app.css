@@ -434,6 +434,20 @@ footer{
     color: black;
 }
 
+.dashboard-row{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-direction: row;
+    height: 100%;
+    margin: auto;
+    align-content: center;
+}
+
+.dashboard-img{
+    margin: auto;
+}
+
 .dropdown-main{
     border: solid 1px var(--primary-backgroung-color);
     background-color: var(--primary-backgroung-color);
@@ -465,11 +479,14 @@ footer{
 
 .dashboard-container{
     width: 100%;
-    display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: stretch;
-    padding-top: 20px;
+    margin: auto;
+    display: flex;
+    height: 100%;
+    padding-top: 25%;
+    padding-bottom: 25%;
 }
 
 .dashboard-card{

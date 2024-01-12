@@ -16,7 +16,7 @@
     </div>
 
     <div class="container dashboard-container">
-        <div class="row">
+        <div class="row dashboard-row">
             <img src="{{ asset('images/brandLogo.png') }}" alt="Example Image" class="dashboard-img">
         </div>
     </div>
