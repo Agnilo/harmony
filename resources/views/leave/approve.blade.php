@@ -51,6 +51,9 @@
                         </form>
                     </td>
                     <td>
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#details{{ $leaveRequest->id }}" aria-expanded="false" aria-controls="details{{ $leaveRequest->id }}">
+                            Plačiau
+                        </button>
                         <div class="collapse" id="details{{ $leaveRequest->id }}">
                             <div class="card card-body">
                                 <strong>Naudotojas:</strong> {{ $leaveRequest->user->first_name }} {{ $leaveRequest->user->last_name }}<br>
@@ -70,10 +73,6 @@
                                 <!-- Add other leave request details as needed -->
                             </div>
                         </div>
-
-                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#details{{ $leaveRequest->id }}" aria-expanded="false" aria-controls="details{{ $leaveRequest->id }}">
-                            Plačiau
-                        </button>
                         <!-- <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#details{{ $leaveRequest->id }}" aria-expanded="false" aria-controls="details{{ $leaveRequest->id }}">
                             Plačiau
                         </button>
