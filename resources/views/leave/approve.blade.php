@@ -62,6 +62,8 @@
                             <p><strong>Prašymas:</strong> {{ $leaveRequest->leaveRequest_name }}</p>
                             <p><strong>Atostogų pradžia:</strong> {{ $leaveRequest->start_date }}</p>
                             <p><strong>Atostogų pabaiga:</strong> {{ $leaveRequest->end_date }}</p>
+                            <p><strong>Atostogų ilgis:</strong> {{ $leaveRequest->days }}</p>
+                            <p><strong>Komentarai:</strong> {{ $leaveRequest->remarks }}</p>
                             <p><strong>Prašymo statusas:</strong>
                                 @if($leaveRequest->approval_status === 'pending')
                                 <span class="status-pending">Prašymas neperžiūrėtas</span>
