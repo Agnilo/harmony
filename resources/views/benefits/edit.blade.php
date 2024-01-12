@@ -82,17 +82,6 @@
 
                     <div class="col-md-6">
                         <img src="{{ asset('storage/' . $benefit->picture) }}" alt="{{ $benefit->benefit_name }}" class="benefit-image" width="200">
-
-                        <div class="mt-2">
-                            <label for="picture" class="d-block">Įkelti naują paveikslėlį:</label>
-                            <input type="file" id="picture" name="picture" class="form-control-file @error('picture') is-invalid @enderror">
-
-                            @error('picture')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
                     </div>
                 </div>
 
