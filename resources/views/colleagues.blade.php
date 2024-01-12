@@ -3,7 +3,7 @@
 @section('content')
 <div class="web-child-content">
     <div class="leaveRequest-header">
-        <h5>Mano atostogų prašymai</h5>
+        <h5>Mano kolegos</h5>
     </div>
     <div class="row">
         @foreach($users as $user)
