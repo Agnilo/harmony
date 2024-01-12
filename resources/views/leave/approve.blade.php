@@ -11,7 +11,6 @@
                     <th scope="col">Vardas</th>
                     <th scope="col">Pavardė</th>
                     <th scope="col">Prašymas</th>
-                    <th scope="col">Prašymas</th>
                     <th scope="col">Atostogų pradžia</th>
                     <th scope="col">Atostogų pabaiga</th>
                     <th scope="col">Prašymo statusas</th>
