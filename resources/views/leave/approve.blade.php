@@ -38,10 +38,21 @@
                         Prašymas neperžiūrėtas
                         @endif
                     </td>
-                    <td> Plačiau </td>
-                    <!-- <td>
-
-                         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#details{{ $leaveRequest->id }}" aria-expanded="false" aria-controls="details{{ $leaveRequest->id }}">
+                    <td class="user-buttons">
+                        <form method="POST" action="{{ route('leaveRequests.updateApproval', $leaveRequest) }}" style="display: inline-block;">
+                            @csrf
+                            <input type="hidden" name="_method" value="put">
+                            <select name="approval_status">
+                                <option value="pending" {{ $leaveRequest->approval_status === 'pending' ? 'selected' : '' }}>Prašymas neperžiūrėtas</option>
+                                <option value="approved" {{ $leaveRequest->approval_status === 'approved' ? 'selected' : '' }}>Patvirtintas</option>
+                                <option value="rejected" {{ $leaveRequest->approval_status === 'rejected' ? 'selected' : '' }}>Atmestas</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary">Atnaujinti</button>
+                        </form>
+                    </td>
+                    <td>
+                        Plačiau
+                        <!-- <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#details{{ $leaveRequest->id }}" aria-expanded="false" aria-controls="details{{ $leaveRequest->id }}">
                             Plačiau
                         </button>
                         <div class="collapse" id="details{{ $leaveRequest->id }}">
@@ -62,8 +73,8 @@
                                 @endif<br>
                                 
                             </div>
-                        </div> 
-                    </td>-->
+                        </div> -->
+                    </td>
                 </tr>
                 <tr class="collapse" id="details{{ $leaveRequest->id }}">
                     <td colspan="8">
