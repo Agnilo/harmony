@@ -4,11 +4,9 @@
 <div class="web-child-content">
     <div class="container">
         
-        <div class="row justify-content-md-center">
-            <div class="col-md-auto">
+        
                 <h2>Naudotojai</h2>
-            </div>
-        </div>
+          
         
         <div class="create-new-user-button">
             <a href="{{ route('admin.users.create') }}" class="btn btn-primary">
