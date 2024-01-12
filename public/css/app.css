@@ -800,6 +800,11 @@ footer{
     white-space: nowrap;
 }
 
+.textarea-style::placeholder{
+    text-align: right;
+    white-space: nowrap;
+}
+
 .benefit-card-header{
     width: 100%;
 }
