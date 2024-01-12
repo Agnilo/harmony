@@ -710,6 +710,16 @@ footer{
     color: var(--primary-color);
 }
 
+.expandable-row {
+    cursor: pointer;
+}
+.expander-icon {
+    transition: transform 0.3s ease;
+}
+.expanded .expander-icon {
+    transform: rotate(180deg);
+}
+
 .colleagues-card{
     min-width: fit-content;
 }

@@ -88,6 +88,15 @@
     <div class="web-yield-content">
         @yield('content')
     </div>
+
+    <script>
+        $(document).ready(function() {
+            $('.expandable-row').on('click', function() {
+                $(this).toggleClass('expanded');
+            });
+        });
+    </script>
+
 </body>
 
 </html>
