@@ -3,8 +3,8 @@
 @section('content')
 <div class="web-child-content">
     <div class="card-body card-body-index">
-        <div class="leaveRequest-new-btn">
-            <a href="{{ route('leaveRequest.create') }}" class="btn btn-success">Sukurti naują atostogų prašymą</a>
+        <div>
+            <a href="{{ route('leaveRequest.create') }}" class="btn btn-success leaveRequest-new-btn">Sukurti naują atostogų prašymą</a>
         </div>
         <div class="leaveRequest-header">
             <h5>Mano atostogų prašymai</h5>
