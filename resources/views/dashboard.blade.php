@@ -17,56 +17,7 @@
 
     <div class="container dashboard-container">
         <div class="row">
-            <div class="col-md-4">
-                <div class="dashboard-card">
-                    <div class="dashboard-card-body">
-                        <!-- Card 1 content -->
-                        Content 1
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="dashboard-card">
-                    <div class="dashboard-card-body">
-                        <!-- Card 2 content -->
-                        Content 2
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="dashboard-card">
-                    <div class="dashboard-card-body">
-                        <!-- Card 3 content -->
-                        Content 3
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="dashboard-card">
-                    <div class="dashboard-card-body">
-                        <!-- Card 4 content -->
-                        Content 4
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="dashboard-card">
-                    <div class="dashboard-card-body">
-                        <!-- Card 5 content -->
-                        Content 5
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="dashboard-card">
-                    <div class="dashboard-card-body">
-                        <!-- Card 6 content -->
-                        Content 6
-                    </div>
-                </div>
-            </div>
+            <img src="{{ asset('images/brandLogo.png') }}" alt="Example Image" class="dashboard-img">
         </div>
     </div>
 
