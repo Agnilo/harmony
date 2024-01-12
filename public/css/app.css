@@ -504,6 +504,10 @@ footer{
     display: flex;
 }
 
+.dashboard-greeting{
+    color: var(--primary-color);
+}
+
 .profile-container{
     padding: 1.5rem;
     display: flex;
