@@ -21,7 +21,7 @@
             <tbody>
 
                 @foreach ($leaveRequests as $leaveRequest)
-                <tr class="expandable-row" data-toggle="collapse" data-target="#details{{ $leaveRequest->id }}" aria-expanded="false" aria-controls="details{{ $leaveRequest->id }}">
+                <tr>
                     <td>{{ $leaveRequest->user->first_name }}</td>
                     <td>{{ $leaveRequest->user->last_name }}</td>
                     <td>{{ $leaveRequest->leaveRequest_name }}</td>
@@ -50,7 +50,7 @@
                             <button type="submit" class="btn btn-primary">Atnaujinti</button>
                         </form>
                     </td>
-                    <td>
+                    <td class="expandable-row" data-toggle="collapse" data-target="#details{{ $leaveRequest->id }}" aria-expanded="false" aria-controls="details{{ $leaveRequest->id }}">
                         Plačiau
                         <!-- <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#details{{ $leaveRequest->id }}" aria-expanded="false" aria-controls="details{{ $leaveRequest->id }}">
                             Plačiau
