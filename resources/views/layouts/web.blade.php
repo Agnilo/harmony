@@ -2,10 +2,6 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    @php
-    use Carbon\Carbon;
-    $currentTime = Carbon::now('Europe/Vilnius');
-    @endphp
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -68,9 +64,6 @@
                     @hasrole('SuperUser')
                     {{ Route::currentRouteName() }}
                     @endhasrole
-                </div>
-                <div class="web-top-header-left">
-                    <p>{{ Carbon::now('Europe/Vilnius')->format('Y-m-d H:i:s') }}</p>
                 </div>
                 <div class="web-topbar-header-userarea">
                     @auth
