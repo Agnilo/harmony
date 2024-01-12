@@ -7,7 +7,7 @@
             <a href="{{ route('leaveRequest.create') }}" class="btn btn-success">Sukurti naują atostogų prašymą</a>
         </div>
         <div class="leaveRequest-header">
-            Mano atostogų prašymai
+            <h5>Mano atostogų prašymai</h5>
         </div>
         <table class="table">
             <thead>
