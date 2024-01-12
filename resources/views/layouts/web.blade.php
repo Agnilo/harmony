@@ -2,6 +2,10 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    @php
+    use Carbon\Carbon;
+    $currentTime = Carbon::now('Europe/Vilnius');
+    @endphp
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -21,6 +25,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 
 </head>
 
@@ -60,9 +65,12 @@
         <header class="web-topbar">
             <div class="web-topbar-header">
                 <div class="web-topbar-header-title">
-                @hasrole('SuperUser')
+                    @hasrole('SuperUser')
                     {{ Route::currentRouteName() }}
-                @endhasrole
+                    @endhasrole
+                </div>
+                <div class="web-top-header-left">
+                    <p>{{ Carbon::now('Europe/Vilnius')->format('Y-m-d H:i:s') }}</p>
                 </div>
                 <div class="web-topbar-header-userarea">
                     @auth
