@@ -33,7 +33,7 @@
                         <td class="user-buttons">
                             
                             <a href="{{route('benefits.edit', $benefit->id)}}">
-                                <button type="button" class="btn btn-secondary float-left user-button-inside">Redaguoti</button>
+                                <button type="button" class="btn btn-primary float-left user-button-inside">Redaguoti</button>
                             </a>
                             
                             <form action="{{ route('benefits.destroy', $benefit) }}" method="POST" class="float-left">
