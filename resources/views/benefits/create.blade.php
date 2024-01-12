@@ -22,7 +22,7 @@
             <div class="form-group row">
                 <label for="description" class="col-md-2 col-form-label text-md-right">Privalumo aprašymas:</label>
                 <div class="col-md-6">
-                    <textarea name="description" class="form-control" placeholder="Description"></textarea>
+                    <textarea name="description" class="form-control" ></textarea>
                 </div>
             </div>
 
