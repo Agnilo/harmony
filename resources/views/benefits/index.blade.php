@@ -3,12 +3,8 @@
 @section('content')
 <div class="web-child-content">
     <div class="container">
-
-        <div class="row justify-content-md-center">
-            <div class="col-md-auto">
+      
                 <h2>Privalumai</h2>
-            </div>
-        </div>
 
         @can('create-benefit')
         <div class="create-new-user-button">
