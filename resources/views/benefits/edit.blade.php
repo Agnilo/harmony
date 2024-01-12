@@ -43,7 +43,7 @@
                     <label for="introduction" class="col-md-2 col-form-label text-md-right">Santrauka</label>
 
                     <div class="col-md-6">
-                        <input id="introduction" type="textarea" class="form-control @error('introduction') is-invalid @enderror resizable-textarea textarea-style" name="introduction" value="{{ $benefit->introduction }}" autofocus>
+                        <input id="introduction" type="textarea" class="form-control @error('introduction') is-invalid @enderror textarea-style" name="introduction" value="{{ $benefit->introduction }}" autofocus>
 
                         @error('introduction')
                         <span class="invalid-feedback" role="alert">
@@ -57,7 +57,7 @@
                     <label for="content" class="col-md-2 col-form-label text-md-right">Turinys</label>
 
                     <div class="col-md-6">
-                        <input id="content" type="textarea" class="form-control @error('content') is-invalid @enderror resizable-textarea textarea-style" name="content" value="{{ $benefit->content }}" autofocus>
+                        <input id="content" type="textarea" class="form-control @error('content') is-invalid @enderror textarea-style" name="content" value="{{ $benefit->content }}" autofocus>
 
                         @error('content')
                         <span class="invalid-feedback" role="alert">
