@@ -11,6 +11,7 @@
                     <th scope="col">Vardas</th>
                     <th scope="col">Pavardė</th>
                     <th scope="col">Prašymas</th>
+                    <th scope="col">Prašymas</th>
                     <th scope="col">Atostogų pradžia</th>
                     <th scope="col">Atostogų pabaiga</th>
                     <th scope="col">Prašymo statusas</th>
@@ -22,7 +23,6 @@
 
                 @foreach ($leaveRequests as $leaveRequest)
                 <tr>
-                    <th scope="row">{{ $leaveRequest->user->first_name }}</th>
                     <td>{{ $leaveRequest->user->first_name }}</td>
                     <td>{{ $leaveRequest->user->last_name }}</td>
                     <td>{{ $leaveRequest->leaveRequest_name }}</td>
