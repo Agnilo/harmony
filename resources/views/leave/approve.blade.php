@@ -57,21 +57,30 @@
                 <tr class="collapse" id="details{{ $leaveRequest->id }}">
                     <td colspan="8">
                         <!-- Collapsible content goes here -->
-                        <strong>Naudotojas:</strong> {{ $leaveRequest->user->first_name }} {{ $leaveRequest->user->last_name }}<br>
-                        <strong>Prašymas:</strong> {{ $leaveRequest->leaveRequest_name }}<br>
-                        <strong>Atostogų pradžia:</strong> {{ $leaveRequest->start_date }}<br>
-                        <strong>Atostogų pabaiga:</strong> {{ $leaveRequest->end_date }}<br>
-                        <strong>Prašymo statusas:</strong>
-                        @if($leaveRequest->approval_status === 'pending')
-                        Prašymas neperžiūrėtas
-                        @elseif($leaveRequest->approval_status === 'approved')
-                        Patvirtintas
-                        @elseif($leaveRequest->approval_status === 'rejected')
-                        Atmestas
-                        @else
-                        Prašymas neperžiūrėtas
-                        @endif<br>
-                        <!-- Add other leave request details as needed -->
+                        <div class="leave-request-details">
+                            <p><strong>Naudotojas:</strong> {{ $leaveRequest->user->first_name }} {{ $leaveRequest->user->last_name }}</p>
+                            <p><strong>Prašymas:</strong> {{ $leaveRequest->leaveRequest_name }}</p>
+                            <p><strong>Atostogų pradžia:</strong> {{ $leaveRequest->start_date }}</p>
+                            <p><strong>Atostogų pabaiga:</strong> {{ $leaveRequest->end_date }}</p>
+                            <p><strong>Prašymo statusas:</strong>
+                                @if($leaveRequest->approval_status === 'pending')
+                                <span class="status-pending">Prašymas neperžiūrėtas</span>
+                                @elseif($leaveRequest->approval_status === 'approved')
+                                <span class="status-approved">Patvirtintas</span>
+                                @elseif($leaveRequest->approval_status === 'rejected')
+                                <span class="status-rejected">Atmestas</span>
+                                @else
+                                <span class="status-pending">Prašymas neperžiūrėtas</span>
+                                @endif
+                            </p>
+                            <p>
+                                @if ($leaveRequest->file_path)
+                                <a href="{{ asset($leaveRequest->file_path) }}" target="_blank" class="file-link">Peržiūrėti failą</a>
+                                @else
+                                <span class="no-file">Priedų nėra</span>
+                                @endif
+                            </p>
+                        </div>
                     </td>
                 </tr>
                 @endforeach

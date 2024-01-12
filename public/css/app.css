@@ -720,6 +720,31 @@ footer{
     transform: rotate(180deg);
 }
 
+.leave-request-details {
+    margin-top: 10px;
+}
+
+.status-pending {
+    color: #f39c12; /* Orange color for pending status */
+}
+
+.status-approved {
+    color: #2ecc71; /* Green color for approved status */
+}
+
+.status-rejected {
+    color: #e74c3c; /* Red color for rejected status */
+}
+
+.file-link {
+    color: #3498db; /* Blue color for file link */
+    text-decoration: none;
+}
+
+.no-file {
+    color: #7f8c8d; /* Gray color for no file text */
+}
+
 .colleagues-card{
     min-width: fit-content;
 }
