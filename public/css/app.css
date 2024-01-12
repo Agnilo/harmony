@@ -781,6 +781,10 @@ footer{
     justify-content: space-evenly;
 }
 
+.col-form-label{
+    color: black;
+}
+
 .benefit-card-header{
     width: 100%;
 }
