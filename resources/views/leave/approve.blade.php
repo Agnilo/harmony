@@ -51,7 +51,7 @@
                         </form>
                     </td>
                     <td class="expandable-row expand-element" data-toggle="collapse" data-target="#details{{ $leaveRequest->id }}" aria-expanded="false" aria-controls="details{{ $leaveRequest->id }}">
-                        Plačiau
+                        <span class="expander-icon">▼</span>
                     </td>
                 </tr>
                 <tr class="collapse" id="details{{ $leaveRequest->id }}">
