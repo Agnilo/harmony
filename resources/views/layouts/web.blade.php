@@ -50,6 +50,9 @@
                     <li><a href="{{ route('admin.users.index') }}" class="{{ Request::is('admin.users.index') ? 'active' : '' }}">Naudotojų valdymas</a></li>
                     <li><a href="{{ route('leaveRequests.approve') }}" class="{{ Request::is('leaveRequests.approve') ? 'active' : '' }}">Atostogų prašymų valdymas</a></li>
                     @endhasrole
+                    @hasrole('SuperUser')
+                    <li><a href="{{ route('benefits.index') }}" class="{{ Request::is('benefits.index') ? 'active' : '' }}">Privalumų valdymas</a></li>
+                    @endhasrole
                 </ul>
             </div>
         </div>
