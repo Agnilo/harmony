@@ -435,7 +435,8 @@ footer{
 }
 
 .dropdown-main{
-    border: solid 1px black;
+    border: solid 1px var(--primary-backgroung-color);
+    background-color: var(--primary-backgroung-color);
     border-radius: 15px;
     padding: 5px 10px;
 }
