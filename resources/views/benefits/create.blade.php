@@ -3,9 +3,10 @@
 @section('content')
 <div class="web-child-content">
     <div class="container">
-        
-                <h2>Privalumas</h2>
-            
+
+        <div class="create-benefit-header">
+            <h2>Privalumas</h2>
+        </div>
 
         <form action="{{ route('benefits.store') }}" method="POST" enctype="multipart/form-data" class="benefit-create-form">
             @csrf
@@ -20,7 +21,7 @@
             <div class="form-group row">
                 <label for="description" class="col-md-2 col-form-label text-md-right">Privalumo aprašymas:</label>
                 <div class="col-md-6">
-                    <textarea name="description" class="form-control" ></textarea>
+                    <textarea name="description" class="form-control"></textarea>
                 </div>
             </div>
 
