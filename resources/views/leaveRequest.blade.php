@@ -46,8 +46,5 @@
             </tbody>
         </table>
     </div>
-
-    <!-- Button to create a new leave request -->
-    <p><a href="{{ route('leaveRequests.approve') }}">Approve Leave Requests</a></p>
 </div>
 @endsection
