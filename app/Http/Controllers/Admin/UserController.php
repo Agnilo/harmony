@@ -116,22 +116,28 @@ class UserController extends Controller
         $totalPaidLeaveDays = 0;
         $totalUnpaidLeaveDays = 0;
 
-        dd($payrollYear-$payrollMonth);
+        dd($payrollYear - $payrollMonth);
 
         foreach ($leaveRequests as $leaveRequest) {
             $startDate = new \DateTime($leaveRequest->start_date);
             $endDate = new \DateTime($leaveRequest->end_date);
 
-            if (($startDate->format('Y-m') <= "$payrollYear-$payrollMonth") && ($endDate->format('Y-m') >= "$payrollYear-$payrollMonth")) {
+            $startYear = (int)$startDate->format('Y');
+            $startMonth = (int)$startDate->format('m');
+            $endYear = (int)$endDate->format('Y');
+            $endMonth = (int)$endDate->format('m');
 
+            if (
+                ($startYear == $payrollYear && $startMonth == $payrollMonth) ||
+                ($endYear == $payrollYear && $endMonth == $payrollMonth) ||
+                ($startYear < $payrollYear && $endYear > $payrollYear)
+            ) {
                 if ($leaveRequest->leave_type === 'paid_leave') {
                     $totalPaidLeaveDays += $leaveRequest->days;
                 } elseif ($leaveRequest->leave_type === 'unpaid_leave') {
                     $totalUnpaidLeaveDays += $leaveRequest->days;
                 }
             }
-
-            
         }
 
         dd($totalPaidLeaveDays, $totalUnpaidLeaveDays);
