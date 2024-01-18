@@ -101,7 +101,7 @@ class User extends Authenticatable
         $unpaidLeaveDeduction = 0;
         $paidLeaveSum = 0;
 
-
+        dd($request->leave_request_id);
 
         if ($request->leave_request_id) {
             $leaveRequest = LeaveRequest::findOrFail($request->leave_request_id);
