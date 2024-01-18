@@ -119,7 +119,7 @@ class UserController extends Controller
             'net' => isset($payrollValidation['gross']) ? $this->calculateNetSalary($payrollValidation['gross'], $request) : 0,
             //'net' => $this->calculateNetSalary($payrollValidation['gross'], $request),
             //'net' => $payrollValidation['net'] ?? 0,
-            'info' => $payrollValidation['info'],
+            'info' => $payrollValidation['info'] ?? '',
         ];
 
         if ($user->payroll) {     
