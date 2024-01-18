@@ -112,10 +112,11 @@ class UserController extends Controller
         $payrollMonth = $payroll->month;
         $payrollYear = $payroll->year;
 
-        dd($payrollMonth);
 
         $totalPaidLeaveDays = 0;
         $totalUnpaidLeaveDays = 0;
+
+        dd($leaveRequests);
 
         foreach ($leaveRequests as $leaveRequest) {
             $startDate = new \DateTime($leaveRequest->start_date);
