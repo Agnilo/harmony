@@ -117,12 +117,12 @@ class User extends Authenticatable
                 } elseif ($leaveRequest->leave_type === 'paid_leave') {
                     $paidLeaveHours = $totalPaidLeaveDays * $userWorkHoursPerDay;
                     $paidLeaveSum = $paidLeaveHours * ($baseHourlyRate * 1.1);
-                    
+                    dd($paidLeaveSum);
                 }
             }
         }
-        dd($totalPaidLeaveDays);
         
+
         $overtimeSum = ($request->overtime !== null && $request->overtime !== 0) ? ($request->overtime * $baseHourlyRate) * 1.5 : 0;
 
         $totalBenefitPrice = $userBenefits->sum('price');
