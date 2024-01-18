@@ -160,55 +160,108 @@ class LeaveRequestController extends Controller
 
         $user = $leaveRequest->user;
         $payroll = $user->payroll()->latest()->first();
+        $payrollMonth = $payroll->month;
+        $payrollYear = $payroll->year;
 
-        if ($payroll) {
-            $payrollMonth = $payroll->month;
-            $payrollYear = $payroll->year;
-    
-            $existingLeaveRequests = LeaveRequest::where('user_id', $user->id)->get();
-    
-            $totalPaidLeaveDays = 0;
-            $totalUnpaidLeaveDays = 0;
-    
-            foreach ($existingLeaveRequests as $existingLeaveRequest) {
-                if ($existingLeaveRequest->id !== $leaveRequest->id) {
-                    $startDate = new \DateTime($existingLeaveRequest->start_date);
-                    $endDate = new \DateTime($existingLeaveRequest->end_date);
-    
-                    $startYear = (int)$startDate->format('Y');
-                    $startMonth = (int)$startDate->format('m');
-                    $endYear = (int)$endDate->format('Y');
-                    $endMonth = (int)$endDate->format('m');
-    
-                    if (
-                        ($startYear == $payrollYear && $startMonth == $payrollMonth) ||
-                        ($endYear == $payrollYear && $endMonth == $payrollMonth) ||
-                        ($startYear < $payrollYear && $endYear > $payrollYear)
-                    ) {
-                        if ($existingLeaveRequest->leave_type === 'paid_leave') {
-                            $totalPaidLeaveDays += $existingLeaveRequest->days;
-                        } elseif ($existingLeaveRequest->leave_type === 'unpaid_leave') {
-                            $totalUnpaidLeaveDays += $existingLeaveRequest->days;
-                        }
-                    }
+        $existingLeaveRequests = LeaveRequest::where('user_id', $user->id)->get();
+
+        $totalPaidLeaveDays = 0;
+        $totalUnpaidLeaveDays = 0;
+
+        foreach ($existingLeaveRequests as $leaveRequest) {
+            $startDate = new \DateTime($leaveRequest->start_date);
+            $endDate = new \DateTime($leaveRequest->end_date);
+
+            $startYear = (int)$startDate->format('Y');
+            $startMonth = (int)$startDate->format('m');
+            $endYear = (int)$endDate->format('Y');
+            $endMonth = (int)$endDate->format('m');
+
+            if (
+                ($startYear == $payrollYear && $startMonth == $payrollMonth) ||
+                ($endYear == $payrollYear && $endMonth == $payrollMonth) ||
+                ($startYear < $payrollYear && $endYear > $payrollYear)
+            ) {
+                if ($leaveRequest->leave_type === 'paid_leave') {
+                    $totalPaidLeaveDays += $leaveRequest->days;
+                } elseif ($leaveRequest->leave_type === 'unpaid_leave') {
+                    $totalUnpaidLeaveDays += $leaveRequest->days;
                 }
             }
-    
-            $salaryCalculationRequest = new Request([
-                'work_hours' => $payroll->work_hours,
-                'work_days' => $payroll->work_days,
-                'overtime' => $payroll->overtime,
-                'gross' => $payroll->gross,
-                'month' => $payrollMonth,
-                'year' => $payrollYear,
-                'total_paid_leave_days' => $totalPaidLeaveDays,
-                'total_unpaid_leave_days' => $totalUnpaidLeaveDays,
-                'leave_request_id' => $leaveRequest->id,
-            ]);
-    
-            $netSalary = $user->calculateNetSalary($payroll->gross, $salaryCalculationRequest, $totalPaidLeaveDays, $totalUnpaidLeaveDays);
-            $payroll->update(['net' => $netSalary]);
         }
+
+        //$existingLeaveRequests->push($leaveRequest);
+
+        $salaryCalculationRequest = new Request([
+            'work_hours' => $payroll->work_hours,
+            'work_days' => $payroll->work_days,
+            'overtime' => $payroll->overtime,
+            'gross' => $payroll->gross,
+            'month' => $payrollMonth,
+            'year' => $payrollYear,
+            'total_paid_leave_days' => $totalPaidLeaveDays,
+            'total_unpaid_leave_days' => $totalUnpaidLeaveDays,
+            'leave_request_id' => $leaveRequest->id,
+        ]);
+
+        $netSalary = $user->calculateNetSalary($payroll->gross, $salaryCalculationRequest, $totalPaidLeaveDays, $totalUnpaidLeaveDays);
+        $payroll->update(['net' => $netSalary]);
+        
+
+        if ($validatedData['leave_type'] == 'paid_leave') {
+            $newVacationDays = $user->vacation_days - $validatedData['days'];
+            $user->vacation_days = $newVacationDays;
+            $user->save();
+        }
+
+        // if ($payroll) {
+        //     $payrollMonth = $payroll->month;
+        //     $payrollYear = $payroll->year;
+    
+        //     $existingLeaveRequests = LeaveRequest::where('user_id', $user->id)->get();
+    
+        //     $totalPaidLeaveDays = 0;
+        //     $totalUnpaidLeaveDays = 0;
+    
+        //     foreach ($existingLeaveRequests as $existingLeaveRequest) {
+        //         if ($existingLeaveRequest->id !== $leaveRequest->id) {
+        //             $startDate = new \DateTime($existingLeaveRequest->start_date);
+        //             $endDate = new \DateTime($existingLeaveRequest->end_date);
+    
+        //             $startYear = (int)$startDate->format('Y');
+        //             $startMonth = (int)$startDate->format('m');
+        //             $endYear = (int)$endDate->format('Y');
+        //             $endMonth = (int)$endDate->format('m');
+    
+        //             if (
+        //                 ($startYear == $payrollYear && $startMonth == $payrollMonth) ||
+        //                 ($endYear == $payrollYear && $endMonth == $payrollMonth) ||
+        //                 ($startYear < $payrollYear && $endYear > $payrollYear)
+        //             ) {
+        //                 if ($existingLeaveRequest->leave_type === 'paid_leave') {
+        //                     $totalPaidLeaveDays += $existingLeaveRequest->days;
+        //                 } elseif ($existingLeaveRequest->leave_type === 'unpaid_leave') {
+        //                     $totalUnpaidLeaveDays += $existingLeaveRequest->days;
+        //                 }
+        //             }
+        //         }
+        //     }
+    
+        //     $salaryCalculationRequest = new Request([
+        //         'work_hours' => $payroll->work_hours,
+        //         'work_days' => $payroll->work_days,
+        //         'overtime' => $payroll->overtime,
+        //         'gross' => $payroll->gross,
+        //         'month' => $payrollMonth,
+        //         'year' => $payrollYear,
+        //         'total_paid_leave_days' => $totalPaidLeaveDays,
+        //         'total_unpaid_leave_days' => $totalUnpaidLeaveDays,
+        //         'leave_request_id' => $leaveRequest->id,
+        //     ]);
+    
+        //     $netSalary = $user->calculateNetSalary($payroll->gross, $salaryCalculationRequest, $totalPaidLeaveDays, $totalUnpaidLeaveDays);
+        //     $payroll->update(['net' => $netSalary]);
+        // }
 
         return redirect()->route('leaveRequest')->with('success', 'Atostogų prašymas buvo atnaujintas sėkmingai.');
     }
