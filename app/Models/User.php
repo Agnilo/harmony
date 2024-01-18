@@ -130,6 +130,8 @@ class User extends Authenticatable
 
         $net = $gross * (1 - $totalDeductionRate);
 
+        dd('overtime:', $overtimeSum, 'totalBenefitPrice:', $totalBenefitPrice, 'grossWithoutPaidLeave:', $grossWithoutPaidLeave, 'gross:', $gross, 'net', $net);
+
         return $net;
     }
 }
