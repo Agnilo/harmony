@@ -221,7 +221,7 @@ class UserController extends Controller
             'last_name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
-            'gender' => 'nullable',
+            'gender' => 'nullable|in:Vyras,Moteris,Kita',
             'work_hours' => 'required|numeric',
             'work_days' => 'required|integer',
             'leave_hours' => 'required|numeric',
