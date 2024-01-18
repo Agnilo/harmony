@@ -203,6 +203,16 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,',
+            'password' => 'required|min:8',
+            'is_verified' => 'nullable|boolean',
+        ]);
+
+        Log::info("Data verified");
+
+        $validatedData = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
             'gender' => 'nullable',
@@ -217,7 +227,7 @@ class UserController extends Controller
             'info' => 'nullable|string|max:255',
         ]);
 
-        Log::info("Data verified");
+
 
         $user = User::create([
             'first_name' => $validatedData['first_name'],
