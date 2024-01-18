@@ -116,8 +116,8 @@ class UserController extends Controller
         $totalUnpaidLeaveDays = 0;
 
         foreach ($leaveRequests as $leaveRequest) {
-            $startDate = new DateTime($leaveRequest->start_date);
-            $endDate = new DateTime($leaveRequest->end_date);
+            $startDate = new \DateTime($leaveRequest->start_date);
+            $endDate = new \DateTime($leaveRequest->end_date);
 
             if (($startDate->format('Y-m') <= "$payrollYear-$payrollMonth") && ($endDate->format('Y-m') >= "$payrollYear-$payrollMonth")) {
 
