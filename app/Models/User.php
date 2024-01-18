@@ -101,7 +101,7 @@ class User extends Authenticatable
         $unpaidLeaveDeduction = 0;
         $paidLeaveSum = 0;
 
-        dd($totalPaidLeaveDays);
+        
 
         if ($request->leave_request_id) {
             $leaveRequest = LeaveRequest::findOrFail($request->leave_request_id);
@@ -121,7 +121,8 @@ class User extends Authenticatable
                 }
             }
         }
-
+        dd($totalPaidLeaveDays);
+        
         $overtimeSum = ($request->overtime !== null && $request->overtime !== 0) ? ($request->overtime * $baseHourlyRate) * 1.5 : 0;
 
         $totalBenefitPrice = $userBenefits->sum('price');
