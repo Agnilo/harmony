@@ -121,8 +121,6 @@ class UserController extends Controller
             ];
         })->all();
 
-        dd($leaveRequestsDetails);
-
         $salaryCalculationRequest = clone $request;
         $salaryCalculationRequest->merge([
             'month' => $currentMonth,
@@ -130,6 +128,8 @@ class UserController extends Controller
             'leave_request_ids' => $leaveRequests->pluck('id')->toArray(),
             'leave_requests' => $leaveRequestsDetails,
         ]);
+
+        dd($salaryCalculationRequest);
 
         $payrollData = [
             'work_hours' => $payrollValidation['work_hours'],
