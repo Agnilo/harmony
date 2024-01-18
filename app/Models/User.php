@@ -78,7 +78,7 @@ class User extends Authenticatable
         return $this->hasOne(Payroll::class);
     }
 
-    public function calculateNetSalary($gross, $request)
+    public function calculateNetSalary($gross, $request, $totalPaidLeaveDays, $totalUnpaidLeaveDays)
     {
         $net = 0;
 
@@ -109,17 +109,17 @@ class User extends Authenticatable
             
             if ($leaveMonth == $request->month && $leaveYear == $request->year) {
                 if ($leaveRequest->leave_type === 'unpaid_leave') {
-                    $unpaidleaveHours = $leaveRequest->days * $userWorkHoursPerDay;
+                    $unpaidleaveHours = $totalUnpaidLeaveDays * $userWorkHoursPerDay;
                     $unpaidLeaveDeduction = $unpaidleaveHours * $baseHourlyRate;
                     //dd($unpaidLeaveDeduction);
                 } elseif ($leaveRequest->leave_type === 'paid_leave') {
-                    $paidLeaveHours = $leaveRequest->days * $userWorkHoursPerDay;
+                    $paidLeaveHours = $totalPaidLeaveDays * $userWorkHoursPerDay;
                     $paidLeaveSum = $paidLeaveHours * ($baseHourlyRate * 1.1);
                     
                 }
             }
         }
-dd($leaveRequest->days);
+
         $overtimeSum = ($request->overtime !== null && $request->overtime !== 0) ? ($request->overtime * $baseHourlyRate) * 1.5 : 0;
 
         $totalBenefitPrice = $userBenefits->sum('price');

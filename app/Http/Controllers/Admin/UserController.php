@@ -153,7 +153,7 @@ class UserController extends Controller
             'leave_request_id' => $leaveRequest->id,
         ]);
 
-        $net = $user->calculateNetSalary($payrollValidation['gross'], $salaryCalculationRequest);
+        $net = $user->calculateNetSalary($payrollValidation['gross'], $salaryCalculationRequest, $totalPaidLeaveDays, $totalUnpaidLeaveDays);
         $payrollData = array_merge($payrollValidation, ['net' => $net]);
 
         // if ($leaveRequests) {
