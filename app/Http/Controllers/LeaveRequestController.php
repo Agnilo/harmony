@@ -130,6 +130,7 @@ class LeaveRequestController extends Controller
             'year' => $payrollYear,
             'total_paid_leave_days' => $totalPaidLeaveDays,
             'total_unpaid_leave_days' => $totalUnpaidLeaveDays,
+            'leave_request_id' => $leaveRequest->id,
         ]);
 
         $netSalary = $user->calculateNetSalary($payroll->gross, $salaryCalculationRequest, $totalPaidLeaveDays, $totalUnpaidLeaveDays);
