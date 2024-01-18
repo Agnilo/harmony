@@ -127,7 +127,7 @@
                 <div class="form-group row">
                     <label for="net" class="col-md-2 col-form-label text-md-right">Neto atlyginimas</label>
                     <div class="col-md-6">
-                        <input id="net" type="text" class="form-control @error('net') is-invalid @enderror" name="net" value="{{ $net }}" required autofocus>
+                        <input id="net" type="text" class="form-control @error('net') is-invalid @enderror" name="net" value="{{ $net }}" readonly>
                         @error('net')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
