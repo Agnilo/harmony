@@ -131,7 +131,7 @@ class UserController extends Controller
 
         $netSalary = $user->calculateNetSalary($payrollValidation['gross'], $salaryCalculationRequest);
 
-        dd($netSalary);
+        //dd($netSalary);
 
         $payrollData = [
             'work_hours' => $payrollValidation['work_hours'],
