@@ -75,7 +75,7 @@ class LeaveRequestController extends Controller
         //$user->leaveRequests()->save($leaveRequest);
 
         $payroll = $user->payroll()->latest()->first();
-        if ($payroll) {
+        //if ($payroll) {
             $salaryCalculationRequest = new Request();
 
             $salaryCalculationRequest->replace([
@@ -95,7 +95,7 @@ class LeaveRequestController extends Controller
             $user->leaveRequests()->save($leaveRequest);
 
             $leaveRequest->payrolls()->attach($payroll->id);
-        }
+        //}
 
         if ($validatedData['leave_type'] == 'paid_leave') {
             $newVacationDays = $user->vacation_days - $validatedData['days'];
