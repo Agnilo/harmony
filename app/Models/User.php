@@ -115,7 +115,7 @@ class User extends Authenticatable
                 } elseif ($leaveRequest->leave_type === 'paid_leave') {
                     $paidLeaveHours = $leaveRequest->days * $userWorkHoursPerDay;
                     $paidLeaveSum = $paidLeaveHours * ($baseHourlyRate * 1.1);
-                    //dd($paidLeaveSum);
+                    dd($leaveRequest->days);
                 }
             }
         }
