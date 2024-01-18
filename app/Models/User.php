@@ -120,8 +120,6 @@ class User extends Authenticatable
             }
         }
 
-        dd($unpaidLeaveDeduction, $paidLeaveSum);
-
         $overtimeSum = ($request->overtime !== null && $request->overtime !== 0) ? ($request->overtime * $baseHourlyRate) * 1.5 : 0;
 
         $totalBenefitPrice = $userBenefits->sum('price');
@@ -129,6 +127,8 @@ class User extends Authenticatable
         $grossWithoutPaidLeave = ($baseHours - ($paidLeaveHours ?? 0)) * $baseHourlyRate;
 
         $gross = $grossWithoutPaidLeave + $paidLeaveSum - $unpaidLeaveDeduction - $totalBenefitPrice + $overtimeSum;
+
+        dd($gross, $grossWithoutPaidLeave, $paidLeaveSum, $unpaidLeaveDeduction, $totalBenefitPrice, $overtimeSum);
 
         $net = $gross * (1 - $totalDeductionRate);
 
