@@ -197,6 +197,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        Log::info("Store method invoke");
 
         $validatedData = $request->validate([
             'first_name' => 'required|string|max:255',
@@ -215,6 +216,8 @@ class UserController extends Controller
             'info' => 'nullable|string|max:255',
         ]);
 
+        Log::info("Data verified");
+
         $user = User::create([
             'first_name' => $validatedData['first_name'],
             'last_name' => $validatedData['last_name'],
@@ -225,8 +228,12 @@ class UserController extends Controller
 
         ]);
 
+        Log::info("User {$user->id} is created");
+
         $defaultRole = Role::where('name', 'User')->first();
         $user->assignRole($defaultRole);
+
+        Log::info("User {$user->id} has $defaultRole");
 
         $user->payroll()->create([
             'year' => $validatedData['year'],
@@ -239,6 +246,8 @@ class UserController extends Controller
             
             'info' => $validatedData['info'],
         ]);
+
+        Log::info("User {$user->id} payroll created");
 
         return redirect()->route('admin.users.index')->with('success', 'Naudotojas sukurtas sėkmingai');
     }
