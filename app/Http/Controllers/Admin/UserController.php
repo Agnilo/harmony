@@ -253,7 +253,7 @@ class UserController extends Controller
             'work_days' => $validatedData['work_days'],
             'overtime' => $validatedData['overtime'],
             'gross' => $validatedData['gross'],           
-            'info' => $validatedData['info'],
+            'info' => $validatedData['info'] ?? '',
         ]);
 
         Log::info("User {$user->id} payroll created");
