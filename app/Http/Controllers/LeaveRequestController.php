@@ -81,10 +81,12 @@ class LeaveRequestController extends Controller
         }
 
         if ($validatedData['leave_type'] == 'paid_leave') {
-            $user->update(['vacation_days' => $user->vacation_days - $validatedData['days']]);
+            $newVacationDays = $user->vacation_days - $validatedData['days'];
+            $user->vacation_days = $newVacationDays;
+            $user->save();
         }
 
-        //$salary = ($request->leave_type === 'paid_leave') ? calculatePaidLeaveSalary($user, $request->days) : 0;
+        Log::info("Leave Request Created: ", ['user_id' => $user->id, 'new_vacation_days' => $user->vacation_days]);
 
         return redirect()->route('leaveRequest')->with('success', 'Atostogų prašymas sukurtas sėkmingai.');
     }
