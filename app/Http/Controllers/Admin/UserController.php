@@ -224,7 +224,6 @@ class UserController extends Controller
             'gender' => 'nullable|in:Vyras,Moteris,Kita',
             'work_hours' => 'required|numeric',
             'work_days' => 'required|integer',
-            'leave_hours' => 'required|numeric',
             'overtime' => 'required|numeric',
             'gross' => 'required|numeric',           
             'info' => 'nullable|string|max:255',
