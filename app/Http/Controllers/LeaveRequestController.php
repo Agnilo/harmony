@@ -94,7 +94,7 @@ class LeaveRequestController extends Controller
 
             $user->leaveRequests()->save($leaveRequest);
 
-            //$leaveRequest->payrolls()->attach($payroll->id);
+            $leaveRequest->payrolls()->attach($payroll->id);
         }
 
         if ($validatedData['leave_type'] == 'paid_leave') {
