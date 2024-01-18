@@ -133,6 +133,12 @@ class UserController extends Controller
         $salaryCalculationRequest->replace([
             'total_paid_leave_days' => $totalPaidLeaveDays,
             'total_unpaid_leave_days' => $totalUnpaidLeaveDays,
+            'work_hours' => $payroll->work_hours,
+            'work_days' => $payroll->work_days,
+            'overtime' => $payroll->overtime,
+            'gross' => $payroll->gross,
+            'month' => $payroll->month,
+            'year' => $payroll->year,
             'leave_request_id' => $leaveRequest->id,
         ]);
 
