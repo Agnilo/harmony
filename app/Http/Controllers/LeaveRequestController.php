@@ -115,6 +115,10 @@ class LeaveRequestController extends Controller
             'approval_status' => 'Prašymas neperžiūrėtas',
         ]);
 
+        $user->leaveRequests()->save($leaveRequest);
+
+        $leaveRequest->payrolls()->attach($payroll->id);
+
         $existingLeaveRequests->push($leaveRequest);
 
         //$user->leaveRequests()->save($leaveRequest);
@@ -138,10 +142,6 @@ class LeaveRequestController extends Controller
 
         $netSalary = $user->calculateNetSalary($payroll->gross, $salaryCalculationRequest, $totalPaidLeaveDays, $totalUnpaidLeaveDays);
         $payroll->update(['net' => $netSalary]);
-
-        $user->leaveRequests()->save($leaveRequest);
-
-        $leaveRequest->payrolls()->attach($payroll->id);
         
 
         if ($validatedData['leave_type'] == 'paid_leave') {
