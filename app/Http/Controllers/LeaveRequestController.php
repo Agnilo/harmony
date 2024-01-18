@@ -60,6 +60,38 @@ class LeaveRequestController extends Controller
 
         $filePath = $request->file('file_upload') ? $request->file('file_upload')->store('leaveRequests', 'public') : null;
 
+        // $leaveRequest = new LeaveRequest([
+        //     'leaveRequest_name' => $validatedData['leaveRequest_name'],
+        //     'leave_type' => $validatedData['leave_type'],
+        //     'reason' => $validatedData['reason'],
+        //     'start_date' => $validatedData['start_date'],
+        //     'end_date' => $validatedData['end_date'],
+        //     'days' => $validatedData['days'],
+        //     'file_upload' => $filePath,
+        //     'remarks' => $validatedData['remarks'],
+        //     'approval_status' => 'Prašymas neperžiūrėtas',
+        // ]);
+
+        $payroll = $user->payroll()->latest()->first();
+        $payrollMonth = $payroll->month;
+        $payrollYear = $payroll->year;
+
+        $existingLeaveRequests = LeaveRequest::where('user_id', $user->id)
+            ->whereYear('start_date', $payrollYear)
+            ->whereMonth('start_date', $payrollMonth)
+            ->get();
+
+        $totalPaidLeaveDays = 0;
+        $totalUnpaidLeaveDays = 0;
+
+        foreach ($existingLeaveRequests as $leaveRequest) {
+            if ($leaveRequest->leave_type === 'paid_leave') {
+                $totalPaidLeaveDays += $leaveRequest->days;
+            } elseif ($leaveRequest->leave_type === 'unpaid_leave') {
+                $totalUnpaidLeaveDays += $leaveRequest->days;
+            }
+        }
+
         $leaveRequest = new LeaveRequest([
             'leaveRequest_name' => $validatedData['leaveRequest_name'],
             'leave_type' => $validatedData['leave_type'],
@@ -69,19 +101,10 @@ class LeaveRequestController extends Controller
             'days' => $validatedData['days'],
             'file_upload' => $filePath,
             'remarks' => $validatedData['remarks'],
-            'approval_status' => 'prašymas neperžiūrėtas',
+            'approval_status' => 'Prašymas neperžiūrėtas',
         ]);
 
-        $payroll = $user->payroll()->latest()->first();
-        $payrollMonth = $payroll->month;
-        $payrollYear = $payroll->year;
-
-        $leaveRequests = LeaveRequest::where('user_id', $user->id)
-            ->whereYear('start_date', $payrollYear)
-            ->whereMonth('start_date', $payrollMonth)
-            ->get();
-
-        $leaveRequests->push($leaveRequest);
+        $existingLeaveRequests->push($leaveRequest);
 
         //$user->leaveRequests()->save($leaveRequest);
 
@@ -92,7 +115,8 @@ class LeaveRequestController extends Controller
             'gross' => $payroll->gross,
             'month' => $payrollMonth,
             'year' => $payrollYear,
-            'leave_requests' => $leaveRequests->toArray(),
+            'total_paid_leave_days' => $totalPaidLeaveDays,
+            'total_unpaid_leave_days' => $totalUnpaidLeaveDays,
         ]);
 
         // $salaryCalculationRequest->replace([
@@ -104,9 +128,7 @@ class LeaveRequestController extends Controller
         //     'year' => $payroll->year,
         //     'leave_request_id' => $leaveRequest->id,
         // ]);
-
-        $netSalary = $user->calculateNetSalary($payroll->gross, $salaryCalculationRequest);
-
+        $netSalary = $user->calculateNetSalary($payroll->gross, $salaryCalculationRequest, $totalPaidLeaveDays, $totalUnpaidLeaveDays);
         $payroll->update(['net' => $netSalary]);
 
         $user->leaveRequests()->save($leaveRequest);
