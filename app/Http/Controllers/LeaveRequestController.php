@@ -125,6 +125,12 @@ class LeaveRequestController extends Controller
     {
 
         if (auth()->user()->can('delete-leaveRequest')) {
+            $user = $leaveRequest->user;
+
+            if ($leaveRequest->leave_type === 'paid_leave') {
+                $user->vacation_days += $leaveRequest->days;
+                $user->save();
+            }
 
             $leaveRequest->delete();
             return redirect()->route('leaveRequest')->with('success', 'Atostogų prašymas ištrintas sėkmingai');;
