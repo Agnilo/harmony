@@ -137,6 +137,14 @@ class LeaveRequestController extends Controller
 
         if (auth()->user()->can('delete-leaveRequest')) {
             $user = $leaveRequest->user;
+            $payroll = $user->payroll()->latest()->first();
+
+            $payroll = $user->payroll()->latest()->first();
+            if ($payroll) {
+                $payroll->update([
+                    'net' => $user->calculateNetSalary($payroll->gross, new Request())
+                ]);
+            }
 
             if ($leaveRequest->leave_type === 'paid_leave') {
                 $user->vacation_days += $leaveRequest->days;
