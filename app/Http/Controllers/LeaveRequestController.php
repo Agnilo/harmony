@@ -72,18 +72,13 @@ class LeaveRequestController extends Controller
             'approval_status' => 'prašymas neperžiūrėtas',
         ]);
 
-        $user = Auth::user();
         $user->leaveRequests()->save($leaveRequest);
 
-        
+        $payroll = $user->payroll()->latest()->first();
 
-        $payrollId = $request->input('payroll_id');
-        Log::info("Before Payroll ID: ", ['payroll_id' => $payrollId]);
-        if ($payrollId) {
-            Log::info("Attaching payroll", ['leave_request_id' => $leaveRequest->id, 'payroll_id' => $payrollId]);
-            $leaveRequest->payrolls()->attach($payrollId);
+        if ($payroll) {
+            $leaveRequest->payrolls()->attach($payroll->id);
         }
-        Log::info("After Payroll ID: ", ['payroll_id' => $payrollId]);
 
         if ($validatedData['leave_type'] == 'paid_leave') {
             $newVacationDays = $user->vacation_days - $validatedData['days'];
