@@ -60,18 +60,6 @@ class LeaveRequestController extends Controller
 
         $filePath = $request->file('file_upload') ? $request->file('file_upload')->store('leaveRequests', 'public') : null;
 
-        // $leaveRequest = new LeaveRequest([
-        //     'leaveRequest_name' => $validatedData['leaveRequest_name'],
-        //     'leave_type' => $validatedData['leave_type'],
-        //     'reason' => $validatedData['reason'],
-        //     'start_date' => $validatedData['start_date'],
-        //     'end_date' => $validatedData['end_date'],
-        //     'days' => $validatedData['days'],
-        //     'file_upload' => $filePath,
-        //     'remarks' => $validatedData['remarks'],
-        //     'approval_status' => 'Prašymas neperžiūrėtas',
-        // ]);
-
         $payroll = $user->payroll()->latest()->first();
         $payrollMonth = $payroll->month;
         $payrollYear = $payroll->year;
@@ -120,13 +108,6 @@ class LeaveRequestController extends Controller
         $leaveRequest->payrolls()->attach($payroll->id);
 
         $existingLeaveRequests->push($leaveRequest);
-
-        //$user->leaveRequests()->save($leaveRequest);
-
-        //dd($totalPaidLeaveDays, $totalUnpaidLeaveDays);
-
-        //dd($leaveRequest->toArray());
-        //dd($leaveRequest->id);
 
         $salaryCalculationRequest = new Request([
             'work_hours' => $payroll->work_hours,
@@ -181,19 +162,51 @@ class LeaveRequestController extends Controller
         $payroll = $user->payroll()->latest()->first();
 
         if ($payroll) {
-            $salaryCalculationRequest = new Request();
-            $salaryCalculationRequest->replace([
+            $payrollMonth = $payroll->month;
+            $payrollYear = $payroll->year;
+    
+            $existingLeaveRequests = LeaveRequest::where('user_id', $user->id)->get();
+    
+            $totalPaidLeaveDays = 0;
+            $totalUnpaidLeaveDays = 0;
+    
+            foreach ($existingLeaveRequests as $existingLeaveRequest) {
+                if ($existingLeaveRequest->id !== $leaveRequest->id) {
+                    $startDate = new \DateTime($existingLeaveRequest->start_date);
+                    $endDate = new \DateTime($existingLeaveRequest->end_date);
+    
+                    $startYear = (int)$startDate->format('Y');
+                    $startMonth = (int)$startDate->format('m');
+                    $endYear = (int)$endDate->format('Y');
+                    $endMonth = (int)$endDate->format('m');
+    
+                    if (
+                        ($startYear == $payrollYear && $startMonth == $payrollMonth) ||
+                        ($endYear == $payrollYear && $endMonth == $payrollMonth) ||
+                        ($startYear < $payrollYear && $endYear > $payrollYear)
+                    ) {
+                        if ($existingLeaveRequest->leave_type === 'paid_leave') {
+                            $totalPaidLeaveDays += $existingLeaveRequest->days;
+                        } elseif ($existingLeaveRequest->leave_type === 'unpaid_leave') {
+                            $totalUnpaidLeaveDays += $existingLeaveRequest->days;
+                        }
+                    }
+                }
+            }
+    
+            $salaryCalculationRequest = new Request([
                 'work_hours' => $payroll->work_hours,
                 'work_days' => $payroll->work_days,
                 'overtime' => $payroll->overtime,
                 'gross' => $payroll->gross,
-                'month' => $payroll->month,
-                'year' => $payroll->year,
+                'month' => $payrollMonth,
+                'year' => $payrollYear,
+                'total_paid_leave_days' => $totalPaidLeaveDays,
+                'total_unpaid_leave_days' => $totalUnpaidLeaveDays,
                 'leave_request_id' => $leaveRequest->id,
             ]);
-
-            $netSalary = $user->calculateNetSalary($payroll->gross, $salaryCalculationRequest);
-
+    
+            $netSalary = $user->calculateNetSalary($payroll->gross, $salaryCalculationRequest, $totalPaidLeaveDays, $totalUnpaidLeaveDays);
             $payroll->update(['net' => $netSalary]);
         }
 
