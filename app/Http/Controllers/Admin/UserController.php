@@ -252,7 +252,8 @@ class UserController extends Controller
             'work_hours' => $validatedData['work_hours'],
             'work_days' => $validatedData['work_days'],
             'overtime' => $validatedData['overtime'],
-            'gross' => $validatedData['gross'],           
+            'gross' => $validatedData['gross'],
+            'net' => isset($validatedData['gross']) ? $this->calculateNetSalary($validatedData['gross'], $request) : 0,           
             'info' => $validatedData['info'] ?? '',
         ]);
 
