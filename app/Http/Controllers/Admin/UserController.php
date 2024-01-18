@@ -211,7 +211,7 @@ class UserController extends Controller
             'leave_hours' => 'required|numeric',
             'overtime' => 'required|numeric',
             'gross' => 'required|numeric',
-            'net' => 'required|numeric',
+            
             'info' => 'nullable|string|max:255',
         ]);
 
@@ -236,7 +236,7 @@ class UserController extends Controller
             'leave_hours' => $validatedData['leave_hours'],
             'overtime' => $validatedData['overtime'],
             'gross' => $validatedData['gross'],
-            'net' => $validatedData['net'],
+            
             'info' => $validatedData['info'],
         ]);
 
