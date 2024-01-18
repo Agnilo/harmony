@@ -138,7 +138,7 @@ class UserController extends Controller
             }
         }
 
-        //dd($totalPaidLeaveDays, $totalUnpaidLeaveDays);
+        dd($totalPaidLeaveDays, $totalUnpaidLeaveDays);
 
         $salaryCalculationRequest = new Request();
         $salaryCalculationRequest->replace([
