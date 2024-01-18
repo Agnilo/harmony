@@ -75,7 +75,7 @@
                 </div>
 
                 
-                <div class="form-group row create-row">
+                <!-- <div class="form-group row create-row">
                     <label for="is_verified" class="col-md-2 col-form-label text-md-right">Patvirtintas</label>
                     <div class="col-md-6">
                         <select id="is_verified" name="is_verified" class="form-control">
@@ -83,7 +83,7 @@
                             <option value="1" {{ old('is_verified') == 1 ? 'selected' : '' }}>Taip</option>
                         </select>
                     </div>
-                </div>
+                </div> -->
 
                 
                 <h2 style="padding: 20px 0;">Darbo užmokesčio informacija</h2>
