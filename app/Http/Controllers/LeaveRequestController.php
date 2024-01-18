@@ -73,31 +73,10 @@ class LeaveRequestController extends Controller
         // ]);
 
         $payroll = $user->payroll()->latest()->first();
-        // $payrollMonth = $payroll->month;
-        // $payrollYear = $payroll->year;
-
-        
-
-        // $existingLeaveRequests = LeaveRequest::where('user_id', $user->id)
-        //     ->whereYear('start_date', $payrollYear)
-        //     ->whereMonth('start_date', $payrollMonth)
-        //     ->get();
-
-        // $totalPaidLeaveDays = 0;
-        // $totalUnpaidLeaveDays = 0;
-
-        // foreach ($existingLeaveRequests as $leaveRequest) {
-        //     if ($leaveRequest->leave_type === 'paid_leave') {
-        //         $totalPaidLeaveDays += $leaveRequest->days;
-        //     } elseif ($leaveRequest->leave_type === 'unpaid_leave') {
-        //         $totalUnpaidLeaveDays += $leaveRequest->days;
-        //     }
-        // }
-        $existingLeaveRequests = LeaveRequest::where('user_id', $user->id)->get();
-
         $payrollMonth = $payroll->month;
         $payrollYear = $payroll->year;
 
+        $existingLeaveRequests = LeaveRequest::where('user_id', $user->id)->get();
 
         $totalPaidLeaveDays = 0;
         $totalUnpaidLeaveDays = 0;
@@ -157,7 +136,7 @@ class LeaveRequestController extends Controller
         $user->leaveRequests()->save($leaveRequest);
 
         $leaveRequest->payrolls()->attach($payroll->id);
-        //}
+        
 
         if ($validatedData['leave_type'] == 'paid_leave') {
             $newVacationDays = $user->vacation_days - $validatedData['days'];
