@@ -125,7 +125,7 @@ class LeaveRequestController extends Controller
 
         //dd($totalPaidLeaveDays, $totalUnpaidLeaveDays);
 
-        dd($leaveRequest->toArray());
+        //dd($leaveRequest->toArray());
         //dd($leaveRequest->id);
 
         $salaryCalculationRequest = new Request([
