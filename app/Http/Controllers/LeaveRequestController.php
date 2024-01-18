@@ -83,7 +83,7 @@ class LeaveRequestController extends Controller
                 'work_days' => $payroll->work_days,
                 'overtime' => $payroll->overtime,
                 'gross' => $payroll->gross,
-                'month' => $payroll-> month,
+                'month' => $payroll->month,
                 'year' => $payroll->year,
                 'leave_request_id' => $leaveRequest->id,
             ]);
@@ -128,11 +128,6 @@ class LeaveRequestController extends Controller
 
         $leaveRequest->update($validatedData);
 
-        // $payrollId = $request->input('payroll_id');
-        // if ($payrollId) {
-        //     $leaveRequest->payrolls()->sync([$payrollId]);
-        // }
-
         $user = $leaveRequest->user;
         $payroll = $user->payroll()->latest()->first();
 
@@ -143,7 +138,7 @@ class LeaveRequestController extends Controller
                 'work_days' => $payroll->work_days,
                 'overtime' => $payroll->overtime,
                 'gross' => $payroll->gross,
-                'month' => $payroll-> month,
+                'month' => $payroll->month,
                 'year' => $payroll->year,
                 'leave_request_id' => $leaveRequest->id,
             ]);
@@ -164,10 +159,36 @@ class LeaveRequestController extends Controller
             $payroll = $user->payroll()->latest()->first();
 
             if ($payroll) {
-                $payroll->update([
-                    'net' => $user->calculateNetSalary($payroll->gross, new Request())
+
+                $currentLeaveRequests = LeaveRequest::where('user_id', $user->id)
+                    ->where('id', '!=', $leaveRequest->id)
+                    ->get();
+
+                $leaveRequestsDetails = $currentLeaveRequests->map(function ($lr) {
+                    return [
+                        'leave_type' => $lr->leave_type,
+                        'days' => $lr->days,
+                        'start_date' => $lr->start_date,
+                        'end_date' => $lr->end_date,
+                    ];
+                });
+
+                $salaryCalculationRequest = new Request();
+                $salaryCalculationRequest->replace([
+                    'work_hours' => $payroll->work_hours,
+                    'work_days' => $payroll->work_days,
+                    'overtime' => $payroll->overtime,
+                    'gross' => $payroll->gross,
+                    'month' => $payroll->month,
+                    'year' => $payroll->year,
+                    'leave_request_id' => $leaveRequest->id,
+                    'leave_requests' => $leaveRequestsDetails->toArray(),
                 ]);
+
+                $netSalary = $user->calculateNetSalary($payroll->gross, $salaryCalculationRequest);
+                $payroll->update(['net' => $netSalary]);
             }
+
 
             if ($leaveRequest->leave_type === 'paid_leave') {
                 $user->vacation_days += $leaveRequest->days;
