@@ -116,7 +116,7 @@ class User extends Authenticatable
                 } elseif ($leaveRequest->leave_type === 'paid_leave') {
                     $paidLeaveHours = $leaveRequest->days * $userWorkHoursPerDay;
                     $paidLeaveSum = $paidLeaveHours * ($baseHourlyRate * 1.1);
-                    dd($paidLeaveSum);
+                    //dd($paidLeaveSum);
                 }
             }
         }
@@ -131,7 +131,7 @@ class User extends Authenticatable
 
         $net = $gross * (1 - $totalDeductionRate);
 
-        dd('baseHourlyRate',$baseHourlyRate,'baseHours',$baseHours, 'grossWithoutPaidLeave:', $grossWithoutPaidLeave, 'gross:', $gross, 'net', $net);
+        //dd('baseHourlyRate',$baseHourlyRate,'baseHours',$baseHours, 'grossWithoutPaidLeave:', $grossWithoutPaidLeave, 'gross:', $gross, 'net', $net);
 
         return $net;
     }
