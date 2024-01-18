@@ -181,7 +181,7 @@ class LeaveRequestController extends Controller
                     'gross' => $payroll->gross,
                     'month' => $payroll->month,
                     'year' => $payroll->year,
-                    'leave_request_id' => $leaveRequest->id,
+                    //'leave_request_id' => $leaveRequest->id,
                     'leave_requests' => $leaveRequestsDetails->toArray(),
                 ]);
 
