@@ -75,8 +75,11 @@ class LeaveRequestController extends Controller
         $user->leaveRequests()->save($leaveRequest);
 
         $payroll = $user->payroll()->latest()->first();
-
         if ($payroll) {
+            $payroll->update([
+                'net' => $user->calculateNetSalary($payroll->gross, new Request())
+            ]);
+
             $leaveRequest->payrolls()->attach($payroll->id);
         }
 
@@ -113,9 +116,17 @@ class LeaveRequestController extends Controller
 
         $leaveRequest->update($validatedData);
 
-        $payrollId = $request->input('payroll_id');
-        if ($payrollId) {
-            $leaveRequest->payrolls()->sync([$payrollId]);
+        // $payrollId = $request->input('payroll_id');
+        // if ($payrollId) {
+        //     $leaveRequest->payrolls()->sync([$payrollId]);
+        // }
+
+        $user = $leaveRequest->user;
+        $payroll = $user->payroll()->latest()->first();
+        if ($payroll) {
+            $payroll->update([
+                'net' => $user->calculateNetSalary($payroll->gross, new Request())
+            ]);
         }
 
         return redirect()->route('leaveRequest')->with('success', 'Atostogų prašymas buvo atnaujintas sėkmingai.');
