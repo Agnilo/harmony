@@ -83,6 +83,7 @@ class LeaveRequestController extends Controller
                 'work_days' => $payroll->work_days,
                 'overtime' => $payroll->overtime,
                 'gross' => $payroll->gross,
+                'month' => $payroll->month,
                 'leave_request_id' => $leaveRequest->id,
             ]);
 
