@@ -121,6 +121,8 @@ class UserController extends Controller
             ];
         })->all();
 
+        dd($leaveRequestsDetails);
+
         $salaryCalculationRequest = clone $request;
         $salaryCalculationRequest->merge([
             'month' => $currentMonth,
