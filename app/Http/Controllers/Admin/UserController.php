@@ -205,7 +205,7 @@ class UserController extends Controller
             'last_name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,',
             'password' => 'required|min:8',
-            'gender' => 'nullable|in:Vyras,Moteris,Kite',
+            'gender' => 'nullable|in:vyras,moteris,Kita',
             'is_verified' => 'nullable|boolean',
             'work_hours' => 'nullable|numeric|between:0,99.9',
             'work_days' => 'nullable|integer|min:0',
