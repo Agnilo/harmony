@@ -146,16 +146,12 @@ class UserController extends Controller
         $userWorkHours = $request->work_hours ?? 0;
         $userWorkDays = $request->work_days ?? 0;
 
-        // Calculate work hours per day
         $userWorkHoursPerDay = ($userWorkDays != 0) ? ($userWorkHours / $userWorkDays) : 0;
 
-        // Calculate base hours
-        $baseHours = $userWorkHours * 4; // Base amount of hours
+        $baseHours = $userWorkHours * 4;
 
-        // Calculate base hourly rate
         $baseHourlyRate = ($baseHours != 0) ? ($gross / $baseHours) : 0;
 
-        // Calculate total deduction rate
         $totalDeductionRate = $taxRate + $healthInsuranceRate;
 
         $overtimeSum = 0;
@@ -181,20 +177,14 @@ class UserController extends Controller
             }
         }
 
-        // Calculate overtime sum
         $overtimeSum = ($request->overtime !== null && $request->overtime !== 0) ? ($request->overtime * $baseHourlyRate) * 1.5 : 0;
 
-        // Calculate total benefit price
         $totalBenefitPrice = $userBenefits->sum('price');
 
-        // Calculate gross without paid leave
         $grossWithoutPaidLeave = ($baseHours - ($paidLeaveHours ?? 0)) * $baseHourlyRate;
 
-        // Calculate gross with all adjustments
         $gross = $grossWithoutPaidLeave + $paidLeaveSum - $unpaidLeaveDeduction - $totalBenefitPrice + $overtimeSum;
 
-        //dd($grossWithoutPaidLeave, $overtimeSum, $totalBenefitPrice, $paidLeaveSum);
-        // Calculate net salary
         $net = $gross * (1 - $totalDeductionRate);
 
         return $net;

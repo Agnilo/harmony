@@ -74,7 +74,7 @@
                     </div>
                 </div>
 
-                <h2>Darbo užmokesčio informacija</h2>
+                <h2 style="padding: 20px 0;">Darbo užmokesčio informacija</h2>
 
                 <div class="form-group row">
                     <label for="work_hours" class="col-md-2 col-form-label text-md-right">Darbo valandos per savaitę</label>
