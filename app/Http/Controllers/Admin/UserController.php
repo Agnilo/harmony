@@ -110,7 +110,7 @@ class UserController extends Controller
             'work_days' => $payrollValidation['work_days'],
             'overtime' => $payrollValidation['overtime'],
             'gross' => $payrollValidation['gross'],
-            'net' => isset($payrollValidation['gross']) ? $this->calculateNetSalary($payrollValidation['gross'], $request) : 0,
+            'net' => isset($payrollValidation['gross']) ? $user->calculateNetSalary($payrollValidation['gross'], $request) : 0,
             //'net' => $this->calculateNetSalary($payrollValidation['gross'], $request),
             //'net' => $payrollValidation['net'] ?? 0,
             'info' => $payrollValidation['info'] ?? '',
@@ -139,61 +139,61 @@ class UserController extends Controller
         return redirect()->route('admin.users.index');
     }
 
-    private function calculateNetSalary($gross, $request)
-    {
-        $net = 0;
+    // private function calculateNetSalary($gross, $request)
+    // {
+    //     $net = 0;
 
-        $userBenefits = Auth::user()->selectedBenefits;
+    //     $userBenefits = Auth::user()->selectedBenefits;
 
-        $taxRate = 0.25;
-        $healthInsuranceRate = 0.15;
+    //     $taxRate = 0.25;
+    //     $healthInsuranceRate = 0.15;
 
-        $userWorkHours = $request->work_hours ?? 0;
-        $userWorkDays = $request->work_days ?? 0;
+    //     $userWorkHours = $request->work_hours ?? 0;
+    //     $userWorkDays = $request->work_days ?? 0;
 
-        $userWorkHoursPerDay = ($userWorkDays != 0) ? ($userWorkHours / $userWorkDays) : 0;
+    //     $userWorkHoursPerDay = ($userWorkDays != 0) ? ($userWorkHours / $userWorkDays) : 0;
 
-        $baseHours = $userWorkHours * 4;
+    //     $baseHours = $userWorkHours * 4;
 
-        $baseHourlyRate = ($baseHours != 0) ? ($gross / $baseHours) : 0;
+    //     $baseHourlyRate = ($baseHours != 0) ? ($gross / $baseHours) : 0;
 
-        $totalDeductionRate = $taxRate + $healthInsuranceRate;
+    //     $totalDeductionRate = $taxRate + $healthInsuranceRate;
 
-        $overtimeSum = 0;
-        $unpaidLeaveDeduction = 0;
-        $paidLeaveSum = 0;
+    //     $overtimeSum = 0;
+    //     $unpaidLeaveDeduction = 0;
+    //     $paidLeaveSum = 0;
 
 
 
-        if ($request->leave_request_id) {
-            $leaveRequest = LeaveRequest::findOrFail($request->leave_request_id);
+    //     if ($request->leave_request_id) {
+    //         $leaveRequest = LeaveRequest::findOrFail($request->leave_request_id);
 
-            $leaveMonth = date('m', strtotime($leaveRequest->start_date));
-            $leaveYear = date('Y', strtotime($leaveRequest->start_date));
+    //         $leaveMonth = date('m', strtotime($leaveRequest->start_date));
+    //         $leaveYear = date('Y', strtotime($leaveRequest->start_date));
 
-            if ($leaveMonth == $request->month && $leaveYear == $request->year) {
-                if ($leaveRequest->leave_type === 'unpaid_leave') {
-                    $unpaidleaveHours = $leaveRequest->days * $userWorkHoursPerDay;
-                    $unpaidLeaveDeduction = $unpaidleaveHours * $baseHourlyRate;
-                } elseif ($leaveRequest->leave_type === 'paid_leave') {
-                    $paidLeaveHours = $leaveRequest->days * $userWorkHoursPerDay;
-                    $paidLeaveSum = $paidLeaveHours * ($baseHourlyRate * 1.1);
-                }
-            }
-        }
+    //         if ($leaveMonth == $request->month && $leaveYear == $request->year) {
+    //             if ($leaveRequest->leave_type === 'unpaid_leave') {
+    //                 $unpaidleaveHours = $leaveRequest->days * $userWorkHoursPerDay;
+    //                 $unpaidLeaveDeduction = $unpaidleaveHours * $baseHourlyRate;
+    //             } elseif ($leaveRequest->leave_type === 'paid_leave') {
+    //                 $paidLeaveHours = $leaveRequest->days * $userWorkHoursPerDay;
+    //                 $paidLeaveSum = $paidLeaveHours * ($baseHourlyRate * 1.1);
+    //             }
+    //         }
+    //     }
 
-        $overtimeSum = ($request->overtime !== null && $request->overtime !== 0) ? ($request->overtime * $baseHourlyRate) * 1.5 : 0;
+    //     $overtimeSum = ($request->overtime !== null && $request->overtime !== 0) ? ($request->overtime * $baseHourlyRate) * 1.5 : 0;
 
-        $totalBenefitPrice = $userBenefits->sum('price');
+    //     $totalBenefitPrice = $userBenefits->sum('price');
 
-        $grossWithoutPaidLeave = ($baseHours - ($paidLeaveHours ?? 0)) * $baseHourlyRate;
+    //     $grossWithoutPaidLeave = ($baseHours - ($paidLeaveHours ?? 0)) * $baseHourlyRate;
 
-        $gross = $grossWithoutPaidLeave + $paidLeaveSum - $unpaidLeaveDeduction - $totalBenefitPrice + $overtimeSum;
+    //     $gross = $grossWithoutPaidLeave + $paidLeaveSum - $unpaidLeaveDeduction - $totalBenefitPrice + $overtimeSum;
 
-        $net = $gross * (1 - $totalDeductionRate);
+    //     $net = $gross * (1 - $totalDeductionRate);
 
-        return $net;
-    }
+    //     return $net;
+    // }
 
     public function create()
     {
