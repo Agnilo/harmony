@@ -75,6 +75,7 @@ class UserController extends Controller
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
+            'gender' => 'nullable|in:Vyras,Moteris,Kita',
             'is_verified' => 'nullable|boolean',
         ]);
 
@@ -91,6 +92,7 @@ class UserController extends Controller
             'first_name' => $validatedData['first_name'],
             'last_name' => $validatedData['last_name'],
             'email' => $validatedData['email'],
+            'gender' => $validatedData['gender'],
             'is_verified' => $validatedData['is_verified'],
         ]);
 
