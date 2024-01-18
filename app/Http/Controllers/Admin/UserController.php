@@ -206,7 +206,7 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email,',
             'password' => 'required|min:8',
             'gender' => 'nullable|in:Vyras,Moteris,Kita',
-            'is_verified' => 'nullable|boolean',
+            
             'work_hours' => 'nullable|numeric|between:0,99.9',
             'work_days' => 'nullable|integer|min:0',
             'overtime' => 'nullable|numeric',
