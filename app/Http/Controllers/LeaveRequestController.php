@@ -72,37 +72,46 @@ class LeaveRequestController extends Controller
             'approval_status' => 'prašymas neperžiūrėtas',
         ]);
 
+        $payroll = $user->payroll()->latest()->first();
+        $payrollMonth = $payroll->month;
+        $payrollYear = $payroll->year;
+
+        $leaveRequests = LeaveRequest::where('user_id', $user->id)
+            ->whereYear('start_date', $payrollYear)
+            ->whereMonth('start_date', $payrollMonth)
+            ->get();
+
+        $leaveRequests->push($leaveRequest);
+
         //$user->leaveRequests()->save($leaveRequest);
 
-        $payroll = $user->payroll()->latest()->first();
-        //if ($payroll) {
-            $salaryCalculationRequest = new Request([
-                'work_hours' => $payroll->work_hours,
-                'work_days' => $payroll->work_days,
-                'overtime' => $payroll->overtime,
-                'gross' => $payroll->gross,
-                'month' => $payroll->month,
-                'year' => $payroll->year,
-                'leave_request_id' => $leaveRequest->id,
-            ]);
+        $salaryCalculationRequest = new Request([
+            'work_hours' => $payroll->work_hours,
+            'work_days' => $payroll->work_days,
+            'overtime' => $payroll->overtime,
+            'gross' => $payroll->gross,
+            'month' => $payrollMonth,
+            'year' => $payrollYear,
+            'leave_requests' => $leaveRequests->toArray(),
+        ]);
 
-            // $salaryCalculationRequest->replace([
-            //     'work_hours' => $payroll->work_hours,
-            //     'work_days' => $payroll->work_days,
-            //     'overtime' => $payroll->overtime,
-            //     'gross' => $payroll->gross,
-            //     'month' => $payroll->month,
-            //     'year' => $payroll->year,
-            //     'leave_request_id' => $leaveRequest->id,
-            // ]);
+        // $salaryCalculationRequest->replace([
+        //     'work_hours' => $payroll->work_hours,
+        //     'work_days' => $payroll->work_days,
+        //     'overtime' => $payroll->overtime,
+        //     'gross' => $payroll->gross,
+        //     'month' => $payroll->month,
+        //     'year' => $payroll->year,
+        //     'leave_request_id' => $leaveRequest->id,
+        // ]);
 
-            $netSalary = $user->calculateNetSalary($payroll->gross, $salaryCalculationRequest);
+        $netSalary = $user->calculateNetSalary($payroll->gross, $salaryCalculationRequest);
 
-            $payroll->update(['net' => $netSalary]);
+        $payroll->update(['net' => $netSalary]);
 
-            $user->leaveRequests()->save($leaveRequest);
+        $user->leaveRequests()->save($leaveRequest);
 
-            $leaveRequest->payrolls()->attach($payroll->id);
+        $leaveRequest->payrolls()->attach($payroll->id);
         //}
 
         if ($validatedData['leave_type'] == 'paid_leave') {
