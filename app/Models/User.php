@@ -108,8 +108,6 @@ class User extends Authenticatable
             
             $leaveMonth = date('m', strtotime($leaveRequest->start_date));
             $leaveYear = date('Y', strtotime($leaveRequest->start_date));
-
-            dd($request->month);
             
             if ($leaveMonth == $request->month && $leaveYear == $request->year) {
                 if ($leaveRequest->leave_type === 'unpaid_leave') {
