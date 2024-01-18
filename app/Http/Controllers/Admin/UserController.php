@@ -249,14 +249,10 @@ class UserController extends Controller
         Log::info("User {$user->id} has $defaultRole");
 
         $user->payroll()->create([
-            'year' => $validatedData['year'],
-            'month' => $validatedData['month'],
             'work_hours' => $validatedData['work_hours'],
             'work_days' => $validatedData['work_days'],
-            'leave_hours' => $validatedData['leave_hours'],
             'overtime' => $validatedData['overtime'],
-            'gross' => $validatedData['gross'],
-            
+            'gross' => $validatedData['gross'],           
             'info' => $validatedData['info'],
         ]);
 
