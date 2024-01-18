@@ -105,12 +105,6 @@ class UserController extends Controller
         $roles = Role::whereIn('id', $validateRoleIds)->get();
         $user->syncRoles($roles);
 
-        if ($user->save()) {
-            $request->session()->flash('success', 'Vartotojas ' . $user->first_name . ' buvo atnaujintas');
-        } else {
-            $request->session()->flash('warning', 'Iškilo problema atnaujinant vartotoją');
-        }
-
         $payrollData = [
             'work_hours' => $payrollValidation['work_hours'],
             'work_days' => $payrollValidation['work_days'],
@@ -122,16 +116,25 @@ class UserController extends Controller
             'info' => $payrollValidation['info'] ?? '',
         ];
 
-        if ($user->payroll) {     
+        if ($user->payroll) {
             $user->payroll->update($payrollData);
         } else {
             $user->payroll()->create($payrollData);
         }
 
-        $payroll = Payroll::all();
-
         $leaveRequestIds = $request->input('leave_request_ids', []);
-        $payroll->leaveRequests()->sync($leaveRequestIds);
+        if (!empty($leaveRequestIds)) {
+            $payroll = $user->payroll()->first();
+            if ($payroll) {
+                $payroll->leaveRequests()->sync($leaveRequestIds);
+            }
+        }
+
+        if ($user->save()) {
+            $request->session()->flash('success', 'Vartotojas ' . $user->first_name . ' buvo atnaujintas');
+        } else {
+            $request->session()->flash('warning', 'Iškilo problema atnaujinant vartotoją');
+        }
 
         return redirect()->route('admin.users.index');
     }
@@ -238,7 +241,7 @@ class UserController extends Controller
             'work_days' => $validatedData['work_days'],
             'overtime' => $validatedData['overtime'],
             'gross' => $validatedData['gross'],
-            'net' => isset($validatedData['gross']) ? $this->calculateNetSalary($validatedData['gross'], $request) : 0,           
+            'net' => isset($validatedData['gross']) ? $this->calculateNetSalary($validatedData['gross'], $request) : 0,
             'info' => $validatedData['info'] ?? '',
         ]);
 
