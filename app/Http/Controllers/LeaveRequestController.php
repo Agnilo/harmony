@@ -76,9 +76,19 @@ class LeaveRequestController extends Controller
 
         $payroll = $user->payroll()->latest()->first();
         if ($payroll) {
-            $payroll->update([
-                'net' => $user->calculateNetSalary($payroll->gross, new Request())
+            $salaryCalculationRequest = new Request();
+
+            $salaryCalculationRequest->replace([
+                'work_hours' => $payroll->work_hours,
+                'work_days' => $payroll->work_days,
+                'overtime' => $payroll->overtime,
+                'gross' => $payroll->gross,
+                'leave_request_id' => $leaveRequest->id,
             ]);
+
+            $netSalary = $user->calculateNetSalary($payroll->gross, $salaryCalculationRequest);
+
+            $payroll->update(['net' => $netSalary]);
 
             $leaveRequest->payrolls()->attach($payroll->id);
         }
