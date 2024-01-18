@@ -105,12 +105,37 @@ class UserController extends Controller
         $roles = Role::whereIn('id', $validateRoleIds)->get();
         $user->syncRoles($roles);
 
+        $currentMonth = now()->month;
+        $currentYear = now()->year;
+        $leaveRequests = LeaveRequest::where('user_id', $user->id)
+            ->whereMonth('start_date', $currentMonth)
+            ->whereYear('start_date', $currentYear)
+            ->get();
+
+        $leaveRequestsDetails = $leaveRequests->map(function ($leaveRequest) {
+            return [
+                'leave_type' => $leaveRequest->leave_type,
+                'days' => $leaveRequest->days,
+                'start_date' => $leaveRequest->start_date,
+                'end_date' => $leaveRequest->end_date,
+            ];
+        })->all();
+
+        $salaryCalculationRequest = clone $request;
+        $salaryCalculationRequest->merge([
+            'month' => $currentMonth,
+            'year' => $currentYear,
+            'leave_request_ids' => $leaveRequests->pluck('id')->toArray(),
+            'leave_requests' => $leaveRequestsDetails,
+        ]);
+
         $payrollData = [
             'work_hours' => $payrollValidation['work_hours'],
             'work_days' => $payrollValidation['work_days'],
             'overtime' => $payrollValidation['overtime'],
             'gross' => $payrollValidation['gross'],
-            'net' => isset($payrollValidation['gross']) ? $user->calculateNetSalary($payrollValidation['gross'], $request) : 0,
+            'net' => isset($payrollValidation['gross']) ? $user->calculateNetSalary($payrollValidation['gross'], $salaryCalculationRequest) : 0,
+            //'net' => isset($payrollValidation['gross']) ? $user->calculateNetSalary($payrollValidation['gross'], $request) : 0,
             //'net' => $this->calculateNetSalary($payrollValidation['gross'], $request),
             //'net' => $payrollValidation['net'] ?? 0,
             'info' => $payrollValidation['info'] ?? '',
