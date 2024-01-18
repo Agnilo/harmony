@@ -128,7 +128,7 @@ class BenefitsController extends Controller
         if ($user && !$user->selectedBenefits->contains($benefit->id)) {
             Log::info("User {$user->id} is selecting benefit {$benefit->id}");
 
-            $user->benefits()->attach($benefit->id);
+            $user->selectedBenefits()->attach($benefit->id);
             return redirect()->route('benefits')->with('success', 'Privalumas pasirinktas sėkmingai.');
         }
 
