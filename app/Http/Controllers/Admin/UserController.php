@@ -127,6 +127,8 @@ class UserController extends Controller
                     $totalUnpaidLeaveDays += $leaveRequest->days;
                 }
             }
+
+            dd($totalPaidLeaveDays, $totalUnpaidLeaveDays);
         }
 
         $salaryCalculationRequest = new Request();
