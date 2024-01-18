@@ -72,10 +72,10 @@ class LeaveRequestController extends Controller
             'approval_status' => 'prašymas neperžiūrėtas',
         ]);
 
-        $user->leaveRequests()->save($leaveRequest);
+        //$user->leaveRequests()->save($leaveRequest);
 
         $payroll = $user->payroll()->latest()->first();
-        if ($payroll) {
+        //if ($payroll) {
             $salaryCalculationRequest = new Request();
 
             $salaryCalculationRequest->replace([
@@ -92,8 +92,10 @@ class LeaveRequestController extends Controller
 
             $payroll->update(['net' => $netSalary]);
 
-            $leaveRequest->payrolls()->attach($payroll->id);
-        }
+            $user->leaveRequests()->save($leaveRequest);
+
+            //$leaveRequest->payrolls()->attach($payroll->id);
+        //}
 
         if ($validatedData['leave_type'] == 'paid_leave') {
             $newVacationDays = $user->vacation_days - $validatedData['days'];
