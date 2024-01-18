@@ -76,9 +76,7 @@ class LeaveRequestController extends Controller
 
         $payroll = $user->payroll()->latest()->first();
         //if ($payroll) {
-            $salaryCalculationRequest = new Request();
-
-            $salaryCalculationRequest->replace([
+            $salaryCalculationRequest = new Request([
                 'work_hours' => $payroll->work_hours,
                 'work_days' => $payroll->work_days,
                 'overtime' => $payroll->overtime,
@@ -87,6 +85,16 @@ class LeaveRequestController extends Controller
                 'year' => $payroll->year,
                 'leave_request_id' => $leaveRequest->id,
             ]);
+
+            // $salaryCalculationRequest->replace([
+            //     'work_hours' => $payroll->work_hours,
+            //     'work_days' => $payroll->work_days,
+            //     'overtime' => $payroll->overtime,
+            //     'gross' => $payroll->gross,
+            //     'month' => $payroll->month,
+            //     'year' => $payroll->year,
+            //     'leave_request_id' => $leaveRequest->id,
+            // ]);
 
             $netSalary = $user->calculateNetSalary($payroll->gross, $salaryCalculationRequest);
 
