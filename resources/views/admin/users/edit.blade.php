@@ -53,13 +53,13 @@
                 <div class="form-group row">
                     <label class="col-md-2 col-form-label text-md-right">Lytis</label><br>
                     <div class="col-md-6">
-                        <input type="radio" id="male" name="gender" value="Vyras" {{ old('gender', $gender) == 'Vyras' ? 'checked' : '' }}>
+                        <input type="radio" id="male" name="gender" value="Vyras" {{ old('gender', $user->gender) == 'Vyras' ? 'checked' : '' }}>
                         <label for="male">Vyras</label><br>
 
-                        <input type="radio" id="female" name="gender" value="Moteris" {{ old('gender', $gender) == 'Moteris' ? 'checked' : '' }}>
+                        <input type="radio" id="female" name="gender" value="Moteris" {{ old('gender', $user->gender) == 'Moteris' ? 'checked' : '' }}>
                         <label for="female">Moteris</label><br>
 
-                        <input type="radio" id="other" name="gender" value="Kita" {{ old('gender', $gender) == 'Kita' ? 'checked' : '' }}>
+                        <input type="radio" id="other" name="gender" value="Kita" {{ old('gender', $user->gender) == 'Kita' ? 'checked' : '' }}>
                         <label for="other">Kita</label><br>
                     </div>
                 </div>
