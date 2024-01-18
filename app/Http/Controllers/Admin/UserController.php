@@ -206,6 +206,11 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email,',
             'password' => 'required|min:8',
             'is_verified' => 'nullable|boolean',
+            'work_hours' => 'nullable|numeric|between:0,99.9',
+            'work_days' => 'nullable|integer|min:0',
+            'overtime' => 'nullable|numeric',
+            'gross' => 'nullable|numeric|between:0,999999.99',
+            'info' => 'nullable|string|max:255',
         ]);
 
         Log::info("Data verified");
@@ -222,12 +227,11 @@ class UserController extends Controller
             'work_days' => 'required|integer',
             'leave_hours' => 'required|numeric',
             'overtime' => 'required|numeric',
-            'gross' => 'required|numeric',
-            
+            'gross' => 'required|numeric',           
             'info' => 'nullable|string|max:255',
         ]);
 
-
+        Log::info("Data verified 2");
 
         $user = User::create([
             'first_name' => $validatedData['first_name'],
