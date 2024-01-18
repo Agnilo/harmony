@@ -105,11 +105,12 @@ class User extends Authenticatable
 
         if ($request->leave_request_id) {
             $leaveRequest = LeaveRequest::findOrFail($request->leave_request_id);
-            dd($leaveRequest);
-
+            
             $leaveMonth = date('m', strtotime($leaveRequest->start_date));
             $leaveYear = date('Y', strtotime($leaveRequest->start_date));
 
+            dd($leaveMonth);
+            
             if ($leaveMonth == $request->month && $leaveYear == $request->year) {
                 if ($leaveRequest->leave_type === 'unpaid_leave') {
                     $unpaidleaveHours = $leaveRequest->days * $userWorkHoursPerDay;
