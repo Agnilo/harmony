@@ -123,10 +123,20 @@ class LeaveRequestController extends Controller
 
         $user = $leaveRequest->user;
         $payroll = $user->payroll()->latest()->first();
+
         if ($payroll) {
-            $payroll->update([
-                'net' => $user->calculateNetSalary($payroll->gross, new Request())
+            $salaryCalculationRequest = new Request();
+            $salaryCalculationRequest->replace([
+                'work_hours' => $payroll->work_hours,
+                'work_days' => $payroll->work_days,
+                'overtime' => $payroll->overtime,
+                'gross' => $payroll->gross,
+                'leave_request_id' => $leaveRequest->id,
             ]);
+
+            $netSalary = $user->calculateNetSalary($payroll->gross, $salaryCalculationRequest);
+
+            $payroll->update(['net' => $netSalary]);
         }
 
         return redirect()->route('leaveRequest')->with('success', 'Atostogų prašymas buvo atnaujintas sėkmingai.');
@@ -139,7 +149,6 @@ class LeaveRequestController extends Controller
             $user = $leaveRequest->user;
             $payroll = $user->payroll()->latest()->first();
 
-            $payroll = $user->payroll()->latest()->first();
             if ($payroll) {
                 $payroll->update([
                     'net' => $user->calculateNetSalary($payroll->gross, new Request())
