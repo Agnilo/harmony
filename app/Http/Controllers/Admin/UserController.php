@@ -105,15 +105,56 @@ class UserController extends Controller
         $roles = Role::whereIn('id', $validateRoleIds)->get();
         $user->syncRoles($roles);
 
+        $payroll = $user->payroll;
+
         $leaveRequests = LeaveRequest::where('user_id', $user->id)->get();
 
-        $salaryCalculationData = array_merge($payrollValidation, [
-            'leave_requests' => $leaveRequests->toArray()
+        $payrollMonth = $payroll->month;
+        $payrollYear = $payroll->year;
+
+        $totalPaidLeaveDays = 0;
+        $totalUnpaidLeaveDays = 0;
+
+        foreach ($leaveRequests as $leaveRequest) {
+            $startDate = new DateTime($leaveRequest->start_date);
+            $endDate = new DateTime($leaveRequest->end_date);
+
+            if (($startDate->format('Y-m') <= "$payrollYear-$payrollMonth") && ($endDate->format('Y-m') >= "$payrollYear-$payrollMonth")) {
+
+                if ($leaveRequest->leave_type === 'paid_leave') {
+                    $totalPaidLeaveDays += $leaveRequest->days;
+                } elseif ($leaveRequest->leave_type === 'unpaid_leave') {
+                    $totalUnpaidLeaveDays += $leaveRequest->days;
+                }
+            }
+        }
+
+        $salaryCalculationRequest = new Request();
+        $salaryCalculationRequest->replace([
+            'total_paid_leave_days' => $totalPaidLeaveDays,
+            'total_unpaid_leave_days' => $totalUnpaidLeaveDays,
+            'leave_request_id' => $leaveRequest->id,
         ]);
 
-        $net = $user->calculateNetSalary($payrollValidation['gross'], $salaryCalculationData);
-
+        $net = $user->calculateNetSalary($payrollValidation['gross'], $salaryCalculationRequest);
         $payrollData = array_merge($payrollValidation, ['net' => $net]);
+
+        // if ($leaveRequests) {
+        //     $salaryCalculationRequest = new Request();
+        //     $salaryCalculationRequest->replace([
+        //         'start_date' => $leaveRequest->start_date,
+        //         'end_date' => $leaveRequest->end_date,
+        //         'leave_type' => $leaveRequest->leave_type,
+        //         'days' => $leaveRequest->days,
+        //         'leave_request_id' => $leaveRequest->id,
+        //     ]);
+
+        //     $net = $user->calculateNetSalary($payrollValidation['gross'], $salaryCalculationRequest);
+
+        //     //$leaveRequests->update(['net' => $net]);
+        // }
+
+        // $payrollData = array_merge($payrollValidation, ['net' => $net]);
 
         // $payrollData = [
         //     'work_hours' => $payrollValidation['work_hours'],
