@@ -72,16 +72,19 @@ class LeaveRequestController extends Controller
             'approval_status' => 'prašymas neperžiūrėtas',
         ]);
 
+        $user = Auth::user();
+        $user->leaveRequests()->save($leaveRequest);
+
         $payrollId = $request->input('payroll_id');
         if ($payrollId) {
             $leaveRequest->payrolls()->attach($payrollId);
         }
 
-        $user->update(['vacation_days' => $user->vacation_days - $validatedData['days']]);
+        if ($validatedData['leave_type'] == 'paid_leave') {
+            $user->update(['vacation_days' => $user->vacation_days - $validatedData['days']]);
+        }
 
         //$salary = ($request->leave_type === 'paid_leave') ? calculatePaidLeaveSalary($user, $request->days) : 0;
-
-        $user->leaveRequests()->save($leaveRequest);
 
         return redirect()->route('leaveRequest')->with('success', 'Atostogų prašymas sukurtas sėkmingai.');
     }
