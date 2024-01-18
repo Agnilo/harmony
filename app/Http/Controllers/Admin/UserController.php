@@ -129,7 +129,9 @@ class UserController extends Controller
             'leave_requests' => $leaveRequestsDetails,
         ]);
 
-        dd($salaryCalculationRequest);
+        $netSalary = $user->calculateNetSalary($payrollValidation['gross'], $salaryCalculationRequest);
+
+        dd($netSalary);
 
         $payrollData = [
             'work_hours' => $payrollValidation['work_hours'],
