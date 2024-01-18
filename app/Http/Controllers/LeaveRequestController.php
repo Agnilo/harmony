@@ -75,10 +75,15 @@ class LeaveRequestController extends Controller
         $user = Auth::user();
         $user->leaveRequests()->save($leaveRequest);
 
+        
+
         $payrollId = $request->input('payroll_id');
+        Log::info("Before Payroll ID: ", ['payroll_id' => $payrollId]);
         if ($payrollId) {
+            Log::info("Attaching payroll", ['leave_request_id' => $leaveRequest->id, 'payroll_id' => $payrollId]);
             $leaveRequest->payrolls()->attach($payrollId);
         }
+        Log::info("After Payroll ID: ", ['payroll_id' => $payrollId]);
 
         if ($validatedData['leave_type'] == 'paid_leave') {
             $newVacationDays = $user->vacation_days - $validatedData['days'];
