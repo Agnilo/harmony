@@ -136,7 +136,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row create-row">
+                <!-- <div class="form-group row create-row">
                     <label for="net" class="col-md-2 col-form-label text-md-right">Neto atlyginimas</label>
                     <div class="col-md-6">
                         <input id="net" type="text" class="form-control @error('net') is-invalid @enderror" name="net" value="{{ old('net') }}" required autofocus>
@@ -146,7 +146,7 @@
                         </span>
                         @enderror
                     </div>
-                </div>
+                </div> -->
 
                 <div class="form-group row create-row">
                     <label for="info" class="col-md-2 col-form-label text-md-right">Papildoma informacija</label>
