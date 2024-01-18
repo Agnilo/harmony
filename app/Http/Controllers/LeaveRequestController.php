@@ -78,6 +78,8 @@ class LeaveRequestController extends Controller
         if ($payroll) {
             $salaryCalculationRequest = new Request();
 
+            dd($payroll);
+
             $salaryCalculationRequest->replace([
                 'work_hours' => $payroll->work_hours,
                 'work_days' => $payroll->work_days,
