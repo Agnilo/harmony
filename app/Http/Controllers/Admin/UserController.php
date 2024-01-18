@@ -198,7 +198,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        Log::info("Store method invoke");
+        // Log::info("Store method invoke");
 
         $validatedData = $request->validate([
             'first_name' => 'required|string|max:255',
@@ -206,7 +206,6 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email,',
             'password' => 'required|min:8',
             'gender' => 'nullable|in:Vyras,Moteris,Kita',
-            
             'work_hours' => 'nullable|numeric|between:0,99.9',
             'work_days' => 'nullable|integer|min:0',
             'overtime' => 'nullable|numeric',
@@ -214,22 +213,7 @@ class UserController extends Controller
             'info' => 'nullable|string|max:255',
         ]);
 
-        Log::info("Data verified");
-
-        $validatedData = $request->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8',
-            'gender' => 'nullable|in:Vyras,Moteris,Kita',
-            'work_hours' => 'required|numeric',
-            'work_days' => 'required|integer',
-            'overtime' => 'required|numeric',
-            'gross' => 'required|numeric',           
-            'info' => 'nullable|string|max:255',
-        ]);
-
-        Log::info("Data verified 2");
+        // Log::info("Data verified");
 
         $user = User::create([
             'first_name' => $validatedData['first_name'],
@@ -241,12 +225,12 @@ class UserController extends Controller
 
         ]);
 
-        Log::info("User {$user->id} is created");
+        // Log::info("User {$user->id} is created");
 
         $defaultRole = Role::where('name', 'User')->first();
         $user->assignRole($defaultRole);
 
-        Log::info("User {$user->id} has $defaultRole");
+        // Log::info("User {$user->id} has $defaultRole");
 
         $user->payroll()->create([
             'work_hours' => $validatedData['work_hours'],
@@ -257,7 +241,7 @@ class UserController extends Controller
             'info' => $validatedData['info'] ?? '',
         ]);
 
-        Log::info("User {$user->id} payroll created");
+        // Log::info("User {$user->id} payroll created");
 
         return redirect()->route('admin.users.index')->with('success', 'Naudotojas sukurtas sėkmingai');
     }
