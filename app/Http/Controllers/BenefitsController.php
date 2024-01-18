@@ -125,7 +125,7 @@ class BenefitsController extends Controller
 
         $user->load('selectedBenefits');
 
-        if ($user && !$user->benefits->contains($benefit->id)) {
+        if ($user && !$user->selectedBenefits->contains($benefit->id)) {
             Log::info("User {$user->id} is selecting benefit {$benefit->id}");
 
             $user->benefits()->attach($benefit->id);
