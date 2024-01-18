@@ -86,8 +86,6 @@ class LeaveRequestController extends Controller
             $user->save();
         }
 
-        Log::info("Leave Request Created: ", ['user_id' => $user->id, 'new_vacation_days' => $user->vacation_days]);
-
         return redirect()->route('leaveRequest')->with('success', 'Atostogų prašymas sukurtas sėkmingai.');
     }
 
