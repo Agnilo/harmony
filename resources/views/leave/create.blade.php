@@ -50,16 +50,17 @@
                 </div>
             </div>
 
-            <!-- File Upload
-            <div class="form-group">
-                <label for="file_upload">Įkelti failą</label>
-                <input type="file" id="file_upload" name="file_upload" class="form-control-file">
-            </div> -->
-
             <div class="form-group row">
                 <label for="file_upload" class="col-md-2 col-form-label text-md-right">Įkelti failą</label>
                 <div class="col-md-6">
                     <input type="file" name="file_upload" class="form-control-file" id="file_upload">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="remarks" class="col-md-2 col-form-label text-md-right">Komentarai</label>
+                <div class="col-md-6">
+                    <textarea id="remarks" name="remarks" class="form-control" rows="3"></textarea>
                 </div>
             </div>
 
