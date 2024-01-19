@@ -140,20 +140,24 @@ class UserController extends Controller
 
         //dd($totalPaidLeaveDays, $totalUnpaidLeaveDays);
 
-        $salaryCalculationRequest = new Request();
-        $salaryCalculationRequest->replace([
-            'total_paid_leave_days' => $totalPaidLeaveDays,
-            'total_unpaid_leave_days' => $totalUnpaidLeaveDays,
-            'work_hours' => $payroll->work_hours,
-            'work_days' => $payroll->work_days,
-            'overtime' => $payroll->overtime,
-            'gross' => $payroll->gross,
-            'month' => $payroll->month,
-            'year' => $payroll->year,
-            'leave_request_id' => $leaveRequest->id,
-        ]);
+        if ($leaveRequests) {
 
-        $net = $user->calculateNetSalary($payrollValidation['gross'], $salaryCalculationRequest, $totalPaidLeaveDays, $totalUnpaidLeaveDays);
+            $salaryCalculationRequest = new Request();
+            $salaryCalculationRequest->replace([
+                'total_paid_leave_days' => $totalPaidLeaveDays,
+                'total_unpaid_leave_days' => $totalUnpaidLeaveDays,
+                'work_hours' => $payroll->work_hours,
+                'work_days' => $payroll->work_days,
+                'overtime' => $payroll->overtime,
+                'gross' => $payroll->gross,
+                'month' => $payroll->month,
+                'year' => $payroll->year,
+                'leave_request_id' => $leaveRequest->id,
+            ]);
+
+            $net = $user->calculateNetSalary($payrollValidation['gross'], $salaryCalculationRequest, $totalPaidLeaveDays, $totalUnpaidLeaveDays);
+        }
+
         $payrollData = array_merge($payrollValidation, ['net' => $net]);
 
         // if ($leaveRequests) {
