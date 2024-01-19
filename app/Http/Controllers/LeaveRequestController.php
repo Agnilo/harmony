@@ -247,6 +247,8 @@ class LeaveRequestController extends Controller
                     $totalUnpaidLeaveDays -= $leaveRequest->days;
                 }
 
+                dd($totalPaidLeaveDays, $totalUnpaidLeaveDays);
+
                 $salaryCalculationRequest = new Request([
                     'work_hours' => $payroll->work_hours,
                     'work_days' => $payroll->work_days,
