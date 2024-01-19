@@ -136,17 +136,18 @@
                         @enderror
                     </div>
                 </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-md-2"></div>
-            <div class="col-md-6">
-                <button type="submit" class="btn btn-primary user-create-button-margin-right">
-                    Atnaujinti
-                </button>
-                <a href="{{ route('leaveRequest') }}" class="btn btn-primary user-create-button-margin-left">
-                    Grįžti atgal
-                </a>
-            </div>
+
+                <div class="form-group row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-primary user-create-button-margin-right">
+                            Atnaujinti
+                        </button>
+                        <a href="{{ route('leaveRequest') }}" class="btn btn-primary user-create-button-margin-left">
+                            Grįžti atgal
+                        </a>
+                    </div>
+                </div>
         </div>
         </form>
     </div>
