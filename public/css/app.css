@@ -635,6 +635,7 @@ footer{
 
 .benefit-link-profile{
     color: var(--primary-color);
+    font-size: 17px;
 }
 
 .benefit-link-profile:hover{
