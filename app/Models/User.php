@@ -79,6 +79,11 @@ class User extends Authenticatable
         return $this->hasOne(Payroll::class);
     }
 
+    public function meta()
+    {
+        return $this->hasMany(UserMeta::class);
+    }
+
     public function calculateNetSalary($gross, $request, $totalPaidLeaveDays, $totalUnpaidLeaveDays)
     {
 
