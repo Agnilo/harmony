@@ -29,24 +29,12 @@
                 </div>
             </div>
 
-            <!-- Reason
-            <div class="form-group">
-                <label for="reason">Priežastis</label>
-                <textarea id="reason" name="reason" class="form-control" rows="3"></textarea>
-            </div> -->
-
             <div class="form-group row">
                 <label for="reason" class="col-md-2 col-form-label text-md-right">Priežastis</label>
                 <div class="col-md-6">
                     <input type="text" id="reason" name="reason" class="form-control" required>
                 </div>
             </div>
-
-            <!-- Start Date
-            <div class="form-group">
-                <label for="start_date">Pradžios data</label>
-                <input type="date" id="start_date" name="start_date" class="form-control">
-            </div> -->
 
             <div class="form-group row">
                 <label for="start_date" class="col-md-2 col-form-label text-md-right">Pradžios data</label>
@@ -55,16 +43,24 @@
                 </div>
             </div>
 
-            <!-- End Date -->
-            <div class="form-group">
-                <label for="end_date">Pabaigos data</label>
-                <input type="date" id="end_date" name="end_date" class="form-control">
+            <div class="form-group row">
+                <label for="end_date" class="col-md-2 col-form-label text-md-right">Pabaigos data</label>
+                <div class="col-md-6">
+                    <input type="date" id="end_date" name="end_date" class="form-control" required>
+                </div>
             </div>
 
-            <!-- File Upload -->
+            <!-- File Upload
             <div class="form-group">
                 <label for="file_upload">Įkelti failą</label>
                 <input type="file" id="file_upload" name="file_upload" class="form-control-file">
+            </div> -->
+
+            <div class="form-group row">
+                <label for="file_upload" class="col-md-2 col-form-label text-md-right">Įkelti failą</label>
+                <div class="col-md-6">
+                    <input type="file" name="file_upload" class="form-control-file" id="file_upload">
+                </div>
             </div>
 
             <!-- Remarks -->
