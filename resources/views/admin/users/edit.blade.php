@@ -3,10 +3,8 @@
 @section('content')
 <div class="web-child-content">
     <div class="container">
-        <div class="row justify-content-md-center">
-            <div class="col-md-auto h2-padding">
-                <h2>Redaguoti vartotoją {{ $user->first_name }}</h2>
-            </div>
+        <div class="create-benefit-header">
+            <h2>Redaguoti naudotoją {{ $user->first_name }}</h2>
         </div>
         <div class="card-body card-body-index">
             <form action="{{ route('admin.users.update', $user) }}" method="POST">
