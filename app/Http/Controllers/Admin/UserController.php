@@ -238,6 +238,7 @@ class UserController extends Controller
             'overtime' => 'nullable|numeric|min:0',
             'gross' => 'nullable|numeric|between:0,999999.99',
             'info' => 'nullable|string|max:255',
+            'image' => 'nullable|image|max:10240'
         ], [
             'first_name.required' => 'Būtina įvesti naudotojo vardą',
             'first_name.max' => 'Galima įvesti iki 255 simbolių',
@@ -288,6 +289,15 @@ class UserController extends Controller
             'net' => isset($validatedData['gross']) ? $user->calculateNetSalary($validatedData['gross'], $request) : 0,
             'info' => $validatedData['info'] ?? '',
         ]);
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('user_images', 'public');
+
+            $user->meta()->create([
+                'meta_key' => 'profile_image',
+                'meta_value' => $imagePath
+            ]);
+        }
 
         // Log::info("User {$user->id} payroll created");
 

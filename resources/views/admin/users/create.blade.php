@@ -86,15 +86,17 @@
                 </div>
 
 
-                <!-- <div class="form-group row create-row">
-                    <label for="is_verified" class="col-md-2 col-form-label text-md-right">Patvirtintas</label>
+                <div class="form-group row">
+                    <label for="image" class="col-md-2 col-form-label text-md-right">Naudotojo nuotrauka:</label>
                     <div class="col-md-6">
-                        <select id="is_verified" name="is_verified" class="form-control">
-                            <option value="0" {{ old('is_verified') == 0 ? 'selected' : '' }}>Ne</option>
-                            <option value="1" {{ old('is_verified') == 1 ? 'selected' : '' }}>Taip</option>
-                        </select>
+                        <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image">
+                        @error('image')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
-                </div> -->
+                </div>
 
 
                 <h2 style="padding: 20px 0;">Darbo užmokesčio informacija</h2>
