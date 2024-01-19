@@ -15,9 +15,9 @@
                     <label for="benefit_name" class="col-md-2 col-form-label text-md-right">Pavadinimas</label>
 
                     <div class="col-md-6">
-                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="benefit_name" value="{{ $benefit->benefit_name }}" required autofocus>
+                        <input id="benefit_name" type="text" class="form-control @error('benefit_name') is-invalid @enderror" name="benefit_name" value="{{ $benefit->benefit_name }}">
 
-                        @error('name')
+                        @error('benefit_name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -29,7 +29,7 @@
                     <label for="last_name" class="col-md-2 col-form-label text-md-right">Aprašymas</label>
 
                     <div class="col-md-6">
-                        <input id="description" type="textarea" rows="4" cols="50" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ $benefit->description }}" required autofocus>
+                        <input id="description" type="textarea" rows="4" cols="50" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ $benefit->description }}">
 
                         @error('description')
                         <span class="invalid-feedback" role="alert">
@@ -39,11 +39,25 @@
                     </div>
                 </div>
 
+                <!-- <div class="form-group row">
+                    <label for="introduction" class="col-md-2 col-form-label text-md-right">Santrauka</label>
+
+                    <div class="col-md-6">
+                        <input id="introduction" type="textarea" class="form-control @error('introduction') is-invalid @enderror textarea-style" name="introduction" value="{{ $benefit->introduction }}">
+
+                        @error('introduction')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div> -->
+
                 <div class="form-group row">
                     <label for="introduction" class="col-md-2 col-form-label text-md-right">Santrauka</label>
 
                     <div class="col-md-6">
-                        <input id="introduction" type="textarea" class="form-control @error('introduction') is-invalid @enderror textarea-style" name="introduction" value="{{ $benefit->introduction }}" autofocus>
+                        <textarea id="introduction" class="form-control @error('introduction') is-invalid @enderror textarea-style" name="introduction">{{ $benefit->introduction }}</textarea>
 
                         @error('introduction')
                         <span class="invalid-feedback" role="alert">
@@ -57,7 +71,7 @@
                     <label for="content" class="col-md-2 col-form-label text-md-right">Turinys</label>
 
                     <div class="col-md-6">
-                        <input id="content" type="textarea" class="form-control @error('content') is-invalid @enderror textarea-style" name="content" value="{{ $benefit->content }}" autofocus>
+                        <input id="content" type="textarea" class="form-control @error('content') is-invalid @enderror textarea-style" name="content" value="{{ $benefit->content }}">
 
                         @error('content')
                         <span class="invalid-feedback" role="alert">
@@ -97,7 +111,7 @@
                     <label for="price" class="col-md-2 col-form-label text-md-right">Kaina</label>
 
                     <div class="col-md-6">
-                        <input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $benefit->price }}" autofocus>
+                        <input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $benefit->price }}">
 
                         @error('price')
                         <span class="invalid-feedback" role="alert">
