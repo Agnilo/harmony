@@ -118,7 +118,8 @@ class User extends Authenticatable
                     $unpaidleaveHours = $totalUnpaidLeaveDays * $userWorkHoursPerDay;
                     $unpaidLeaveDeduction = $unpaidleaveHours * $baseHourlyRate;
                     //dd($unpaidleaveHours);
-                } elseif ($totalPaidLeaveDays > 0) {
+                } 
+                if ($totalPaidLeaveDays > 0) {
                     $paidLeaveHours = $totalPaidLeaveDays * $userWorkHoursPerDay;
                     $paidLeaveSum = $paidLeaveHours * ($baseHourlyRate * 1.1);
                     //dd($paidLeaveSum);
