@@ -62,11 +62,11 @@
                     <label for="position" class="col-md-2 col-form-label text-md-right">Pareigos</label>
                     <div class="col-md-6">
                         <select id="position" name="position" class="form-control">
-                            <option value="Specialistas" {{ position == 'Specialistas' ? 'selected' : '' }}>Specialistas</option>
-                            <option value="Sistemos administratorius" {{ position == 'Sistemos administratorius' ? 'selected' : '' }}>Sistemos administratorius</option>
-                            <option value="Skyriaus vadovas" {{ position == 'Skyriaus vadovas' ? 'selected' : '' }}>Skyriaus vadovas</option>
-                            <option value="Personalo valdymo skyriaus vadovas" {{ position == 'Personalo valdymo skyriaus vadovas' ? 'selected' : '' }}>Personalo valdymo skyriaus vadovas</option>
-                            <option value="Personalo skyriaus specialistas" {{ position == 'Personalo skyriaus specialistas' ? 'selected' : '' }}>Personalo skyriaus specialistas</option>
+                            <option value="Specialistas" {{ old('position', 'Specialistas') == 'Specialistas' ? 'selected' : '' }}>Specialistas</option>
+                            <option value="Sistemos administratorius" {{ old('position') == 'Sistemos administratorius' ? 'selected' : '' }}>Sistemos administratorius</option>
+                            <option value="Skyriaus vadovas" {{ old('position') == 'Skyriaus vadovas' ? 'selected' : '' }}>Skyriaus vadovas</option>
+                            <option value="Personalo valdymo skyriaus vadovas" {{ old('position') == 'Personalo valdymo skyriaus vadovas' ? 'selected' : '' }}>Personalo valdymo skyriaus vadovas</option>
+                            <option value="Personalo skyriaus specialistas" {{ old('position') == 'Personalo skyriaus specialistas' ? 'selected' : '' }}>Personalo skyriaus specialistas</option>
                         </select>
                     </div>
                 </div>
