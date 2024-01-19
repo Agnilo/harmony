@@ -23,9 +23,9 @@
                             @enderror
 
                             @if ($errors->has('custom_email_error'))
-                            <div class="alert alert-danger">
+                            <span class="invalid-feedback" role="alert">
                                 {{ $errors->first('custom_email_error') }}
-                            </div>
+                            </span>
                             @endif
                         </div>
                     </div>
