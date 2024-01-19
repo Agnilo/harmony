@@ -938,6 +938,14 @@ footer{
     margin: auto;
 }
 
+.benefit-edit-in-show{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 15px 5px;
+}
+
 .benefit-show-container{
     width: 80%;
     display: flex;
