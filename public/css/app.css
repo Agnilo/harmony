@@ -1024,6 +1024,15 @@ footer{
     height: 40px;
 }
 
+.benefit-link-index{
+    color: var(--primary-color);
+}
+
+.benefit-link-index:hover{
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
 
 .hrr {
     height: 5px;
