@@ -8,7 +8,7 @@
         </div>
         <div class="card-body card-body-index">
 
-            <form method="POST" action="{{ route('admin.users.store') }}" class="card-body-layout-flex">
+            <form method="POST" action="{{ route('admin.users.store') }}" class="card-body-layout-flex" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group row create-row">
                     <label for="email" class="col-md-2 col-form-label text-md-right">El. Paštas</label>
