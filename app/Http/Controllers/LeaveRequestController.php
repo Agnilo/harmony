@@ -58,7 +58,7 @@ class LeaveRequestController extends Controller
                 'file_upload' => 'nullable|mimes:pdf,doc,docx|max:2048',
                 'remarks' => 'nullable|string',
             ], [
-                'leaveRequest_name.required' => 'Pavadinimas nėra įvestas',
+                'leaveRequest_name.required' => 'Būtina įvesti pavadinimą',
                 'leaveRequest_name.max' => 'Pavadinimas negali viršyti 255 simbolių',
                 'reason.required' => 'Būtina pateikti priežastį',
                 'reason.max' => 'Priežastis negali viršyti 255 simbolių.',
