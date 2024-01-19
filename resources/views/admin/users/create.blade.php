@@ -89,12 +89,33 @@
                 <div class="form-group row create-row">
                     <label for="image" class="col-md-2 col-form-label text-md-right">Naudotojo nuotrauka:</label>
                     <div class="col-md-6">
-                        <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image">
-                        @error('image')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
+                        <input id="image" type="file" class="form-control-file @error('image') is-invalid @enderror" name="image" onchange="validateImage()">
+                        <script>
+                        function validateImage() {
+                            var fileInput = document.getElementById('image');
+                            var maxSize = 2048 * 1024;
+                            var allowedTypes = ['image/jpeg', 'image/png', 'image/bmp', 'image/gif', 'image/svg+xml', 'image/webp'];
+
+                            if (fileInput.files && fileInput.files[0]) {
+                                var fileSize = fileInput.files[0].size;
+                                var fileType = fileInput.files[0].type;
+
+                                if (fileSize > maxSize) {
+                                    alert('Pasirinktas failas per didelis. Leistinas dydis 2MB');
+                                    fileInput.value = '';
+                                    return false;
+                                }
+
+                                if (!allowedTypes.includes(fileType)) {
+                                    alert('Galima įkelti tik šio tipo failus: JPEG, PNG, BMP, GIF, SVG, WebP.');
+                                    fileInput.value = '';
+                                    return false;
+                                }
+                            }
+
+                            return true;
+                        }
+                    </script>
                     </div>
                 </div>
 
