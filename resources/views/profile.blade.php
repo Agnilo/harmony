@@ -64,6 +64,10 @@
                                 <td class="profile-information-cell">{{ $workDays }}</td>
                             </tr>
                             <tr class="profile-information-row">
+                                <td class="profile-information-cell profile-label">Apmokamų atostogų dienų skaičius:</td>
+                                <td class="profile-information-cell">{{ $user->vacation_days }}</td>
+                            </tr>
+                            <tr class="profile-information-row">
                                 <td class="profile-information-cell profile-label">Bruto užmokestis:</td>
                                 <td class="profile-information-cell">{{ $grossSalary }}€</td>
                             </tr>
