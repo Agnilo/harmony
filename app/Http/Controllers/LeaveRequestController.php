@@ -301,17 +301,32 @@ class LeaveRequestController extends Controller
 
                 //dd($totalPaidLeaveDays);
 
-                $net = $user->calculateNetSalary($payroll->gross, new Request([
+                $salaryCalculationRequest = new Request([
                     'work_hours' => $payroll->work_hours,
                     'work_days' => $payroll->work_days,
                     'overtime' => $payroll->overtime,
                     'gross' => $payroll->gross,
-                    'month' => $payroll->month,
-                    'year' => $payroll->year,
-                ]), $totalPaidLeaveDays, $totalUnpaidLeaveDays);
+                    'month' => $payrollMonth,
+                    'year' => $payrollYear,
+                    'total_paid_leave_days' => $totalPaidLeaveDays,
+                    'total_unpaid_leave_days' => $totalUnpaidLeaveDays,
+                    'leave_request_id' => $leaveRequest->id,
+                ]);
+        
+                $netSalary = $user->calculateNetSalary($payroll->gross, $salaryCalculationRequest, $totalPaidLeaveDays, $totalUnpaidLeaveDays);
+                $payroll->update(['net' => $netSalary]);
+
+            //     $net = $user->calculateNetSalary($payroll->gross, new Request([
+            //         'work_hours' => $payroll->work_hours,
+            //         'work_days' => $payroll->work_days,
+            //         'overtime' => $payroll->overtime,
+            //         'gross' => $payroll->gross,
+            //         'month' => $payroll->month,
+            //         'year' => $payroll->year,
+            //     ]), $totalPaidLeaveDays, $totalUnpaidLeaveDays);
     
-                $payroll->update(['net' => $net]);
-            }
+            //     $payroll->update(['net' => $net]);
+            // }
 
             //     $salaryCalculationRequest = new Request();
             //     $salaryCalculationRequest->replace([
