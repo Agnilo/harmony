@@ -90,7 +90,7 @@
                     <label for="days" class="col-md-2 col-form-label text-md-right">Pabaigos data</label>
 
                     <div class="col-md-6">
-                        <input id="days" type="date" class="form-control" name="days" value="{{ $leaveRequest->days }}" readonly>
+                        <input id="days" type="number" class="form-control" name="days" value="{{ $leaveRequest->days }}" readonly>
                     </div>
                 </div>
 
@@ -120,11 +120,25 @@
                     </div>
                 </div>
 
-                <!-- Remarks -->
+                <div class="form-group row">
+                    <label for="remarks" class="col-md-2 col-form-label text-md-right">Pabaigos data</label>
+
+                    <div class="col-md-6">
+                    <textarea id="remarks" name="remarks" class="form-control @error('remarks') is-invalid @enderror" rows="3">{{ $leaveRequest->remarks }}</textarea>
+
+                        @error('remarks')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <!-- Remarks
                 <div class="form-group">
                     <label for="remarks">Komentarai</label>
                     <textarea id="remarks" name="remarks" class="form-control" rows="3">{{ $leaveRequest->remarks }}</textarea>
-                </div>
+                </div> -->
 
                 <!-- Submit Button -->
                 <button type="submit" class="btn btn-primary">Atnaujinti</button>
