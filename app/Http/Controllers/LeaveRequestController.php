@@ -82,7 +82,7 @@ class LeaveRequestController extends Controller
             'days' => $validatedData['days'],
             'file_upload' => $filePath,
             'remarks' => $validatedData['remarks'],
-            'approval_status' => 'Prašymas neperžiūrėtas',
+            'approval_status' => 'pending',
         ]);
 
         //dd($newLeaveRequest->leave_type);
