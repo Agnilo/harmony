@@ -47,6 +47,8 @@ class LeaveRequestController extends Controller
     {
         $user = Auth::user();
 
+        dd('aš čia');
+
         $validatedData = $request->validate([
             'leaveRequest_name' => 'required|string|max:255',
             'leave_type' => 'required|in:paid_leave,unpaid_leave',
