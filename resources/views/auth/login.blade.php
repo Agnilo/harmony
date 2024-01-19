@@ -21,12 +21,6 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
-
-                            @if ($errors->has('custom_email_error'))
-                            <span class="invalid-feedback" role="alert">
-                                {{ $errors->first('custom_email_error') }}
-                            </span>
-                            @endif
                         </div>
                     </div>
 
