@@ -177,6 +177,8 @@ class LeaveRequestController extends Controller
             //'days' => 'required|integer|min:1|max:' . $user->vacation_days,
             'file_upload' => 'nullable|mimes:pdf,doc,docx|max:2048',
             'remarks' => 'nullable|string|max:255',
+        ], [
+            'leaveRequest_name.required' => 'Pavadinimas nėra įvestas',
         ]);
 
 
