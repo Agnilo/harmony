@@ -101,7 +101,7 @@ class User extends Authenticatable
         $unpaidLeaveDeduction = 0;
         $paidLeaveSum = 0;
 
-        //dd('Received in calculateNetSalary', $totalPaidLeaveDays, $totalUnpaidLeaveDays);
+        dd('Received in calculateNetSalary', $totalPaidLeaveDays, $totalUnpaidLeaveDays);
         
 
         if ($request->leave_request_id) {
