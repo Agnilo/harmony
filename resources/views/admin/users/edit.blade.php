@@ -48,7 +48,7 @@
                     </div>
                 </div>
 
-                                <div class="form-group row">
+                <div class="form-group row">
                     <label for="position" class="col-md-2 col-form-label text-md-right">Pareigos</label>
                     <div class="col-md-6">
                         <select id="position" name="position" class="form-control">
@@ -58,6 +58,48 @@
                             <option value="Personalo valdymo skyriaus vadovas" {{ $user->position == 'Personalo valdymo skyriaus vadovas' ? 'selected' : '' }}>Personalo valdymo skyriaus vadovas</option>
                             <option value="Personalo valdymo skyriaus specialistas" {{ $user->position == 'Personalo valdymo skyriaus specialistas' ? 'selected' : '' }}>Personalo valdymo skyriaus specialistas</option>
                         </select>
+                    </div>
+                </div>
+
+                @if ($user->userMeta && $user->userMeta->meta_key == 'avatar')
+                <div class="form-group row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-6">
+                        <img src="{{ asset('storage/' . $user->userMeta->meta_value) }}" alt="User Image" style="max-height: 100px;">
+                    </div>
+                </div>
+                @endif
+
+                <div class="form-group row">
+                    <label for="image" class="col-md-2 col-form-label text-md-right">Naudotojo nuotrauka</label>
+                    <div class="col-md-6">
+                        <input type="file" name="image" class="form-control-file" id="image" onchange="validateImage()">
+                        <script>
+                            function validateImage() {
+                                var fileInput = document.getElementById('image');
+                                var maxSize = 2048 * 1024;
+                                var allowedTypes = ['image/jpeg', 'image/png', 'image/bmp', 'image/gif', 'image/svg+xml', 'image/webp'];
+
+                                if (fileInput.files && fileInput.files[0]) {
+                                    var fileSize = fileInput.files[0].size;
+                                    var fileType = fileInput.files[0].type;
+
+                                    if (fileSize > maxSize) {
+                                        alert('Pasirinktas failas per didelis. Leistinas dydis 2MB');
+                                        fileInput.value = '';
+                                        return false;
+                                    }
+
+                                    if (!allowedTypes.includes(fileType)) {
+                                        alert('Galima įkelti tik šio tipo failus: JPEG, PNG, BMP, GIF, SVG, WebP.');
+                                        fileInput.value = '';
+                                        return false;
+                                    }
+                                }
+
+                                return true;
+                            }
+                        </script>
                     </div>
                 </div>
 

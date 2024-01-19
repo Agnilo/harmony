@@ -87,7 +87,7 @@
 
 
                 <div class="form-group row create-row">
-                    <label for="image" class="col-md-2 col-form-label text-md-right">Naudotojo nuotrauka:</label>
+                    <label for="image" class="col-md-2 col-form-label text-md-right">Naudotojo nuotrauka</label>
                     <div class="col-md-6">
                         <input id="image" type="file" class="form-control-file @error('image') is-invalid @enderror" name="image" onchange="validateImage()">
                         <script>
