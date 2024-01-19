@@ -114,27 +114,27 @@ class User extends Authenticatable
             $leaveYear = date('Y', strtotime($leaveRequest->start_date));
 
             if ($leaveMonth == $request->month && $leaveYear == $request->year) {
-                switch ($leaveRequest->leave_type) {
-                    case 'paid_leave':
-                        $paidLeaveHours = $totalPaidLeaveDays * $userWorkHoursPerDay;
-                        $paidLeaveSum = $paidLeaveHours * ($baseHourlyRate * 1.1);
-                        break;
+                // switch ($leaveRequest->leave_type) {
+                //     case 'paid_leave':
+                //         $paidLeaveHours = $totalPaidLeaveDays * $userWorkHoursPerDay;
+                //         $paidLeaveSum = $paidLeaveHours * ($baseHourlyRate * 1.1);
+                //         break;
 
-                    case 'unpaid_leave':
-                        $unpaidleaveHours = $totalUnpaidLeaveDays * $userWorkHoursPerDay;
-                        $unpaidLeaveDeduction = $unpaidleaveHours * $baseHourlyRate;
-                        break;
+                //     case 'unpaid_leave':
+                //         $unpaidleaveHours = $totalUnpaidLeaveDays * $userWorkHoursPerDay;
+                //         $unpaidLeaveDeduction = $unpaidleaveHours * $baseHourlyRate;
+                //         break;
+                // }
+                if ($totalUnpaidLeaveDays > 0) {
+                    $unpaidleaveHours = $totalUnpaidLeaveDays * $userWorkHoursPerDay;
+                    $unpaidLeaveDeduction = $unpaidleaveHours * $baseHourlyRate;
+                    //dd($unpaidleaveHours);
                 }
-                // if ($totalUnpaidLeaveDays > 0) {
-                //     $unpaidleaveHours = $totalUnpaidLeaveDays * $userWorkHoursPerDay;
-                //     $unpaidLeaveDeduction = $unpaidleaveHours * $baseHourlyRate;
-                //     //dd($unpaidleaveHours);
-                // }
-                // if ($totalPaidLeaveDays > 0) {
-                //     $paidLeaveHours = $totalPaidLeaveDays * $userWorkHoursPerDay;
-                //     $paidLeaveSum = $paidLeaveHours * ($baseHourlyRate * 1.1);
-                //     //dd($paidLeaveSum);
-                // }
+                if ($totalPaidLeaveDays > 0) {
+                    $paidLeaveHours = $totalPaidLeaveDays * $userWorkHoursPerDay;
+                    $paidLeaveSum = $paidLeaveHours * ($baseHourlyRate * 1.1);
+                    //dd($paidLeaveSum);
+                }
             }
         }
 
