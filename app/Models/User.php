@@ -114,11 +114,11 @@ class User extends Authenticatable
             $leaveYear = date('Y', strtotime($leaveRequest->start_date));
             
             if ($leaveMonth == $request->month && $leaveYear == $request->year) {
-                if ($leaveRequest->leave_type === 'unpaid_leave') {
+                if ($totalUnpaidLeaveDays > 0) {
                     $unpaidleaveHours = $totalUnpaidLeaveDays * $userWorkHoursPerDay;
                     $unpaidLeaveDeduction = $unpaidleaveHours * $baseHourlyRate;
                     //dd($unpaidleaveHours);
-                } elseif ($leaveRequest->leave_type === 'paid_leave') {
+                } elseif ($totalPaidLeaveDays > 0) {
                     $paidLeaveHours = $totalPaidLeaveDays * $userWorkHoursPerDay;
                     $paidLeaveSum = $paidLeaveHours * ($baseHourlyRate * 1.1);
                     //dd($paidLeaveSum);
