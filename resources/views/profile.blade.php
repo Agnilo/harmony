@@ -87,7 +87,7 @@
                                 </td>
                             </tr>
                             <tr class="profile-information-row">
-                                <td class="profile-information-cell profile-label">Kaina</td>
+                                <td class="profile-information-cell">Kaina</td>
                                 <td class="profile-information-cell">{{ $benefit->price }}</td>
                             </tr>
                             @endforeach
