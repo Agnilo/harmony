@@ -633,6 +633,15 @@ footer{
     flex-direction: column;
 }
 
+.benefit-link-profile a{
+    color: var(--primary-color);
+}
+
+.benefit-link-profile a:hover{
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
 .user-buttons{
     display: flex;
     flex-direction: row;

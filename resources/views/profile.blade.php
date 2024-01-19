@@ -83,7 +83,7 @@
                             @foreach ($selectedBenefits as $benefit)
                             <tr class="profile-information-row">
                                 <td class="profile-information-cell profile-label">
-                                    <a href="{{ route('benefits.show', $benefit->id) }}">{{ $benefit->benefit_name }}</a>
+                                    <a href="{{ route('benefits.show', $benefit->id) }}" class="benefit-link-profile">{{ $benefit->benefit_name }}</a>
                                 </td>
                             </tr>
                             <tr class="profile-information-row">
