@@ -626,10 +626,11 @@ footer{
 }
 
 .profile-eidt-employee-content{
-    border-left: 1px solid var(--primary-backgroung-color);
+    border-left: 2px solid #e3e3e3;
     flex: 1;
     padding: 30px 50px;
     width: 100%;
+    border-radius: 15px;
 }
 
 .profile-edit-employee-content-padding{
