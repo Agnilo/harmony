@@ -3,8 +3,8 @@
 @section('content')
 <div class="web-child-content">
     <div class="container">
-      
-                <h2>Privalumai</h2>
+
+        <h2>Privalumai</h2>
 
         @can('create-benefit')
         <div class="create-new-user-button">
@@ -28,14 +28,16 @@
                     @foreach($benefits as $benefit)
                     <tr>
                         <th scope="row">{{$benefit->id}}</th>
-                        <td>{{$benefit->benefit_name}}</td>
+                        <td>
+                            <a href="{{ route('benefits.show', $benefit->id) }}" class="benefit-link-index">{{ $benefit->benefit_name }}</a>
+                        </td>
                         <td>{{$benefit->description}}</td>
                         <td class="user-buttons">
-                            
+
                             <a href="{{route('benefits.edit', $benefit->id)}}">
                                 <button type="button" class="btn btn-primary float-left user-button-inside">Redaguoti</button>
                             </a>
-                            
+
                             <form action="{{ route('benefits.destroy', $benefit) }}" method="POST" class="float-left">
                                 @csrf
                                 {{ method_field('DELETE') }}
