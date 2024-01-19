@@ -70,7 +70,7 @@ class RegisterController extends Controller
             'email.email' => 'Neteisingas el. pašto formatas',
             'email.max' => 'El. pašto adresas negali būti ilgesnis nei 255 simboliai',
             'email.unique' => 'Toks el. pašto adresas jau egzistuoja',
-            'password.required' => 'Būtina įvesti naudotojo slaptažodį. Slaptažodį turi sudaryti bent 8 simboliai ir turi būti bent 1 didžioji raidė, 1 skaičius ir 1 specialusis simbolis',
+            'password.required' => 'Būtina įvesti naudotojo slaptažodį',
             'password.min' => 'Slaptažodį turi sudaryti bent 8 simboliai',
             'password.regex' => 'Slaptažodis turi turėti bent vieną didžiąją raidę, vieną skaičių ir vieną specialųjį simbolį (@, $, !, %, *, #, ?, & ir kt.)',
             'password.confirmed' => 'Slaptažodžio patvirtinimas nesutampa'
