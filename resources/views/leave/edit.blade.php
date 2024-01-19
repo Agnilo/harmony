@@ -122,15 +122,6 @@
                     </div>
                 </div>
 
-                <!-- Remarks
-                <div class="form-group">
-                    <label for="remarks">Komentarai</label>
-                    <textarea id="remarks" name="remarks" class="form-control" rows="3">{{ $leaveRequest->remarks }}</textarea>
-                </div> -->
-
-                <!-- Submit Button -->
-                <!-- <button type="submit" class="btn btn-primary">Atnaujinti</button> -->
-
                 <div class="form-group row">
                     <div class="col-md-2"></div>
                     <div class="col-md-6">
