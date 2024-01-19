@@ -78,8 +78,6 @@ class LeaveRequestController extends Controller
 
         $user->leaveRequests()->save($newLeaveRequest);
 
-        Log::info('Leave request saved', ['id' => $newLeaveRequest->id]);
-
         $newLeaveRequest->payrolls()->attach($payroll->id);
 
         $existingLeaveRequests = LeaveRequest::where('user_id', $user->id)->get();
