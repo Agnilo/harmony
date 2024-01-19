@@ -94,18 +94,6 @@
                     </div>
                 </div>
 
-                <!-- Days
-                <div class="form-group">
-                    <label for="days">Dienos</label>
-                    <input type="number" id="days" name="days" class="form-control" value="{{ $leaveRequest->days }}" readonly>
-                </div> -->
-
-                <!-- File Upload -->
-                <!-- <div class="form-group">
-                    <label for="file_upload">Įkelti failą</label>
-                    <input type="file" id="file_upload" name="file_upload" class="form-control-file">
-                </div> -->
-
                 <div class="form-group row">
                     <label for="file_upload" class="col-md-2 col-form-label text-md-right">Įkelti failą</label>
 
@@ -141,7 +129,19 @@
                 </div> -->
 
                 <!-- Submit Button -->
-                <button type="submit" class="btn btn-primary">Atnaujinti</button>
+                <!-- <button type="submit" class="btn btn-primary">Atnaujinti</button> -->
+
+                <div class="form-group row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-primary user-create-button-margin-right">
+                            Atnaujinti
+                        </button>
+                        <a href="{{ route('leaveRequest') }}" class="btn btn-primary user-create-button-margin-left">
+                            Grįžti atgal
+                        </a>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
