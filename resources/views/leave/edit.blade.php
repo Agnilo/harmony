@@ -13,12 +13,6 @@
                 @csrf
                 @method('PUT')
 
-                <!-- Leave Name
-                <div class="form-group">
-                    <label for="leaveRequest_name">Pavadinimas</label>
-                    <input type="text" id="leaveRequest_name" name="leaveRequest_name" class="form-control" value="{{ $leaveRequest->leaveRequest_name }}">
-                </div> -->
-
                 <div class="form-group row">
                     <label for="leaveRequest_name" class="col-md-2 col-form-label text-md-right">Pavadinimas</label>
 
@@ -33,13 +27,30 @@
                     </div>
                 </div>
 
-                <!-- Leave Type -->
+                <!-- Leave Type
                 <div class="form-group">
                     <label for="leave_type">Atostogų tipas</label>
                     <select id="leave_type" name="leave_type" class="form-control">
                         <option value="paid_leave" {{ $leaveRequest->leave_type === 'paid_leave' ? 'selected' : '' }}>Apmokamos atostogos</option>
                         <option value="unpaid_leave" {{ $leaveRequest->leave_type === 'unpaid_leave' ? 'selected' : '' }}>Neapmokamos atostogos</option>
                     </select>
+                </div> -->
+
+                <div class="form-group row">
+                    <label for="leave_type" class="col-md-2 col-form-label text-md-right">Atostogų tipas</label>
+
+                    <div class="col-md-6">
+                        <select id="leave_type" name="leave_type" class="form-control @error('leave_type') is-invalid @enderror">
+                            <option value="paid_leave" {{ $leaveRequest->leave_type === 'paid_leave' ? 'selected' : '' }}>Apmokamos atostogos</option>
+                            <option value="unpaid_leave" {{ $leaveRequest->leave_type === 'unpaid_leave' ? 'selected' : '' }}>Neapmokamos atostogos</option>
+                        </select>
+
+                        @error('leave_type')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
                 </div>
 
                 <!-- Reason -->
