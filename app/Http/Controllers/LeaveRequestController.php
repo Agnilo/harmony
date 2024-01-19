@@ -174,7 +174,7 @@ class LeaveRequestController extends Controller
             'reason' => 'required|string|max:255',
             'start_date' => 'required|date|after_or_equal:today',
             'end_date' => 'required|date|after_or_equal:start_date',
-            'days' => 'required|integer|min:1|max:' . $user->vacation_days,
+            //'days' => 'required|integer|min:1|max:' . $user->vacation_days,
             'file_upload' => 'nullable|mimes:pdf,doc,docx|max:2048',
             'remarks' => 'nullable|string|max:255',
         ]);
@@ -184,6 +184,15 @@ class LeaveRequestController extends Controller
             $filePath = $request->file('file_upload')->store('leaveRequests', 'public');
             $validatedData['file_upload'] = $filePath;
         }
+
+        $startDate = new \DateTime($validatedData['start_date']);
+        $endDate = new \DateTime($validatedData['end_date']);
+
+        $interval = $startDate->diff($endDate);
+
+        $days = $interval->days+1;
+
+        $validatedData['days'] = $days;
 
         $leaveRequest->update($validatedData);
 
