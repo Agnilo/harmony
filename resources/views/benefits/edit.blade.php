@@ -74,7 +74,7 @@
                     <label for="benefit-image" class="col-md-2 col-form-label text-md-right">Paveikslėlis</label>
 
                     <div class="col-md-6">
-                        <img src="{{ asset('storage/' . $benefit->picture) }}" alt="{{ $benefit->benefit_name }}" class="benefit-image" width="200">
+                        <img src="{{ asset('storage/' . $benefit->picture) }}" alt="{{ $benefit->benefit_name }}" class="benefit-image" id="benefit-image" width="200">
                     </div>
                 </div>
 
