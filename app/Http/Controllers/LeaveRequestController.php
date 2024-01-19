@@ -279,15 +279,6 @@ class LeaveRequestController extends Controller
                     ->where('id', '!=', $leaveRequest->id)
                     ->get();
 
-                // $leaveRequestsDetails = $currentLeaveRequests->map(function ($lr) {
-                //     return [
-                //         'leave_type' => $lr->leave_type,
-                //         'days' => $lr->days,
-                //         'start_date' => $lr->start_date,
-                //         'end_date' => $lr->end_date,
-                //     ];
-                // });
-
                 $totalPaidLeaveDays = 0;
                 $totalUnpaidLeaveDays = 0;
 
@@ -299,50 +290,21 @@ class LeaveRequestController extends Controller
                     }
                 }
 
-                //dd($totalPaidLeaveDays);
-
                 $salaryCalculationRequest = new Request([
                     'work_hours' => $payroll->work_hours,
                     'work_days' => $payroll->work_days,
                     'overtime' => $payroll->overtime,
                     'gross' => $payroll->gross,
-                    'month' => $payrollMonth,
-                    'year' => $payrollYear,
+                    'month' => $payroll->month,
+                    'year' => $payroll->year,
                     'total_paid_leave_days' => $totalPaidLeaveDays,
                     'total_unpaid_leave_days' => $totalUnpaidLeaveDays,
                     'leave_request_id' => $leaveRequest->id,
                 ]);
-        
+
                 $netSalary = $user->calculateNetSalary($payroll->gross, $salaryCalculationRequest, $totalPaidLeaveDays, $totalUnpaidLeaveDays);
                 $payroll->update(['net' => $netSalary]);
-
-            //     $net = $user->calculateNetSalary($payroll->gross, new Request([
-            //         'work_hours' => $payroll->work_hours,
-            //         'work_days' => $payroll->work_days,
-            //         'overtime' => $payroll->overtime,
-            //         'gross' => $payroll->gross,
-            //         'month' => $payroll->month,
-            //         'year' => $payroll->year,
-            //     ]), $totalPaidLeaveDays, $totalUnpaidLeaveDays);
-    
-            //     $payroll->update(['net' => $net]);
-            // }
-
-            //     $salaryCalculationRequest = new Request();
-            //     $salaryCalculationRequest->replace([
-            //         'work_hours' => $payroll->work_hours,
-            //         'work_days' => $payroll->work_days,
-            //         'overtime' => $payroll->overtime,
-            //         'gross' => $payroll->gross,
-            //         'month' => $payroll->month,
-            //         'year' => $payroll->year,
-            //         //'leave_request_id' => $leaveRequest->id,
-            //         'leave_requests' => $leaveRequestsDetails->toArray(),
-            //     ]);
-
-            //     $netSalary = $user->calculateNetSalary($payroll->gross, $salaryCalculationRequest);
-            //     $payroll->update(['net' => $netSalary]);
-            // }
+            }
 
 
             if ($leaveRequest->leave_type === 'paid_leave') {
