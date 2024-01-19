@@ -73,13 +73,20 @@ class LeaveRequestController extends Controller
         $payrollMonth = $payroll->month;
         $payrollYear = $payroll->year;
 
+        $startDate = new \DateTime($validatedData['start_date']);
+        $endDate = new \DateTime($validatedData['end_date']);
+
+        $interval = $startDate->diff($endDate);
+
+        $days = $interval->days+1;
+
         $newLeaveRequest = new LeaveRequest([
             'leaveRequest_name' => $validatedData['leaveRequest_name'],
             'leave_type' => $validatedData['leave_type'],
             'reason' => $validatedData['reason'],
             'start_date' => $validatedData['start_date'],
             'end_date' => $validatedData['end_date'],
-            'days' => $validatedData['days'],
+            'days' => $days,
             'file_upload' => $filePath,
             'remarks' => $validatedData['remarks'],
             'approval_status' => 'pending',
