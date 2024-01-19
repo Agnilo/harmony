@@ -98,30 +98,27 @@ class LeaveRequestController extends Controller
             $endYear = (int)$endDate->format('Y');
             $endMonth = (int)$endDate->format('m');
 
-            dd($leaveRequest->leave_type);
-
             if (
                 ($startYear == $payrollYear && $startMonth == $payrollMonth) ||
                 ($endYear == $payrollYear && $endMonth == $payrollMonth) ||
                 ($startYear < $payrollYear && $endYear > $payrollYear)
             ) {
-                if ($leaveRequest->leave_type === 'paid_leave') {
-                    $totalPaidLeaveDays += $leaveRequest->days;
-                } 
-
-                elseif ($leaveRequest->leave_type === 'unpaid_leave') {
-                    $totalUnpaidLeaveDays += $leaveRequest->days;
-                }
-
-                // switch ($leaveRequest->leave_type) {
-                //     case 'paid_leave':
-                //         $totalPaidLeaveDays += $leaveRequest->days;
-                //         break;
-
-                //     case 'unpaid_leave':
-                //         $totalUnpaidLeaveDays += $leaveRequest->days;
-                //         break;
+                // if ($leaveRequest->leave_type === 'paid_leave') {
+                //     $totalPaidLeaveDays += $leaveRequest->days;
+                // } 
+                // if ($leaveRequest->leave_type === 'unpaid_leave') {
+                //     $totalUnpaidLeaveDays += $leaveRequest->days;
                 // }
+
+                switch ($leaveRequest->leave_type) {
+                    case 'paid_leave':
+                        $totalPaidLeaveDays += $leaveRequest->days;
+                        break;
+
+                    case 'unpaid_leave':
+                        $totalUnpaidLeaveDays += $leaveRequest->days;
+                        break;
+                }
             }
         }
 
