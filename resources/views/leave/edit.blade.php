@@ -58,18 +58,6 @@
                     </div>
                 </div>
 
-                <!-- Reason
-                <div class="form-group">
-                    <label for="reason">Priežastis</label>
-                    <textarea id="reason" name="reason" class="form-control" rows="3">{{ $leaveRequest->reason }}</textarea>
-                </div> -->
-
-                <!-- Start Date
-                <div class="form-group">
-                    <label for="start_date">Pradžios data</label>
-                    <input type="date" id="start_date" name="start_date" class="form-control" value="{{ $leaveRequest->start_date }}">
-                </div> -->
-
                 <div class="form-group row">
                     <label for="start_date" class="col-md-2 col-form-label text-md-right">Pradžios data</label>
 
@@ -84,22 +72,52 @@
                     </div>
                 </div>
 
-                <!-- End Date -->
-                <div class="form-group">
-                    <label for="end_date">Pabaigos data</label>
-                    <input type="date" id="end_date" name="end_date" class="form-control" value="{{ $leaveRequest->end_date }}">
+                <div class="form-group row">
+                    <label for="end_date" class="col-md-2 col-form-label text-md-right">Pabaigos data</label>
+
+                    <div class="col-md-6">
+                        <input id="end_date" type="date" class="form-control @error('end_date') is-invalid @enderror" name="end_date" value="{{ $leaveRequest->end_date }}" required>
+
+                        @error('end_date')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
                 </div>
 
-                <!-- Days -->
+                <div class="form-group row">
+                    <label for="days" class="col-md-2 col-form-label text-md-right">Pabaigos data</label>
+
+                    <div class="col-md-6">
+                        <input id="days" type="date" class="form-control" name="days" value="{{ $leaveRequest->days }}" readonly>
+                    </div>
+                </div>
+
+                <!-- Days
                 <div class="form-group">
                     <label for="days">Dienos</label>
                     <input type="number" id="days" name="days" class="form-control" value="{{ $leaveRequest->days }}" readonly>
-                </div>
+                </div> -->
 
                 <!-- File Upload -->
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="file_upload">Įkelti failą</label>
                     <input type="file" id="file_upload" name="file_upload" class="form-control-file">
+                </div> -->
+
+                <div class="form-group row">
+                    <label for="file_upload" class="col-md-2 col-form-label text-md-right">Pabaigos data</label>
+
+                    <div class="col-md-6">
+                        <input id="file_upload" type="file" class="form-control-file @error('file_upload') is-invalid @enderror" name="file_upload">
+
+                        @error('file_upload')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
                 </div>
 
                 <!-- Remarks -->
