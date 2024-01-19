@@ -12,10 +12,17 @@
         <form method="POST" action="{{ route('leaveRequest.store') }}" enctype="multipart/form-data">
             @csrf
 
-            <!-- Leave Name -->
+            <!-- Leave Name
             <div class="form-group">
                 <label for="leaveRequest_name">Pavadinimas</label>
                 <input type="text" id="leaveRequest_name" name="leaveRequest_name" class="form-control" rows="3">
+            </div> -->
+
+            <div class="form-group row">
+                <label for="leaveRequest_name" class="col-md-2 col-form-label text-md-right">Pavadinimas</label>
+                <div class="col-md-6">
+                    <input type="text" id="leaveRequest_name" name="leaveRequest_name" class="form-control" required>
+                </div>
             </div>
 
             <!-- Leave Type -->
