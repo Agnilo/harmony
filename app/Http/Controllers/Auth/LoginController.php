@@ -52,18 +52,21 @@ class LoginController extends Controller
 
     protected function sendFailedLoginResponse(Request $request)
     {
+
+        $generalError = 'Neregistruotas el. pašto adresas arba neteisingas slaptažodis.';
+
         $errors = []; 
 
         if (! $request->filled('email')) {
             $errors['email'] = 'Būtina įvesti el. paštą.';
-        } else {
-            $errors['email'] = 'Neregistruotas arba neteisingas el. pašto adresas';
-        }
+        } 
 
         if (! $request->filled('password')) {
             $errors['password'] = 'Būtina įvesti slaptažodį.';
-        } else {
-            $errors['password'] = 'Neteisingas slaptažodis';
+        }
+
+        if (empty($errors)) {
+            $errors = [$this->username() => [$generalError]];
         }
 
         throw ValidationException::withMessages($errors);
