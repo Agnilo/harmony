@@ -71,7 +71,7 @@
             <div class="form-group row">
                 <label for="price" class="col-md-2 col-form-label text-md-right">Kaina:</label>
                 <div class="col-md-6">
-                    <input type="number" name="price" step="0.50" class="form-control @error('price') is-invalid @enderror">
+                    <input type="number" name="price" step="0.50" class="form-control @error('price') is-invalid @enderror" value="0.00">
                     @error('price')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
