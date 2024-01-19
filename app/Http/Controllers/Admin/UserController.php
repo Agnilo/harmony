@@ -118,8 +118,6 @@ class UserController extends Controller
             'position' => $validatedData['position'],
         ]);
 
-        dd($request->hasFile('image'));
-
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('user_images', 'public');
     
