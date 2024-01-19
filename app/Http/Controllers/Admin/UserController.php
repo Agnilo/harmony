@@ -78,6 +78,7 @@ class UserController extends Controller
             'gender' => 'nullable|in:Vyras,Moteris,Kita',
             'is_verified' => 'nullable|boolean',
             'position' => 'required|in:Sistemos administratorius,Skyriaus vadovas,Specialistas,Personalo valdymo skyriaus vadovas,Personalo valdymo skyriaus specialistas',
+            'image' => 'nullable|image|max:10240',
         ], [
             'first_name.required' => 'Būtina įvesti naudotojo vardą',
             'first_name.max' => 'Galima įvesti iki 255 simbolių',
@@ -116,6 +117,15 @@ class UserController extends Controller
             'is_verified' => $validatedData['is_verified'],
             'position' => $validatedData['position'],
         ]);
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('user_images', 'public');
+    
+            $user->userMeta()->updateOrCreate(
+                ['user_id' => $user->id],
+                ['meta_key' => 'avatar', 'meta_value' => $imagePath]
+            );
+        }
 
         $validateRoleIds = $request->roles;
 
