@@ -823,7 +823,6 @@ footer{
     resize: none;
     text-align: right;
     overflow-y: auto;
-    direction: rtl;
 }
 
 .benefit-card-header{
