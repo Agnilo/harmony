@@ -151,7 +151,7 @@ class User extends Authenticatable
 
         $net = $gross * (1 - $totalDeductionRate);
 
-        dd($net, $gross, $grossWithoutPaidLeave, $paidLeaveSum, $unpaidLeaveDeduction, $totalBenefitPrice, $overtimeSum);
+        //dd($net, $gross, $grossWithoutPaidLeave, $paidLeaveSum, $unpaidLeaveDeduction, $totalBenefitPrice, $overtimeSum);
 
         //dd('baseHourlyRate',$baseHourlyRate,'baseHours',$baseHours, 'grossWithoutPaidLeave:', $grossWithoutPaidLeave, 'gross:', $gross, 'net', $net);
 
