@@ -26,7 +26,7 @@
             <div class="form-group row">
                 <label for="description" class="col-md-2 col-form-label text-md-right">Privalumo aprašymas:</label>
                 <div class="col-md-6">
-                    <textarea name="description" class="form-control @error('description')"></textarea>
+                    <textarea name="description" class="form-control @error('description') is-invalid @enderror"></textarea>
                     @error('description')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -71,7 +71,7 @@
             <div class="form-group row">
                 <label for="price" class="col-md-2 col-form-label text-md-right">Kaina:</label>
                 <div class="col-md-6">
-                    <input type="number" name="price" step="0.50" class="form-control @error('price')">
+                    <input type="number" name="price" step="0.50" class="form-control @error('price') is-invalid @enderror">
                     @error('price')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
