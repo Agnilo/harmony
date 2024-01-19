@@ -528,6 +528,7 @@ footer{
 .profile-img{
     width: 100%;
     height: 100%;
+    border-radius: 50%;
 }
 
 .profile-edit-employee{
@@ -537,7 +538,8 @@ footer{
 
 .profile-edit-employee-navbar{
     width: 220px;
-    padding: 1rem;
+    padding: 0 1rem;
+    padding-top: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -549,6 +551,8 @@ footer{
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    height: 180px;
+    width: 180px;
 }
 
 .profile-edit-employee-tab{
@@ -557,6 +561,7 @@ footer{
     flex-direction: column;
     overflow: visible;
     padding-bottom: unset;
+    margin-top: 20px;
 
 }
 
