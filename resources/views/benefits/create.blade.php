@@ -50,13 +50,13 @@
                                 var fileType = fileInput.files[0].type;
 
                                 if (fileSize > maxSize) {
-                                    alert('The file is too large. Maximum size allowed is 2 MB.');
+                                    alert('Pasirinktas failas per didelis. Leistinas dydis 2MB');
                                     fileInput.value = '';
                                     return false;
                                 }
 
                                 if (!allowedTypes.includes(fileType)) {
-                                    alert('Invalid file type. Only JPEG, PNG, BMP, GIF, SVG, and WebP are allowed.');
+                                    alert('Galima įkelti tik šio tipo failus: JPEG, PNG, BMP, GIF, SVG, WebP.');
                                     fileInput.value = '';
                                     return false;
                                 }
