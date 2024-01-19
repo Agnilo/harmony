@@ -87,7 +87,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="days" class="col-md-2 col-form-label text-md-right">Pabaigos data</label>
+                    <label for="days" class="col-md-2 col-form-label text-md-right">Dienos</label>
 
                     <div class="col-md-6">
                         <input id="days" type="number" class="form-control" name="days" value="{{ $leaveRequest->days }}" readonly>
@@ -107,7 +107,7 @@
                 </div> -->
 
                 <div class="form-group row">
-                    <label for="file_upload" class="col-md-2 col-form-label text-md-right">Pabaigos data</label>
+                    <label for="file_upload" class="col-md-2 col-form-label text-md-right">Įkelti failą</label>
 
                     <div class="col-md-6">
                         <input id="file_upload" type="file" class="form-control-file @error('file_upload') is-invalid @enderror" name="file_upload">
@@ -121,7 +121,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="remarks" class="col-md-2 col-form-label text-md-right">Pabaigos data</label>
+                    <label for="remarks" class="col-md-2 col-form-label text-md-right">Komentarai</label>
 
                     <div class="col-md-6">
                     <textarea id="remarks" name="remarks" class="form-control @error('remarks') is-invalid @enderror" rows="3">{{ $leaveRequest->remarks }}</textarea>
