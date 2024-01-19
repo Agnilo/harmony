@@ -81,7 +81,7 @@ class User extends Authenticatable
     public function calculateNetSalary($gross, $request, $totalPaidLeaveDays, $totalUnpaidLeaveDays)
     {
 
-        dd($gross, $request->all(), $totalPaidLeaveDays, $totalUnpaidLeaveDays);
+        //dd($gross, $request->all(), $totalPaidLeaveDays, $totalUnpaidLeaveDays);
 
         $net = 0;
 
