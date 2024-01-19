@@ -279,14 +279,14 @@ class LeaveRequestController extends Controller
                     ->where('id', '!=', $leaveRequest->id)
                     ->get();
 
-                $leaveRequestsDetails = $currentLeaveRequests->map(function ($lr) {
-                    return [
-                        'leave_type' => $lr->leave_type,
-                        'days' => $lr->days,
-                        'start_date' => $lr->start_date,
-                        'end_date' => $lr->end_date,
-                    ];
-                });
+                // $leaveRequestsDetails = $currentLeaveRequests->map(function ($lr) {
+                //     return [
+                //         'leave_type' => $lr->leave_type,
+                //         'days' => $lr->days,
+                //         'start_date' => $lr->start_date,
+                //         'end_date' => $lr->end_date,
+                //     ];
+                // });
 
                 $totalPaidLeaveDays = 0;
                 $totalUnpaidLeaveDays = 0;
@@ -298,6 +298,8 @@ class LeaveRequestController extends Controller
                         $totalUnpaidLeaveDays += $lr->days;
                     }
                 }
+
+                dd($totalPaidLeaveDays);
 
                 $net = $user->calculateNetSalary($payroll->gross, new Request([
                     'work_hours' => $payroll->work_hours,
