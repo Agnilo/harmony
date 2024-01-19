@@ -56,9 +56,18 @@ class LeaveRequestController extends Controller
                 'end_date' => 'required|date|after_or_equal:start_date',
                 //'days' => 'required|integer|min:1|max:' . $user->vacation_days,
                 'file_upload' => 'nullable|mimes:pdf,doc,docx|max:2048',
-                'remarks' => 'nullable|string|max:255',
+                'remarks' => 'nullable|string',
             ], [
                 'leaveRequest_name.required' => 'Pavadinimas nėra įvestas',
+                'leaveRequest_name.max' => 'Pavadinimas negali viršyti 255 simbolių',
+                'reason.required' => 'Būtina pateikti priežastį',
+                'reason.max' => 'Priežastis negali viršyti 255 simbolių.',
+                'start_date.required' => 'Būtina pasirinkti pradžios datą',
+                'start_date.after_or_equal' => 'Pradžios data negali būti vėlesnė nei šiandien',
+                'end_date.required' => 'Būtina pasirinkti pabaigos datą',
+                'end_date.after_or_equal' => 'Pabaigos data turi būti lygi ar vėlesnė nei pradžios data',
+                'file_upload.mimes' => 'Galima įkelti tik šio tipo failus: pdf, doc, docx.',
+                'file_upload.max' => 'Failo dydis negali viršyti nustatyto 2MB limito',
             ]);
 
         //dd('aš čia');

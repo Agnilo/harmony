@@ -37,28 +37,48 @@
             <div class="form-group row">
                 <label for="reason" class="col-md-2 col-form-label text-md-right">Priežastis</label>
                 <div class="col-md-6">
-                    <input type="text" id="reason" name="reason" class="form-control">
+                    <input type="text" id="reason" name="reason" class="form-control @error('reason') is-invalid @enderror">
+                    @error('reason')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="start_date" class="col-md-2 col-form-label text-md-right">Pradžios data</label>
                 <div class="col-md-6">
-                    <input type="date" id="start_date" name="start_date" class="form-control">
+                    <input type="date" id="start_date" name="start_date" class="form-control @error('start_date') is-invalid @enderror">
+                    @error('start_date')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="end_date" class="col-md-2 col-form-label text-md-right">Pabaigos data</label>
                 <div class="col-md-6">
-                    <input type="date" id="end_date" name="end_date" class="form-control">
+                    <input type="date" id="end_date" name="end_date" class="form-control @error('end_date') is-invalid @enderror">
+                    @error('end_date')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="file_upload" class="col-md-2 col-form-label text-md-right">Įkelti failą</label>
                 <div class="col-md-6">
-                    <input type="file" name="file_upload" class="form-control-file" id="file_upload">
+                    <input type="file" name="file_upload" class="form-control-file @error('file_upload') is-invalid @enderror" id="file_upload">
+                    @error('file_upload')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
             </div>
 
