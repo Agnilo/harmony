@@ -637,11 +637,7 @@ footer{
     color: var(--primary-color);
 }
 
-.benefit-link-profile a{
-    color: var(--primary-color);
-}
-
-.benefit-link-profile a:hover{
+.benefit-link-profile:hover{
     color: var(--primary-color);
     text-decoration: underline;
 }
