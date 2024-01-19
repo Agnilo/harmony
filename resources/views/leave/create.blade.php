@@ -25,13 +25,23 @@
                 </div>
             </div>
 
-            <!-- Leave Type -->
+            <!-- Leave Type
             <div class="form-group">
                 <label for="leave_type">Atostogų tipas</label>
                 <select id="leave_type" name="leave_type" class="form-control">
                     <option value="paid_leave">Apmokamos atostogos</option>
                     <option value="unpaid_leave">Neapmokamos atostogos</option>
                 </select>
+            </div> -->
+
+            <div class="form-group row">
+                <label for="leave_type" class="col-md-2 col-form-label text-md-right">Atostogų tipas</label>
+                <div class="col-md-6">
+                    <select id="leave_type" name="leave_type" class="form-control">
+                        <option value="paid_leave">Apmokamos atostogos</option>
+                        <option value="unpaid_leave">Neapmokamos atostogos</option>
+                    </select>
+                </div>
             </div>
 
             <!-- Reason -->
