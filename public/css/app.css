@@ -562,7 +562,8 @@ footer{
     overflow: visible;
     padding-bottom: unset;
     margin-top: 20px;
-    color: var(--primary-text-color);
+    color: var(--primary-color);
+    letter-spacing: 1px;
 
 }
 
