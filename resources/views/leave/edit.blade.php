@@ -98,13 +98,28 @@
                     <label for="file_upload" class="col-md-2 col-form-label text-md-right">Įkelti failą</label>
 
                     <div class="col-md-6">
-                        <input id="file_upload" type="file" class="form-control-file @error('file_upload') is-invalid @enderror" name="file_upload">
+                        <input id="file_upload" type="file" class="form-control-file" name="file_upload" onchange="validateFile(this)">
 
-                        @error('file_upload')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
+
+                        <script>
+                            function validateFile(fileInput) {
+                                var maxSize = 2048 * 1024;
+                                if (fileInput.files && fileInput.files[0].size > maxSize) {
+                                    alert('Pasirinktas failas yra per didelis. Leistinas dydis 2MB.');
+                                    fileInput.value = '';
+                                    return false;
+                                }
+
+                                var allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+                                if (fileInput.files && allowedTypes.indexOf(fileInput.files[0].type) === -1) {
+                                    alert('Galima įkelti tik šio tipo failus: pdf, doc, docx.');
+                                    fileInput.value = '';
+                                    return false;
+                                }
+
+                                return true;
+                            }
+                        </script>
                     </div>
                 </div>
 
@@ -112,7 +127,7 @@
                     <label for="remarks" class="col-md-2 col-form-label text-md-right">Komentarai</label>
 
                     <div class="col-md-6">
-                    <textarea id="remarks" name="remarks" class="form-control @error('remarks') is-invalid @enderror" rows="3">{{ $leaveRequest->remarks }}</textarea>
+                        <textarea id="remarks" name="remarks" class="form-control @error('remarks') is-invalid @enderror" rows="3">{{ $leaveRequest->remarks }}</textarea>
 
                         @error('remarks')
                         <span class="invalid-feedback" role="alert">
@@ -121,20 +136,20 @@
                         @enderror
                     </div>
                 </div>
-
-                <div class="form-group row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-6">
-                        <button type="submit" class="btn btn-primary user-create-button-margin-right">
-                            Atnaujinti
-                        </button>
-                        <a href="{{ route('leaveRequest') }}" class="btn btn-primary user-create-button-margin-left">
-                            Grįžti atgal
-                        </a>
-                    </div>
-                </div>
-            </form>
         </div>
+        <div class="form-group row">
+            <div class="col-md-2"></div>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-primary user-create-button-margin-right">
+                    Atnaujinti
+                </button>
+                <a href="{{ route('leaveRequest') }}" class="btn btn-primary user-create-button-margin-left">
+                    Grįžti atgal
+                </a>
+            </div>
+        </div>
+        </form>
     </div>
+</div>
 </div>
 @endsection

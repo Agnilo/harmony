@@ -184,7 +184,17 @@ class LeaveRequestController extends Controller
             'file_upload' => 'nullable|mimes:pdf,doc,docx|max:2048',
             'remarks' => 'nullable|string|max:255',
         ], [
-            'leaveRequest_name.required' => 'Pavadinimas nėra įvestas',
+            'leaveRequest_name.required' => 'Būtina įvesti pavadinimą',
+            'leaveRequest_name.max' => 'Pavadinimas negali viršyti 255 simbolių',
+            'reason.required' => 'Būtina pateikti priežastį',
+            'reason.max' => 'Priežastis negali viršyti 255 simbolių.',
+            'start_date.required' => 'Būtina pasirinkti pradžios datą',
+            'start_date.after_or_equal' => 'Pradžios data negali būti vėlesnė nei šiandien',
+            'end_date.required' => 'Būtina pasirinkti pabaigos datą',
+            'end_date.date' => 'Pirma pasirinkite pradžios datą',
+            'end_date.after_or_equal' => 'Pabaigos data turi būti lygi ar vėlesnė nei pradžios data',
+            'file_upload.mimes' => 'Galima įkelti tik šio tipo failus: pdf, doc, docx.',
+            'file_upload.max' => 'Failo dydis negali viršyti nustatyto 2MB limito',
         ]);
 
 
