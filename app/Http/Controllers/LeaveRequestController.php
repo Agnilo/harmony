@@ -241,6 +241,8 @@ class LeaveRequestController extends Controller
                     }
                 }
 
+                dd($totalPaidLeaveDays, $totalUnpaidLeaveDays);
+
                 if ($leaveRequest->leave_type === 'paid_leave') {
                     $totalPaidLeaveDays -= $leaveRequest->days;
                 } elseif ($leaveRequest->leave_type === 'unpaid_leave') {
