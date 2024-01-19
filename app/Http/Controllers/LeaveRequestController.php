@@ -241,15 +241,15 @@ class LeaveRequestController extends Controller
                     }
                 }
 
-                dd($totalPaidLeaveDays, $totalUnpaidLeaveDays);
+                // dd($totalPaidLeaveDays, $totalUnpaidLeaveDays);
 
-                if ($leaveRequest->leave_type === 'paid_leave') {
-                    $totalPaidLeaveDays -= $leaveRequest->days;
-                } elseif ($leaveRequest->leave_type === 'unpaid_leave') {
-                    $totalUnpaidLeaveDays -= $leaveRequest->days;
-                }
+                // if ($leaveRequest->leave_type === 'paid_leave') {
+                //     $totalPaidLeaveDays -= $leaveRequest->days;
+                // } elseif ($leaveRequest->leave_type === 'unpaid_leave') {
+                //     $totalUnpaidLeaveDays -= $leaveRequest->days;
+                // }
 
-                dd($totalPaidLeaveDays, $totalUnpaidLeaveDays);
+                // dd($totalPaidLeaveDays, $totalUnpaidLeaveDays);
 
                 $salaryCalculationRequest = new Request([
                     'work_hours' => $payroll->work_hours,
