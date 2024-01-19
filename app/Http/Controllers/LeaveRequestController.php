@@ -85,7 +85,7 @@ class LeaveRequestController extends Controller
             'approval_status' => 'Prašymas neperžiūrėtas',
         ]);
 
-        dd($newLeaveRequest->leave_type);
+        //dd($newLeaveRequest->leave_type);
 
         $user->leaveRequests()->save($newLeaveRequest);
 
