@@ -242,7 +242,7 @@ class UserController extends Controller
             'email.required' => 'Būtina įvesti el. paštą',
             'email.unique' => 'Toks el. pašto adresas jau egzistuoja',
             'email.email' => 'Neteisingas el. pašto formatas',
-            'password.required' => 'Būtina įvesti naudotojo slaptažodį',
+            'password.required' => 'Būtina įvesti naudotojo slaptažodį. Slaptažodį turi sudaryti bent 8 simboliai ir turi būti bent 1 didžioji raidė, 1 skaičius ir 1 specialusis simbolis',
             'password.min' => 'Slaptažodį turi sudaryti bent 8 simboliai',
             'password.regex' => 'Slaptažodis turi turėti bent vieną didžiąją raidę, vieną skaičių ir vieną specialųjį simbolį (@, $, !, %, *, #, ?, & ir kt.)',
             'work_hours.numeric' => 'Turi būti įvestas skaičius',
