@@ -14,7 +14,7 @@
             <div class="form-group row">
                 <label for="benefit_name" class="col-md-2 col-form-label text-md-right">Privalumo pavadinimas:</label>
                 <div class="col-md-6">
-                    <input type="text" name="benefit_name" class="form-control @error('benefit_name') is-invalid @enderror">
+                    <input type="text" name="benefit_name" id="benefit_name" class="form-control @error('benefit_name') is-invalid @enderror">
                     @error('benefit_name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -26,7 +26,7 @@
             <div class="form-group row">
                 <label for="description" class="col-md-2 col-form-label text-md-right">Privalumo aprašymas:</label>
                 <div class="col-md-6">
-                    <textarea name="description" class="form-control @error('description') is-invalid @enderror"></textarea>
+                    <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror"></textarea>
                     @error('description')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -71,7 +71,7 @@
             <div class="form-group row">
                 <label for="price" class="col-md-2 col-form-label text-md-right">Kaina:</label>
                 <div class="col-md-6">
-                    <input type="number" name="price" step="0.01" class="form-control @error('price') is-invalid @enderror" value="0.00" required oninvalid="this.setCustomValidity('Galima įvesti reiškmes didėjančias kas 0.01')" oninput="this.setCustomValidity('')">
+                    <input type="number" name="price" id="price" step="0.01" class="form-control @error('price') is-invalid @enderror" value="0.00" required oninvalid="this.setCustomValidity('Galima įvesti reiškmes didėjančias kas 0.01')" oninput="this.setCustomValidity('')">
                     @error('price')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -90,14 +90,14 @@
             <div class="form-group row">
                 <label for="introduction" class="col-md-2 col-form-label text-md-right">Santrauka:</label>
                 <div class="col-md-6">
-                    <textarea name="introduction" class="form-control"></textarea>
+                    <textarea name="introduction" id="introduction" class="form-control"></textarea>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="content" class="col-md-2 col-form-label text-md-right">Turinys:</label>
                 <div class="col-md-6">
-                    <textarea name="content" class="form-control"></textarea>
+                    <textarea name="content" id="content" class="form-control"></textarea>
                 </div>
             </div>
 
