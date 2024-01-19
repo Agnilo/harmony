@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -53,16 +54,16 @@ class LoginController extends Controller
     {
         $errors = []; 
 
-        if (!$request->get('email')) {
+        if (! $request->filled('email')) {
             $errors['email'] = 'Būtina įvesti el. paštą.';
+        } else {
+            $errors['email'] = 'Neregistruotas arba neteisingas el. pašto adresas';
         }
 
-        if (!$request->get('password')) {
+        if (! $request->filled('password')) {
             $errors['password'] = 'Būtina įvesti slaptažodį.';
-        }
-
-        if (empty($errors)) {
-            $errors['email'] = 'Neregistruotas el. pašto adresas arba neteisingas slaptažodis.';
+        } else {
+            $errors['email'] = 'Neteisingas slaptažodis';
         }
 
         throw ValidationException::withMessages($errors);
