@@ -711,6 +711,10 @@ footer{
     background-color: #5e5e5e;
 }
 
+.form-group{
+    color: black;
+}
+
 .leaveRequest-new-btn{
     background-color: var(--primary-color);
     border-color: var(--primary-color);
