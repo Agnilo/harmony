@@ -94,7 +94,7 @@ class User extends Authenticatable
         $userWorkDays = $request->work_days ?? 0;
 
         $userWorkHoursPerDay = ($userWorkDays != 0) ? ($userWorkHours / $userWorkDays) : 0;
-        
+
         $baseHours = $userWorkHours * 4;
         $baseHourlyRate = ($baseHours != 0) ? ($gross / $baseHours) : 0;
 
@@ -105,28 +105,39 @@ class User extends Authenticatable
         $paidLeaveSum = 0;
 
         //dd('Received in calculateNetSalary', $totalPaidLeaveDays, $totalUnpaidLeaveDays);
-        
+
 
         if ($request->leave_request_id) {
             $leaveRequest = LeaveRequest::findOrFail($request->leave_request_id);
-            
+
             $leaveMonth = date('m', strtotime($leaveRequest->start_date));
             $leaveYear = date('Y', strtotime($leaveRequest->start_date));
-            
+
             if ($leaveMonth == $request->month && $leaveYear == $request->year) {
-                if ($totalUnpaidLeaveDays > 0) {
-                    $unpaidleaveHours = $totalUnpaidLeaveDays * $userWorkHoursPerDay;
-                    $unpaidLeaveDeduction = $unpaidleaveHours * $baseHourlyRate;
-                    //dd($unpaidleaveHours);
-                } 
-                if ($totalPaidLeaveDays > 0) {
-                    $paidLeaveHours = $totalPaidLeaveDays * $userWorkHoursPerDay;
-                    $paidLeaveSum = $paidLeaveHours * ($baseHourlyRate * 1.1);
-                    //dd($paidLeaveSum);
+                switch ($leaveRequest->leave_type) {
+                    case 'paid_leave':
+                        $paidLeaveHours = $totalPaidLeaveDays * $userWorkHoursPerDay;
+                        $paidLeaveSum = $paidLeaveHours * ($baseHourlyRate * 1.1);
+                        break;
+
+                    case 'unpaid_leave':
+                        $unpaidleaveHours = $totalUnpaidLeaveDays * $userWorkHoursPerDay;
+                        $unpaidLeaveDeduction = $unpaidleaveHours * $baseHourlyRate;
+                        break;
                 }
+                // if ($totalUnpaidLeaveDays > 0) {
+                //     $unpaidleaveHours = $totalUnpaidLeaveDays * $userWorkHoursPerDay;
+                //     $unpaidLeaveDeduction = $unpaidleaveHours * $baseHourlyRate;
+                //     //dd($unpaidleaveHours);
+                // }
+                // if ($totalPaidLeaveDays > 0) {
+                //     $paidLeaveHours = $totalPaidLeaveDays * $userWorkHoursPerDay;
+                //     $paidLeaveSum = $paidLeaveHours * ($baseHourlyRate * 1.1);
+                //     //dd($paidLeaveSum);
+                // }
             }
         }
-        
+
 
         $overtimeSum = ($request->overtime !== null && $request->overtime !== 0) ? ($request->overtime * $baseHourlyRate) * 1.5 : 0;
 
