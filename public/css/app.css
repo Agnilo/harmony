@@ -1025,7 +1025,7 @@ footer{
 }
 
 .benefit-link-index{
-    color: var(--primary-color);
+    color: black;
 }
 
 .benefit-link-index:hover{
