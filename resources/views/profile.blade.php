@@ -7,7 +7,14 @@
             <div class="profile-edit-employee">
                 <div class="profile-edit-employee-navbar">
                     <div class="profile-edit-employee-imagesection">
-                        <img src="{{ asset('images/user.jpg') }}" alt="Example Image" class="profile-img">
+                        @php
+                        $userAvatar = $user->userMeta->where('meta_key', 'avatar')->first();
+                        $avatarPath = $userAvatar ? 'storage/' . $userAvatar->meta_value : 'images/user.jpg';
+                        @endphp
+                        <img src="{{ asset($avatarPath) }}" alt="User Image" class="profile-img">
+
+
+                        <!-- <img src="{{ asset('images/user.jpg') }}" alt="Example Image" class="profile-img"> -->
                     </div>
                     <div class="profile-edit-employee-tab">
                         <h5>{{ $user->first_name }} {{ $user->last_name }}</h5>
