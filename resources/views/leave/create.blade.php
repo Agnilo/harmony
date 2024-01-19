@@ -15,7 +15,7 @@
             <div class="form-group row">
                 <label for="leaveRequest_name" class="col-md-2 col-form-label text-md-right">Pavadinimas</label>
                 <div class="col-md-6">
-                    <input type="text" id="leaveRequest_name" name="leaveRequest_name" class="form-control @error('leaveRequest_name') is-invalid @enderror" oninput="this.setCustomValidity('Būtina įvesti pavadinimą')">
+                    <input type="text" id="leaveRequest_name" name="leaveRequest_name" class="form-control @error('leaveRequest_name') is-invalid @enderror" oninvalid="this.setCustomValidity('Būtina įvesti pavadinimą')" oninput="this.setCustomValidity('Būtina įvesti pavadinimą')">
                     @error('leaveRequest_name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
