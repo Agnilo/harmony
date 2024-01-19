@@ -61,6 +61,8 @@
                                     return false;
                                 }
                             }
+
+                            return true;
                         }
                     </script>
                 </div>
