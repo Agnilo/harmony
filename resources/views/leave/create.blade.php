@@ -73,12 +73,21 @@
             <div class="form-group row">
                 <label for="file_upload" class="col-md-2 col-form-label text-md-right">Įkelti failą</label>
                 <div class="col-md-6">
-                    <input type="file" name="file_upload" class="form-control-file @error('file_upload') is-invalid @enderror" id="file_upload">
+                    <input type="file" name="file_upload" class="form-control-file @error('file_upload') is-invalid @enderror" id="file_upload" onchange="validateSize(this)">
                     @error('file_upload')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
+                    <script>
+                        function validateSize(fileInput) {
+                            var maxSize = 2048 * 1024; // 2 MB in bytes
+                            if (fileInput.files && fileInput.files[0].size > maxSize) {
+                                alert('Pasirinktas failas yra per didelis. Leistinas dydis 2MB.');
+                                fileInput.value = ''; // Clear the file input for new selection
+                            }
+                        }
+                    </script>
                 </div>
             </div>
 
