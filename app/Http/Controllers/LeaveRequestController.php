@@ -58,6 +58,8 @@ class LeaveRequestController extends Controller
             'remarks' => 'nullable|string|max:255',
         ]);
 
+        dd('aš čia');
+
         $filePath = $request->file('file_upload') ? $request->file('file_upload')->store('leaveRequests', 'public') : null;
 
         $payroll = $user->payroll()->latest()->first();
