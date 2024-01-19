@@ -81,7 +81,7 @@ class User extends Authenticatable
     public function calculateNetSalary($gross, $request, $totalPaidLeaveDays, $totalUnpaidLeaveDays)
     {
 
-        dd($gross, $request->all(), $totalPaidLeaveDays, $totalUnpaidLeaveDays);
+        //dd($gross, $request->all(), $totalPaidLeaveDays, $totalUnpaidLeaveDays);
 
         $net = 0;
 
@@ -135,7 +135,7 @@ class User extends Authenticatable
 
         $gross = $grossWithoutPaidLeave + $paidLeaveSum - $unpaidLeaveDeduction - $totalBenefitPrice + $overtimeSum;
 
-        //dd($gross, $grossWithoutPaidLeave, $paidLeaveSum, $unpaidLeaveDeduction, $totalBenefitPrice, $overtimeSum);
+        dd($gross, $grossWithoutPaidLeave, $paidLeaveSum, $unpaidLeaveDeduction, $totalBenefitPrice, $overtimeSum);
 
         $net = $gross * (1 - $totalDeductionRate);
 
