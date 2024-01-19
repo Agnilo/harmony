@@ -47,18 +47,23 @@ class LeaveRequestController extends Controller
     {
         $user = Auth::user();
 
-        
 
-        $validatedData = $request->validate([
-            'leaveRequest_name' => 'required|string|max:255',
-            'leave_type' => 'required|in:paid_leave,unpaid_leave',
-            'reason' => 'required|string|max:255',
-            'start_date' => 'required|date|after_or_equal:today',
-            'end_date' => 'required|date|after_or_equal:start_date',
-            'days' => 'required|integer|min:1|max:' . $user->vacation_days,
-            'file_upload' => 'nullable|mimes:pdf,doc,docx|max:2048',
-            'remarks' => 'nullable|string|max:255',
-        ]);
+        try {
+
+            $validatedData = $request->validate([
+                'leaveRequest_name' => 'required|string|max:255',
+                'leave_type' => 'required|in:paid_leave,unpaid_leave',
+                'reason' => 'required|string|max:255',
+                'start_date' => 'required|date|after_or_equal:today',
+                'end_date' => 'required|date|after_or_equal:start_date',
+                'days' => 'required|integer|min:1|max:' . $user->vacation_days,
+                'file_upload' => 'nullable|mimes:pdf,doc,docx|max:2048',
+                'remarks' => 'nullable|string|max:255',
+            ]);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            Log::error('Validation failed', $e->errors());
+            throw $e;
+        }
 
         dd('aš čia');
 
