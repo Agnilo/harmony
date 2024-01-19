@@ -65,7 +65,7 @@ class LeaveRequestController extends Controller
             throw $e;
         }
 
-        dd('aš čia');
+        //dd('aš čia');
 
         $filePath = $request->file('file_upload') ? $request->file('file_upload')->store('leaveRequests', 'public') : null;
 
