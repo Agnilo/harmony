@@ -601,10 +601,6 @@ footer{
     border: none;
 }
 
-.profile-label {
-    font-weight: bold;
-}
-
 .profile-information-text{
     display: flex;
     flex-direction: row;
@@ -621,6 +617,12 @@ footer{
 .profile-label{
     font-weight: bold;
     margin-right: 10px;
+}
+
+.profile-label-payroll{
+    font-weight: bold;
+    margin-right: 10px;
+    width: 60%;
 }
 
 .profile-eidt-employee-content{
