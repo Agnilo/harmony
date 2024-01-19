@@ -112,35 +112,33 @@ class UserController extends Controller
         $payrollMonth = $payroll->month;
         $payrollYear = $payroll->year;
 
-
         $totalPaidLeaveDays = 0;
         $totalUnpaidLeaveDays = 0;
 
-        foreach ($leaveRequests as $leaveRequest) {
-            $startDate = new \DateTime($leaveRequest->start_date);
-            $endDate = new \DateTime($leaveRequest->end_date);
+        if (!$leaveRequests->isEmpty()) {
 
-            $startYear = (int)$startDate->format('Y');
-            $startMonth = (int)$startDate->format('m');
-            $endYear = (int)$endDate->format('Y');
-            $endMonth = (int)$endDate->format('m');
+            foreach ($leaveRequests as $leaveRequest) {
+                $startDate = new \DateTime($leaveRequest->start_date);
+                $endDate = new \DateTime($leaveRequest->end_date);
 
-            if (
-                ($startYear == $payrollYear && $startMonth == $payrollMonth) ||
-                ($endYear == $payrollYear && $endMonth == $payrollMonth) ||
-                ($startYear < $payrollYear && $endYear > $payrollYear)
-            ) {
-                if ($leaveRequest->leave_type === 'paid_leave') {
-                    $totalPaidLeaveDays += $leaveRequest->days;
-                } elseif ($leaveRequest->leave_type === 'unpaid_leave') {
-                    $totalUnpaidLeaveDays += $leaveRequest->days;
+                $startYear = (int)$startDate->format('Y');
+                $startMonth = (int)$startDate->format('m');
+                $endYear = (int)$endDate->format('Y');
+                $endMonth = (int)$endDate->format('m');
+
+                if (
+                    ($startYear == $payrollYear && $startMonth == $payrollMonth) ||
+                    ($endYear == $payrollYear && $endMonth == $payrollMonth) ||
+                    ($startYear < $payrollYear && $endYear > $payrollYear)
+                ) {
+                    if ($leaveRequest->leave_type === 'paid_leave') {
+                        $totalPaidLeaveDays += $leaveRequest->days;
+                    } elseif ($leaveRequest->leave_type === 'unpaid_leave') {
+                        $totalUnpaidLeaveDays += $leaveRequest->days;
+                    }
                 }
             }
-        }
-
-        //dd($totalPaidLeaveDays, $totalUnpaidLeaveDays);
-
-        if ($leaveRequests) {
+        
 
             $salaryCalculationRequest = new Request();
             $salaryCalculationRequest->replace([
@@ -156,38 +154,24 @@ class UserController extends Controller
             ]);
 
             $net = $user->calculateNetSalary($payrollValidation['gross'], $salaryCalculationRequest, $totalPaidLeaveDays, $totalUnpaidLeaveDays);
+        } else {
+
+            $salaryCalculationRequest = new Request();
+            $salaryCalculationRequest->replace([
+                'total_paid_leave_days' => $totalPaidLeaveDays,
+                'total_unpaid_leave_days' => $totalUnpaidLeaveDays,
+                'work_hours' => $payroll->work_hours,
+                'work_days' => $payroll->work_days,
+                'overtime' => $payroll->overtime,
+                'gross' => $payroll->gross,
+                'month' => $payroll->month,
+                'year' => $payroll->year,
+            ]);
+
+            $net = $user->calculateNetSalary($payrollValidation['gross'], $salaryCalculationRequest, $totalPaidLeaveDays, $totalUnpaidLeaveDays);
         }
 
         $payrollData = array_merge($payrollValidation, ['net' => $net]);
-
-        // if ($leaveRequests) {
-        //     $salaryCalculationRequest = new Request();
-        //     $salaryCalculationRequest->replace([
-        //         'start_date' => $leaveRequest->start_date,
-        //         'end_date' => $leaveRequest->end_date,
-        //         'leave_type' => $leaveRequest->leave_type,
-        //         'days' => $leaveRequest->days,
-        //         'leave_request_id' => $leaveRequest->id,
-        //     ]);
-
-        //     $net = $user->calculateNetSalary($payrollValidation['gross'], $salaryCalculationRequest);
-
-        //     //$leaveRequests->update(['net' => $net]);
-        // }
-
-        // $payrollData = array_merge($payrollValidation, ['net' => $net]);
-
-        // $payrollData = [
-        //     'work_hours' => $payrollValidation['work_hours'],
-        //     'work_days' => $payrollValidation['work_days'],
-        //     'overtime' => $payrollValidation['overtime'],
-        //     'gross' => $payrollValidation['gross'],
-        //     'net' => isset($payrollValidation['gross']) ? $user->calculateNetSalary($payrollValidation['gross'], $salaryCalculationRequest) : 0,
-        //     //'net' => isset($payrollValidation['gross']) ? $user->calculateNetSalary($payrollValidation['gross'], $request) : 0,
-        //     //'net' => $this->calculateNetSalary($payrollValidation['gross'], $request),
-        //     //'net' => $payrollValidation['net'] ?? 0,
-        //     'info' => $payrollValidation['info'] ?? '',
-        // ];
 
         if ($user->payroll) {
             $user->payroll->update($payrollData);
