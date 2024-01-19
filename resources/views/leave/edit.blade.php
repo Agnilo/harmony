@@ -23,7 +23,7 @@
                     <label for="leaveRequest_name" class="col-md-2 col-form-label text-md-right">Pavadinimas</label>
 
                     <div class="col-md-6">
-                        <input id="leaveRequest_name" type="text" class="form-control @error('leaveRequest_name') is-invalid @enderror" name="leaveRequest_name" value="{{ $leaveRequest->leaveRequest_name }}" required autofocus>
+                        <input id="leaveRequest_name" type="text" class="form-control @error('leaveRequest_name') is-invalid @enderror" name="leaveRequest_name" value="{{ $leaveRequest->leaveRequest_name }}" required>
 
                         @error('leaveRequest_name')
                         <span class="invalid-feedback" role="alert">
