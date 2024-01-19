@@ -29,7 +29,7 @@
                 <div class="form-group row">
                     <label for="first_name" class="col-md-2 col-form-label text-md-right">Vardas</label>
                     <div class="col-md-6">
-                        <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ $user->first_name }}">
+                        <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ $user->first_name }}" autocomplete="first_name">
                         @error('first_name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
