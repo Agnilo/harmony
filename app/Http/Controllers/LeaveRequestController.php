@@ -263,7 +263,7 @@ class LeaveRequestController extends Controller
                     'leave_request_id' => $leaveRequest->id,
                 ]);
 
-                dd($totalPaidLeaveDays, $totalUnpaidLeaveDays);
+                //dd($totalPaidLeaveDays, $totalUnpaidLeaveDays);
 
                 $netSalary = $user->calculateNetSalary($payroll->gross, $salaryCalculationRequest, $totalPaidLeaveDays, $totalUnpaidLeaveDays);
                 $payroll->update(['net' => $netSalary]);
