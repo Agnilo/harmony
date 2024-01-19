@@ -37,21 +37,21 @@
             <div class="form-group row">
                 <label for="reason" class="col-md-2 col-form-label text-md-right">Priežastis</label>
                 <div class="col-md-6">
-                    <input type="text" id="reason" name="reason" class="form-control" required>
+                    <input type="text" id="reason" name="reason" class="form-control">
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="start_date" class="col-md-2 col-form-label text-md-right">Pradžios data</label>
                 <div class="col-md-6">
-                    <input type="date" id="start_date" name="start_date" class="form-control" required>
+                    <input type="date" id="start_date" name="start_date" class="form-control">
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="end_date" class="col-md-2 col-form-label text-md-right">Pabaigos data</label>
                 <div class="col-md-6">
-                    <input type="date" id="end_date" name="end_date" class="form-control" required>
+                    <input type="date" id="end_date" name="end_date" class="form-control">
                 </div>
             </div>
 
