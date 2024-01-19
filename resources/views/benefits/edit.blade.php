@@ -39,20 +39,6 @@
                     </div>
                 </div>
 
-                <!-- <div class="form-group row">
-                    <label for="introduction" class="col-md-2 col-form-label text-md-right">Santrauka</label>
-
-                    <div class="col-md-6">
-                        <input id="introduction" type="textarea" class="form-control @error('introduction') is-invalid @enderror textarea-style" name="introduction" value="{{ $benefit->introduction }}">
-
-                        @error('introduction')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                </div> -->
-
                 <div class="form-group row">
                     <label for="introduction" class="col-md-2 col-form-label text-md-right">Santrauka</label>
 
@@ -71,7 +57,7 @@
                     <label for="content" class="col-md-2 col-form-label text-md-right">Turinys</label>
 
                     <div class="col-md-6">
-                        <input id="content" type="textarea" class="form-control @error('content') is-invalid @enderror textarea-style" name="content" value="{{ $benefit->content }}">
+                        <textarea id="content" class="form-control @error('content') is-invalid @enderror textarea-style" name="content">{{ $benefit->content }}</textarea>
 
                         @error('content')
                         <span class="invalid-feedback" role="alert">
