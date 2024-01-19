@@ -79,7 +79,7 @@ class User extends Authenticatable
         return $this->hasOne(Payroll::class);
     }
 
-    public function meta()
+    public function userMeta()
     {
         return $this->hasMany(UserMeta::class);
     }
