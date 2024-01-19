@@ -3,10 +3,8 @@
 @section('content')
 <div class="web-child-content">
     <div class="container">
-        <div class="row justify-content-md-center">
-            <div class="col-md-auto h2-padding">
-                <h2>Sukurti naują naudotoją</h2>
-            </div>
+        <div class="create-benefit-header">
+            <h2>Sukurti naują naudotoją</h2>
         </div>
         <div class="card-body card-body-index">
 
@@ -74,7 +72,7 @@
                     </div>
                 </div>
 
-                
+
                 <!-- <div class="form-group row create-row">
                     <label for="is_verified" class="col-md-2 col-form-label text-md-right">Patvirtintas</label>
                     <div class="col-md-6">
@@ -85,13 +83,13 @@
                     </div>
                 </div> -->
 
-                
+
                 <h2 style="padding: 20px 0;">Darbo užmokesčio informacija</h2>
 
                 <div class="form-group row create-row">
                     <label for="work_hours" class="col-md-2 col-form-label text-md-right">Darbo valandos per savaitę</label>
                     <div class="col-md-6">
-                        <input id="work_hours" type="text" class="form-control @error('work_hours') is-invalid @enderror" name="work_hours" value="{{ old('work_hours') }}" >
+                        <input id="work_hours" type="text" class="form-control @error('work_hours') is-invalid @enderror" name="work_hours" value="{{ old('work_hours') }}">
                         @error('work_hours')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
