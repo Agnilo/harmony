@@ -64,13 +64,6 @@
                 </div>
             </div>
 
-            <!-- Remarks -->
-            <div class="form-group">
-                <label for="remarks">Komentarai</label>
-                <textarea id="remarks" name="remarks" class="form-control" rows="3"></textarea>
-            </div>
-
-            <!-- Submit Button -->
             <button type="submit" class="btn btn-primary">Sukurti</button>
         </form>
     </div>
