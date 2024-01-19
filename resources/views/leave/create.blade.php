@@ -15,7 +15,12 @@
             <div class="form-group row">
                 <label for="leaveRequest_name" class="col-md-2 col-form-label text-md-right">Pavadinimas</label>
                 <div class="col-md-6">
-                    <input type="text" id="leaveRequest_name" name="leaveRequest_name" class="form-control" required>
+                    <input type="text" id="leaveRequest_name" name="leaveRequest_name" class="form-control @error('leaveRequest_name') is-invalid @enderror" required>
+                    @error('leaveRequest_name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
             </div>
 
