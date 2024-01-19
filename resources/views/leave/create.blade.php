@@ -64,7 +64,15 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Sukurti</button>
+            <!-- <button type="submit" class="btn btn-primary">Sukurti</button> -->
+
+            <div class="form-group row">
+                <div class="col-md-2"></div>
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-primary">Sukurti</button>
+                    <a href="{{ route('leaveRequest') }}" class="btn btn-primary">Atšaukti</a>
+                </div>
+            </div>
         </form>
     </div>
 </div>
