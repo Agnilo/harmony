@@ -36,7 +36,7 @@
                     <td>{{ $leaveRequest->reason }}</td>
                     <td>{{ $leaveRequest->start_date }}</td>
                     <td>{{ $leaveRequest->end_date }}</td>
-                    <td>{{ $leaveRequest->approval_status }}
+                    <td>
                         @if($leaveRequest->approval_status == 'pending')
                         Prašymas neperžiūrėtas
                         @elseif($leaveRequest->approval_status == 'approved')
