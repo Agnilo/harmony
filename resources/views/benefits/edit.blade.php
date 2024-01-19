@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="last_name" class="col-md-2 col-form-label text-md-right">Aprašymas</label>
+                    <label for="description" class="col-md-2 col-form-label text-md-right">Aprašymas</label>
 
                     <div class="col-md-6">
                         <input id="description" type="textarea" rows="4" cols="50" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ $benefit->description }}">
@@ -71,7 +71,7 @@
                 {{method_field('PUT') }}
 
                 <div class="form-group row">
-                    <label for="picture" class="col-md-2 col-form-label text-md-right">Paveikslėlis</label>
+                    <label for="benefit-image" class="col-md-2 col-form-label text-md-right">Paveikslėlis</label>
 
                     <div class="col-md-6">
                         <img src="{{ asset('storage/' . $benefit->picture) }}" alt="{{ $benefit->benefit_name }}" class="benefit-image" width="200">
