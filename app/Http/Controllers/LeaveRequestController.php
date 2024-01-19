@@ -64,7 +64,7 @@ class LeaveRequestController extends Controller
         $payrollMonth = $payroll->month;
         $payrollYear = $payroll->year;
 
-        $leaveRequest = new LeaveRequest([
+        $newLeaveRequest = new LeaveRequest([
             'leaveRequest_name' => $validatedData['leaveRequest_name'],
             'leave_type' => $validatedData['leave_type'],
             'reason' => $validatedData['reason'],
@@ -76,9 +76,9 @@ class LeaveRequestController extends Controller
             'approval_status' => 'Prašymas neperžiūrėtas',
         ]);
 
-        $user->leaveRequests()->save($leaveRequest);
+        $user->leaveRequests()->save($newLeaveRequest);
 
-        $leaveRequest->payrolls()->attach($payroll->id);
+        $newLeaveRequest->payrolls()->attach($payroll->id);
 
         $existingLeaveRequests = LeaveRequest::where('user_id', $user->id)->get();
 
