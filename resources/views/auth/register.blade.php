@@ -57,7 +57,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-end card-body-element-input">{{ __('Slaptažodis') }}</label>
 
                             <div class="col-md-6 card-body-element-input">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password" oninvalid="this.setCustomValidity('Slaptažodį turi sudaryti bent 8 simboliai ir turi būti bent 1 didžioji raidė, 1 skaičius ir 1 specialusis simbolis')" oninput="this.setCustomValidity('')">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password" oninvalid="this.setCustomValidity('Slaptažodį turi sudaryti bent 8 simboliai ir turi būti bent 1 didžioji raidė, 1 skaičius ir 1 specialusis simbolis')" oninput="this.setCustomValidity('Slaptažodį turi sudaryti bent 8 simboliai ir turi būti bent 1 didžioji raidė, 1 skaičius ir 1 specialusis simbolis')">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
