@@ -68,15 +68,15 @@
                                 <td class="profile-information-cell">{{ $user->vacation_days }}</td>
                             </tr>
                             <tr class="profile-information-row">
-                                <td class="profile-information-cell profile-label">Bruto užmokestis:</td>
+                                <td class="profile-information-cell profile-label">Darbo užmokestis neatskaičius mokesčių:</td>
                                 <td class="profile-information-cell">{{ $grossSalary }}€</td>
                             </tr>
                             <tr class="profile-information-row">
-                                <td class="profile-information-cell profile-label">Neto Užmokestis</td>
+                                <td class="profile-information-cell profile-label">Darbo užmokestis atskaičius mokesčius:</td>
                                 <td class="profile-information-cell">{{ $netSalary }}€</td>
                             </tr>
                             <tr class="profile-information-row">
-                                <td class="profile-information-cell profile-label">Informacija</td>
+                                <td class="profile-information-cell profile-label">Informacija:</td>
                                 <td class="profile-information-cell">{{ $info }}</td>
                             </tr>
                         </table>
