@@ -77,15 +77,33 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email,' . $user->id,
             'gender' => 'nullable|in:Vyras,Moteris,Kita',
             'is_verified' => 'nullable|boolean',
+        ], [
+            'first_name.required' => 'Būtina įvesti naudotojo vardą',
+            'first_name.max' => 'Galima įvesti iki 255 simbolių',
+            'last_name.required' => 'Būtina įvesti naudotojo pavardę',
+            'last_name.max' => 'Galima įvesti iki 255 simbolių',
+            'email.required' => 'Būtina įvesti el. paštą',
+            'email.unique' => 'Toks el. pašto adresas jau egzistuoja',
+            'email.email' => 'Neteisingas el. pašto formatas',
         ]);
 
 
         $payrollValidation = $request->validate([
             'work_hours' => 'nullable|numeric|between:0,99.9',
             'work_days' => 'nullable|integer|min:0',
-            'overtime' => 'nullable|numeric',
+            'overtime' => 'nullable|numeric|min:0',
             'gross' => 'nullable|numeric|between:0,999999.99',
             'info' => 'nullable|string|max:255',
+        ], [
+            'work_hours.numeric' => 'Turi būti įvestas skaičius',
+            'work_hours.between' => 'Darbo valandų skaičius turi būti tarp 0 ir 99.9',
+            'work_days.integer' => 'Turi būti įvestas sveikasis skaičius',
+            'work_days.min' => 'Įvestas skaičius negali būti mažesnis nei 0',
+            'overtime.numeric' => 'Turi būti įvestas skaičius',
+            'overtime.min' => 'Įvestas skaičius negali būti mažesnis nei 0',
+            'gross.numeric' => 'Turi būti įvestas skaičius',
+            'gross.between' => 'Bruto suma turi būti tarp 0 ir 999999,99.',
+            'info.max' => 'Įvestas tekstas negali viršyti 255 simbolių.',
         ]);
 
         $user->fill([
@@ -138,7 +156,7 @@ class UserController extends Controller
                     }
                 }
             }
-        
+
 
             $salaryCalculationRequest = new Request();
             $salaryCalculationRequest->replace([
@@ -213,9 +231,26 @@ class UserController extends Controller
             'gender' => 'nullable|in:Vyras,Moteris,Kita',
             'work_hours' => 'nullable|numeric|between:0,99.9',
             'work_days' => 'nullable|integer|min:0',
-            'overtime' => 'nullable|numeric',
+            'overtime' => 'nullable|numeric|min:0',
             'gross' => 'nullable|numeric|between:0,999999.99',
             'info' => 'nullable|string|max:255',
+        ], [
+            'first_name.required' => 'Būtina įvesti naudotojo vardą',
+            'first_name.max' => 'Galima įvesti iki 255 simbolių',
+            'last_name.required' => 'Būtina įvesti naudotojo pavardę',
+            'last_name.max' => 'Galima įvesti iki 255 simbolių',
+            'email.required' => 'Būtina įvesti el. paštą',
+            'email.unique' => 'Toks el. pašto adresas jau egzistuoja',
+            'email.email' => 'Neteisingas el. pašto formatas',
+            'work_hours.numeric' => 'Turi būti įvestas skaičius',
+            'work_hours.between' => 'Darbo valandų skaičius turi būti tarp 0 ir 99.9',
+            'work_days.integer' => 'Turi būti įvestas sveikasis skaičius',
+            'work_days.min' => 'Įvestas skaičius negali būti mažesnis nei 0',
+            'overtime.numeric' => 'Turi būti įvestas skaičius',
+            'overtime.min' => 'Įvestas skaičius negali būti mažesnis nei 0',
+            'gross.numeric' => 'Turi būti įvestas skaičius',
+            'gross.between' => 'Bruto suma turi būti tarp 0 ir 999999,99.',
+            'info.max' => 'Įvestas tekstas negali viršyti 255 simbolių.',
         ]);
 
         // Log::info("Data verified");
