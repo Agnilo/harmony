@@ -633,6 +633,10 @@ footer{
     flex-direction: column;
 }
 
+.benefit-link-profile{
+    color: var(--primary-color);
+}
+
 .benefit-link-profile a{
     color: var(--primary-color);
 }
