@@ -96,6 +96,8 @@ class LeaveRequestController extends Controller
             $endYear = (int)$endDate->format('Y');
             $endMonth = (int)$endDate->format('m');
 
+            dd($leaveRequest->leave_type);
+
             if (
                 ($startYear == $payrollYear && $startMonth == $payrollMonth) ||
                 ($endYear == $payrollYear && $endMonth == $payrollMonth) ||
