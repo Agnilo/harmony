@@ -47,7 +47,7 @@ class LeaveRequestController extends Controller
     {
         $user = Auth::user();
 
-        dd('aš čia');
+        
 
         $validatedData = $request->validate([
             'leaveRequest_name' => 'required|string|max:255',
@@ -59,6 +59,8 @@ class LeaveRequestController extends Controller
             'file_upload' => 'nullable|mimes:pdf,doc,docx|max:2048',
             'remarks' => 'nullable|string|max:255',
         ]);
+
+        dd('aš čia');
 
         $filePath = $request->file('file_upload') ? $request->file('file_upload')->store('leaveRequests', 'public') : null;
 
