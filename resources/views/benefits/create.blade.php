@@ -26,21 +26,55 @@
             <div class="form-group row">
                 <label for="description" class="col-md-2 col-form-label text-md-right">Privalumo aprašymas:</label>
                 <div class="col-md-6">
-                    <textarea name="description" class="form-control"></textarea>
+                    <textarea name="description" class="form-control @error('description')"></textarea>
+                    @error('description')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="picture" class="col-md-2 col-form-label text-md-right">Pasirinkti paveikslėlį:</label>
                 <div class="col-md-6">
-                    <input type="file" name="picture" class="form-control-file" id="picture">
+                    <input type="file" name="picture" class="form-control-file" id="picture" onchange="validateImage()">
+                    <script>
+                        function validateImage() {
+                            var fileInput = document.getElementById('picture');
+                            var maxSize = 2048 * 1024;
+                            var allowedTypes = ['image/jpeg', 'image/png', 'image/bmp', 'image/gif', 'image/svg+xml', 'image/webp'];
+
+                            if (fileInput.files && fileInput.files[0]) {
+                                var fileSize = fileInput.files[0].size;
+                                var fileType = fileInput.files[0].type;
+
+                                if (fileSize > maxSize) {
+                                    alert('The file is too large. Maximum size allowed is 2 MB.');
+                                    fileInput.value = '';
+                                    return false;
+                                }
+
+                                if (!allowedTypes.includes(fileType)) {
+                                    alert('Invalid file type. Only JPEG, PNG, BMP, GIF, SVG, and WebP are allowed.');
+                                    fileInput.value = '';
+                                    return false;
+                                }
+                            }
+                        }
+                    </script>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="price" class="col-md-2 col-form-label text-md-right">Kaina:</label>
                 <div class="col-md-6">
-                    <input type="number" name="price" step="0.50" class="form-control">
+                    <input type="number" name="price" step="0.50" class="form-control @error('price')">
+                    @error('price')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
             </div>
 
