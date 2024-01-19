@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="gender" class="col-md-2 col-form-label text-md-right">Lytis</label><br>
+                    <div class="col-md-2 col-form-label text-md-right">Lytis</div><br>
                     <div class="col-md-6">
                         <div class="form-check">
                             <input type="radio" id="male" name="gender" value="Vyras" {{ old('gender', $user->gender) == 'Vyras' ? 'checked' : '' }}>
@@ -74,7 +74,7 @@
                     <div class="col-md-6">
                         @foreach($roles as $role)
                         <div class="form-check">
-                            <input type="radio" name="roles" value="{{ $role->id }}" @if($user->roles->pluck('id')->contains($role->id)) checked @endif>
+                            <input type="radio" id="roles" name="roles" value="{{ $role->id }}" @if($user->roles->pluck('id')->contains($role->id)) checked @endif>
                             <label>{{ $role->name }}</label>
                         </div>
                         @endforeach
