@@ -36,7 +36,15 @@
                     <td>{{ $leaveRequest->reason }}</td>
                     <td>{{ $leaveRequest->start_date }}</td>
                     <td>{{ $leaveRequest->end_date }}</td>
-                    <td>{{ $leaveRequest->approval_status }}</td>
+                    <td>{{ $leaveRequest->approval_status }}
+                        @if($leaveRequest->approval_status == 'pending')
+                        Prašymas neperžiūrėtas
+                        @elseif($leaveRequest->approval_status == 'approved')
+                        Patvirtintas
+                        @elseif($leaveRequest->approval_status == 'rejected')
+                        Atmestas
+                        @endif
+                    </td>
                     <td class="user-buttons">
                         <div class="buttons">
                             <a href="{{ route('leaveRequest.edit', $leaveRequest) }}" class="btn btn-primary">Redaguoti</a>
