@@ -82,7 +82,7 @@ class LeaveRequestController extends Controller
 
         $existingLeaveRequests = LeaveRequest::where('user_id', $user->id)->get();
 
-        $existingLeaveRequests->push($newLeaveRequest);
+        //$existingLeaveRequests->push($newLeaveRequest);
 
         $totalPaidLeaveDays = 0;
         $totalUnpaidLeaveDays = 0;
