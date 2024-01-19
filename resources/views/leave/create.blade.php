@@ -2,7 +2,13 @@
 
 @section('content')
 <div class="web-child-content">
-<h2>Sukurti atostogų prašymą</h2>
+    <div class="container">
+        <div class="create-benefit-header">
+
+            <h2>Sukurti atostogų prašymą</h2>
+
+        </div>
+
         <form method="POST" action="{{ route('leaveRequest.store') }}" enctype="multipart/form-data">
             @csrf
 
@@ -54,5 +60,6 @@
             <!-- Submit Button -->
             <button type="submit" class="btn btn-primary">Sukurti</button>
         </form>
+    </div>
 </div>
 @endsection
