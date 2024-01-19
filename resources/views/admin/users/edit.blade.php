@@ -17,7 +17,7 @@
                 <div class="form-group row">
                     <label for="email" class="col-md-2 col-form-label text-md-right">El. Paštas</label>
                     <div class="col-md-6">
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" required autocomplete="email" autofocus>
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" autocomplete="email">
                         @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -29,7 +29,7 @@
                 <div class="form-group row">
                     <label for="first_name" class="col-md-2 col-form-label text-md-right">Vardas</label>
                     <div class="col-md-6">
-                        <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ $user->first_name }}" required autofocus>
+                        <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ $user->first_name }}">
                         @error('first_name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -41,7 +41,7 @@
                 <div class="form-group row">
                     <label for="last_name" class="col-md-2 col-form-label text-md-right">Pavardė</label>
                     <div class="col-md-6">
-                        <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ $user->last_name }}" required autofocus>
+                        <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ $user->last_name }}">
                         @error('last_name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-md-2 col-form-label text-md-right">Lytis</label><br>
+                    <label for="gender" class="col-md-2 col-form-label text-md-right">Lytis</label><br>
                     <div class="col-md-6">
                         <div class="form-check">
                             <input type="radio" id="male" name="gender" value="Vyras" {{ old('gender', $user->gender) == 'Vyras' ? 'checked' : '' }}>
@@ -97,7 +97,7 @@
                 <div class="form-group row">
                     <label for="work_hours" class="col-md-2 col-form-label text-md-right">Darbo valandos per savaitę</label>
                     <div class="col-md-6">
-                        <input id="work_hours" type="text" class="form-control @error('work_hours') is-invalid @enderror" name="work_hours" value="{{ $work_hours }}" required autofocus>
+                        <input id="work_hours" type="text" class="form-control @error('work_hours') is-invalid @enderror" name="work_hours" value="{{ $work_hours }}">
                         @error('work_hours')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -109,7 +109,7 @@
                 <div class="form-group row">
                     <label for="work_days" class="col-md-2 col-form-label text-md-right">Darbo dienos per savaitę</label>
                     <div class="col-md-6">
-                        <input id="work_days" type="text" class="form-control @error('work_days') is-invalid @enderror" name="work_days" value="{{ $work_days }}" required autofocus>
+                        <input id="work_days" type="text" class="form-control @error('work_days') is-invalid @enderror" name="work_days" value="{{ $work_days }}">
                         @error('work_days')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -121,7 +121,7 @@
                 <div class="form-group row">
                     <label for="overtime" class="col-md-2 col-form-label text-md-right">Viršvalandžiai</label>
                     <div class="col-md-6">
-                        <input id="overtime" type="text" class="form-control @error('overtime') is-invalid @enderror" name="overtime" value="{{ $overtime }}" required autofocus>
+                        <input id="overtime" type="text" class="form-control @error('overtime') is-invalid @enderror" name="overtime" value="{{ $overtime }}">
                         @error('overtime')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -133,7 +133,7 @@
                 <div class="form-group row">
                     <label for="gross" class="col-md-2 col-form-label text-md-right">Bruto atlyginimas</label>
                     <div class="col-md-6">
-                        <input id="gross" type="text" class="form-control @error('gross') is-invalid @enderror" name="gross" value="{{ $gross }}" required autofocus>
+                        <input id="gross" type="text" class="form-control @error('gross') is-invalid @enderror" name="gross" value="{{ $gross }}">
                         @error('gross')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -145,19 +145,14 @@
                 <div class="form-group row">
                     <label for="net" class="col-md-2 col-form-label text-md-right">Neto atlyginimas</label>
                     <div class="col-md-6">
-                        <input id="net" type="text" class="form-control @error('net') is-invalid @enderror" name="net" value="{{ $net }}" readonly>
-                        @error('net')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
+                        <input id="net" type="text" class="form-control" name="net" value="{{ $net }}" readonly>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="info" class="col-md-2 col-form-label text-md-right">Papildoma informacija</label>
                     <div class="col-md-6">
-                        <input id="info" type="text" class="form-control @error('info') is-invalid @enderror" name="info" value="{{ $info }}" autofocus>
+                        <input id="info" type="text" class="form-control @error('info') is-invalid @enderror" name="info" value="{{ $info }}">
                         @error('info')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
