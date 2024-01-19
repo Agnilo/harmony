@@ -48,8 +48,6 @@ class LeaveRequestController extends Controller
         $user = Auth::user();
 
 
-        try {
-
             $validatedData = $request->validate([
                 'leaveRequest_name' => 'required|string|max:255',
                 'leave_type' => 'required|in:paid_leave,unpaid_leave',
@@ -62,10 +60,6 @@ class LeaveRequestController extends Controller
             ], [
                 'leaveRequest_name.required' => 'Pavadinimas nėra įvestas',
             ]);
-        } catch (\Illuminate\Validation\ValidationException $e) {
-            Log::error('Validation failed', $e->errors());
-            throw $e;
-        }
 
         //dd('aš čia');
 
