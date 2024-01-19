@@ -70,11 +70,11 @@
 
                 <!-- Role Selection -->
                 <div class="form-group row">
-                    <label for="roles" class="col-md-2 col-form-label text-md-right">Vaidmuo</label>
+                    <div for="roles" class="col-md-2 col-form-label text-md-right">Vaidmuo</div>
                     <div class="col-md-6">
                         @foreach($roles as $role)
                         <div class="form-check">
-                            <input type="radio" id="roles" name="roles" value="{{ $role->id }}" @if($user->roles->pluck('id')->contains($role->id)) checked @endif>
+                            <input type="radio" name="roles" value="{{ $role->id }}" @if($user->roles->pluck('id')->contains($role->id)) checked @endif>
                             <label>{{ $role->name }}</label>
                         </div>
                         @endforeach
