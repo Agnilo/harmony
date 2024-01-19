@@ -77,7 +77,7 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email,' . $user->id,
             'gender' => 'nullable|in:Vyras,Moteris,Kita',
             'is_verified' => 'nullable|boolean',
-            'position' => 'required|in:Sistemos administratorius,Skyriaus vadovas,Specialistas,Personalo valdymo skyriaus vadovas,Personalo skyriaus specialistas',
+            'position' => 'required|in:Sistemos administratorius,Skyriaus vadovas,Specialistas,Personalo valdymo skyriaus vadovas,Personalo valdymo skyriaus specialistas',
         ], [
             'first_name.required' => 'Būtina įvesti naudotojo vardą',
             'first_name.max' => 'Galima įvesti iki 255 simbolių',
@@ -232,7 +232,7 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email,',
             'password' => 'required|string|min:8|regex:/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]+$/',
             'gender' => 'nullable|in:Vyras,Moteris,Kita',
-            'position' => 'required|in:Sistemos administratorius,Skyriaus vadovas,Specialistas,Personalo valdymo skyriaus vadovas,Personalo skyriaus specialistas',
+            'position' => 'required|in:Sistemos administratorius,Skyriaus vadovas,Specialistas,Personalo valdymo skyriaus vadovas,Personalo valdymo skyriaus specialistas',
             'work_hours' => 'nullable|numeric|between:0,99.9',
             'work_days' => 'nullable|integer|min:0',
             'overtime' => 'nullable|numeric|min:0',
