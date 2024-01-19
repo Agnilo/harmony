@@ -26,7 +26,13 @@
                 @foreach ($leaveRequests as $leaveRequest)
                 <tr>
                     <th scope="row">{{ $leaveRequest->leaveRequest_name }}</th>
-                    <td>{{ $leaveRequest->leave_type }}</td>
+                    <td>
+                        @if($leaveRequest->leave_type == 'paid_leave')
+                        Apmokamos
+                        @elseif($leaveRequest->leave_type == 'unpaid_leave')
+                        Neapmokamos
+                        @endif
+                    </td>
                     <td>{{ $leaveRequest->reason }}</td>
                     <td>{{ $leaveRequest->start_date }}</td>
                     <td>{{ $leaveRequest->end_date }}</td>
