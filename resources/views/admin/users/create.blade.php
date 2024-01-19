@@ -171,13 +171,19 @@
                     </div>
                 </div>
 
+
+
                 <div class="form-group row">
-                <div class="col-md-2"></div>
-                <div class="col-md-6">
-                    <button type="submit" class="btn btn-primary">Sukurti</button>
-                    <a href="{{ route('admin.users.index') }}" class="btn btn-primary">Atšaukti</a>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-primary user-create-button-margin-right">
+                            Sukurti
+                        </button>
+                        <a href="{{ route('admin.users.index') }}" class="btn btn-primary user-create-button-margin-left">
+                            Atšaukti
+                        </a>
+                    </div>
                 </div>
-            </div>
             </form>
         </div>
     </div>
