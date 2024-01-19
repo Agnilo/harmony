@@ -3,6 +3,11 @@
 @section('content')
 <div class="web-child-content">
     <div class="benefit-show-container">
+    @hasrole('SuperUser')
+        <a href="{{route('benefits.edit', $benefit->id)}}">
+            <button type="button" class="btn btn-primary float-left user-button-inside">Redaguoti</button>
+        </a>
+    @endhasrole
         <div class="benefit-show-picture">
             <img src="{{ asset('storage/' . $benefit->picture) }}" alt="{{ $benefit->benefit_name }}" class="img-fluid benefit-show-img">
         </div>
@@ -23,15 +28,15 @@
                         </div>
                         <div class="benefit-show-card-price">
                             @if($benefit->price > 0)
-                                <p><span style="font-weight: bold">Kaina:</span> {{ $benefit->price }} €</p>
+                            <p><span style="font-weight: bold">Kaina:</span> {{ $benefit->price }} €</p>
                             @endif
                         </div>
                         <div class="benefit-show-button">
                             @auth
                             <form method="POST" action="{{ route('benefits.select', $benefit) }}">
-                            @csrf
-                            @if(auth()->user()->selectedBenefits->contains($benefit->id))      
-                                    <button class="btn btn-secondary" disabled>Pasirinktas</button>
+                                @csrf
+                                @if(auth()->user()->selectedBenefits->contains($benefit->id))
+                                <button class="btn btn-secondary" disabled>Pasirinktas</button>
                                 @else
                                 <button type="submit" class="btn btn-primary">Pasirinkti</button>
                                 @endif
