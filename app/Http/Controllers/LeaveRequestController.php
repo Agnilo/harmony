@@ -76,7 +76,7 @@ class LeaveRequestController extends Controller
             'approval_status' => 'Prašymas neperžiūrėtas',
         ]);
 
-        //dd($newLeaveRequest->leave_type);
+        dd($newLeaveRequest->leave_type);
 
         $user->leaveRequests()->save($newLeaveRequest);
 
@@ -97,7 +97,7 @@ class LeaveRequestController extends Controller
                 'start_date' => $leaveRequest->start_date,
                 'end_date' => $leaveRequest->end_date
             ]);
-            
+
             $startDate = new \DateTime($leaveRequest->start_date);
             $endDate = new \DateTime($leaveRequest->end_date);
         
