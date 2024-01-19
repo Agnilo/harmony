@@ -63,7 +63,7 @@ class LoginController extends Controller
         if (! $request->filled('password')) {
             $errors['password'] = 'Būtina įvesti slaptažodį.';
         } else {
-            $errors['email'] = 'Neteisingas slaptažodis';
+            $errors['password'] = 'Neteisingas slaptažodis';
         }
 
         throw ValidationException::withMessages($errors);
