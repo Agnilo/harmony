@@ -4,9 +4,11 @@
 <div class="web-child-content">
     <div class="benefit-show-container">
     @hasrole('SuperUser')
+    <div class="benefit-edit-in-show">
         <a href="{{route('benefits.edit', $benefit->id)}}">
             <button type="button" class="btn btn-primary float-left user-button-inside">Redaguoti</button>
         </a>
+    </div>
     @endhasrole
         <div class="benefit-show-picture">
             <img src="{{ asset('storage/' . $benefit->picture) }}" alt="{{ $benefit->benefit_name }}" class="img-fluid benefit-show-img">
