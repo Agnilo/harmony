@@ -27,15 +27,6 @@
                     </div>
                 </div>
 
-                <!-- Leave Type
-                <div class="form-group">
-                    <label for="leave_type">Atostogų tipas</label>
-                    <select id="leave_type" name="leave_type" class="form-control">
-                        <option value="paid_leave" {{ $leaveRequest->leave_type === 'paid_leave' ? 'selected' : '' }}>Apmokamos atostogos</option>
-                        <option value="unpaid_leave" {{ $leaveRequest->leave_type === 'unpaid_leave' ? 'selected' : '' }}>Neapmokamos atostogos</option>
-                    </select>
-                </div> -->
-
                 <div class="form-group row">
                     <label for="leave_type" class="col-md-2 col-form-label text-md-right">Atostogų tipas</label>
 
@@ -53,16 +44,44 @@
                     </div>
                 </div>
 
-                <!-- Reason -->
+                <div class="form-group row">
+                    <label for="reason" class="col-md-2 col-form-label text-md-right">Pavadinimas</label>
+
+                    <div class="col-md-6">
+                        <input id="reason" type="text" class="form-control @error('reason') is-invalid @enderror" name="reason" value="{{ $leaveRequest->reason }}" required>
+
+                        @error('reason')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <!-- Reason
                 <div class="form-group">
                     <label for="reason">Priežastis</label>
                     <textarea id="reason" name="reason" class="form-control" rows="3">{{ $leaveRequest->reason }}</textarea>
-                </div>
+                </div> -->
 
-                <!-- Start Date -->
+                <!-- Start Date
                 <div class="form-group">
                     <label for="start_date">Pradžios data</label>
                     <input type="date" id="start_date" name="start_date" class="form-control" value="{{ $leaveRequest->start_date }}">
+                </div> -->
+
+                <div class="form-group row">
+                    <label for="start_date" class="col-md-2 col-form-label text-md-right">Pradžios data</label>
+
+                    <div class="col-md-6">
+                        <input id="start_date" type="text" class="form-control @error('start_date') is-invalid @enderror" name="start_date" value="{{ $leaveRequest->start_date }}" required>
+
+                        @error('start_date')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
                 </div>
 
                 <!-- End Date -->
