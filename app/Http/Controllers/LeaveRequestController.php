@@ -290,6 +290,12 @@ class LeaveRequestController extends Controller
                     }
                 }
 
+                if ($leaveRequest->leave_type === 'paid_leave') {
+                    $totalPaidLeaveDays -= $leaveRequest->days;
+                } elseif ($leaveRequest->leave_type === 'unpaid_leave') {
+                    $totalUnpaidLeaveDays -= $leaveRequest->days;
+                }
+
                 $salaryCalculationRequest = new Request([
                     'work_hours' => $payroll->work_hours,
                     'work_days' => $payroll->work_days,
