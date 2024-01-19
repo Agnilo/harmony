@@ -821,7 +821,7 @@ footer{
     width: 100%;
     height: 150px;
     resize: none;
-    text-align: right;
+    text-align: left;
     overflow-y: auto;
 }
 
