@@ -14,7 +14,12 @@
             <div class="form-group row">
                 <label for="benefit_name" class="col-md-2 col-form-label text-md-right">Privalumo pavadinimas:</label>
                 <div class="col-md-6">
-                    <input type="text" name="benefit_name" class="form-control" required>
+                    <input type="text" name="benefit_name" class="form-control @error('benefit_name') is-invalid @enderror">
+                    @error('benefit_name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
             </div>
 
@@ -35,7 +40,7 @@
             <div class="form-group row">
                 <label for="price" class="col-md-2 col-form-label text-md-right">Kaina:</label>
                 <div class="col-md-6">
-                    <input type="number" name="price" step="0.50" class="form-control" required>
+                    <input type="number" name="price" step="0.50" class="form-control">
                 </div>
             </div>
 
