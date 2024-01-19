@@ -171,7 +171,9 @@ class UserController extends Controller
             $net = $user->calculateNetSalary($payrollValidation['gross'], $salaryCalculationRequest, $totalPaidLeaveDays, $totalUnpaidLeaveDays);
         }
 
-        $payrollData = array_merge($payrollValidation, ['net' => $net]);
+        $info = $validatedData['info'] ?? $payroll->info ?? '';
+
+        $payrollData = array_merge($payrollValidation, ['net' => $net, 'info' => $info]);
 
         if ($user->payroll) {
             $user->payroll->update($payrollData);
