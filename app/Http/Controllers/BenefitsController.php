@@ -50,10 +50,18 @@ class BenefitsController extends Controller
         $validatedData = $request->validate([
             'benefit_name' => 'required|string|max:255',
             'description' => 'nullable|string|max:60',
-            'picture' => 'nullable|image|max:2048', // Update to nullable, as picture is not required in update
-            'price' => 'required|numeric',
+            'picture' => 'nullable|image|max:2048',
+            'price' => 'required|numeric|min:0|max:1000|regex:/^\d*(\.\d{0,2})?$/',
             'introduction' => 'nullable|string',
             'content' => 'nullable|string',
+        ],[
+            'benefit_name.required' => 'Būtina įvesti privalumo pavadinimą',
+            'description.max' => 'Aprašymas negali būti ilgesnis nei 60 simbolių',
+            'price.required' => 'Būtina įvesti kainą. Mažiausia vertė: 0',
+            'price.numeric' => 'Įvesta kaina turi būti skaičius',
+            'price.min' => 'Kaina negali būti neigiama',
+            'price.max' => 'Kaina negali būti didesnė nei 1000€',
+            'price.regex' => 'Negalima įvesti daugiau nei 2 skaičių po kablelio',
         ]);
 
         // Update benefit properties
@@ -84,11 +92,19 @@ class BenefitsController extends Controller
     {
         $validatedData = $request->validate([
             'benefit_name' => 'required|string|max:255',
-            'description' => 'nullable|string',
+            'description' => 'nullable|string|max:60',
             'picture' => 'required|image|max:2048',
-            'price' => 'required|numeric',
+            'price' => 'required|numeric|min:0|max:1000|regex:/^\d*(\.\d{0,2})?$/',
             'introduction' => 'nullable|string',
             'content' => 'nullable|string',
+        ], [
+            'benefit_name.required' => 'Būtina įvesti privalumo pavadinimą',
+            'description.max' => 'Aprašymas negali būti ilgesnis nei 60 simbolių',
+            'price.required' => 'Būtina įvesti kainą. Mažiausia vertė: 0',
+            'price.numeric' => 'Įvesta kaina turi būti skaičius',
+            'price.min' => 'Kaina negali būti neigiama',
+            'price.max' => 'Kaina negali būti didesnė nei 1000€',
+            'price.regex' => 'Negalima įvesti daugiau nei 2 skaičių po kablelio',
         ]);
 
         $picturePath = $request->file('picture')->store('benefit_pictures', 'public');
@@ -115,7 +131,7 @@ class BenefitsController extends Controller
             return redirect()->route('benefits.index')->with('success', 'Privalumas ištrintas sėkmingai');;
         } else {
 
-            return redirect()->route('benefits.index')->with('error', 'Neturi tam teisių');
+            return redirect()->route('benefits.index')->with('error', 'Neturite tam teisių');
         }
     }
 
