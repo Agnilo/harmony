@@ -66,7 +66,7 @@
                             <option value="Sistemos administratorius" {{ old('position') == 'Sistemos administratorius' ? 'selected' : '' }}>Sistemos administratorius</option>
                             <option value="Skyriaus vadovas" {{ old('position') == 'Skyriaus vadovas' ? 'selected' : '' }}>Skyriaus vadovas</option>
                             <option value="Personalo valdymo skyriaus vadovas" {{ old('position') == 'Personalo valdymo skyriaus vadovas' ? 'selected' : '' }}>Personalo valdymo skyriaus vadovas</option>
-                            <option value="Personalo skyriaus specialistas" {{ old('position') == 'Personalo valdymo skyriaus specialistas' ? 'selected' : '' }}>Personalo skyriaus specialistas</option>
+                            <option value="Personalo valdymo skyriaus specialistas" {{ old('position') == 'Personalo valdymo skyriaus specialistas' ? 'selected' : '' }}>Personalo valdymo skyriaus specialistas</option>
                         </select>
                     </div>
                 </div>
