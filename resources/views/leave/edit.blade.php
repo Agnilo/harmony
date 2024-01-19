@@ -43,7 +43,7 @@
         <!-- Days -->
         <div class="form-group">
             <label for="days">Dienos</label>
-            <input type="number" id="days" name="days" class="form-control" value="{{ $leaveRequest->days }}">
+            <input type="number" id="days" name="days" class="form-control" value="{{ $leaveRequest->days }}" readonly>
         </div>
 
         <!-- File Upload -->

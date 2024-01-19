@@ -39,12 +39,6 @@
                 <input type="date" id="end_date" name="end_date" class="form-control">
             </div>
 
-            <!-- Days -->
-            <div class="form-group">
-                <label for="days">Dienų skaičius</label>
-                <input type="number" id="days" name="days" class="form-control">
-            </div>
-
             <!-- File Upload -->
             <div class="form-group">
                 <label for="file_upload">Įkelti failą</label>
