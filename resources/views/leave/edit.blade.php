@@ -74,7 +74,7 @@
                     <label for="start_date" class="col-md-2 col-form-label text-md-right">Pradžios data</label>
 
                     <div class="col-md-6">
-                        <input id="start_date" type="text" class="form-control @error('start_date') is-invalid @enderror" name="start_date" value="{{ $leaveRequest->start_date }}" required>
+                        <input id="start_date" type="date" class="form-control @error('start_date') is-invalid @enderror" name="start_date" value="{{ $leaveRequest->start_date }}" required>
 
                         @error('start_date')
                         <span class="invalid-feedback" role="alert">
