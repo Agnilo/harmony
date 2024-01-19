@@ -107,8 +107,6 @@ class LeaveRequestController extends Controller
             }
         }
 
-        $existingLeaveRequests->push($leaveRequest);
-
         $salaryCalculationRequest = new Request([
             'work_hours' => $payroll->work_hours,
             'work_days' => $payroll->work_days,
@@ -118,16 +116,14 @@ class LeaveRequestController extends Controller
             'year' => $payrollYear,
             'total_paid_leave_days' => $totalPaidLeaveDays,
             'total_unpaid_leave_days' => $totalUnpaidLeaveDays,
-            'leave_request_id' => $leaveRequest->id,
+            'leave_request_id' => $newLeaveRequest->id,
         ]);
 
         $netSalary = $user->calculateNetSalary($payroll->gross, $salaryCalculationRequest, $totalPaidLeaveDays, $totalUnpaidLeaveDays);
         $payroll->update(['net' => $netSalary]);
 
-
         if ($validatedData['leave_type'] == 'paid_leave') {
-            $newVacationDays = $user->vacation_days - $validatedData['days'];
-            $user->vacation_days = $newVacationDays;
+            $user->vacation_days -= $validatedData['days'];
             $user->save();
         }
 
@@ -244,8 +240,8 @@ class LeaveRequestController extends Controller
                 // dd($totalPaidLeaveDays, $totalUnpaidLeaveDays);
 
                 if ($leaveRequest->leave_type === 'paid_leave') {
-                     $totalPaidLeaveDays -= $leaveRequest->days;
-                 } //elseif ($leaveRequest->leave_type === 'unpaid_leave') {
+                    $totalPaidLeaveDays -= $leaveRequest->days;
+                } //elseif ($leaveRequest->leave_type === 'unpaid_leave') {
                 //     $totalUnpaidLeaveDays -= $leaveRequest->days;
                 // }
 
