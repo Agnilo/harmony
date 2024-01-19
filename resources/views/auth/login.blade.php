@@ -14,7 +14,7 @@
                         <label for="email" class="col-md-4 col-form-label text-md-end card-body-element-input">{{ __('El. Pašto adresas') }}</label>
 
                         <div class="col-md-6 card-body-element-input">
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" oninvalid="this.setCustomValidity('Prašome įtraukti \'@\' el. pašto adrese.')" oninput="this.setCustomValidity('')">
 
                             @error('email')
                             <span class="invalid-feedback" role="alert">
