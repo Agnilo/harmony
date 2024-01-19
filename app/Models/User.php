@@ -101,6 +101,7 @@ class User extends Authenticatable
         $unpaidLeaveDeduction = 0;
         $paidLeaveSum = 0;
 
+        dd($totalUnpaidLeaveDays);
         
 
         if ($request->leave_request_id) {

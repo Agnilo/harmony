@@ -299,7 +299,7 @@ class LeaveRequestController extends Controller
                     }
                 }
 
-                dd($totalPaidLeaveDays);
+                //dd($totalPaidLeaveDays);
 
                 $net = $user->calculateNetSalary($payroll->gross, new Request([
                     'work_hours' => $payroll->work_hours,
