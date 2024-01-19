@@ -64,8 +64,6 @@
                 </div>
             </div>
 
-            <!-- <button type="submit" class="btn btn-primary">Sukurti</button> -->
-
             <div class="form-group row">
                 <div class="col-md-2"></div>
                 <div class="col-md-6">
