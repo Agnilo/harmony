@@ -471,6 +471,7 @@ footer{
 
 .web-child-content{
     display: flex;
+    background-color: var(--primary-backgroung-color);
     flex-direction: column;
     padding-top: 25px;
     padding-left: 48px;
