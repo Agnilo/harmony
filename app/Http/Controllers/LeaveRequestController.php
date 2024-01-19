@@ -90,6 +90,14 @@ class LeaveRequestController extends Controller
         $totalUnpaidLeaveDays = 0;
 
         foreach ($existingLeaveRequests as $leaveRequest) {
+
+            Log::info('Processing leave request', [
+                'type' => $leaveRequest->leave_type,
+                'days' => $leaveRequest->days,
+                'start_date' => $leaveRequest->start_date,
+                'end_date' => $leaveRequest->end_date
+            ]);
+            
             $startDate = new \DateTime($leaveRequest->start_date);
             $endDate = new \DateTime($leaveRequest->end_date);
         
