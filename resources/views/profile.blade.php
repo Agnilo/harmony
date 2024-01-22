@@ -10,11 +10,12 @@
 
 
                         @php
-                        $userAvatar = $user->userMeta->firstWhere('meta_key', 'avatar');
+                        $userAvatar = $user->userMeta ? $user->userMeta->firstWhere('meta_key', 'avatar') : null;
                         $avatarPath = $userAvatar ? 'storage/' . $userAvatar->meta_value : 'images/user.jpg';
                         @endphp
 
                         <img src="{{ asset($avatarPath) }}" alt="User Image" class="profile-img">
+
 
 
 
