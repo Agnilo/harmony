@@ -333,7 +333,13 @@ class LeaveRequestController extends Controller
 
 
             if ($leaveRequest->leave_type === 'paid_leave') {
-                $user->vacation_days += $leaveRequest->days;
+                $newVacationDays = $user->vacation_days += $leaveRequest->days;
+
+                if ($newVacationDays > 25) {
+                    $newVacationDays = 25;
+                }
+
+                $user->vacation_days = $newVacationDays;
                 $user->save();
             }
 
