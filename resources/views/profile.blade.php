@@ -7,11 +7,7 @@
             <div class="profile-edit-employee">
                 <div class="profile-edit-employee-navbar">
                     <div class="profile-edit-employee-imagesection">
-                        <!-- @php
-                        $userAvatar = $user->userMeta->where('meta_key', 'avatar')->first();
-                        $avatarPath = $userAvatar ? 'storage/' . $userAvatar->meta_value : 'images/user.jpg';
-                        @endphp
-                        <img src="{{ asset($avatarPath) }}" alt="User Image" class="profile-img"> -->
+
 
                         @php
                         $userAvatar = $user->userMeta->firstWhere('meta_key', 'avatar');
