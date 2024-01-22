@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,62 +19,62 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    
+
 </head>
-    <body>
-        <header class="main-header">
-            <div class="top-left">
-                <a href="/">
-                    <img src="{{ asset('images/brandLogo.png') }}" alt="Brand Logo Image" class="headerLogo">
-                </a>
-            </div>
-            <nav class="top-middle">
-                    <a class="top-middle-a" href="{{ url('/') }}">Pagrindinis</a>
-                    <div> | </div>
-                    <a class="top-middle-a" href="{{url('/apie')}}">Apie mus</a>
-                    <div> | </div>
-                    <a class="top-middle-a" href="{{ url('/susisiekti') }}">Susisiekite</a>
-            </nav>        
+
+<body>
+    <header class="main-header">
+        <div class="top-left">
+            <a href="/">
+                <img src="{{ asset('images/brandLogo.png') }}" alt="Brand Logo Image" class="headerLogo">
+            </a>
+        </div>
+        <nav class="top-middle">
+            <a class="top-middle-a" href="{{ url('/') }}">Pagrindinis</a>
+            <div> | </div>
+            <a class="top-middle-a" href="{{url('/apie')}}">Apie mus</a>
+            <div> | </div>
+            <a class="top-middle-a" href="{{ url('/susisiekti') }}">Susisiekite</a>
+        </nav>
         @if (Route::has('login'))
         <div class="top-right links">
             @auth
-                <li class="nav-item dropdown links">
-                    <a id="navbarDropdown" class="dropdown-toggle" href="#" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }}
-                    </a>
+            <li class="nav-item dropdown links">
+                <a id="navbarDropdown" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    {{ Auth::user()->name }}
+                </a>
 
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                            {{ __('Atsijungti') }}
-                        </a>
-                        <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </div>
-                </li>
+                        {{ __('Atsijungti') }}
+                    </a>
+                    <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </div>
+            </li>
             @else
-                <a href="{{ url('/login') }}">Prisijungti</a>
+            <a href="{{ url('/login') }}">Prisijungti</a>
 
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}">Registruotis</a>
-                @endif
+            @if (Route::has('register'))
+            <a href="{{ route('register') }}">Registruotis</a>
+            @endif
             @endauth
         </div>
-    @endif
+        @endif
     </header>
-    <div>
+    <div id="main-container">
+
         @yield('content')
-    </div>
 
-<footer id="footer">
-    <div class="copyright-wrapper">
-        <p>HarmonyWorks</p>
-        <p> © 2024. Visos teisės saugomos. </p>
+        <footer id="footer">
+            <div class="copyright-wrapper">
+                <p>HarmonyWorks</p>
+                <p> © 2024. Visos teisės saugomos. </p>
+            </div>
+        </footer>
     </div>
-</footer>
+</body>
 
-    </body>
 </html>
