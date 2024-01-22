@@ -68,7 +68,7 @@
         @yield('content')
     </div>
 
-<footer>
+<footer id="footer">
     <div class="copyright-wrapper">
         <p>HarmonyWorks</p>
         <p> © 2024. Visos teisės saugomos. </p>
