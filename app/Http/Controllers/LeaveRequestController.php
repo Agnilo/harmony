@@ -48,32 +48,35 @@ class LeaveRequestController extends Controller
         $user = Auth::user();
 
 
-            $validatedData = $request->validate([
-                'leaveRequest_name' => 'required|string|max:255',
-                'leave_type' => 'required|in:paid_leave,unpaid_leave',
-                'reason' => 'required|string|max:255',
-                'start_date' => 'required|date|after_or_equal:today',
-                'end_date' => 'required|date|after_or_equal:start_date',
-                //'days' => 'required|integer|min:1|max:' . $user->vacation_days,
-                'file_upload' => 'nullable|mimes:pdf,doc,docx|max:2048',
-                'remarks' => 'nullable|string',
-            ], [
-                'leaveRequest_name.required' => 'Būtina įvesti pavadinimą',
-                'leaveRequest_name.max' => 'Pavadinimas negali viršyti 255 simbolių',
-                'reason.required' => 'Būtina pateikti priežastį',
-                'reason.max' => 'Priežastis negali viršyti 255 simbolių.',
-                'start_date.required' => 'Būtina pasirinkti pradžios datą',
-                'start_date.after_or_equal' => 'Pradžios data negali būti vėlesnė nei šiandien',
-                'end_date.required' => 'Būtina pasirinkti pabaigos datą',
-                'end_date.date' => 'Pirma pasirinkite pradžios datą',
-                'end_date.after_or_equal' => 'Pabaigos data turi būti lygi ar vėlesnė nei pradžios data',
-                'file_upload.mimes' => 'Galima įkelti tik šio tipo failus: pdf, doc, docx.',
-                'file_upload.max' => 'Failo dydis negali viršyti nustatyto 2MB limito',
-            ]);
+        $validatedData = $request->validate([
+            'leaveRequest_name' => 'required|string|max:255',
+            'leave_type' => 'required|in:paid_leave,unpaid_leave',
+            'reason' => 'required|string|max:255',
+            'start_date' => 'required|date|after_or_equal:today',
+            'end_date' => 'required|date|after_or_equal:start_date',
+            //'days' => 'required|integer|min:1|max:' . $user->vacation_days,
+            'file_upload' => 'nullable|mimes:pdf,doc,docx|max:2048',
+            'remarks' => 'nullable|string',
+        ], [
+            'leaveRequest_name.required' => 'Būtina įvesti pavadinimą',
+            'leaveRequest_name.max' => 'Pavadinimas negali viršyti 255 simbolių',
+            'reason.required' => 'Būtina pateikti priežastį',
+            'reason.max' => 'Priežastis negali viršyti 255 simbolių.',
+            'start_date.required' => 'Būtina pasirinkti pradžios datą',
+            'start_date.after_or_equal' => 'Pradžios data negali būti vėlesnė nei šiandien',
+            'end_date.required' => 'Būtina pasirinkti pabaigos datą',
+            'end_date.date' => 'Pirma pasirinkite pradžios datą',
+            'end_date.after_or_equal' => 'Pabaigos data turi būti lygi ar vėlesnė nei pradžios data',
+            'file_upload.mimes' => 'Galima įkelti tik šio tipo failus: pdf, doc, docx.',
+            'file_upload.max' => 'Failo dydis negali viršyti nustatyto 2MB limito',
+        ]);
 
         //dd('aš čia');
 
-        $filePath = $request->file('file_upload') ? $request->file('file_upload')->store('leaveRequests', 'public') : null;
+        $filePath = null;
+        if ($request->hasFile('file_upload')) {
+            $filePath = $request->file('file_upload')->store('leaveRequests', 'public');
+        }
 
         $payroll = $user->payroll()->latest()->first();
         $payrollMonth = $payroll->month;
@@ -84,7 +87,7 @@ class LeaveRequestController extends Controller
 
         $interval = $startDate->diff($endDate);
 
-        $days = $interval->days+1;
+        $days = $interval->days + 1;
 
         $validatedData['days'] = $days;
 
@@ -213,11 +216,11 @@ class LeaveRequestController extends Controller
 
         $interval = $startDate->diff($endDate);
 
-        $days = $interval->days+1;
+        $days = $interval->days + 1;
 
         $validatedData['days'] = $days;
 
-        
+
 
         $user = $leaveRequest->user;
         $payroll = $user->payroll()->latest()->first();
