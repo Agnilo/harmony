@@ -54,7 +54,7 @@ class LeaveRequestController extends Controller
                 'reason' => 'required|string|max:255',
                 'start_date' => 'required|date|after_or_equal:today',
                 'end_date' => 'required|date|after_or_equal:start_date',
-                'days' => 'required|integer|min:1|max:' . $user->vacation_days,
+                //'days' => 'required|integer|min:1|max:' . $user->vacation_days,
                 'file_upload' => 'nullable|mimes:pdf,doc,docx|max:2048',
                 'remarks' => 'nullable|string',
             ], [
@@ -184,7 +184,7 @@ class LeaveRequestController extends Controller
             'reason' => 'required|string|max:255',
             'start_date' => 'required|date|after_or_equal:today',
             'end_date' => 'required|date|after_or_equal:start_date',
-            'days' => 'required|integer|min:1|max:' . $user->vacation_days,
+            //'days' => 'required|integer|min:1|max:' . $user->vacation_days,
             'file_upload' => 'nullable|mimes:pdf,doc,docx|max:2048',
             'remarks' => 'nullable|string|max:255',
         ], [
