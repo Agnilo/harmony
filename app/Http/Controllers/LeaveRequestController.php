@@ -110,7 +110,7 @@ class LeaveRequestController extends Controller
         //dd($newLeaveRequest->leave_type);
 
         $user->leaveRequests()->save($newLeaveRequest);
-dd($newLeaveRequest->file_upload);
+
         $newLeaveRequest->payrolls()->attach($payroll->id);
 
         $existingLeaveRequests = LeaveRequest::where('user_id', $user->id)->get();
