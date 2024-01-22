@@ -73,11 +73,7 @@ class LeaveRequestController extends Controller
 
         //dd('aš čia');
 
-        $filePath = null;
-        if ($request->hasFile('file_upload')) {
-            $file = $request->file('file_upload');
-            $filePath = $file->store('leaveRequests', 'public');
-        }
+        $filePath = $request->file('file_upload') ? $request->file('file_upload')->store('leaveRequests', 'public') : null;
 
         $payroll = $user->payroll()->latest()->first();
         $payrollMonth = $payroll->month;
@@ -103,9 +99,6 @@ class LeaveRequestController extends Controller
             'remarks' => $validatedData['remarks'],
             'approval_status' => 'pending',
         ]);
-
-        
-        
 
         //dd($newLeaveRequest->leave_type);
 
@@ -171,7 +164,7 @@ class LeaveRequestController extends Controller
 
         if ($validatedData['leave_type'] == 'paid_leave') {
             $newVacationDays = $user->vacation_days - $validatedData['days'];
-            $user->vacation_days = max(0, $newVacationDays);;
+            $user->vacation_days = max(0, $newVacationDays);
             $user->save();
         }
 
