@@ -75,8 +75,9 @@ class LeaveRequestController extends Controller
 
         $filePath = null;
         if ($request->hasFile('file_upload')) {
-            dd('file input');
-            $filePath = $request->file('file_upload')->store('leaveRequests', 'public');
+            $file = $request->file('file_upload');
+            $filePath = $file->store('leaveRequests', 'public');
+            dd($filePath);
         }
 
         $payroll = $user->payroll()->latest()->first();
