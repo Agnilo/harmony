@@ -104,7 +104,7 @@ class LeaveRequestController extends Controller
             'approval_status' => 'pending',
         ]);
 
-        $newLeaveRequest->save();
+        
         dd($newLeaveRequest->file_upload);
 
         //dd($newLeaveRequest->leave_type);
