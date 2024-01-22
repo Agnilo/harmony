@@ -77,7 +77,7 @@
                             </p>
                             <p>
                                 @if ($leaveRequest->file_path)
-                                <a href="{{ asset($leaveRequest->file_path) }}" target="_blank" class="file-link">Peržiūrėti failą</a>
+                                <a href="{{ asset($leaveRequest->file_upload) }}" target="_blank" class="file-link">Peržiūrėti failą</a>
                                 @else
                                 <span class="no-file">Priedų nėra</span>
                                 @endif
