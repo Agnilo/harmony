@@ -54,7 +54,7 @@ class LeaveRequestController extends Controller
                 'reason' => 'required|string|max:255',
                 'start_date' => 'required|date|after_or_equal:today',
                 'end_date' => 'required|date|after_or_equal:start_date',
-                //'days' => 'required|integer|min:1|max:' . $user->vacation_days,
+                'days' => 'required|integer|min:1|max:' . $user->vacation_days,
                 'file_upload' => 'nullable|mimes:pdf,doc,docx|max:2048',
                 'remarks' => 'nullable|string',
             ], [
@@ -85,6 +85,8 @@ class LeaveRequestController extends Controller
         $interval = $startDate->diff($endDate);
 
         $days = $interval->days+1;
+
+        $validatedData['days'] = $days;
 
         $newLeaveRequest = new LeaveRequest([
             'leaveRequest_name' => $validatedData['leaveRequest_name'],
@@ -165,6 +167,8 @@ class LeaveRequestController extends Controller
             $user->vacation_days = $newVacationDays;
             $user->save();
         }
+
+        $leaveRequest->update($validatedData);
 
         return redirect()->route('leaveRequest')->with('success', 'Atostogų prašymas sukurtas sėkmingai.');
     }
