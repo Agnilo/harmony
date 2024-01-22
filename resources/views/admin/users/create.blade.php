@@ -47,6 +47,54 @@
                 </div>
 
                 <div class="form-group row create-row">
+                    <label for="street_address" class="col-md-2 col-form-label text-md-right">Adresas</label>
+                    <div class="col-md-6">
+                        <input id="street_address" type="text" class="form-control @error('street_address') is-invalid @enderror" name="street_address" value="{{ old('street_address') }}">
+                        @error('street_address')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row create-row">
+                    <label for="zip_code" class="col-md-2 col-form-label text-md-right">Pašto kodas</label>
+                    <div class="col-md-6">
+                        <input id="zip_code" type="number" class="form-control @error('zip_code') is-invalid @enderror" name="zip_code" value="{{ old('zip_code') }}">
+                        @error('zip_code')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row create-row">
+                    <label for="city" class="col-md-2 col-form-label text-md-right">Miestas</label>
+                    <div class="col-md-6">
+                        <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}">
+                        @error('city')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row create-row">
+                    <label for="country" class="col-md-2 col-form-label text-md-right">Šalis</label>
+                    <div class="col-md-6">
+                        <input id="country" type="text" class="form-control @error('country') is-invalid @enderror" name="country" value="{{ old('country') }}">
+                        @error('country')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row create-row">
                     <label for="password" class="col-md-2 col-form-label text-md-right">Slaptažodis</label>
                     <div class="col-md-6">
                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password">

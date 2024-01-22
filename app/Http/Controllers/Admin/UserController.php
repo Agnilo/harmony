@@ -80,6 +80,10 @@ class UserController extends Controller
             'is_verified' => 'nullable|boolean',
             'position' => 'required|in:Sistemos administratorius,Skyriaus vadovas,Specialistas,Personalo valdymo skyriaus vadovas,Personalo valdymo skyriaus specialistas',
             'image' => 'nullable|image|max:10240',
+            'street_address' => 'nullable|string|max:255',
+            'zip_code' => 'nullable|regex:/^\d{5}$/',
+            'city' => 'nullable|string|max:255',
+            'country' => 'nullable|string|max:255',
         ], [
             'first_name.required' => 'Būtina įvesti naudotojo vardą',
             'first_name.max' => 'Galima įvesti iki 255 simbolių',
@@ -89,6 +93,10 @@ class UserController extends Controller
             'email.unique' => 'Toks el. pašto adresas jau egzistuoja',
             'email.email' => 'Neteisingas el. pašto formatas',
             'position.required' => 'Būtina pasirinkti poziciją',
+            'street_address' => 'Galima įvesti iki 255 simbolių',
+            'zip_code.regex' => 'ZIP kodas turi būti 5 skaitmenų.',
+            'city' => 'Galima įvesti iki 255 simbolių',
+            'country' => 'Galima įvesti iki 255 simbolių',
         ]);
 
 
@@ -117,6 +125,10 @@ class UserController extends Controller
             'gender' => $validatedData['gender'],
             'is_verified' => $validatedData['is_verified'],
             'position' => $validatedData['position'],
+            'street_address' => $validatedData['street_address'],
+            'zip_code' => $validatedData['zip_code'],
+            'city' => $validatedData['city'],
+            'country' => $validatedData['country'],
         ]);
 
         if ($request->hasFile('image')) {
@@ -249,7 +261,11 @@ class UserController extends Controller
             'overtime' => 'nullable|numeric|min:0',
             'gross' => 'nullable|numeric|between:0,999999.99',
             'info' => 'nullable|string|max:255',
-            'image' => 'nullable|image|max:10240'
+            'image' => 'nullable|image|max:10240',
+            'street_address' => 'nullable|string|max:255',
+            'zip_code' => 'nullable|regex:/^\d{5}$/',
+            'city' => 'nullable|string|max:255',
+            'country' => 'nullable|string|max:255',
         ], [
             'first_name.required' => 'Būtina įvesti naudotojo vardą',
             'first_name.max' => 'Galima įvesti iki 255 simbolių',
@@ -270,6 +286,10 @@ class UserController extends Controller
             'gross.numeric' => 'Turi būti įvestas skaičius',
             'gross.between' => 'Bruto suma turi būti tarp 0 ir 999999,99.',
             'info.max' => 'Įvestas tekstas negali viršyti 255 simbolių.',
+            'street_address' => 'Galima įvesti iki 255 simbolių',
+            'zip_code.regex' => 'ZIP kodas turi būti 5 skaitmenų.',
+            'city' => 'Galima įvesti iki 255 simbolių',
+            'country' => 'Galima įvesti iki 255 simbolių',
         ]);
 
         // Log::info("Data verified");
@@ -282,7 +302,10 @@ class UserController extends Controller
             'gender' => $validatedData['gender'],
             'position' => $validatedData['position'],
             'is_verified' => true,
-
+            'street_address' => $validatedData['street_address'],
+            'zip_code' => $validatedData['zip_code'],
+            'city' => $validatedData['city'],
+            'country' => $validatedData['country'],
         ]);
 
         // Log::info("User {$user->id} is created");

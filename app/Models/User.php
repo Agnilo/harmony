@@ -27,6 +27,10 @@ class User extends Authenticatable
         'gender',
         'is_verified',
         'position',
+        'street_address',
+        'zip_code',
+        'city',
+        'country',
     ];
 
     /**
