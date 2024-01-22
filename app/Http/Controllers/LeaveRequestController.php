@@ -71,6 +71,11 @@ class LeaveRequestController extends Controller
             'file_upload.max' => 'Failo dydis negali viršyti nustatyto 2MB limito',
         ]);
 
+        if ($request->hasFile('file_upload')) {
+            $filePath = $request->file('file_upload')->store('leaveRequests', 'public');
+            $validatedData['file_upload'] = $filePath;
+        }
+
         //dd('aš čia');
 
         $payroll = $user->payroll()->latest()->first();
@@ -93,15 +98,10 @@ class LeaveRequestController extends Controller
             'start_date' => $validatedData['start_date'],
             'end_date' => $validatedData['end_date'],
             'days' => $days,
-            //'file_upload' => $filePath,
+            'file_upload' => $validatedData['filePath'] ?? null,
             'remarks' => $validatedData['remarks'],
             'approval_status' => 'pending',
         ]);
-
-        if ($request->hasFile('file_upload')) {
-            $filePath = $request->file('file_upload')->store('leaveRequests', 'public');
-            $newLeaveRequest->file_upload = $filePath;
-        }
 
         //dd($newLeaveRequest->leave_type);
 
