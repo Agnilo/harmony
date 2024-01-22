@@ -161,6 +161,10 @@ class User extends Authenticatable
 
         //dd('baseHourlyRate',$baseHourlyRate,'baseHours',$baseHours, 'grossWithoutPaidLeave:', $grossWithoutPaidLeave, 'gross:', $gross, 'net', $net);
 
+        if ($net < 0) {
+            $net = 0;
+            return $net;
+        } else
         return $net;
     }
 }
