@@ -212,7 +212,7 @@ class LeaveRequestController extends Controller
 
         $validatedData['days'] = $days;
 
-        $leaveRequest->update($validatedData);
+        
 
         $user = $leaveRequest->user;
         $payroll = $user->payroll()->latest()->first();
@@ -269,6 +269,8 @@ class LeaveRequestController extends Controller
             $user->vacation_days = $newVacationDays;
             $user->save();
         }
+
+        $leaveRequest->update($validatedData);
 
         return redirect()->route('leaveRequest')->with('success', 'Atostogų prašymas buvo atnaujintas sėkmingai.');
     }
