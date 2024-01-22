@@ -75,6 +75,7 @@ class LeaveRequestController extends Controller
 
         $filePath = null;
         if ($request->hasFile('file_upload')) {
+            dd('file input');
             $filePath = $request->file('file_upload')->store('leaveRequests', 'public');
         }
 
