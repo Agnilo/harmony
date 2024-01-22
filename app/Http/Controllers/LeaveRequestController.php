@@ -77,7 +77,6 @@ class LeaveRequestController extends Controller
         if ($request->hasFile('file_upload')) {
             $file = $request->file('file_upload');
             $filePath = $file->store('leaveRequests', 'public');
-            dd($filePath);
         }
 
         $payroll = $user->payroll()->latest()->first();
@@ -104,6 +103,8 @@ class LeaveRequestController extends Controller
             'remarks' => $validatedData['remarks'],
             'approval_status' => 'pending',
         ]);
+
+        $newLeaveRequest->save();
 
         //dd($newLeaveRequest->leave_type);
 
