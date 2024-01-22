@@ -105,6 +105,7 @@ class LeaveRequestController extends Controller
         ]);
 
         $newLeaveRequest->save();
+        dd($newLeaveRequest->file_upload);
 
         //dd($newLeaveRequest->leave_type);
 
