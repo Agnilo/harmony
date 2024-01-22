@@ -64,17 +64,17 @@
         </div>
         @endif
     </header>
-    <div id="main-container">
-
+    <div>
         @yield('content')
-
-        <footer id="footer">
-            <div class="copyright-wrapper">
-                <p>HarmonyWorks</p>
-                <p> © 2024. Visos teisės saugomos. </p>
-            </div>
-        </footer>
     </div>
+
+    <footer>
+        <div class="copyright-wrapper">
+            <p>HarmonyWorks</p>
+            <p> © 2024. Visos teisės saugomos. </p>
+        </div>
+    </footer>
+
 </body>
 
 </html>
