@@ -133,7 +133,7 @@ class UserController extends Controller
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('user_images', 'public');
-    
+
             $user->userMeta()->updateOrCreate(
                 ['user_id' => $user->id],
                 ['meta_key' => 'avatar', 'meta_value' => $imagePath]
@@ -150,11 +150,13 @@ class UserController extends Controller
         $user->syncRoles($roles);
 
         $payroll = $user->payroll;
+        $payrollMonth = $payroll ? $payroll->month : date('m'); // Current month as default
+        $payrollYear = $payroll ? $payroll->year : date('Y'); // Current year as default
 
         $leaveRequests = LeaveRequest::where('user_id', $user->id)->get();
 
-        $payrollMonth = $payroll->month;
-        $payrollYear = $payroll->year;
+        // $payrollMonth = $payroll->month;
+        // $payrollYear = $payroll->year;
 
         $totalPaidLeaveDays = 0;
         $totalUnpaidLeaveDays = 0;
